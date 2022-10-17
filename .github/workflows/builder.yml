@@ -17,5 +17,5 @@ jobs:
           
     - name: 🌏 EarthValley Build Tests 🌏
       run: |
-        xcodebuild test -project ./EarthValley80.xcodeproj -scheme EarthValley80Tests -destination "platform=iOS Simulator,name=iPhone 12,OS=latest"
+        xcodebuild test -project ./EarthValley80/EarthValley80.xcodeproj -scheme EarthValley80Tests -destination "platform=iOS Simulator,name=iPhone 12,OS=latest"
  
