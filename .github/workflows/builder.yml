@@ -13,12 +13,9 @@ jobs:
     steps:
     - name: 👻Checkout Source Code👻
       uses: actions/checkout@v2
-      
-    - name: Select Xcode 14.0
-      run: sudo xcode-select -switch /Applications/Xcode_14.0.app/Contents/Developer/usr/bin/xcodebuild
           
     - name: 🌏 EarthValley Build Tests 🌏
       run: |
-        xcodebuild test -project ./EarthValley80/EarthValley80.xcodeproj -scheme EarthValley80Tests -destination "platform=iPadOS Simulator,name=iPhone 12" 
+        xcodebuild test -project ./EarthValley80/EarthValley80.xcodeproj -scheme EarthValley80Tests -destination "platform=iOS Simulator,name=iPhone 12" 
         xcpretty --color --simple
  
