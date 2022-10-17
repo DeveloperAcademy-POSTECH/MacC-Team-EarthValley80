@@ -1,0 +1,21 @@
+name: EarthValley Swift-Builder
+
+on:
+  push:
+    branches: [ develop, main ]
+  pull_request:
+    branches: [ develop, release, hotfix ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+    
+    steps:
+    - name: 👻Checkout Source Code👻
+      uses: actions/checkout@v2
+          
+    - name: 🌏 EarthValley Build Tests 🌏
+      run: |
+        xcodebuild test -project ./EarthValley80.xcodeproj -scheme EarthValley80Tests -destination "platform=iOS Simulator,name=iPhone 12,OS=latest"
+ 
