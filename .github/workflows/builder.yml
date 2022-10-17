@@ -14,8 +14,8 @@ jobs:
     - name: 👻Checkout Source Code👻
       uses: actions/checkout@v2
       
-    - name: Select Xcode 14
-      run: sudo xcode-select -switch /Applications/Xcode_14.0.app
+    - name: Select Xcode 14.0.1
+      run: sudo xcode-select -switch /Applications/Xcode_14.0.1.app
           
     - name: 🌏 EarthValley Build Tests 🌏
       run: |
