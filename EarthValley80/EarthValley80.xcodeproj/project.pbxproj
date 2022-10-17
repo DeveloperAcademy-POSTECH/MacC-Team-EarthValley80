@@ -20,6 +20,13 @@
 		B5BE346228FD985500D09BEE /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE346128FD985500D09BEE /* NewsViewController.swift */; };
 		B5BE346428FD986600D09BEE /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE346328FD986600D09BEE /* NewsFeedViewController.swift */; };
 		B5BE346628FD996D00D09BEE /* NewsFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE346528FD996D00D09BEE /* NewsFeed.storyboard */; };
+		B5BE346A28FD9AEC00D09BEE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE346928FD9AEC00D09BEE /* UIColor+Extension.swift */; };
+		B5BE346C28FD9B7900D09BEE /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE346B28FD9B7900D09BEE /* NSObject+Extension.swift */; };
+		B5BE346E28FD9BB100D09BEE /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE346D28FD9BB100D09BEE /* UITableView+Extension.swift */; };
+		B5BE347028FD9C2C00D09BEE /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE346F28FD9C2C00D09BEE /* UICollectionView+Extension.swift */; };
+		B5BE347228FD9C9A00D09BEE /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347128FD9C9A00D09BEE /* UIViewController+Extension.swift */; };
+		B5BE347428FD9CD200D09BEE /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347328FD9CD200D09BEE /* UIView+Extension.swift */; };
+		B5BE347628FD9CF800D09BEE /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347528FD9CF800D09BEE /* UIButton+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +64,13 @@
 		B5BE346128FD985500D09BEE /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		B5BE346328FD986600D09BEE /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		B5BE346528FD996D00D09BEE /* NewsFeed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsFeed.storyboard; sourceTree = "<group>"; };
+		B5BE346928FD9AEC00D09BEE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		B5BE346B28FD9B7900D09BEE /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
+		B5BE346D28FD9BB100D09BEE /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
+		B5BE346F28FD9C2C00D09BEE /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		B5BE347128FD9C9A00D09BEE /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		B5BE347328FD9CD200D09BEE /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		B5BE347528FD9CF800D09BEE /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +157,7 @@
 		B5BE345328FD96BD00D09BEE /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				B5BE346728FD9AB100D09BEE /* Extensions */,
 				B5BE345828FD96EB00D09BEE /* Supports */,
 				B5BE345728FD96E400D09BEE /* Resource */,
 			);
@@ -201,6 +216,20 @@
 				B5BE346528FD996D00D09BEE /* NewsFeed.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		B5BE346728FD9AB100D09BEE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B5BE346928FD9AEC00D09BEE /* UIColor+Extension.swift */,
+				B5BE346B28FD9B7900D09BEE /* NSObject+Extension.swift */,
+				B5BE346D28FD9BB100D09BEE /* UITableView+Extension.swift */,
+				B5BE346F28FD9C2C00D09BEE /* UICollectionView+Extension.swift */,
+				B5BE347128FD9C9A00D09BEE /* UIViewController+Extension.swift */,
+				B5BE347328FD9CD200D09BEE /* UIView+Extension.swift */,
+				B5BE347528FD9CF800D09BEE /* UIButton+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,11 +365,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5BE347428FD9CD200D09BEE /* UIView+Extension.swift in Sources */,
+				B5BE347028FD9C2C00D09BEE /* UICollectionView+Extension.swift in Sources */,
 				B55BCEDA28FC4C6000AF7E45 /* AppDelegate.swift in Sources */,
 				B55BCEDC28FC4C6000AF7E45 /* SceneDelegate.swift in Sources */,
 				B5BE345E28FD982700D09BEE /* MyNewsViewController.swift in Sources */,
+				B5BE347628FD9CF800D09BEE /* UIButton+Extension.swift in Sources */,
+				B5BE346A28FD9AEC00D09BEE /* UIColor+Extension.swift in Sources */,
 				B5BE346228FD985500D09BEE /* NewsViewController.swift in Sources */,
 				B5BE346428FD986600D09BEE /* NewsFeedViewController.swift in Sources */,
+				B5BE346C28FD9B7900D09BEE /* NSObject+Extension.swift in Sources */,
+				B5BE347228FD9C9A00D09BEE /* UIViewController+Extension.swift in Sources */,
+				B5BE346E28FD9BB100D09BEE /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
