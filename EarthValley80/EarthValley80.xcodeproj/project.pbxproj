@@ -29,6 +29,8 @@
 		B5BE347628FD9CF800D09BEE /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347528FD9CF800D09BEE /* UIButton+Extension.swift */; };
 		B5BE347928FD9DDE00D09BEE /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347828FD9DDE00D09BEE /* UIView+Constraints.swift */; };
 		B5BE347B28FD9E5500D09BEE /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347A28FD9E5500D09BEE /* UIViewController+Alert.swift */; };
+		B5BE347E28FDA22F00D09BEE /* ImageLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347D28FDA22F00D09BEE /* ImageLiteral.swift */; };
+		B5BE348028FDA2A200D09BEE /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347F28FDA2A200D09BEE /* StringLiteral.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		B5BE347528FD9CF800D09BEE /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		B5BE347828FD9DDE00D09BEE /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		B5BE347A28FD9E5500D09BEE /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		B5BE347D28FDA22F00D09BEE /* ImageLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiteral.swift; sourceTree = "<group>"; };
+		B5BE347F28FDA2A200D09BEE /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 		B5BE345328FD96BD00D09BEE /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				B5BE347C28FDA21E00D09BEE /* Literals */,
 				B5BE347728FD9DCF00D09BEE /* Utils */,
 				B5BE346728FD9AB100D09BEE /* Extensions */,
 				B5BE345828FD96EB00D09BEE /* Supports */,
@@ -244,6 +249,15 @@
 				B5BE347A28FD9E5500D09BEE /* UIViewController+Alert.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		B5BE347C28FDA21E00D09BEE /* Literals */ = {
+			isa = PBXGroup;
+			children = (
+				B5BE347D28FDA22F00D09BEE /* ImageLiteral.swift */,
+				B5BE347F28FDA2A200D09BEE /* StringLiteral.swift */,
+			);
+			path = Literals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,8 +395,10 @@
 			files = (
 				B5BE347428FD9CD200D09BEE /* UIView+Extension.swift in Sources */,
 				B5BE347028FD9C2C00D09BEE /* UICollectionView+Extension.swift in Sources */,
+				B5BE348028FDA2A200D09BEE /* StringLiteral.swift in Sources */,
 				B55BCEDA28FC4C6000AF7E45 /* AppDelegate.swift in Sources */,
 				B5BE347928FD9DDE00D09BEE /* UIView+Constraints.swift in Sources */,
+				B5BE347E28FDA22F00D09BEE /* ImageLiteral.swift in Sources */,
 				B55BCEDC28FC4C6000AF7E45 /* SceneDelegate.swift in Sources */,
 				B5BE345E28FD982700D09BEE /* MyNewsViewController.swift in Sources */,
 				B5BE347628FD9CF800D09BEE /* UIButton+Extension.swift in Sources */,
