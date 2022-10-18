@@ -16,11 +16,6 @@ extension UIView {
         case widthAnchor
         case heightAnchor
     }
-  
-    func constraint(_ anchor: NSLayoutDimension, constant: CGFloat) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        anchor.constraint(equalToConstant: constant).isActive = true
-    }
     
     func constraint(_ anchor: Frame, constant: CGFloat) {
         self.translatesAutoresizingMaskIntoConstraints = false
