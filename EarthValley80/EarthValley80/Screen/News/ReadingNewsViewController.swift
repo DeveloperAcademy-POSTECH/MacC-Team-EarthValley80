@@ -84,7 +84,7 @@ final class ReadingNewsViewController: UIViewController {
                                       leading: self.view.leadingAnchor,
                                       bottom: self.view.bottomAnchor,
                                       trailing: self.questionView.leadingAnchor,
-                                      padding: UIEdgeInsets(top: 15, left: 10, bottom: 0, right: 0))
+                                      padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 10))
     }
     
     private func configureUI() {
