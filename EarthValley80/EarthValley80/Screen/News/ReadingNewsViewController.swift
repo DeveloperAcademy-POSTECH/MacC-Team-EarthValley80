@@ -65,7 +65,10 @@ final class ReadingNewsViewController: UIViewController {
     
     private func setupLayout() {
         self.view.addSubview(questionView)
-        self.questionView.constraint(top: self.view.topAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: UIEdgeInsets(top: Size.verticalPadding, left: 0, bottom: Size.verticalPadding, right: -Size.partOfQuestionViewFrameWidth))
+        self.questionView.constraint(top: self.view.topAnchor,
+                                     bottom: self.view.bottomAnchor,
+                                     trailing: self.view.trailingAnchor,
+                                     padding: UIEdgeInsets(top: Size.verticalPadding, left: 0, bottom: Size.verticalPadding, right: -Size.partOfQuestionViewFrameWidth))
         
         self.view.addSubview(self.backButton)
         self.backButton.constraint(top: self.view.topAnchor,
