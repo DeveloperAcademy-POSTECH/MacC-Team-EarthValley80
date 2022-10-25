@@ -1,13 +1,13 @@
 //
-//  NewsViewController.swift
+//  TitleInferingViewController.swift
 //  EarthValley80
 //
-//  Created by SHIN YOON AH on 2022/10/17.
+//  Created by SHIN YOON AH on 2022/10/25.
 //
 
 import UIKit
 
-class NewsViewController: UIViewController {
+final class TitleInferingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
