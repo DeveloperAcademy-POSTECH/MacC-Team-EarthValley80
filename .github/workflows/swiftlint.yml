@@ -3,7 +3,7 @@ name: auto PR swiftLint
 
 on:
   pull_request:
-    branches: [ develop ]
+    branches: [ develop, feature ]
     paths:
       - '.github/workflows/swiftlint.yml'
       - '.swiftlint.yml'
