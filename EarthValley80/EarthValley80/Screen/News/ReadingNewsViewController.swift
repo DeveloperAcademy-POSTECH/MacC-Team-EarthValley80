@@ -38,6 +38,7 @@ final class ReadingNewsViewController: UIViewController {
         tableView.bounces = false
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
+        tableView.indicatorStyle = .white
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 128, right: 0)
