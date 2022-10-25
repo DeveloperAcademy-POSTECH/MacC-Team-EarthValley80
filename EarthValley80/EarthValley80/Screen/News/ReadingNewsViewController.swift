@@ -27,7 +27,7 @@ final class ReadingNewsViewController: UIViewController {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .bold)
         label.lineBreakStrategy = .hangulWordPriority
-        label.text = "기사 읽기"
+        label.text = StringLiteral.readingNewsTitle
         label.textColor = .white.withAlphaComponent(0.5)
         return label
     }()
