@@ -28,7 +28,7 @@ final class NewsContentTableViewCell: UITableViewCell {
     private let contentLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 34, weight: .bold)
+        label.font = .font(.bold, ofSize: 34)
         label.textColor = .originalTextColor
         
         //TODO: - 더미 데이터, 나중에 지우겠습니다.
@@ -41,7 +41,7 @@ final class NewsContentTableViewCell: UITableViewCell {
 
         누가 재판에 이겼느냐는 우리의 관심사가 아닙니다. 타다 재판의 이면에 웅크리고 있는 생각들에 주목해야 합니다. 혁신과 기득권의 대립, 새로운 것과 기존에 있던 것 사이의 충돌, 현재와 미래, 진화와 도태 같은 이슈들이죠.
         """
-        label.setLineSpacing(lineHeightMultiple: 1.16)
+        label.setLineSpacing(kernValue: -2.0, lineHeightMultiple: 1.16)
         
         return label
     }()

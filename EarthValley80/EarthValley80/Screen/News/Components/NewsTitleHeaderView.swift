@@ -22,7 +22,8 @@ final class NewsTitleHeaderView: UIView {
         label.text = "인류보다 로봇 진화 속도가 더 빠르대요, 청소로봇은 '루시'…생각하는 로봇 등장"
         label.numberOfLines = 0
         label.textColor = .white
-        label.font = .systemFont(ofSize: Size.originalFontSize, weight: .bold)
+        label.font = .font(.bold, ofSize: Size.originalFontSize)
+        label.setLineSpacing(kernValue: -2.0, lineHeightMultiple: 1.16)
         return label
     }()
 
