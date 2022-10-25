@@ -53,7 +53,7 @@ final class BlurredLabel: UILabel {
         
         if let context = UIGraphicsGetCurrentContext() {
             self.layer.draw(in: context)
-            var image = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
+            let image = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
             
             layer.contents = insertBlurFilter(at: image, with: context)
         }
@@ -73,7 +73,7 @@ final class BlurredLabel: UILabel {
         self.contentMode = .redraw
     }
  
-    private func insertBlurFilter(at image: CGImage?, with context: CGContext) -> CGImage {
+    private func insertBlurFilter(at image: CGImage?, with context: CGContext) -> CGImage? {
         if isBlurring, let cgImage = image {
             let ciContext = CIContext(cgContext: context, options: nil)
             
@@ -83,5 +83,7 @@ final class BlurredLabel: UILabel {
                 return cgImage
             }
         }
+        
+        return nil
     }
 }
