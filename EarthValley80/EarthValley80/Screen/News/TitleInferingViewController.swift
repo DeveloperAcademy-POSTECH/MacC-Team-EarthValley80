@@ -16,7 +16,10 @@ private extension UIColor {
 final class TitleInferingViewController: UIViewController {
     
     private enum Size {
+        static let verticalPadding: CGFloat = 16.0
         static let contentHeight: CGFloat = UIScreen.main.bounds.size.height * 0.63
+        static let questionViewFrameWidth: CGFloat = UIScreen.main.bounds.size.width * 0.48
+        static let partOfQuestionViewFrameWidth = questionViewFrameWidth - 20
     }
     
     // MARK: - property
@@ -44,6 +47,7 @@ final class TitleInferingViewController: UIViewController {
     }()
     private let titleView = NewsTitleHeaderView()
     private let backButton = BackButton()
+    private let questionView = QuestionView()
     
     // MARK: - life cycle
 
@@ -56,6 +60,12 @@ final class TitleInferingViewController: UIViewController {
     // MARK: - func
     
     private func setupLayout() {
+        self.view.addSubview(self.questionView)
+        self.questionView.constraint(top: self.view.topAnchor,
+                                     bottom: self.view.bottomAnchor,
+                                     trailing: self.view.trailingAnchor,
+                                     padding: UIEdgeInsets(top: Size.verticalPadding, left: 0, bottom: Size.verticalPadding, right: -Size.partOfQuestionViewFrameWidth))
+        
         self.view.addSubview(self.backButton)
         self.backButton.constraint(top: self.view.topAnchor,
                                    leading: self.view.leadingAnchor,
@@ -64,7 +74,7 @@ final class TitleInferingViewController: UIViewController {
         self.view.addSubview(self.blurContentLabel)
         self.blurContentLabel.constraint(leading: self.view.leadingAnchor,
                                          bottom: self.view.bottomAnchor,
-                                         trailing: self.view.trailingAnchor,
+                                         trailing: self.questionView.leadingAnchor,
                                          padding: UIEdgeInsets(top: 0, left: 90, bottom: 0, right: 90))
         self.blurContentLabel.constraint(.heightAnchor, constant: Size.contentHeight)
         
@@ -72,7 +82,7 @@ final class TitleInferingViewController: UIViewController {
         self.titleView.constraint(top: self.backButton.bottomAnchor,
                                   leading: self.view.leadingAnchor,
                                   bottom: self.blurContentLabel.topAnchor,
-                                  trailing: self.view.trailingAnchor,
+                                  trailing: self.questionView.leadingAnchor,
                                   padding: UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0))
         
     }
