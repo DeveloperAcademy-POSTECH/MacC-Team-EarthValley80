@@ -20,6 +20,7 @@ final class ReadingNewsViewController: UIViewController {
     private let captionLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .bold)
+        label.lineBreakStrategy = .hangulWordPriority
         label.text = "기사 읽기"
         label.textColor = .white.withAlphaComponent(0.5)
         return label
@@ -28,11 +29,12 @@ final class ReadingNewsViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.bounces = false
         tableView.backgroundColor = .systemPink
         tableView.separatorColor = .clear
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        tableView.bounces = false
+        tableView.register(cell: NewsContentTableViewCell.self)
         
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
@@ -82,11 +84,12 @@ final class ReadingNewsViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension ReadingNewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsContentTableViewCell.className) as? NewsContentTableViewCell else { return UITableViewCell() }
+        return cell
     }
 }
 
