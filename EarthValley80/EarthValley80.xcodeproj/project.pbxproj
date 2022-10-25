@@ -34,6 +34,7 @@
 		B5FAC8DC2907652800537F58 /* ReadingNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8DB2907652800537F58 /* ReadingNewsViewController.swift */; };
 		B5FAC8DF2907786F00537F58 /* NewsTitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8DE2907786F00537F58 /* NewsTitleHeaderView.swift */; };
 		B5FAC8E2290781C200537F58 /* NewsContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8E1290781C200537F58 /* NewsContentTableViewCell.swift */; };
+		B5FAC8E5290786B800537F58 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8E4290786B800537F58 /* UILabel+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		B5FAC8DB2907652800537F58 /* ReadingNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingNewsViewController.swift; sourceTree = "<group>"; };
 		B5FAC8DE2907786F00537F58 /* NewsTitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTitleHeaderView.swift; sourceTree = "<group>"; };
 		B5FAC8E1290781C200537F58 /* NewsContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContentTableViewCell.swift; sourceTree = "<group>"; };
+		B5FAC8E4290786B800537F58 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 				B5BE347128FD9C9A00D09BEE /* UIViewController+Extension.swift */,
 				B5BE347328FD9CD200D09BEE /* UIView+Extension.swift */,
 				B5BE347528FD9CF800D09BEE /* UIButton+Extension.swift */,
+				B5FAC8E4290786B800537F58 /* UILabel+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				B5BE347628FD9CF800D09BEE /* UIButton+Extension.swift in Sources */,
 				B5BE346A28FD9AEC00D09BEE /* UIColor+Extension.swift in Sources */,
 				B5FAC8DC2907652800537F58 /* ReadingNewsViewController.swift in Sources */,
+				B5FAC8E5290786B800537F58 /* UILabel+Extension.swift in Sources */,
 				B5BE346228FD985500D09BEE /* NewsViewController.swift in Sources */,
 				B5BE346428FD986600D09BEE /* NewsFeedViewController.swift in Sources */,
 				B5FAC8E2290781C200537F58 /* NewsContentTableViewCell.swift in Sources */,

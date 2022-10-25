@@ -30,7 +30,7 @@ final class NewsTitleHeaderView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupLayout()
+        self.setupLayout()
     }
     
     @available(*, unavailable)
@@ -41,12 +41,11 @@ final class NewsTitleHeaderView: UIView {
     // MARK: - func
     
     private func setupLayout() {
-        self.addSubview(titleLabel)
-        titleLabel.constraint(top: self.topAnchor,
-                              leading: self.leadingAnchor,
-                              bottom: self.bottomAnchor,
-                              trailing: self.trailingAnchor,
-                              padding: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 40, right: Size.horizontalPadding))
+        self.addSubview(self.titleLabel)
+        self.titleLabel.constraint(top: self.topAnchor,
+                                   leading: self.leadingAnchor,
+                                   bottom: self.bottomAnchor,
+                                   trailing: self.trailingAnchor,
+                                   padding: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 40, right: Size.horizontalPadding))
     }
-    
 }

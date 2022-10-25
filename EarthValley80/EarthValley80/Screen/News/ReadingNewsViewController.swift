@@ -30,7 +30,7 @@ final class ReadingNewsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.bounces = false
-        tableView.backgroundColor = .systemPink
+        tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -96,6 +96,6 @@ extension ReadingNewsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension ReadingNewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return titleHeaderView
+        return self.titleHeaderView
     }
 }
