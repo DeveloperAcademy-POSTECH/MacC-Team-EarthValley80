@@ -9,6 +9,12 @@ import UIKit
 
 final class ReadingNewsViewController: UIViewController {
     
+    private enum Size {
+        static let verticalPadding: CGFloat = 16.0
+        static let questionViewFrameWidth: CGFloat = UIScreen.main.bounds.size.width * 0.48
+        static let partOfQuestionViewFrameWidth = questionViewFrameWidth - 20
+    }
+    
     // MARK: - property
     
     private let backButton: UIButton = {
@@ -44,18 +50,22 @@ final class ReadingNewsViewController: UIViewController {
         return tableView
     }()
     private let titleHeaderView = NewsTitleHeaderView()
+    private let questionView = QuestionView()
     
     // MARK: - life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLayout()
-        configureUI()
+        self.setupLayout()
+        self.configureUI()
     }
     
     // MARK: - func
     
     private func setupLayout() {
+        self.view.addSubview(questionView)
+        self.questionView.constraint(top: self.view.topAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: UIEdgeInsets(top: Size.verticalPadding, left: 0, bottom: Size.verticalPadding, right: -Size.partOfQuestionViewFrameWidth))
+        
         self.view.addSubview(self.backButton)
         self.backButton.constraint(top: self.view.topAnchor,
                                    leading: self.view.leadingAnchor,
@@ -72,8 +82,8 @@ final class ReadingNewsViewController: UIViewController {
         self.newsTableView.constraint(top: self.captionLabel.bottomAnchor,
                                       leading: self.view.leadingAnchor,
                                       bottom: self.view.bottomAnchor,
-                                      trailing: self.view.trailingAnchor,
-                                      padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0))
+                                      trailing: self.questionView.leadingAnchor,
+                                      padding: UIEdgeInsets(top: 15, left: 10, bottom: 0, right: 0))
     }
     
     private func configureUI() {
