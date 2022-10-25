@@ -17,12 +17,6 @@ final class ReadingNewsViewController: UIViewController {
     
     // MARK: - property
     
-    private let backButton: UIButton = {
-        let button = UIButton()
-        // TODO: - 홈으로 이미지 적용
-        button.setBackgroundColor(.blue, for: .normal)
-        return button
-    }()
     private let captionLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.bold, ofSize: 12)
@@ -50,6 +44,7 @@ final class ReadingNewsViewController: UIViewController {
         
         return tableView
     }()
+    private let backButton = BackButton()
     private let titleHeaderView = NewsTitleHeaderView()
     private let questionView = QuestionView()
     
@@ -74,8 +69,6 @@ final class ReadingNewsViewController: UIViewController {
         self.backButton.constraint(top: self.view.topAnchor,
                                    leading: self.view.leadingAnchor,
                                    padding: UIEdgeInsets(top: 26, left: 10, bottom: 0, right: 0))
-        self.backButton.constraint(.heightAnchor, constant: 44)
-        self.backButton.constraint(.widthAnchor, constant: 107)
         
         self.view.addSubview(self.captionLabel)
         self.captionLabel.constraint(top: self.view.topAnchor,
