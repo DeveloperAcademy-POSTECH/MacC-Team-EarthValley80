@@ -9,6 +9,6 @@ import Foundation
 
 enum StringLiteral {
     
-    static let exampleString = "안녕하세요"
+    static let readingNewsTitle = "기사읽기"
     
 }
