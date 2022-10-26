@@ -138,7 +138,6 @@ final class QuestionView: UIView {
                                         trailing: self.trailingAnchor,
                                         padding: UIEdgeInsets(top: 40, left: 0, bottom: 130, right: 0))
         
-        
         self.addSubview(self.nextButton)
         self.nextButton.constraint(bottom: self.bottomAnchor,
                                    trailing: self.trailingAnchor,
