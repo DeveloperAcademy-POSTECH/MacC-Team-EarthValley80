@@ -40,6 +40,7 @@
 		B5FAC8EF2907D2A300537F58 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8EE2907D2A300537F58 /* BackButton.swift */; };
 		B5FAC8F12907D8C000537F58 /* BlurredLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8F02907D8C000537F58 /* BlurredLabel.swift */; };
 		B5FAC8F32908E11900537F58 /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8F22908E11900537F58 /* UITextView+Extension.swift */; };
+		B5FAC8F92909FD0300537F58 /* FiveWsAndOneHViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8F82909FD0300537F58 /* FiveWsAndOneHViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		B5FAC8EE2907D2A300537F58 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		B5FAC8F02907D8C000537F58 /* BlurredLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredLabel.swift; sourceTree = "<group>"; };
 		B5FAC8F22908E11900537F58 /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
+		B5FAC8F82909FD0300537F58 /* FiveWsAndOneHViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveWsAndOneHViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 				B5FAC8DD2907785D00537F58 /* Components */,
 				B5FAC8DB2907652800537F58 /* ReadingNewsViewController.swift */,
 				B5FAC8EC2907D18800537F58 /* TitleInferingViewController.swift */,
+				B5FAC8F82909FD0300537F58 /* FiveWsAndOneHViewController.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				B5BE347928FD9DDE00D09BEE /* UIView+Constraints.swift in Sources */,
 				B5BE347E28FDA22F00D09BEE /* ImageLiteral.swift in Sources */,
 				B55BCEDC28FC4C6000AF7E45 /* SceneDelegate.swift in Sources */,
+				B5FAC8F92909FD0300537F58 /* FiveWsAndOneHViewController.swift in Sources */,
 				B5BE345E28FD982700D09BEE /* MyNewsViewController.swift in Sources */,
 				B5BE347628FD9CF800D09BEE /* UIButton+Extension.swift in Sources */,
 				B5FAC8F32908E11900537F58 /* UITextView+Extension.swift in Sources */,
