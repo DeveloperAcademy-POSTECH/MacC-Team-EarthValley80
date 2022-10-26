@@ -43,10 +43,7 @@ final class NewsTitleHeaderView: UIView {
     
     private func setupLayout() {
         self.addSubview(self.titleLabel)
-        self.titleLabel.constraint(top: self.topAnchor,
-                                   leading: self.leadingAnchor,
-                                   bottom: self.bottomAnchor,
-                                   trailing: self.trailingAnchor,
-                                   padding: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 40, right: Size.horizontalPadding))
+        self.titleLabel.constraint(to: self,
+                                   insets: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: -40, right: -Size.horizontalPadding))
     }
 }
