@@ -60,6 +60,15 @@ final class ReadingNewsViewController: UIViewController {
         self.configureUI()
     }
     
+    // TODO: - 가이드 뷰 테스트 용
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let vc = NewsGuideViewController()
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+        present(vc, animated: true)
+    }
+    
     // MARK: - func
     
     private func setupLayout() {

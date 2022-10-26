@@ -11,8 +11,7 @@ enum ImageLiteral {
     
     // MARK: - icon
     
-    static var icCustomImage: UIImage { .load(name: "icGear") }
-    static var icSystemImage: UIImage { .load(systemName: "chevron.forward") }
+    static var icXmark: UIImage { .load(systemName: "xmark") }
     
 }
 
