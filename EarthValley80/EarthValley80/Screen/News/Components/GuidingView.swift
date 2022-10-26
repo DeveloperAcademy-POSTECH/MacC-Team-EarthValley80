@@ -126,6 +126,7 @@ final class GuidingView: UIView {
         self.addSubview(self.mainGuideTextLabel)
         self.mainGuideTextLabel.constraint(to: self, insets: guidingType.mainTextLayout)
         self.mainGuideTextLabel.text = guidingType.mainText
+        self.mainGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
         
         self.addSubview(self.mainGuideImageView)
         self.mainGuideImageView.constraint(to: self, insets: guidingType.mainImageLayout)
@@ -138,6 +139,7 @@ final class GuidingView: UIView {
         self.addSubview(self.subGuideTextLabel)
         self.subGuideTextLabel.constraint(to: self, insets: guidingType.subTextLayout)
         self.subGuideTextLabel.text = subText
+        self.subGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
         
         guard let subImage = guidingType.subImage else { return }
         

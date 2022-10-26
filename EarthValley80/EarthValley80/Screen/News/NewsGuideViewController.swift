@@ -46,17 +46,17 @@ final class NewsGuideViewController: UIViewController {
     }
     
     private func setupLayout() {
+        let guidingViews: [UIView] = [scrollGuidingView, touchGuidingView, vocabularyGuidingView, completeGuidingView]
+        guidingViews.forEach {
+            self.view.addSubview($0)
+            $0.constraint(to: self.view)
+        }
+        
         self.view.addSubview(xmarkButton)
         self.xmarkButton.constraint(bottom: self.view.bottomAnchor,
                                     centerX: self.view.centerXAnchor,
                                     padding: UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0))
         self.xmarkButton.constraint(.heightAnchor, constant: Size.buttonSize)
         self.xmarkButton.constraint(.widthAnchor, constant: Size.buttonSize)
-        
-        [scrollGuidingView, touchGuidingView,
-         vocabularyGuidingView, completeGuidingView].forEach { subview in
-            self.view.addSubview(subview)
-            self.subview.constraint(to: self.view)
-        }
     }
 }
