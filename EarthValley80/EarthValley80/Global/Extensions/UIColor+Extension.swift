@@ -8,8 +8,28 @@
 import UIKit
 
 extension UIColor {
-    static var exampleColor: UIColor {
-        return UIColor(hex: "#464646")
+    static var evyBlack1: UIColor {
+        return UIColor(hex: "#1B1B1B")
+    }
+    
+    static var evyBlack2: UIColor {
+        return UIColor(hex: "#6A6A6A")
+    }
+    
+    static var evyGray1: UIColor {
+        return UIColor(hex: "#A6A6A6")
+    }
+    
+    static var evyGray2: UIColor {
+        return UIColor(hex: "#E8E8E8")
+    }
+    
+    static var evyGray3: UIColor {
+        return UIColor(hex: "#ECECEC")
+    }
+    
+    static var evyWhite: UIColor {
+        return UIColor(hex: "#FFFFFF")
     }
 }
 
