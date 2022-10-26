@@ -63,11 +63,8 @@ final class NewsContentTableViewCell: UITableViewCell {
     
     private func setupLayout() {
         self.contentView.addSubview(self.contentLabel)
-        self.contentLabel.constraint(top: contentView.topAnchor,
-                                     leading: contentView.leadingAnchor,
-                                     bottom: contentView.bottomAnchor,
-                                     trailing: contentView.trailingAnchor,
-                                     padding: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 0, right: Size.horizontalPadding))
+        self.contentLabel.constraint(to: self.contentView,
+                                     insets: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 0, right: -Size.horizontalPadding))
     }
     
     private func configureUI() {

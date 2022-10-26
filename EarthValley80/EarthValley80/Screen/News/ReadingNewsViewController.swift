@@ -29,7 +29,6 @@ final class ReadingNewsViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.bounces = false
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
         tableView.indicatorStyle = .white
