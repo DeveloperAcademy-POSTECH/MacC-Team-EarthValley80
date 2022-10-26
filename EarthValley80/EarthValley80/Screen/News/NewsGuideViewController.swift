@@ -22,6 +22,10 @@ final class NewsGuideViewController: UIViewController {
         button.tintColor = .evyWhite.withAlphaComponent(0.4)
         return button
     }()
+    private let scrollGuidingView = GuidingView(guidingType: .scrollGuide)
+    private let touchGuidingView = GuidingView(guidingType: .touchGuide)
+    private let vocabularyGuidingView = GuidingView(guidingType: .vocabularyGuide)
+    private let completeGuidingView = GuidingView(guidingType: .complete)
     
     // MARK: - life cycle
 
@@ -48,5 +52,11 @@ final class NewsGuideViewController: UIViewController {
                                     padding: UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0))
         self.xmarkButton.constraint(.heightAnchor, constant: Size.buttonSize)
         self.xmarkButton.constraint(.widthAnchor, constant: Size.buttonSize)
+        
+        [scrollGuidingView, touchGuidingView,
+         vocabularyGuidingView, completeGuidingView].forEach { subview in
+            self.view.addSubview(subview)
+            self.subview.constraint(to: self.view)
+        }
     }
 }

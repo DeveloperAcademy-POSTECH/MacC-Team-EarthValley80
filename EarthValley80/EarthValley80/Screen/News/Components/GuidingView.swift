@@ -105,7 +105,7 @@ final class GuidingView: UIView {
     }()
     
     private let mainGuideImageView = UIImageView()
-    private let subGuideImageView = UIImageView()
+    private lazy var subGuideImageView = UIImageView()
     
     // MARK: - init
 
@@ -125,7 +125,7 @@ final class GuidingView: UIView {
     private func setupMainComponent(guidingType: GuideType) {
         self.addSubview(self.mainGuideTextLabel)
         self.mainGuideTextLabel.constraint(to: self, insets: guidingType.mainTextLayout)
-        self.mainGuideTextLabel.text = guideType.mainText
+        self.mainGuideTextLabel.text = guidingType.mainText
         
         self.addSubview(self.mainGuideImageView)
         self.mainGuideImageView.constraint(to: self, insets: guidingType.mainImageLayout)
@@ -143,6 +143,6 @@ final class GuidingView: UIView {
         
         self.addSubview(self.subGuideImageView)
         self.subGuideImageView.constraint(to: self, insets: guidingType.subImageLayout)
-        self.subGuideImageView.image = guidingType.subImage
+        self.subGuideImageView.image = subImage
     }
 }
