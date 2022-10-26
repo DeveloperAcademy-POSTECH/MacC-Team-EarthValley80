@@ -22,6 +22,20 @@ final class TitleInferingViewController: UIViewController {
         static let partOfQuestionViewFrameWidth = questionViewFrameWidth - 20
     }
     
+    private enum Direction {
+        case left
+        case right
+        
+        var offset: CGFloat {
+            switch self {
+            case .left:
+                return 16
+            case .right:
+                return Size.partOfQuestionViewFrameWidth
+            }
+        }
+    }
+    
     // MARK: - property
     
     private let blurContentLabel: BlurredLabel = {
@@ -49,19 +63,22 @@ final class TitleInferingViewController: UIViewController {
     private let backButton = BackButton()
     private let questionView = QuestionView()
     
+    private var questionViewConstraints: [ConstraintType: NSLayoutConstraint]?
+    
     // MARK: - life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayout()
         self.configureUI()
+        self.openQuestionView()
     }
     
     // MARK: - func
     
     private func setupLayout() {
         self.view.addSubview(self.questionView)
-        self.questionView.constraint(top: self.view.topAnchor,
+        questionViewConstraints = self.questionView.constraint(top: self.view.topAnchor,
                                      bottom: self.view.bottomAnchor,
                                      trailing: self.view.trailingAnchor,
                                      padding: UIEdgeInsets(top: Size.verticalPadding, left: 0, bottom: Size.verticalPadding, right: -Size.partOfQuestionViewFrameWidth))
@@ -90,5 +107,22 @@ final class TitleInferingViewController: UIViewController {
     private func configureUI() {
         // TODO: - background gradient Color가 나오면 적용
         self.view.backgroundColor = .black
+    }
+    
+    private func openQuestionView() {
+        let deadlineTime: DispatchTime = DispatchTime.now() + 1.15
+        
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
+            self.moveQuestionView(to: .left)
+        })
+    }
+    
+    private func moveQuestionView(to direction: Direction) {
+        let durationTime: CGFloat = 0.9
+        
+        UIView.animate(withDuration: durationTime, animations: {
+            self.questionViewConstraints?[.trailing]?.constant = -direction.offset
+            self.view.layoutIfNeeded()
+        })
     }
 }
