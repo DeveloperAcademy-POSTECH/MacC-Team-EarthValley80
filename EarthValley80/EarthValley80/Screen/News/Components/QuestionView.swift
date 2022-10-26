@@ -51,7 +51,23 @@ final class QuestionView: UIView {
         textView.textContainer.lineBreakMode = .byCharWrapping
         textView.setTypingAttributes(lineSpacing: 10.0)
         textView.font = .font(.bold, ofSize: 40)
+        // TODO: - 색상이 확정되면 추가
+        textView.tintColor = .black
+        textView.textContainerInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 83)
         return textView
+    }()
+    private let nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.titleLabel?.font = .font(.medium, ofSize: 12)
+        // TODO: - 색상이 확정되면 추가
+        button.tintColor = .black
+        button.setTitleColor(.black, for: .normal)
+        button.semanticContentAttribute = .forceRightToLeft
+        button.setTitle(StringLiteral.nextButtonText, for: .normal)
+        button.setImage(ImageLiteral.icArrowRight, for: .normal)
+        button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .large), forImageIn: .normal)
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        return button
     }()
     private var textMode: TextMode = .beforeWriting {
         willSet {
@@ -120,7 +136,15 @@ final class QuestionView: UIView {
                                         leading: self.leadingAnchor,
                                         bottom: self.bottomAnchor,
                                         trailing: self.trailingAnchor,
-                                        padding: UIEdgeInsets(top: 40, left: 40, bottom: 130, right: 83))
+                                        padding: UIEdgeInsets(top: 40, left: 0, bottom: 130, right: 0))
+        
+        
+        self.addSubview(self.nextButton)
+        self.nextButton.constraint(bottom: self.bottomAnchor,
+                                   trailing: self.trailingAnchor,
+                                   padding: UIEdgeInsets(top: 0, left: 0, bottom: 21, right: 30))
+        self.nextButton.constraint(.heightAnchor, constant: 60)
+        self.nextButton.constraint(.widthAnchor, constant: 104)
     }
     
     private func configureUI() {

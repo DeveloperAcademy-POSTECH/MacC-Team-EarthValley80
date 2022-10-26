@@ -107,7 +107,6 @@ final class TitleInferingViewController: UIViewController {
                                   bottom: self.blurContentLabel.topAnchor,
                                   trailing: self.questionView.leadingAnchor,
                                   padding: UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0))
-        
     }
     
     private func configureUI() {
@@ -116,7 +115,7 @@ final class TitleInferingViewController: UIViewController {
     }
     
     private func openQuestionView() {
-        let deadlineTime: DispatchTime = DispatchTime.now() + 1.15
+        let deadlineTime: DispatchTime = DispatchTime.now() + 1.5
         
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
             self.moveQuestionView(to: .left)

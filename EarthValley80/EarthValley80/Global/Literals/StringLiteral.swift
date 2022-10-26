@@ -19,4 +19,8 @@ enum StringLiteral {
     static let inferingNewsTitle = "이 기사는 어떤 내용의 기사일까요?"
     static let inferingPlaceholder = "제목을 보고 떠오르는 것을 자유롭게 적어보세요"
     
+    // MARK: - button
+    
+    static let nextButtonText = "다음으로"
+    
 }
