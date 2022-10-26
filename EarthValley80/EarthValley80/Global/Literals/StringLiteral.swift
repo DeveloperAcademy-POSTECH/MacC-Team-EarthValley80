@@ -9,6 +9,13 @@ import Foundation
 
 enum StringLiteral {
     
-    static let readingNewsTitle = "기사읽기"
+    // MARK: - caption
+    
+    static let readingNewsCaptionTitle = "기사읽기"
+    static let inferingNewsCaptionTitle = "유추하기"
+    
+    // MARK: - title
+    
+    static let inferingNewsTitle = "이 기사는 어떤 내용의 기사일까요?"
     
 }
