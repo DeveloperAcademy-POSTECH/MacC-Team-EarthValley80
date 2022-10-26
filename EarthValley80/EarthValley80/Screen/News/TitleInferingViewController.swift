@@ -65,6 +65,7 @@ final class TitleInferingViewController: UIViewController {
         let view = QuestionView()
         view.captionText = StringLiteral.inferingNewsCaptionTitle
         view.titleText = StringLiteral.inferingNewsTitle
+        view.placeholder = StringLiteral.inferingPlaceholder
         return view
     }()
     
