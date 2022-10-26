@@ -13,20 +13,20 @@ final class BlurredLabel: UILabel {
     
     var isBlurring = false {
         didSet {
-            setNeedsDisplay()
+            self.setNeedsDisplay()
         }
     }
     
     var blurRadius: Double = 20.0 {
-        didSet {
-            blurFilter?.setValue(blurRadius, forKey: kCIInputRadiusKey)
+        willSet {
+            self.blurFilter?.setValue(newValue, forKey: kCIInputRadiusKey)
         }
     }
     
     private lazy var blurFilter: CIFilter? = {
         let blurFilter = CIFilter(name: "CIGaussianBlur")
         blurFilter?.setDefaults()
-        blurFilter?.setValue(blurRadius, forKey: kCIInputRadiusKey)
+        blurFilter?.setValue(self.blurRadius, forKey: kCIInputRadiusKey)
         return blurFilter
     }()
     

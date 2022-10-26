@@ -84,7 +84,7 @@ final class TitleInferingViewController: UIViewController {
     
     private func setupLayout() {
         self.view.addSubview(self.questionView)
-        questionViewConstraints = self.questionView.constraint(top: self.view.topAnchor,
+        self.questionViewConstraints = self.questionView.constraint(top: self.view.topAnchor,
                                      bottom: self.view.bottomAnchor,
                                      trailing: self.view.trailingAnchor,
                                      padding: UIEdgeInsets(top: Size.verticalPadding, left: 0, bottom: Size.verticalPadding, right: -Size.partOfQuestionViewFrameWidth))
