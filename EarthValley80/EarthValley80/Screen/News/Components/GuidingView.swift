@@ -39,6 +39,20 @@ final class GuidingView: UIView {
             }
         }
         
+        var mainImage: UIImage {
+            switch self {
+            default:
+                return UIImage()
+            }
+        }
+        
+        var subImage: UIImage? {
+            switch self {
+            default:
+                return UIImage()
+            }
+        }
+        
         var mainTextLayout: UIEdgeInsets {
             switch self {
             default:
@@ -48,6 +62,22 @@ final class GuidingView: UIView {
         }
         
         var subTextLayout: UIEdgeInsets {
+            switch self {
+            default:
+                // TODO: - 뷰가 확정되면 넣어줍니다.
+                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            }
+        }
+        
+        var mainImageLayout: UIEdgeInsets {
+            switch self {
+            default:
+                // TODO: - 뷰가 확정되면 넣어줍니다.
+                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            }
+        }
+        
+        var subImageLayout: UIEdgeInsets {
             switch self {
             default:
                 // TODO: - 뷰가 확정되면 넣어줍니다.
@@ -74,6 +104,9 @@ final class GuidingView: UIView {
         return label
     }()
     
+    private let mainGuideImageView = UIImageView()
+    private let subGuideImageView = UIImageView()
+    
     // MARK: - init
 
     init(guidingType: GuideType) {
@@ -92,8 +125,11 @@ final class GuidingView: UIView {
     private func setupMainComponent(guidingType: GuideType) {
         self.addSubview(self.mainGuideTextLabel)
         self.mainGuideTextLabel.constraint(to: self, insets: guidingType.mainTextLayout)
-        
         self.mainGuideTextLabel.text = guideType.mainText
+        
+        self.addSubview(self.mainGuideImageView)
+        self.mainGuideImageView.constraint(to: self, insets: guidingType.mainImageLayout)
+        self.mainGuideImageView.image = guidingType.mainImage
     }
     
     private func setupSubComponent(guidingType: GuideType) {
@@ -101,7 +137,12 @@ final class GuidingView: UIView {
         
         self.addSubview(self.subGuideTextLabel)
         self.subGuideTextLabel.constraint(to: self, insets: guidingType.subTextLayout)
-        
         self.subGuideTextLabel.text = subText
+        
+        guard let subImage = guidingType.subImage else { return }
+        
+        self.addSubview(self.subGuideImageView)
+        self.subGuideImageView.constraint(to: self, insets: guidingType.subImageLayout)
+        self.subGuideImageView.image = guidingType.subImage
     }
 }
