@@ -15,11 +15,16 @@ final class NewsGuideViewController: UIViewController {
     
     // MARK: - property
     
-    private let xmarkButton: UIButton = {
+    private lazy var xmarkButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(ImageLiteral.icXmark, for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: 24, weight: .regular, scale: .large), forImageIn: .normal)
         button.tintColor = .evyWhite.withAlphaComponent(0.4)
+        
+        let action = UIAction { [weak self] _ in
+            self?.dismiss(animated: true)
+        }
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
     private let scrollGuidingView = GuidingView(guidingType: .scrollGuide)
