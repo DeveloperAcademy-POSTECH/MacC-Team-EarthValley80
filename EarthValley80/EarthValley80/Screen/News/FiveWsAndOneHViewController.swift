@@ -50,7 +50,7 @@ final class FiveWsAndOneHViewController: UIViewController {
         return view
     }()
     private let backButton = BackButton()
-    private let titleHeaderView = NewsTitleHeaderView()
+    private let titleHeaderView = NewsTitleView()
     
     // MARK: - life cycle
 
@@ -84,7 +84,7 @@ final class FiveWsAndOneHViewController: UIViewController {
                                       leading: self.view.leadingAnchor,
                                       bottom: self.view.bottomAnchor,
                                       trailing: self.questionView.leadingAnchor,
-                                      padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 10))
+                                      padding: UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 10))
     }
     
     private func configureUI() {

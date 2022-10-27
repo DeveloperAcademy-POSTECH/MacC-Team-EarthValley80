@@ -1,5 +1,5 @@
 //
-//  NewsTitleHeaderView.swift
+//  NewsTitleView.swift
 //  EarthValley80
 //
 //  Created by SHIN YOON AH on 2022/10/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class NewsTitleHeaderView: UIView {
+final class NewsTitleView: UIView {
     
     private enum Size {
         static let horizontalPadding: CGFloat = 96.0
