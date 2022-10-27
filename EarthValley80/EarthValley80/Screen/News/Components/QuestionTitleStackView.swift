@@ -28,13 +28,20 @@ final class QuestionTitleStackView: UIStackView {
     }()
     private let innerStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 12
         stackView.alignment = .fill
         stackView.distribution = .fill
+        stackView.layoutMargins = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 20)
+        stackView.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
-    private let fiveWsOneHCollectionView: UICollectionView = {
+    private lazy var fiveWsOneHCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = .lightGray
+        collectionView.dataSource = self
         return collectionView
     }()
     
@@ -54,18 +61,29 @@ final class QuestionTitleStackView: UIStackView {
     // MARK: - func
     
     private func setupLayout() {
-        self.layoutMargins = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 20)
-        self.isLayoutMarginsRelativeArrangement = true
-        
-        self.addArrangedSubview(self.captionLabel)
-        self.addArrangedSubview(self.titleLabel)
         self.addArrangedSubview(self.innerStackView)
+        self.addArrangedSubview(self.fiveWsOneHCollectionView)
+        self.innerStackView.addArrangedSubview(self.captionLabel)
+        self.innerStackView.addArrangedSubview(self.titleLabel)
+        
+        self.fiveWsOneHCollectionView.constraint(.heightAnchor, constant: 42)
     }
     
     private func configureUI() {
         self.axis = .vertical
-        self.spacing = 12
+        self.spacing = 23
         self.alignment = .fill
         self.distribution = .fill
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension QuestionTitleStackView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
     }
 }
