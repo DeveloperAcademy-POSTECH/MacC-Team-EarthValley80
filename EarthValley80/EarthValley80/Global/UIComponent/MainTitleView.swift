@@ -9,6 +9,10 @@ import UIKit
 
 class MainTitleView: UIView {
 
+    private enum Size {
+        static let yomojomoTitleLabelSize: CGFloat = 40.0
+    }
+
     // MARK: - view
     
     let dateLabel: UILabel = {
@@ -16,6 +20,7 @@ class MainTitleView: UIView {
         dateLabel.text = Date().dateFormatted("EEEE, MMM d")
         dateLabel.font = .font(.bold, ofSize: 13)
         dateLabel.textColor = .evyBlack2
+        dateLabel.setLineSpacing(kernValue: 0.39, lineSpacing: 13)
         return dateLabel
     }()
     let yomojomoTitleLabel: UILabel = {
@@ -26,7 +31,7 @@ class MainTitleView: UIView {
     }()
     let titleDescriptionLabel: UILabel = {
         let titleDescriptionLabel = UILabel()
-        titleDescriptionLabel.textColor = .evyGray2
+        titleDescriptionLabel.textColor = .evyGray1
         return titleDescriptionLabel
     }()
 

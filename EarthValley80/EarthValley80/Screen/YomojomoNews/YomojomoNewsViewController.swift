@@ -9,6 +9,13 @@ import UIKit
 
 class YomojomoNewsViewController: UIViewController {
 
+    private enum Size {
+        static let standardOfTitle: Int = 30
+        static let cellInterval: CGFloat = 12
+        static let column: CGFloat = 5
+        static let cellHeight: CGFloat = 180.0
+    }
+
     // MARK: - property
 
     private let yomojomoTitleView: MainTitleView = {
@@ -75,16 +82,16 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
         // MARK: - width 및 column 설정
 
         var width: CGFloat
-        if newsData[indexPath.item].newsTitle.count > 30 {
-            width = ((collectionView.frame.width - (12 * 4)) / 5) * 2 + 12
+        if newsData[indexPath.item].newsTitle.count > Size.standardOfTitle {
+            width = ((collectionView.frame.width - (Size.cellInterval * 4)) / Size.column) * 2 + Size.cellInterval
         } else {
-            width = (collectionView.frame.width - (12 * 4)) / 5
+            width = (collectionView.frame.width - (Size.cellInterval * 4)) / Size.column
         }
 
-        return CGSize(width: width, height: 180)
+        return CGSize(width: width, height: Size.cellHeight)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 12
+        return Size.cellInterval
     }
 }

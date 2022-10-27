@@ -9,6 +9,12 @@ import UIKit
 
 class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
 
+    private enum Size {
+        static let categoryLabelWidth: CGFloat = 40.0
+        static let categoryLabelHeigth: CGFloat = 20.0
+        static let titleFontSize: CGFloat = 20.0
+        static let categoryLabelFontSize: CGFloat = 12.0
+    }
     // MARK: view
 
     private let newsBackgroundView: UIImageView = {
@@ -23,16 +29,17 @@ class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
     let newsTitleLabel: UILabel = {
         let newsTitleLabel = UILabel()
         newsTitleLabel.numberOfLines = 0
-        newsTitleLabel.font = .font(.bold, ofSize: 20)
+        newsTitleLabel.font = .font(.bold, ofSize: Size.titleFontSize)
         newsTitleLabel.textColor = .white
         return newsTitleLabel
     }()
     let newsCategoryLabel: UILabel = {
         let newsCategoryLabel = UILabel()
         newsCategoryLabel.textAlignment = .center
-        newsCategoryLabel.font = .font(.bold, ofSize: 12)
+        newsCategoryLabel.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
         newsCategoryLabel.layer.masksToBounds = true
         newsCategoryLabel.layer.cornerRadius = 10
+        newsCategoryLabel.layer.opacity = 0.6
         newsCategoryLabel.backgroundColor = .white
         // TODO: - 카테고리에 적절한 색상을 넣어야합니다.
         newsCategoryLabel.textColor = .evyBlack1
@@ -53,8 +60,8 @@ class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         newsCategoryLabel.constraint(top: self.newsBackgroundView.topAnchor,
                                      leading: self.newsBackgroundView.leadingAnchor,
                                      padding: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0))
-        self.newsCategoryLabel.constraint(.heightAnchor, constant: 20)
-        self.newsCategoryLabel.constraint(.widthAnchor, constant: 40)
+        self.newsCategoryLabel.constraint(.heightAnchor, constant: Size.categoryLabelHeigth)
+        self.newsCategoryLabel.constraint(.widthAnchor, constant: Size.categoryLabelWidth)
 
         self.addSubview(newsTitleLabel)
         newsTitleLabel.constraint(top: self.newsCategoryLabel.bottomAnchor,
