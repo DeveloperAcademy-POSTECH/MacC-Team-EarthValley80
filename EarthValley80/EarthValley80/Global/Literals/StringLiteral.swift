@@ -28,6 +28,8 @@ enum StringLiteral {
     // MARK: - button
     
     static let nextButtonText = "다음으로"
+    static let summarizeButtonText = "요약하러 가기"
+    static let completeButtonText = "완성했어요!"
     
     // MARK: - guide
     
