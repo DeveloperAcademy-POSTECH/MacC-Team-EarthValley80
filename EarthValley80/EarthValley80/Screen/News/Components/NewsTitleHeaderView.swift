@@ -19,6 +19,8 @@ final class NewsTitleHeaderView: UIView {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
+        
+        // TODO: - 더미 데이터, 나중에 지우겠습니다.
         label.text = "인류보다 로봇 진화 속도가 더 빠르대요, 청소로봇은 '루시'…생각하는 로봇 등장"
         label.numberOfLines = 0
         label.textColor = .white
