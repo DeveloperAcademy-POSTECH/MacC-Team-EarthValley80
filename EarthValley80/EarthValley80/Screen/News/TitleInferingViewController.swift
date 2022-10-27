@@ -66,7 +66,7 @@ final class TitleInferingViewController: UIViewController {
         view.placeholder = StringLiteral.inferingPlaceholder
         return view
     }()
-    private let titleView = NewsTitleView(entryPoint: .reading)
+    private let titleView = NewsTitleView(entryPoint: .expanded)
     private let backButton = BackButton()
     
     private var questionViewConstraints: [ConstraintType: NSLayoutConstraint]?

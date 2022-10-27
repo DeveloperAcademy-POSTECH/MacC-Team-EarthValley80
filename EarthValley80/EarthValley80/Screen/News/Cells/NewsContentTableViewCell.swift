@@ -8,8 +8,12 @@
 import UIKit
 
 private extension UIColor {
-    static var originalTextColor: UIColor {
+    static var expandedTextColor: UIColor {
         return .white.withAlphaComponent(0.2)
+    }
+    
+    static var compactTextColor: UIColor {
+        return .white.withAlphaComponent(0.8)
     }
     
     static var highlightTextColor: UIColor {
@@ -21,6 +25,52 @@ final class NewsContentTableViewCell: UITableViewCell {
     
     private enum Size {
         static let horizontalPadding: CGFloat = 90.0
+        static let minimumHorizontalPadding: CGFloat = 50.0
+        static let originalFontSize: CGFloat = 34.0
+        static let minimumFontSize: CGFloat = 20.0
+        static let originalLineHeightMultiple: CGFloat = 1.16
+        static let minimumLineHeightMultiple: CGFloat = 1.5
+    }
+    
+    enum EntryPoint {
+        case expanded
+        case compact
+        
+        var fontSize: CGFloat {
+            switch self {
+            case .expanded:
+                return Size.originalFontSize
+            case .compact:
+                return Size.minimumFontSize
+            }
+        }
+        
+        var horizontalPadding: CGFloat {
+            switch self {
+            case .expanded:
+                return Size.horizontalPadding
+            case .compact:
+                return Size.minimumHorizontalPadding
+            }
+        }
+        
+        var lineHeightMultiple: CGFloat {
+            switch self {
+            case .expanded:
+                return Size.originalLineHeightMultiple
+            case .compact:
+                return Size.minimumLineHeightMultiple
+            }
+        }
+        
+        var defaultTextColor: UIColor {
+            switch self {
+            case .expanded:
+                return .expandedTextColor
+            case .compact:
+                return .compactTextColor
+            }
+        }
     }
     
     // MARK: - property
@@ -28,8 +78,6 @@ final class NewsContentTableViewCell: UITableViewCell {
     private let contentLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .font(.bold, ofSize: 34)
-        label.textColor = .originalTextColor
         
         //TODO: - 더미 데이터, 나중에 지우겠습니다.
         label.text = """
@@ -41,16 +89,24 @@ final class NewsContentTableViewCell: UITableViewCell {
 
         누가 재판에 이겼느냐는 우리의 관심사가 아닙니다. 타다 재판의 이면에 웅크리고 있는 생각들에 주목해야 합니다. 혁신과 기득권의 대립, 새로운 것과 기존에 있던 것 사이의 충돌, 현재와 미래, 진화와 도태 같은 이슈들이죠.
         """
-        label.setLineSpacing(kernValue: -2.0, lineHeightMultiple: 1.16)
         
         return label
     }()
+    var entryPoint: EntryPoint? {
+        willSet {
+            guard let newValue = newValue else { return }
+            
+            self.contentLabel.textColor = newValue.defaultTextColor
+            self.contentLabel.font = .font(.bold, ofSize: newValue.fontSize)
+            self.contentLabel.setLineSpacing(kernValue: -2.0, lineHeightMultiple: newValue.lineHeightMultiple)
+            self.setupLayout(entryPoint: newValue)
+        }
+    }
 
     // MARK: - init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.setupLayout()
         self.configureUI()
     }
     
@@ -61,10 +117,10 @@ final class NewsContentTableViewCell: UITableViewCell {
     
     // MARK: - func
     
-    private func setupLayout() {
+    private func setupLayout(entryPoint: EntryPoint) {
         self.contentView.addSubview(self.contentLabel)
         self.contentLabel.constraint(to: self.contentView,
-                                     insets: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 0, right: -Size.horizontalPadding))
+                                     insets: UIEdgeInsets(top: 0, left: entryPoint.horizontalPadding, bottom: 0, right: -entryPoint.horizontalPadding))
     }
     
     private func configureUI() {

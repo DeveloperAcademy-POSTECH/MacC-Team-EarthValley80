@@ -17,23 +17,23 @@ final class NewsTitleView: UIView {
     }
     
     enum EntryPoint {
-        case reading
-        case fiveWsOneH
+        case expanded
+        case compact
         
         var fontSize: CGFloat {
             switch self {
-            case .reading:
+            case .expanded:
                 return Size.originalFontSize
-            case .fiveWsOneH:
+            case .compact:
                 return Size.minimumFontSize
             }
         }
         
         var horizontalPadding: CGFloat {
             switch self {
-            case .reading:
+            case .expanded:
                 return Size.horizontalPadding
-            case .fiveWsOneH:
+            case .compact:
                 return Size.minimumHorizontalPadding
             }
         }

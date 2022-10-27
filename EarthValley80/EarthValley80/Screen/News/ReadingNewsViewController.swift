@@ -44,7 +44,7 @@ final class ReadingNewsViewController: UIViewController {
         return tableView
     }()
     private let backButton = BackButton()
-    private let titleHeaderView = NewsTitleView(entryPoint: .reading)
+    private let titleHeaderView = NewsTitleView(entryPoint: .expanded)
     private let questionView = QuestionView()
     
     // MARK: - life cycle
@@ -96,6 +96,7 @@ extension ReadingNewsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsContentTableViewCell.className) as? NewsContentTableViewCell else { return UITableViewCell() }
+        cell.entryPoint = .expanded
         return cell
     }
 }
