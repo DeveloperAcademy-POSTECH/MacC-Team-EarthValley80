@@ -63,8 +63,7 @@ final class ReadingNewsViewController: UIViewController {
     private lazy var nextButton: NextButton = {
         let button = NextButton(configType: .disabled, color: .evyWhite)
         let action = UIAction { [weak self] _ in
-            self?.moveQuestionView(to: .left)
-            self?.nextButton.isHidden = true
+            self?.updateEntireView(with: 0)
         }
         button.addAction(action, for: .touchUpInside)
         return button
@@ -73,6 +72,7 @@ final class ReadingNewsViewController: UIViewController {
     private let questionView = QuestionView()
     private let titleHeaderView = NewsTitleView(status: .expanded)
     
+    private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
     private var questionViewConstraints: [ConstraintType: NSLayoutConstraint]?
     
     // MARK: - life cycle
@@ -82,7 +82,6 @@ final class ReadingNewsViewController: UIViewController {
         self.setupLayout()
         self.configureUI()
         self.setupInitialQuestionView()
-        self.setupTapGesture()
     }
     
     // MARK: - func
@@ -121,6 +120,7 @@ final class ReadingNewsViewController: UIViewController {
     private func configureUI() {
         // TODO: - background gradient Color가 나오면 적용
         self.view.backgroundColor = .black
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func setupInitialQuestionView() {
@@ -128,11 +128,6 @@ final class ReadingNewsViewController: UIViewController {
         self.questionView.titleText = StringLiteral.answerWhoTitle
         self.questionView.placeholder = StringLiteral.answerWhoPlaceholder
         self.questionView.setCollectionViewHidden(to: true)
-    }
-    
-    private func setupTapGesture() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
-        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func updateView(with scrollPosition: UITableView.ScrollPosition,
@@ -152,6 +147,17 @@ final class ReadingNewsViewController: UIViewController {
             self.questionViewConstraints?[.trailing]?.constant = -direction.offset
             self.view.layoutIfNeeded()
         })
+    }
+    
+    // TODO: - status type enum 값에 따라서 전체 뷰가 바뀔 것
+    private func updateEntireView(with status: Int) {
+        switch status {
+        default:
+            self.moveQuestionView(to: .left)
+            self.nextButton.isHidden = true
+            self.newsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+            self.view.removeGestureRecognizer(self.tapGestureRecognizer)
+        }
     }
     
     // MARK: - selector
