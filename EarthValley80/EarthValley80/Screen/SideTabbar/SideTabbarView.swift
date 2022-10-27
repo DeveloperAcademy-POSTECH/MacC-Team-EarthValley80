@@ -15,6 +15,7 @@ struct SideTabbarView: View {
 
 struct SideTabbarView_Previews: PreviewProvider {
     static var previews: some View {
+        #if DEBUG
         if #available(iOS 15.0, *) {
             SideTabbarView()
                 .previewInterfaceOrientation(.landscapeRight)
@@ -22,6 +23,8 @@ struct SideTabbarView_Previews: PreviewProvider {
         } else {
             SideTabbarView()
         }
+        #else
+        #endif
     }
 }
 
