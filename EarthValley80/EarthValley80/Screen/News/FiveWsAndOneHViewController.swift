@@ -50,7 +50,7 @@ final class FiveWsAndOneHViewController: UIViewController {
         return view
     }()
     private let backButton = BackButton()
-    private let titleHeaderView = NewsTitleView()
+    private let titleHeaderView = NewsTitleView(entryPoint: .fiveWsOneH)
     
     // MARK: - life cycle
 
@@ -77,7 +77,7 @@ final class FiveWsAndOneHViewController: UIViewController {
         self.view.addSubview(self.captionLabel)
         self.captionLabel.constraint(top: self.view.topAnchor,
                                      leading: self.view.leadingAnchor,
-                                     padding: UIEdgeInsets(top: 76, left: 96, bottom: 0, right: 0))
+                                     padding: UIEdgeInsets(top: 76, left: 56, bottom: 0, right: 0))
         
         self.view.addSubview(self.newsTableView)
         self.newsTableView.constraint(top: self.captionLabel.bottomAnchor,

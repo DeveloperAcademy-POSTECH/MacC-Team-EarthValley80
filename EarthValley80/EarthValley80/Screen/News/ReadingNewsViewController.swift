@@ -44,7 +44,7 @@ final class ReadingNewsViewController: UIViewController {
         return tableView
     }()
     private let backButton = BackButton()
-    private let titleHeaderView = NewsTitleView()
+    private let titleHeaderView = NewsTitleView(entryPoint: .reading)
     private let questionView = QuestionView()
     
     // MARK: - life cycle
