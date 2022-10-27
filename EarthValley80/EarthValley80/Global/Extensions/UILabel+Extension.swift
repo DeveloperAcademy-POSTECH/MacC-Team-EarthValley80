@@ -33,4 +33,14 @@ extension UILabel {
         
         self.attributedText = attributedString
     }
+    
+    func applyColor(to targetString: String, with color: UIColor) {
+        if let labelText = self.text, labelText.count > 0 {
+            let attributedString = NSMutableAttributedString(string: labelText)
+            attributedString.addAttribute(.foregroundColor,
+                                       value: color,
+                                       range: (labelText as NSString).range(of: targetString))
+            self.attributedText = attributedString
+        }
+    }
 }

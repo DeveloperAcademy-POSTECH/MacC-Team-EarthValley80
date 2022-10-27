@@ -32,6 +32,11 @@ final class NewsContentTableViewCell: UITableViewCell {
         static let minimumLineHeightMultiple: CGFloat = 1.5
     }
     
+    private enum Direction {
+        case upper
+        case lower
+    }
+    
     enum Status {
         case expanded
         case compact
@@ -92,6 +97,7 @@ final class NewsContentTableViewCell: UITableViewCell {
         
         return label
     }()
+    
     var status: Status? {
         willSet {
             guard let newValue = newValue else { return }
@@ -102,7 +108,9 @@ final class NewsContentTableViewCell: UITableViewCell {
             self.setupLayout(status: newValue)
         }
     }
+    
     private var sentences: [String] = []
+    private var readingIndex: Int = 0
 
     // MARK: - init
     
@@ -137,6 +145,21 @@ final class NewsContentTableViewCell: UITableViewCell {
     
     private func makeSentences(with content: String) -> [String] {
         guard content == "" else { return [] }
-        return content.components(separatedBy: [".", "?", "!"]).map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
+        return content.components(separatedBy: [".", "!", "?"]).map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
+    }
+    
+    private func shiftHighlight(to direction: Direction) {
+        let outOfRange = self.readingIndex < 0 || self.readingIndex >= self.sentences.count
+        guard !outOfRange else { return }
+        
+        switch direction {
+        case .upper:
+            self.readingIndex += 1
+        case .lower:
+            self.readingIndex -= 1
+        }
+        
+        let separatorCharacters: [String] = [".", "?", "!"]
+        let _ = separatorCharacters.map { self.contentLabel.applyColor(to: "\(self.sentences[self.readingIndex])\($0)", with: .white) }
     }
 }
