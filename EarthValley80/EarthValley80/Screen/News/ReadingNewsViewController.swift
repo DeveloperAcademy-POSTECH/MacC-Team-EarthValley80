@@ -12,8 +12,10 @@ final class ReadingNewsViewController: UIViewController {
     private enum Size {
         static let verticalPadding: CGFloat = 16.0
         static let questionViewFrameWidth: CGFloat = UIScreen.main.bounds.size.width * 0.48
-        static let partOfQuestionViewFrameWidth = questionViewFrameWidth - 20
-        static let halfOfScreenWidth = UIScreen.main.bounds.size.width / 2
+        static let partOfQuestionViewFrameWidth: CGFloat = questionViewFrameWidth - 20
+        static let halfOfScreenWidth: CGFloat = UIScreen.main.bounds.size.width / 2
+        static let disabledButtonWidth: CGFloat = 60.0
+        static let enabledButtonWidth: CGFloat = 104.0
     }
     
     // MARK: - property
@@ -45,8 +47,9 @@ final class ReadingNewsViewController: UIViewController {
         return tableView
     }()
     private let backButton = BackButton()
-    private let titleHeaderView = NewsTitleView(status: .expanded)
     private let questionView = QuestionView()
+    private let titleHeaderView = NewsTitleView(status: .expanded)
+    private let nextButton = NextButton(configType: .disabled, color: .evyWhite)
     
     // MARK: - life cycle
 
@@ -82,6 +85,12 @@ final class ReadingNewsViewController: UIViewController {
                                       bottom: self.view.bottomAnchor,
                                       trailing: self.questionView.leadingAnchor,
                                       padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 10))
+        
+        self.view.addSubview(self.nextButton)
+        self.nextButton.constraint(bottom: self.view.bottomAnchor,
+                                   trailing: self.view.trailingAnchor,
+                                   padding: UIEdgeInsets(top: 0, left: 0, bottom: 37, right: 56))
+        self.nextButton.constraint(.widthAnchor, constant: Size.disabledButtonWidth)
     }
     
     private func configureUI() {

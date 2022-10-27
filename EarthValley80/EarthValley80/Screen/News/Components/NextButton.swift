@@ -28,15 +28,6 @@ final class NextButton: UIButton {
             }
         }
         
-        var color: UIColor {
-            switch self {
-            case .disabled:
-                return .evyGray2
-            default:
-                return .evyBlack1
-            }
-        }
-        
         var canPress: Bool {
             switch self {
             case .disabled:
@@ -55,9 +46,9 @@ final class NextButton: UIButton {
         self.configureUI()
     }
     
-    convenience init(configType: ConfigType, buttonType: UIButton.ButtonType = .system) {
+    convenience init(configType: ConfigType, buttonType: UIButton.ButtonType = .system, color: UIColor = .evyBlack1) {
         self.init(type: buttonType)
-        self.setCustomAttribute(type: configType)
+        self.setCustomAttribute(type: configType, color: color)
     }
     
     @available(*, unavailable)
@@ -78,11 +69,11 @@ final class NextButton: UIButton {
         self.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
     }
     
-    private func setCustomAttribute(type: ConfigType) {
+    private func setCustomAttribute(type: ConfigType, color: UIColor) {
         self.isEnabled = type.canPress
         
-        self.tintColor = type.color
-        self.setTitleColor(type.color, for: .normal)
+        self.tintColor = color
+        self.setTitleColor(color, for: .normal)
         
         if let title = type.title {
             self.setTitle(title, for: .normal)
