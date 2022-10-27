@@ -12,6 +12,7 @@ enum ImageLiteral {
     // MARK: - icon
     
     static var icArrowRight: UIImage { .load(systemName: "arrow.right") }
+    static var icXmark: UIImage { .load(systemName: "xmark") }
     
 }
 
