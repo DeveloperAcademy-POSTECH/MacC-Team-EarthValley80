@@ -34,9 +34,10 @@ class YomojomoNewsViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(YomojomoNewsTitleCollectionViewCell.self, forCellWithReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className)
+        collectionView.register(EmptySpaceCollectionViewCell.self, forCellWithReuseIdentifier: EmptySpaceCollectionViewCell.className)
         return collectionView
     }()
-    private var newsData: [News] = yomojomoViewDummyData
+    private lazy var newsData: [News] = sortdata(yomojomoViewDummyData)
 
     // MARK: - life cycle
 
@@ -178,10 +179,16 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className, for: indexPath) as? YomojomoNewsTitleCollectionViewCell else { return UICollectionViewCell() }
-        cell.setupLayout()
-        cell.setData(newsTitle: newsData[indexPath.row].newsTitle, newsCategory: newsData[indexPath.row].newsCategory)
-        return cell
+        if newsData[indexPath.row].newsTitle == "-" {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
+            cell.setupLayout()
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className, for: indexPath) as? YomojomoNewsTitleCollectionViewCell else { return UICollectionViewCell() }
+            cell.setupLayout()
+            cell.setData(newsTitle: newsData[indexPath.row].newsTitle, newsCategory: newsData[indexPath.row].newsCategory)
+            return cell
+        }
     }
 
 }
