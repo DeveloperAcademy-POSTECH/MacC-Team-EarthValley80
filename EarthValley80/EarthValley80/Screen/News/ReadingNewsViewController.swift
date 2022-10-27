@@ -90,7 +90,7 @@ final class ReadingNewsViewController: UIViewController {
         self.nextButton.constraint(bottom: self.view.bottomAnchor,
                                    trailing: self.view.trailingAnchor,
                                    padding: UIEdgeInsets(top: 0, left: 0, bottom: 37, right: 56))
-        self.nextButton.constraint(.widthAnchor, constant: Size.disabledButtonWidth)
+        self.nextButton.widthAnchorConstraint = self.nextButton.widthAnchor.constraint(equalToConstant: Size.disabledButtonWidth)
     }
     
     private func configureUI() {
@@ -101,6 +101,16 @@ final class ReadingNewsViewController: UIViewController {
     private func setupTapGesture() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
         self.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    private func updateView(with scrollPosition: UITableView.ScrollPosition,
+                            indexPath: IndexPath = IndexPath(row: 0, section: 0)) {
+        self.newsTableView.scrollToRow(at: indexPath, at: scrollPosition, animated: true)
+        
+        if scrollPosition == .middle {
+            self.nextButton.configType = .next
+            self.nextButton.widthAnchorConstraint?.constant = Size.enabledButtonWidth
+        }
     }
     
     // MARK: - selector
@@ -120,7 +130,7 @@ final class ReadingNewsViewController: UIViewController {
             }
             
             let scrollPosition = contentCell.checkCurrentPosition()
-            self.newsTableView.scrollToRow(at: indexPath, at: scrollPosition, animated: true)
+            self.updateView(with: scrollPosition)
         }
     }
 }

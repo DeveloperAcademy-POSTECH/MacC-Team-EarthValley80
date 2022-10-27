@@ -37,6 +37,20 @@ final class NextButton: UIButton {
             }
         }
     }
+    
+    var mainColor: UIColor = .evyBlack1
+    
+    var configType: ConfigType = .disabled {
+        didSet {
+            self.setCustomAttribute(type: self.configType, color: self.mainColor)
+        }
+    }
+    
+    var widthAnchorConstraint: NSLayoutConstraint? {
+        didSet {
+            widthAnchorConstraint?.isActive = true
+        }
+    }
 
     // MARK: - init
     
@@ -48,6 +62,8 @@ final class NextButton: UIButton {
     
     convenience init(configType: ConfigType, buttonType: UIButton.ButtonType = .system, color: UIColor = .evyBlack1) {
         self.init(type: buttonType)
+        self.mainColor = color
+        self.configType = configType
         self.setCustomAttribute(type: configType, color: color)
     }
     
