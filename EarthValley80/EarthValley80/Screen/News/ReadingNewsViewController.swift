@@ -18,6 +18,20 @@ final class ReadingNewsViewController: UIViewController {
         static let enabledButtonWidth: CGFloat = 104.0
     }
     
+    private enum Direction {
+        case left
+        case right
+        
+        var offset: CGFloat {
+            switch self {
+            case .left:
+                return 16
+            case .right:
+                return Size.partOfQuestionViewFrameWidth
+            }
+        }
+    }
+    
     // MARK: - property
     
     private let captionLabel: UILabel = {
@@ -46,10 +60,20 @@ final class ReadingNewsViewController: UIViewController {
         
         return tableView
     }()
+    private lazy var nextButton: NextButton = {
+        let button = NextButton(configType: .disabled, color: .evyWhite)
+        let action = UIAction { [weak self] _ in
+            self?.moveQuestionView(to: .left)
+            self?.nextButton.isHidden = true
+        }
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
     private let backButton = BackButton()
     private let questionView = QuestionView()
     private let titleHeaderView = NewsTitleView(status: .expanded)
-    private let nextButton = NextButton(configType: .disabled, color: .evyWhite)
+    
+    private var questionViewConstraints: [ConstraintType: NSLayoutConstraint]?
     
     // MARK: - life cycle
 
@@ -64,7 +88,7 @@ final class ReadingNewsViewController: UIViewController {
     
     private func setupLayout() {
         self.view.addSubview(self.questionView)
-        self.questionView.constraint(top: self.view.topAnchor,
+        self.questionViewConstraints = self.questionView.constraint(top: self.view.topAnchor,
                                      bottom: self.view.bottomAnchor,
                                      trailing: self.view.trailingAnchor,
                                      padding: UIEdgeInsets(top: Size.verticalPadding, left: 0, bottom: Size.verticalPadding, right: -Size.partOfQuestionViewFrameWidth))
@@ -111,6 +135,15 @@ final class ReadingNewsViewController: UIViewController {
             self.nextButton.configType = .next
             self.nextButton.widthAnchorConstraint?.constant = Size.enabledButtonWidth
         }
+    }
+    
+    private func moveQuestionView(to direction: Direction) {
+        let durationTime: CGFloat = 0.9
+        
+        UIView.animate(withDuration: durationTime, animations: {
+            self.questionViewConstraints?[.trailing]?.constant = -direction.offset
+            self.view.layoutIfNeeded()
+        })
     }
     
     // MARK: - selector
