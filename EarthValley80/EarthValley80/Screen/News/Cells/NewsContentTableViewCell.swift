@@ -35,13 +35,6 @@ final class NewsContentTableViewCell: UITableViewCell {
     enum Direction {
         case upper
         case lower
-        
-        var calculatedValue: Int {
-            switch self {
-            case .upper: return -1
-            case .lower: return 1
-            }
-        }
     }
     
     enum Status {
@@ -118,7 +111,7 @@ final class NewsContentTableViewCell: UITableViewCell {
     }
     
     private var sentences: [String] = []
-    private var readingIndex: Int = 0
+    private var readingIndex: Int = -1
 
     // MARK: - init
     
@@ -153,6 +146,7 @@ final class NewsContentTableViewCell: UITableViewCell {
     }
     
     private func applyHighlight(to index: Int) {
+        guard index < self.sentences.count && index >= 0 else { return }
         let separatorCharacters: [String] = [".", "?", "!"]
         let sentencesWithCharacter = separatorCharacters.map({ "\(self.sentences[index])\($0)" })
         
@@ -169,11 +163,15 @@ final class NewsContentTableViewCell: UITableViewCell {
     }
     
     func shiftHighlight(to direction: Direction) {
-        let outOfRange = self.readingIndex < 0 || self.readingIndex > self.sentences.count - 1
-        guard !outOfRange else { return }
+        switch direction {
+        case .upper:
+            guard (self.readingIndex - 1) >= 0 else { return }
+            self.readingIndex -= 1
+        case .lower:
+            guard (self.readingIndex + 1) < self.sentences.count else { return }
+            self.readingIndex += 1
+        }
         
         self.applyHighlight(to: self.readingIndex)
-        
-        self.readingIndex += direction.calculatedValue
     }
 }

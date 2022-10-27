@@ -13,6 +13,7 @@ final class ReadingNewsViewController: UIViewController {
         static let verticalPadding: CGFloat = 16.0
         static let questionViewFrameWidth: CGFloat = UIScreen.main.bounds.size.width * 0.48
         static let partOfQuestionViewFrameWidth = questionViewFrameWidth - 20
+        static let halfOfScreenWidth = UIScreen.main.bounds.size.width / 2
     }
     
     // MARK: - property
@@ -89,18 +90,26 @@ final class ReadingNewsViewController: UIViewController {
     }
     
     private func setupTapGesture() {
-        let lowerAreaTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedLowerArea(_:)))
+        let lowerAreaTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
         self.view.addGestureRecognizer(lowerAreaTapGestureRecognizer)
     }
     
     // MARK: - selector
     
     @objc
-    private func didTappedLowerArea(_ sender: UITapGestureRecognizer) {
-        let indexPath: IndexPath = IndexPath(row: 0, section: 0)
-        guard let contentCell = self.newsTableView.cellForRow(at: indexPath) as? NewsContentTableViewCell else { return }
+    private func didTappedView(_ gestureRecognizer: UITapGestureRecognizer) {
+        if gestureRecognizer.state == UIGestureRecognizer.State.recognized {
+            let indexPath: IndexPath = IndexPath(row: 0, section: 0)
+            guard let contentCell = self.newsTableView.cellForRow(at: indexPath) as? NewsContentTableViewCell else { return }
         
-        contentCell.shiftHighlight(to: .lower)
+            let location = gestureRecognizer.location(in: gestureRecognizer.view)
+            switch location.y {
+            case 0...Size.halfOfScreenWidth:
+                contentCell.shiftHighlight(to: .upper)
+            default:
+                contentCell.shiftHighlight(to: .lower)
+            }
+        }
     }
 }
 
