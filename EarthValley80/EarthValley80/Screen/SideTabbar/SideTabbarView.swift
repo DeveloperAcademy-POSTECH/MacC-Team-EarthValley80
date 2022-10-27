@@ -24,7 +24,6 @@ struct SideTabbarView_Previews: PreviewProvider {
 
 struct Home: View {
     
-    // Hiding tab bar
     init() {
         UITabBar.appearance().isHidden = true
     }
