@@ -19,7 +19,7 @@
 		B5BE345C28FD981C00D09BEE /* MyNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE345B28FD981C00D09BEE /* MyNews.storyboard */; };
 		B5BE345E28FD982700D09BEE /* MyNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE345D28FD982700D09BEE /* MyNewsViewController.swift */; };
 		B5BE346028FD984C00D09BEE /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE345F28FD984C00D09BEE /* News.storyboard */; };
-		B5BE346428FD986600D09BEE /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE346328FD986600D09BEE /* NewsFeedViewController.swift */; };
+		B5BE346428FD986600D09BEE /* YomojomoNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE346328FD986600D09BEE /* YomojomoNewsViewController.swift */; };
 		B5BE346628FD996D00D09BEE /* NewsFeed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE346528FD996D00D09BEE /* NewsFeed.storyboard */; };
 		B5BE346A28FD9AEC00D09BEE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE346928FD9AEC00D09BEE /* UIColor+Extension.swift */; };
 		B5BE346C28FD9B7900D09BEE /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE346B28FD9B7900D09BEE /* NSObject+Extension.swift */; };
@@ -80,7 +80,7 @@
 		B5BE345B28FD981C00D09BEE /* MyNews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyNews.storyboard; sourceTree = "<group>"; };
 		B5BE345D28FD982700D09BEE /* MyNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsViewController.swift; sourceTree = "<group>"; };
 		B5BE345F28FD984C00D09BEE /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
-		B5BE346328FD986600D09BEE /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		B5BE346328FD986600D09BEE /* YomojomoNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YomojomoNewsViewController.swift; sourceTree = "<group>"; };
 		B5BE346528FD996D00D09BEE /* NewsFeed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsFeed.storyboard; sourceTree = "<group>"; };
 		B5BE346928FD9AEC00D09BEE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B5BE346B28FD9B7900D09BEE /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 		B5BE345628FD96CA00D09BEE /* YomojomoNews */ = {
 			isa = PBXGroup;
 			children = (
-				B5BE346328FD986600D09BEE /* NewsFeedViewController.swift */,
+				B5BE346328FD986600D09BEE /* YomojomoNewsViewController.swift */,
 			);
 			path = YomojomoNews;
 			sourceTree = "<group>";
@@ -476,7 +476,7 @@
 				B5FAC8ED2907D18800537F58 /* TitleInferingViewController.swift in Sources */,
 				B5FAC8DC2907652800537F58 /* ReadingNewsViewController.swift in Sources */,
 				B5FAC8E5290786B800537F58 /* UILabel+Extension.swift in Sources */,
-				B5BE346428FD986600D09BEE /* NewsFeedViewController.swift in Sources */,
+				B5BE346428FD986600D09BEE /* YomojomoNewsViewController.swift in Sources */,
 				B5FAC8E2290781C200537F58 /* NewsContentTableViewCell.swift in Sources */,
 				B5FAC8EF2907D2A300537F58 /* BackButton.swift in Sources */,
 				B5BE346C28FD9B7900D09BEE /* NSObject+Extension.swift in Sources */,
