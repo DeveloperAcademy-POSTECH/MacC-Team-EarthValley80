@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SideTabbarView: View {
     var body: some View {
-        Home()
+        SideTabbar()
     }
 }
 
@@ -22,7 +22,7 @@ struct SideTabbarView_Previews: PreviewProvider {
     }
 }
 
-struct Home: View {
+struct SideTabbar: View {
     
     init() {
         UITabBar.appearance().isHidden = true
