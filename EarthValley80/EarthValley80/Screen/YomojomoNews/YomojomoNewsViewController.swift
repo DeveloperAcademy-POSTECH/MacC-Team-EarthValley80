@@ -60,6 +60,114 @@ final class YomojomoNewsViewController: UIViewController {
                                   trailing: self.view.trailingAnchor,
                                   padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
     }
+
+    private func sortdata(_ data: [News]) -> [News] {
+        let short = data.filter { $0.newsTitle.count < 30 }.map { $0 }
+        let long = data.filter { $0.newsTitle.count >= 40 }.map { $0 }
+        var newdata = [News]()
+        if long.count / 2 <= short.count {
+            newdata = calculateMoreShort(short, long)
+        } else {
+            newdata = calculateMoreLong(short, long)
+        }
+
+        return newdata
+    }
+
+    // MARK: calc
+
+    private func calculateMoreLong( _ short: [News], _ long: [News]) -> [News] {
+        var newdata = [News]()
+        var long = long
+        var short = short
+        let longcount = long.count
+        var needShortCount = 0
+
+        if long.count % 2 == 0 {
+            needShortCount = longcount/2  - (short.count+1)
+        } else {
+            needShortCount = longcount/2  - (short.count)
+        }
+
+        for _ in 0..<needShortCount {
+            short.insert(News(newsTitle: "-", newsCategory: "-"), at: 0)
+        }
+
+        for i in 0..<longcount/2 {
+            if i % 3 == 0 {
+                newdata.append(long.removeLast())
+                newdata.append(long.removeLast())
+                if i == (longcount/2-1) {
+                    continue
+                } else {
+                    newdata.append(short.removeLast())
+                }
+            } else if i % 3 == 1 {
+                if i == (longcount/2-1) {
+                    continue
+                } else {
+                    newdata.append(short.removeLast())
+                }
+                newdata.append(long.removeLast())
+                newdata.append(long.removeLast())
+            } else {
+                newdata.append(long.removeLast())
+                if i == (longcount/2-1) {
+                    continue
+                } else {
+                    newdata.append(short.removeLast())
+                }
+                newdata.append(long.removeLast())
+            }
+        }
+
+        if !long.isEmpty {
+            newdata.append(long.removeLast())
+        }
+
+        if !short.isEmpty {
+            for _ in 0..<short.count {
+                newdata.append(short.removeLast())
+            }
+        }
+
+        return newdata
+    }
+
+    private func calculateMoreShort(_ short: [News], _ long: [News]) -> [News] {
+        var newdata = [News]()
+        var long = long
+        var short = short
+        let longcount = long.count
+
+        for i in 0..<longcount/2 {
+            if i % 3 == 0 {
+                newdata.append(long.removeLast())
+                newdata.append(long.removeLast())
+                newdata.append(short.removeLast())
+            } else if i % 3 == 1 {
+                newdata.append(short.removeLast())
+                newdata.append(long.removeLast())
+                newdata.append(long.removeLast())
+            } else {
+                newdata.append(long.removeLast())
+                newdata.append(short.removeLast())
+                newdata.append(long.removeLast())
+            }
+        }
+
+        if !long.isEmpty {
+            newdata.append(long.removeLast())
+        }
+
+        if !short.isEmpty {
+            for _ in 0..<short.count {
+                newdata.append(short.removeLast())
+            }
+        }
+
+        return newdata
+    }
 }
 
 // MARK: - UICollectionViewDataSource
