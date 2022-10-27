@@ -84,7 +84,7 @@ final class NewsContentTableViewCell: UITableViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         
-        // TODO: - 더미 데이터
+        // TODO: - 더미 데이터, 나중에 지우겠습니다.
         label.text = """
         ‘타다’는 승합차를 유료로 타려는 이용자와 운전자를 연결해주는 차량공유 앱 서비스입니다. 승합차는 일반 택시보다 크고 마을버스보다 작은 차종을 말합니다. 대개 11~15인승입니다. 2018년 10월 ‘타다’라는 글자를 새긴 차가 처음 시장에 등장했습니다.
         미국에서 차량공유 서비스인 ‘우버’가 주목받은 터여서 타다는 한국식 우버로 불리기도 했습니다.
@@ -176,8 +176,8 @@ final class NewsContentTableViewCell: UITableViewCell {
     }
     
     func checkCurrentPosition() -> UITableView.ScrollPosition {
-        guard !sentences.isEmpty else { return .none }
-        let calculatedValue = CGFloat(readingIndex) / CGFloat(sentences.count)
+        guard !self.sentences.isEmpty else { return .none }
+        let calculatedValue = CGFloat(self.readingIndex) / CGFloat(self.sentences.count)
         
         switch calculatedValue {
         case 0..<0.4:

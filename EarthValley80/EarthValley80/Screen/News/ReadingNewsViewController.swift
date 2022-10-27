@@ -90,8 +90,8 @@ final class ReadingNewsViewController: UIViewController {
     }
     
     private func setupTapGesture() {
-        let lowerAreaTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
-        self.view.addGestureRecognizer(lowerAreaTapGestureRecognizer)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     // MARK: - selector
