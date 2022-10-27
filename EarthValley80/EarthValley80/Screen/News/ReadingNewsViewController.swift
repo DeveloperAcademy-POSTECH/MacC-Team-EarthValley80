@@ -81,6 +81,7 @@ final class ReadingNewsViewController: UIViewController {
         super.viewDidLoad()
         self.setupLayout()
         self.configureUI()
+        self.setupInitialQuestionView()
         self.setupTapGesture()
     }
     
@@ -120,6 +121,13 @@ final class ReadingNewsViewController: UIViewController {
     private func configureUI() {
         // TODO: - background gradient Color가 나오면 적용
         self.view.backgroundColor = .black
+    }
+    
+    private func setupInitialQuestionView() {
+        self.questionView.captionText = StringLiteral.answerWhoCaptionTitle
+        self.questionView.titleText = StringLiteral.answerWhoTitle
+        self.questionView.placeholder = StringLiteral.answerWhoPlaceholder
+        self.questionView.setCollectionViewHidden(to: true)
     }
     
     private func setupTapGesture() {

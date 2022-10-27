@@ -8,9 +8,14 @@
 import UIKit
 
 final class QuestionTitleStackView: UIStackView {
-
+    
     // MARK: - property
     
+    var isHiddenCollectionView: Bool? {
+        willSet {
+            self.fiveWsOneHCollectionView.isHidden = newValue ?? false
+        }
+    }
     let captionLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.bold, ofSize: 12)

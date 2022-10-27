@@ -143,4 +143,8 @@ final class QuestionView: UIView {
         self.contentTextView.text = placeholder
         self.contentTextView.textColor = state.textColor
     }
+    
+    func setCollectionViewHidden(to isHidden: Bool) {
+        self.questionTitleStackView.isHiddenCollectionView = isHidden
+    }
 }
