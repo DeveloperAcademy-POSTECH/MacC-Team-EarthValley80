@@ -13,7 +13,7 @@ struct News {
 }
 
 //TODO: - 더미 데이터, 나중에 지우겠습니다.
-var data: [News] = [
+var yomojomoViewDummyData: [News] = [
     News(newsTitle: "1인류보다 로봇 진화 속도가 더 빠르대요, 청소로봇은 '루시'…생각하는 로봇 등장", newsCategory: "시사"),
     News(newsTitle: "2인류보다 로봇 진화 속도가 더 빠르대요, 청소로봇은 '루시'…생각하는 로봇 등장", newsCategory: "시사"),
     News(newsTitle: "3인류보다 로봇 진화 속도가 더 빠르대요, 청소로봇은 '루시'…생각하는 로봇 등장", newsCategory: "시사"),
