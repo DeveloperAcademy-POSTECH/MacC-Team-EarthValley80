@@ -109,6 +109,9 @@ final class ReadingNewsViewController: UIViewController {
             default:
                 contentCell.shiftHighlight(to: .lower)
             }
+            
+            let scrollPosition = contentCell.checkCurrentPosition()
+            self.newsTableView.scrollToRow(at: indexPath, at: scrollPosition, animated: true)
         }
     }
 }

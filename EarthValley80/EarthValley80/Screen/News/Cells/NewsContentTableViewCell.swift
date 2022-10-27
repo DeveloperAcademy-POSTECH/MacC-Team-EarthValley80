@@ -174,4 +174,18 @@ final class NewsContentTableViewCell: UITableViewCell {
         
         self.applyHighlight(to: self.readingIndex)
     }
+    
+    func checkCurrentPosition() -> UITableView.ScrollPosition {
+        guard !sentences.isEmpty else { return .none }
+        let calculatedValue = CGFloat(readingIndex) / CGFloat(sentences.count)
+        
+        switch calculatedValue {
+        case 0..<0.4:
+            return .top
+        case 0.4..<0.7:
+            return .middle
+        default:
+            return .bottom
+        }
+    }
 }
