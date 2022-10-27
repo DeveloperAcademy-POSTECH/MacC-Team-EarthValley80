@@ -12,6 +12,6 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         formatter.locale = Locale(identifier: "UTC")
-        return formatter.string(from: self)
+        return formatter.string(from: self).uppercased()
     }
 }
