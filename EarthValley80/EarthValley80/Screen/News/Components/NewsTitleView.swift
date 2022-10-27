@@ -16,7 +16,7 @@ final class NewsTitleView: UIView {
         static let minimumFontSize: CGFloat = 40.0
     }
     
-    enum EntryPoint {
+    enum Status {
         case expanded
         case compact
         
@@ -48,17 +48,17 @@ final class NewsTitleView: UIView {
         label.text = "인류보다 로봇 진화 속도가 더 빠르대요, 청소로봇은 '루시'…생각하는 로봇 등장"
         label.numberOfLines = 0
         label.textColor = .white
-        label.font = .font(.bold, ofSize: entryPoint.fontSize)
+        label.font = .font(.bold, ofSize: status.fontSize)
         label.setLineSpacing(kernValue: -2.0, lineHeightMultiple: 1.16)
         return label
     }()
     
-    private let entryPoint: EntryPoint
+    private let status: Status
 
     // MARK: - init
     
-    init(entryPoint: EntryPoint) {
-        self.entryPoint = entryPoint
+    init(status: Status) {
+        self.status = status
         super.init(frame: .zero)
         self.setupLayout()
     }
@@ -73,6 +73,6 @@ final class NewsTitleView: UIView {
     private func setupLayout() {
         self.addSubview(self.titleLabel)
         self.titleLabel.constraint(to: self,
-                                   insets: UIEdgeInsets(top: 0, left: entryPoint.horizontalPadding, bottom: -40, right: -entryPoint.horizontalPadding))
+                                   insets: UIEdgeInsets(top: 0, left: status.horizontalPadding, bottom: -40, right: -status.horizontalPadding))
     }
 }

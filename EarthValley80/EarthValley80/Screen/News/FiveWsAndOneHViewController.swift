@@ -50,7 +50,7 @@ final class FiveWsAndOneHViewController: UIViewController {
         return view
     }()
     private let backButton = BackButton()
-    private let titleHeaderView = NewsTitleView(entryPoint: .compact)
+    private let titleHeaderView = NewsTitleView(status: .compact)
     
     // MARK: - life cycle
 
@@ -101,7 +101,7 @@ extension FiveWsAndOneHViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsContentTableViewCell.className) as? NewsContentTableViewCell else { return UITableViewCell() }
-        cell.entryPoint = .compact
+        cell.status = .compact
         return cell
     }
 }

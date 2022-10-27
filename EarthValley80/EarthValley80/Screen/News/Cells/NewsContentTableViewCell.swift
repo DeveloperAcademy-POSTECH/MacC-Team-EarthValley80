@@ -32,7 +32,7 @@ final class NewsContentTableViewCell: UITableViewCell {
         static let minimumLineHeightMultiple: CGFloat = 1.5
     }
     
-    enum EntryPoint {
+    enum Status {
         case expanded
         case compact
         
@@ -92,14 +92,14 @@ final class NewsContentTableViewCell: UITableViewCell {
         
         return label
     }()
-    var entryPoint: EntryPoint? {
+    var status: Status? {
         willSet {
             guard let newValue = newValue else { return }
             
             self.contentLabel.textColor = newValue.defaultTextColor
             self.contentLabel.font = .font(.bold, ofSize: newValue.fontSize)
             self.contentLabel.setLineSpacing(kernValue: -2.0, lineHeightMultiple: newValue.lineHeightMultiple)
-            self.setupLayout(entryPoint: newValue)
+            self.setupLayout(status: newValue)
         }
     }
 
@@ -117,10 +117,10 @@ final class NewsContentTableViewCell: UITableViewCell {
     
     // MARK: - func
     
-    private func setupLayout(entryPoint: EntryPoint) {
+    private func setupLayout(status: Status) {
         self.contentView.addSubview(self.contentLabel)
         self.contentLabel.constraint(to: self.contentView,
-                                     insets: UIEdgeInsets(top: 0, left: entryPoint.horizontalPadding, bottom: 0, right: -entryPoint.horizontalPadding))
+                                     insets: UIEdgeInsets(top: 0, left: status.horizontalPadding, bottom: 0, right: -status.horizontalPadding))
     }
     
     private func configureUI() {
