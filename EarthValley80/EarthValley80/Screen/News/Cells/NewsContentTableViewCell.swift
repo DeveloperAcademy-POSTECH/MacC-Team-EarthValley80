@@ -111,7 +111,8 @@ final class NewsContentTableViewCell: UITableViewCell {
             
             self.contentLabel.textColor = newValue.defaultTextColor
             self.contentLabel.font = .font(.bold, ofSize: newValue.fontSize)
-            self.contentLabel.setLineSpacing(kernValue: -2.0, lineHeightMultiple: newValue.lineHeightMultiple)
+            self.contentLabel.setLineSpacing(kernValue: -2.0,
+                                             lineHeightMultiple: newValue.lineHeightMultiple)
             self.setupLayout(status: newValue)
         }
     }
@@ -153,9 +154,18 @@ final class NewsContentTableViewCell: UITableViewCell {
     
     private func applyHighlight(to index: Int) {
         let separatorCharacters: [String] = [".", "?", "!"]
-        let _ = separatorCharacters.map { "\(self.sentences[index])\($0)" }.map {
-            self.contentLabel.applyColor(to: $0, with: .white)
+        let sentencesWithCharacter = separatorCharacters.map({ "\(self.sentences[index])\($0)" })
+        
+        for sentence in sentencesWithCharacter {
+            if let hasSentence = self.contentLabel.text?.contains(sentence),
+               hasSentence {
+                self.contentLabel.applyColor(to: sentence, with: .evyWhite)
+                break
+            }
         }
+        
+        self.contentLabel.setLineSpacing(kernValue: -2.0,
+                                         lineHeightMultiple: self.status?.lineHeightMultiple ?? 0.0)
     }
     
     func shiftHighlight(to direction: Direction) {
