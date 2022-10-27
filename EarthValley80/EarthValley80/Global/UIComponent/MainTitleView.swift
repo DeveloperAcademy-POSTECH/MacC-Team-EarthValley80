@@ -13,7 +13,6 @@ class MainTitleView: UIView {
     
     let dateLabel: UILabel = {
         let dateLabel = UILabel()
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.text = Date().dateFormatted("EEEE, MMM d")
         dateLabel.font = .font(.bold, ofSize: 13)
         dateLabel.textColor = .evyBlack2
@@ -21,14 +20,12 @@ class MainTitleView: UIView {
     }()
     let yomojomoTitleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = .font(.bold, ofSize: 40)
         titleLabel.textColor = .evyBlack1
         return titleLabel
     }()
     let titleDescriptionLabel: UILabel = {
         let titleDescriptionLabel = UILabel()
-        titleDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         titleDescriptionLabel.textColor = .evyGray2
         return titleDescriptionLabel
     }()
