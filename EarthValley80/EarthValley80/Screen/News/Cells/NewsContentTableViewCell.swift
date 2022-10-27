@@ -32,9 +32,16 @@ final class NewsContentTableViewCell: UITableViewCell {
         static let minimumLineHeightMultiple: CGFloat = 1.5
     }
     
-    private enum Direction {
+    enum Direction {
         case upper
         case lower
+        
+        var calculatedValue: Int {
+            switch self {
+            case .upper: return -1
+            case .lower: return 1
+            }
+        }
     }
     
     enum Status {
@@ -140,26 +147,23 @@ final class NewsContentTableViewCell: UITableViewCell {
     
     private func appendSentences() {
         guard let content = self.contentLabel.text else { return }
-        self.sentences = self.makeSentences(with: content)
+        
+        self.sentences = content.components(separatedBy: [".", "!", "?"]).map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
     }
     
-    private func makeSentences(with content: String) -> [String] {
-        guard content == "" else { return [] }
-        return content.components(separatedBy: [".", "!", "?"]).map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
+    private func applyHighlight(to index: Int) {
+        let separatorCharacters: [String] = [".", "?", "!"]
+        let _ = separatorCharacters.map { "\(self.sentences[index])\($0)" }.map {
+            self.contentLabel.applyColor(to: $0, with: .white)
+        }
     }
     
-    private func shiftHighlight(to direction: Direction) {
-        let outOfRange = self.readingIndex < 0 || self.readingIndex >= self.sentences.count
+    func shiftHighlight(to direction: Direction) {
+        let outOfRange = self.readingIndex < 0 || self.readingIndex > self.sentences.count - 1
         guard !outOfRange else { return }
         
-        switch direction {
-        case .upper:
-            self.readingIndex += 1
-        case .lower:
-            self.readingIndex -= 1
-        }
+        self.applyHighlight(to: self.readingIndex)
         
-        let separatorCharacters: [String] = [".", "?", "!"]
-        let _ = separatorCharacters.map { self.contentLabel.applyColor(to: "\(self.sentences[self.readingIndex])\($0)", with: .white) }
+        self.readingIndex += direction.calculatedValue
     }
 }

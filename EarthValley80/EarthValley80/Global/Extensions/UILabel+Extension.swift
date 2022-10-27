@@ -17,7 +17,7 @@ extension UILabel {
         paragraphStyle.lineSpacing = lineSpacing
         paragraphStyle.lineHeightMultiple = lineHeightMultiple
         
-        let attributedString:NSMutableAttributedString
+        let attributedString: NSMutableAttributedString
         if let labelattributedText = self.attributedText {
             attributedString = NSMutableAttributedString(attributedString: labelattributedText)
         } else {
@@ -36,10 +36,16 @@ extension UILabel {
     
     func applyColor(to targetString: String, with color: UIColor) {
         if let labelText = self.text, labelText.count > 0 {
-            let attributedString = NSMutableAttributedString(string: labelText)
+            let attributedString: NSMutableAttributedString
+            if let labelattributedText = self.attributedText {
+                attributedString = NSMutableAttributedString(attributedString: labelattributedText)
+            } else {
+                attributedString = NSMutableAttributedString(string: labelText)
+            }
+            
             attributedString.addAttribute(.foregroundColor,
-                                       value: color,
-                                       range: (labelText as NSString).range(of: targetString))
+                                          value: color,
+                                          range: (labelText as NSString).range(of: targetString))
             self.attributedText = attributedString
         }
     }

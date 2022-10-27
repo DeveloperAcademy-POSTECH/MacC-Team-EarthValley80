@@ -53,6 +53,7 @@ final class ReadingNewsViewController: UIViewController {
         super.viewDidLoad()
         self.setupLayout()
         self.configureUI()
+        self.setupTapGesture()
     }
     
     // MARK: - func
@@ -85,6 +86,21 @@ final class ReadingNewsViewController: UIViewController {
     private func configureUI() {
         // TODO: - background gradient Color가 나오면 적용
         self.view.backgroundColor = .black
+    }
+    
+    private func setupTapGesture() {
+        let lowerAreaTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedLowerArea(_:)))
+        self.view.addGestureRecognizer(lowerAreaTapGestureRecognizer)
+    }
+    
+    // MARK: - selector
+    
+    @objc
+    private func didTappedLowerArea(_ sender: UITapGestureRecognizer) {
+        let indexPath: IndexPath = IndexPath(row: 0, section: 0)
+        guard let contentCell = self.newsTableView.cellForRow(at: indexPath) as? NewsContentTableViewCell else { return }
+        
+        contentCell.shiftHighlight(to: .lower)
     }
 }
 
