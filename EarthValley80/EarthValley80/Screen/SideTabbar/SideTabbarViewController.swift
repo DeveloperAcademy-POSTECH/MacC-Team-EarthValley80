@@ -5,16 +5,14 @@
 //  Created by seojeon22 on 2022/10/27.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
 class SideTabbarViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
     @IBSegueAction func SwiftUI(_ coder: NSCoder) -> UIViewController? {
         return UIHostingController(coder: coder, rootView: SideTabbarView())
     }

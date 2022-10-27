@@ -39,6 +39,9 @@
 		B5FAC8EB2907BA6000537F58 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8EA2907BA6000537F58 /* UIFont+Extension.swift */; };
 		CD3A48D9290A6687002D7C15 /* SideTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A48D8290A6687002D7C15 /* SideTabbarView.swift */; };
 		CD3A48DB290A66EF002D7C15 /* SideTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */; };
+		CDE23AA2290ABC5000EEB824 /* InsideTabbarItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */; };
+		CDE23AA4290ABCAE00EEB824 /* TabbarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */; };
+		CDE23AA7290ABE2200EEB824 /* SwiftUI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA6290ABE2200EEB824 /* SwiftUI+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +98,9 @@
 		B5FAC8EA2907BA6000537F58 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		CD3A48D8290A6687002D7C15 /* SideTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarView.swift; sourceTree = "<group>"; };
 		CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarViewController.swift; sourceTree = "<group>"; };
+		CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTabbarItemsView.swift; sourceTree = "<group>"; };
+		CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarButtonView.swift; sourceTree = "<group>"; };
+		CDE23AA6290ABE2200EEB824 /* SwiftUI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +188,7 @@
 		B5BE345328FD96BD00D09BEE /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				CDE23AA5290ABDF400EEB824 /* SwiftUIExtensions */,
 				B5BE347C28FDA21E00D09BEE /* Literals */,
 				B5BE347728FD9DCF00D09BEE /* Utils */,
 				B5BE346728FD9AB100D09BEE /* Extensions */,
@@ -304,8 +311,18 @@
 			children = (
 				CD3A48D8290A6687002D7C15 /* SideTabbarView.swift */,
 				CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */,
+				CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */,
+				CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */,
 			);
 			path = SideTabbar;
+			sourceTree = "<group>";
+		};
+		CDE23AA5290ABDF400EEB824 /* SwiftUIExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				CDE23AA6290ABE2200EEB824 /* SwiftUI+Extension.swift */,
+			);
+			path = SwiftUIExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,6 +469,7 @@
 				B5BE347E28FDA22F00D09BEE /* ImageLiteral.swift in Sources */,
 				B55BCEDC28FC4C6000AF7E45 /* SceneDelegate.swift in Sources */,
 				B5BE345E28FD982700D09BEE /* MyNewsViewController.swift in Sources */,
+				CDE23AA7290ABE2200EEB824 /* SwiftUI+Extension.swift in Sources */,
 				B5BE347628FD9CF800D09BEE /* UIButton+Extension.swift in Sources */,
 				B5FAC8E9290792C500537F58 /* QuestionView.swift in Sources */,
 				B5BE346A28FD9AEC00D09BEE /* UIColor+Extension.swift in Sources */,
@@ -461,10 +479,12 @@
 				B5BE346228FD985500D09BEE /* NewsViewController.swift in Sources */,
 				B5BE346428FD986600D09BEE /* NewsFeedViewController.swift in Sources */,
 				B5FAC8E2290781C200537F58 /* NewsContentTableViewCell.swift in Sources */,
+				CDE23AA4290ABCAE00EEB824 /* TabbarButtonView.swift in Sources */,
 				B5BE346C28FD9B7900D09BEE /* NSObject+Extension.swift in Sources */,
 				B5BE347228FD9C9A00D09BEE /* UIViewController+Extension.swift in Sources */,
 				B5BE346E28FD9BB100D09BEE /* UITableView+Extension.swift in Sources */,
 				B5BE347B28FD9E5500D09BEE /* UIViewController+Alert.swift in Sources */,
+				CDE23AA2290ABC5000EEB824 /* InsideTabbarItemsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

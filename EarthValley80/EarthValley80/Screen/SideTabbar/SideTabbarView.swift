@@ -18,6 +18,9 @@ struct SideTabbarView_Previews: PreviewProvider {
         if #available(iOS 15.0, *) {
             SideTabbarView()
                 .previewInterfaceOrientation(.landscapeRight)
+            SideTabbarView()
+        } else {
+            SideTabbarView()
         }
     }
 }
@@ -47,6 +50,7 @@ struct SideTabbar: View {
             }
             VStack(spacing: 10) {
                 InsideTabBarItems(selectedTab: $selectedTab)
+                
                 Spacer()
             }
             .background(Color.sidemenuColor)
