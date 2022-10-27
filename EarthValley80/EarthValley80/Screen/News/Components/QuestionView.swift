@@ -12,6 +12,9 @@ final class QuestionView: UIView {
     private enum Size {
         static let height: CGFloat = UIScreen.main.bounds.size.height - 32.0
         static let width: CGFloat = UIScreen.main.bounds.size.width * 0.48
+        static let buttonBottomConstant: CGFloat = 21.0
+        static let buttonHorizontalPadding: CGFloat = 30.0
+        static let buttonSize: CGFloat = 60.0
     }
     
     enum TextMode {
@@ -67,6 +70,13 @@ final class QuestionView: UIView {
         button.setImage(ImageLiteral.icArrowRight, for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .large), forImageIn: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        return button
+    }()
+    private let previousButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = .black
+        button.setImage(ImageLiteral.icArrowLeft, for: .normal)
+        button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .large), forImageIn: .normal)
         return button
     }()
     private var textMode: TextMode = .beforeWriting {
@@ -141,9 +151,16 @@ final class QuestionView: UIView {
         self.addSubview(self.nextButton)
         self.nextButton.constraint(bottom: self.bottomAnchor,
                                    trailing: self.trailingAnchor,
-                                   padding: UIEdgeInsets(top: 0, left: 0, bottom: 21, right: 30))
-        self.nextButton.constraint(.heightAnchor, constant: 60)
+                                   padding: UIEdgeInsets(top: 0, left: 0, bottom: Size.buttonBottomConstant, right: Size.buttonHorizontalPadding))
+        self.nextButton.constraint(.heightAnchor, constant: Size.buttonSize)
         self.nextButton.constraint(.widthAnchor, constant: 104)
+        
+        self.addSubview(self.previousButton)
+        self.previousButton.constraint(leading: self.leadingAnchor,
+                                       bottom: self.bottomAnchor,
+                                       padding: UIEdgeInsets(top: 0, left: Size.buttonHorizontalPadding, bottom: Size.buttonBottomConstant, right: 0))
+        self.previousButton.constraint(.widthAnchor, constant: Size.buttonSize)
+        self.previousButton.constraint(.heightAnchor, constant: Size.buttonSize)
     }
     
     private func configureUI() {
