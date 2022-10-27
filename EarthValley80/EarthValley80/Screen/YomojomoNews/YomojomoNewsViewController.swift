@@ -23,6 +23,7 @@ class YomojomoNewsViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(YomojomoNewsTitleCollectionViewCell.self, forCellWithReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className)
         return collectionView
     }()
     private var newsData: [News] = yomojomoViewDummyData
@@ -40,8 +41,15 @@ class YomojomoNewsViewController: UIViewController {
         self.view.addSubview(yomojomoTitleView)
         yomojomoTitleView.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
                                      leading: self.view.leadingAnchor,
-                                     trailing: self.view.leadingAnchor,
+                                     trailing: self.view.trailingAnchor,
                                      padding: UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(collectionView)
+        collectionView.constraint(top: self.yomojomoTitleView.bottomAnchor,
+                                  leading: self.yomojomoTitleView.leadingAnchor,
+                                  bottom: self.view.bottomAnchor,
+                                  trailing: self.view.trailingAnchor,
+                                  padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
     }
 }
 
@@ -52,7 +60,9 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className, for: indexPath) as? YomojomoNewsTitleCollectionViewCell else { return UICollectionViewCell() }
+        cell.setupLayout()
+        cell.setData(newsTitle: newsData[indexPath.row].newsTitle, newsCategory: newsData[indexPath.row].newsCategory)
         return cell
     }
 
