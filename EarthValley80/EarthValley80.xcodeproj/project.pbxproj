@@ -177,7 +177,7 @@
 		B5BE345228FD96B900D09BEE /* Screen */ = {
 			isa = PBXGroup;
 			children = (
-				B5BE345628FD96CA00D09BEE /* NewsFeed */,
+				B5BE345628FD96CA00D09BEE /* YomojomoNews */,
 				B5BE345528FD96C700D09BEE /* News */,
 				B5BE345428FD96C100D09BEE /* MyNews */,
 			);
@@ -216,12 +216,12 @@
 			path = News;
 			sourceTree = "<group>";
 		};
-		B5BE345628FD96CA00D09BEE /* NewsFeed */ = {
+		B5BE345628FD96CA00D09BEE /* YomojomoNews */ = {
 			isa = PBXGroup;
 			children = (
 				B5BE346328FD986600D09BEE /* NewsFeedViewController.swift */,
 			);
-			path = NewsFeed;
+			path = YomojomoNews;
 			sourceTree = "<group>";
 		};
 		B5BE345728FD96E400D09BEE /* Resource */ = {
