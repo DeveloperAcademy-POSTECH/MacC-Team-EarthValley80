@@ -59,7 +59,7 @@ final class ReadingNewsViewController: UIViewController {
     // MARK: - func
     
     private func setupLayout() {
-        self.view.addSubview(questionView)
+        self.view.addSubview(self.questionView)
         self.questionView.constraint(top: self.view.topAnchor,
                                      bottom: self.view.bottomAnchor,
                                      trailing: self.view.trailingAnchor,
