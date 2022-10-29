@@ -48,14 +48,14 @@ final class YomojomoNewsViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
-        self.view.addSubview(yomojomoTitleView)
-        yomojomoTitleView.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
+        self.view.addSubview(self.yomojomoTitleView)
+        self.yomojomoTitleView.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
                                      leading: self.view.leadingAnchor,
                                      trailing: self.view.trailingAnchor,
                                      padding: UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0))
 
-        self.view.addSubview(collectionView)
-        collectionView.constraint(top: self.yomojomoTitleView.bottomAnchor,
+        self.view.addSubview(self.collectionView)
+        self.collectionView.constraint(top: self.yomojomoTitleView.bottomAnchor,
                                   leading: self.yomojomoTitleView.leadingAnchor,
                                   bottom: self.view.bottomAnchor,
                                   trailing: self.view.trailingAnchor,
@@ -66,7 +66,7 @@ final class YomojomoNewsViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension YomojomoNewsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return newsData.count
+        return self.newsData.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
