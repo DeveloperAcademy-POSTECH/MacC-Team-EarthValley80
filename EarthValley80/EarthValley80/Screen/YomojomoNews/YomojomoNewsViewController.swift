@@ -36,7 +36,7 @@ final class YomojomoNewsViewController: UIViewController {
         collectionView.register(EmptySpaceCollectionViewCell.self, forCellWithReuseIdentifier: EmptySpaceCollectionViewCell.className)
         return collectionView
     }()
-    private lazy var newsData: [News] = arrangeNewsData(yomojomoViewDummyData)
+    private lazy var newsData: [News] = self.arrangeNewsData(yomojomoViewDummyData)
 
     // MARK: - life cycle
 
