@@ -53,7 +53,7 @@ final class MainTitleView: UIView {
         self.addSubview(self.dateLabel)
         self.dateLabel.constraint(top: self.topAnchor,
                                   leading: self.leadingAnchor,
-                                  padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+                                  padding: UIEdgeInsets.zero)
 
         self.addSubview(self.yomojomoTitleLabel)
         self.yomojomoTitleLabel.constraint(top: self.dateLabel.bottomAnchor,

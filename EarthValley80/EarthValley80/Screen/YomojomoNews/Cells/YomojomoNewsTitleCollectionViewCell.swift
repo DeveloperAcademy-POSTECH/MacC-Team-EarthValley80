@@ -50,11 +50,7 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
 
     func setupLayout() {
         self.addSubview(self.newsBackgroundView)
-        self.newsBackgroundView.constraint(top: self.topAnchor,
-                                      leading: self.leadingAnchor,
-                                      bottom: self.bottomAnchor,
-                                      trailing: self.trailingAnchor,
-                                      padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        self.newsBackgroundView.constraint(to: self)
 
         self.addSubview(self.newsCategoryLabel)
         self.newsCategoryLabel.constraint(top: self.newsBackgroundView.topAnchor,
