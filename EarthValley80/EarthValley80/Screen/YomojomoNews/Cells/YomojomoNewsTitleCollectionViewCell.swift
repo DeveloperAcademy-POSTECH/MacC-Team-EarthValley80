@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
+final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
 
     private enum Size {
         static let categoryLabelWidth: CGFloat = 40.0

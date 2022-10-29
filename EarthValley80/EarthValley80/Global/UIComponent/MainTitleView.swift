@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainTitleView: UIView {
+final class MainTitleView: UIView {
 
     private enum Size {
         static let yomojomoTitleLabelSize: CGFloat = 40.0

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YomojomoNewsViewController: UIViewController {
+final class YomojomoNewsViewController: UIViewController {
 
     private enum Size {
         static let standardOfTitle: Int = 30
