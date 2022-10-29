@@ -37,7 +37,7 @@ class YomojomoNewsViewController: UIViewController {
         collectionView.register(EmptySpaceCollectionViewCell.self, forCellWithReuseIdentifier: EmptySpaceCollectionViewCell.className)
         return collectionView
     }()
-    private lazy var newsData: [News] = arrangeNewsData(yomojomoViewDummyData)
+    private lazy var newsData: [News] = self.arrangeNewsData(yomojomoViewDummyData)
 
     // MARK: - life cycle
 
@@ -49,14 +49,14 @@ class YomojomoNewsViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
-        self.view.addSubview(yomojomoTitleView)
-        yomojomoTitleView.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
+        self.view.addSubview(self.yomojomoTitleView)
+        self.yomojomoTitleView.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
                                      leading: self.view.leadingAnchor,
                                      trailing: self.view.trailingAnchor,
                                      padding: UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0))
 
-        self.view.addSubview(collectionView)
-        collectionView.constraint(top: self.yomojomoTitleView.bottomAnchor,
+        self.view.addSubview(self.collectionView)
+        self.collectionView.constraint(top: self.yomojomoTitleView.bottomAnchor,
                                   leading: self.yomojomoTitleView.leadingAnchor,
                                   bottom: self.view.bottomAnchor,
                                   trailing: self.view.trailingAnchor,
