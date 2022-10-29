@@ -70,8 +70,8 @@ final class MainTitleView: UIView {
     }
 
     func changeLabelText(date: String, title: String, description: String) {
-        dateLabel.text = date
-        yomojomoTitleLabel.text = title
-        titleDescriptionLabel.text = description
+        self.dateLabel.text = date
+        self.yomojomoTitleLabel.text = title
+        self.titleDescriptionLabel.text = description
     }
 }
