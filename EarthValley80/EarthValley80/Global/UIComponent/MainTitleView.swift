@@ -16,23 +16,23 @@ final class MainTitleView: UIView {
     // MARK: - view
     
     let dateLabel: UILabel = {
-        let dateLabel = UILabel()
-        dateLabel.text = Date().dateFormatted("EEEE, MMM d")
-        dateLabel.font = .font(.bold, ofSize: 13)
-        dateLabel.textColor = .evyBlack2
-        dateLabel.setLineSpacing(kernValue: 0.39, lineSpacing: 13)
-        return dateLabel
+        let label = UILabel()
+        label.text = Date().dateFormatted("EEEE, MMM d")
+        label.font = .font(.bold, ofSize: 13)
+        label.textColor = .evyBlack2
+        label.setLineSpacing(kernValue: 0.39, lineSpacing: 13)
+        return label
     }()
     let yomojomoTitleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.font = .font(.bold, ofSize: 40)
-        titleLabel.textColor = .evyBlack1
-        return titleLabel
+        let label = UILabel()
+        label.font = .font(.bold, ofSize: 40)
+        label.textColor = .evyBlack1
+        return label
     }()
     let titleDescriptionLabel: UILabel = {
-        let titleDescriptionLabel = UILabel()
-        titleDescriptionLabel.textColor = .evyGray1
-        return titleDescriptionLabel
+        let label = UILabel()
+        label.textColor = .evyGray1
+        return label
     }()
 
     // MARK: - init

@@ -18,32 +18,32 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
     // MARK: view
 
     private let newsBackgroundView: UIImageView = {
-        let backgroundView = UIImageView()
-        backgroundView.contentMode = .scaleToFill
-        backgroundView.clipsToBounds = true
-        backgroundView.layer.cornerRadius = 30
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 30
         // TODO: - 임시로 색상을 넣었습니다. 추후 디자인된 png를 넣을 예정입니다.
-        backgroundView.backgroundColor = .evyBlack1
-        return backgroundView
+        imageView.backgroundColor = .evyBlack1
+        return imageView
     }()
     let newsTitleLabel: UILabel = {
-        let newsTitleLabel = UILabel()
-        newsTitleLabel.numberOfLines = 0
-        newsTitleLabel.font = .font(.bold, ofSize: Size.titleFontSize)
-        newsTitleLabel.textColor = .white
-        return newsTitleLabel
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = .font(.bold, ofSize: Size.titleFontSize)
+        label.textColor = .white
+        return label
     }()
     let newsCategoryLabel: UILabel = {
-        let newsCategoryLabel = UILabel()
-        newsCategoryLabel.textAlignment = .center
-        newsCategoryLabel.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
-        newsCategoryLabel.layer.masksToBounds = true
-        newsCategoryLabel.layer.cornerRadius = 10
-        newsCategoryLabel.layer.opacity = 0.6
-        newsCategoryLabel.backgroundColor = .white
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
+        label.layer.masksToBounds = true
+        label.layer.cornerRadius = 10
+        label.layer.opacity = 0.6
+        label.backgroundColor = .white
         // TODO: - 카테고리에 적절한 색상을 넣어야합니다.
-        newsCategoryLabel.textColor = .evyBlack1
-        return newsCategoryLabel
+        label.textColor = .evyBlack1
+        return label
     }()
 
     // MARK: func
