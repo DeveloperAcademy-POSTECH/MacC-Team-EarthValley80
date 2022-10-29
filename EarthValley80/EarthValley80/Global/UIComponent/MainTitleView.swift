@@ -15,7 +15,7 @@ final class MainTitleView: UIView {
 
     // MARK: - view
     
-    let dateLabel: UILabel = {
+    private let dateLabel: UILabel = {
         let label = UILabel()
         label.text = Date().dateFormatted("EEEE, MMM d")
         label.font = .font(.bold, ofSize: 13)
@@ -23,15 +23,17 @@ final class MainTitleView: UIView {
         label.setLineSpacing(kernValue: 0.39, lineSpacing: 13)
         return label
     }()
-    let yomojomoTitleLabel: UILabel = {
+    private let yomojomoTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.bold, ofSize: 40)
         label.textColor = .evyBlack1
+        label.setLineSpacing(kernValue: -2.4, lineSpacing: 40.0)
         return label
     }()
-    let titleDescriptionLabel: UILabel = {
+    private let titleDescriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .evyGray1
+        label.setLineSpacing(kernValue: -0.64, lineSpacing: 16.0)
         return label
     }()
 
@@ -65,5 +67,11 @@ final class MainTitleView: UIView {
                                               leading: self.dateLabel.leadingAnchor,
                                               bottom: self.bottomAnchor,
                                               padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0))
+    }
+
+    func changeLabelText(date: String, title: String, description: String) {
+        dateLabel.text = date
+        yomojomoTitleLabel.text = title
+        titleDescriptionLabel.text = description
     }
 }

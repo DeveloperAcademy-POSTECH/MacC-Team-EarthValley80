@@ -17,15 +17,11 @@ final class YomojomoNewsViewController: UIViewController {
     }
 
     // MARK: - property
-
     private let yomojomoTitleView: MainTitleView = {
         let titleView = MainTitleView()
-        titleView.dateLabel.text = Date().dateFormatted("EEEE, MMM d")
-        titleView.dateLabel.setLineSpacing(kernValue: 0.39)
-        titleView.yomojomoTitleLabel.text = StringLiteral.yomojomoNewsTitle
-        titleView.yomojomoTitleLabel.setLineSpacing(kernValue: -2.4, lineSpacing: 40.0)
-        titleView.titleDescriptionLabel.text = StringLiteral.yomojomoNewsTitleDescription
-        titleView.titleDescriptionLabel.setLineSpacing(kernValue: -0.64, lineSpacing: 16.0)
+        titleView.changeLabelText(date: Date().dateFormatted("EEEE, MM d"),
+                                  title: StringLiteral.yomojomoNewsTitle,
+                                  description: StringLiteral.yomojomoNewsTitleDescription)
         return titleView
     }()
     private lazy var collectionView: UICollectionView = {
