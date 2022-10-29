@@ -74,8 +74,7 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className, for: indexPath) as? YomojomoNewsTitleCollectionViewCell else { return UICollectionViewCell() }
-        cell.setupLayout()
-        cell.setData(newsTitle: newsData[indexPath.row].title, newsCategory: newsData[indexPath.row].category)
+        cell.setData(newsData[indexPath.row])
         return cell
     }
 

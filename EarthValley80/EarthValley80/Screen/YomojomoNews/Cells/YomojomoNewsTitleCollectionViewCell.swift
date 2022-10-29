@@ -46,6 +46,18 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
+    // MARK: - init
+
+    override init(frame: CGRect) {
+        super .init(frame: frame)
+        self.setupLayout()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: func
 
     func setupLayout() {
@@ -66,8 +78,8 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
                                   padding: UIEdgeInsets(top: 14, left: 20, bottom: -20, right: 0))
     }
 
-    func setData(newsTitle: String, newsCategory: String) {
-        self.newsTitleLabel.text = newsTitle
-        self.newsCategoryLabel.text = newsCategory
+    func setData(_ newsData: News) {
+        self.newsTitleLabel.text = newsData.title
+        self.newsCategoryLabel.text = newsData.category
     }
 }
