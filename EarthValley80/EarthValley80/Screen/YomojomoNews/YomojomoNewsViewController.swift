@@ -75,7 +75,7 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className, for: indexPath) as? YomojomoNewsTitleCollectionViewCell else { return UICollectionViewCell() }
         cell.setupLayout()
-        cell.setData(newsTitle: newsData[indexPath.row].newsTitle, newsCategory: newsData[indexPath.row].newsCategory)
+        cell.setData(newsTitle: newsData[indexPath.row].title, newsCategory: newsData[indexPath.row].category)
         return cell
     }
 
@@ -88,7 +88,7 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
         // MARK: - width 및 column 설정
 
         var width: CGFloat
-        if newsData[indexPath.item].newsTitle.count > Size.standardOfTitle {
+        if newsData[indexPath.item].title.count > Size.standardOfTitle {
             width = ((collectionView.frame.width - (Size.cellInterval * 4)) / Size.column) * 2 + Size.cellInterval
         } else {
             width = (collectionView.frame.width - (Size.cellInterval * 4)) / Size.column
