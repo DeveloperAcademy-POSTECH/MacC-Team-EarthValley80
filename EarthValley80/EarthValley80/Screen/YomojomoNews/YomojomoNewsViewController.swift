@@ -31,6 +31,9 @@ final class YomojomoNewsViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = Size.cellInterval
+        layout.minimumInteritemSpacing = Size.cellInterval
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(YomojomoNewsTitleCollectionViewCell.self, forCellWithReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className)
@@ -92,9 +95,5 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
         }
 
         return CGSize(width: width, height: Size.cellHeight)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Size.cellInterval
     }
 }
