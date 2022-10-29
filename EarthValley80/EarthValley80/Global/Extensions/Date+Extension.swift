@@ -8,7 +8,7 @@
 import UIKit
 
 extension Date {
-    public func dateFormatted(_ format: String) -> String {
+    func dateFormatted(_ format: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         formatter.locale = Locale(identifier: "UTC")
