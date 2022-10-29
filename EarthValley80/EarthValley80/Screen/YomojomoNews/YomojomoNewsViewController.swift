@@ -92,17 +92,17 @@ class YomojomoNewsViewController: UIViewController {
             shortNews.insert(News(newsTitle: "-", newsCategory: "-"), at: 0)
         }
 
-        for i in 0..<longcount/2 {
-            if i % 3 == 0 {
+        for rowNum in 0..<longcount/2 {
+            if rowNum % 3 == 0 {
                 newdata.append(longNews.removeLast())
                 newdata.append(longNews.removeLast())
-                if i == (longcount/2-1) {
+                if rowNum == (longcount/2-1) {
                     continue
                 } else {
                     newdata.append(shortNews.removeLast())
                 }
-            } else if i % 3 == 1 {
-                if i == (longcount/2-1) {
+            } else if rowNum % 3 == 1 {
+                if rowNum == (longcount/2-1) {
                     continue
                 } else {
                     newdata.append(shortNews.removeLast())
@@ -111,7 +111,7 @@ class YomojomoNewsViewController: UIViewController {
                 newdata.append(longNews.removeLast())
             } else {
                 newdata.append(longNews.removeLast())
-                if i == (longcount/2-1) {
+                if rowNum == (longcount/2-1) {
                     continue
                 } else {
                     newdata.append(shortNews.removeLast())
@@ -139,12 +139,12 @@ class YomojomoNewsViewController: UIViewController {
         var shortNews = shortNews
         let longcount = longNews.count
 
-        for i in 0..<longcount/2 {
-            if i % 3 == 0 {
+        for rowNum in 0..<longcount/2 {
+            if rowNum % 3 == 0 {
                 newdata.append(longNews.removeLast())
                 newdata.append(longNews.removeLast())
                 newdata.append(shortNews.removeLast())
-            } else if i % 3 == 1 {
+            } else if rowNum % 3 == 1 {
                 newdata.append(shortNews.removeLast())
                 newdata.append(longNews.removeLast())
                 newdata.append(longNews.removeLast())
