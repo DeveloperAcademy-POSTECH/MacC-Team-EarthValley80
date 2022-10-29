@@ -37,7 +37,7 @@ class YomojomoNewsViewController: UIViewController {
         collectionView.register(EmptySpaceCollectionViewCell.self, forCellWithReuseIdentifier: EmptySpaceCollectionViewCell.className)
         return collectionView
     }()
-    private lazy var newsData: [News] = sortdata(yomojomoViewDummyData)
+    private lazy var newsData: [News] = arrangeNewsData(yomojomoViewDummyData)
 
     // MARK: - life cycle
 
@@ -63,108 +63,105 @@ class YomojomoNewsViewController: UIViewController {
                                   padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
     }
 
-    private func sortdata(_ data: [News]) -> [News] {
-        let short = data.filter { $0.newsTitle.count < 30 }.map { $0 }
-        let long = data.filter { $0.newsTitle.count >= 40 }.map { $0 }
+    private func arrangeNewsData(_ data: [News]) -> [News] {
+        let shortNews = data.filter { $0.newsTitle.count < Size.standardOfTitle }.map { $0 }
+        let longNews = data.filter { $0.newsTitle.count >= Size.standardOfTitle }.map { $0 }
         var newdata = [News]()
-        if long.count / 2 <= short.count {
-            newdata = calculateMoreShort(short, long)
+        if longNews.count / 2 <= shortNews.count {
+            newdata = self.calculateMoreShortNews(shortNews, longNews)
         } else {
-            newdata = calculateMoreLong(short, long)
+            newdata = self.calculateMoreLongNews(shortNews, longNews)
         }
-
         return newdata
     }
 
-    // MARK: calc
-
-    private func calculateMoreLong( _ short: [News], _ long: [News]) -> [News] {
+    private func calculateMoreLongNews( _ shortNews: [News], _ longNews: [News]) -> [News] {
         var newdata = [News]()
-        var long = long
-        var short = short
-        let longcount = long.count
+        var longNews = longNews
+        var shortNews = shortNews
+        let longcount = longNews.count
         var needShortCount = 0
 
-        if long.count % 2 == 0 {
-            needShortCount = longcount/2  - (short.count+1)
+        if longNews.count % 2 == 0 {
+            needShortCount = longcount/2  - (shortNews.count+1)
         } else {
-            needShortCount = longcount/2  - (short.count)
+            needShortCount = longcount/2  - (shortNews.count)
         }
 
         for _ in 0..<needShortCount {
-            short.insert(News(newsTitle: "-", newsCategory: "-"), at: 0)
+            shortNews.insert(News(newsTitle: "-", newsCategory: "-"), at: 0)
         }
 
         for i in 0..<longcount/2 {
             if i % 3 == 0 {
-                newdata.append(long.removeLast())
-                newdata.append(long.removeLast())
+                newdata.append(longNews.removeLast())
+                newdata.append(longNews.removeLast())
                 if i == (longcount/2-1) {
                     continue
                 } else {
-                    newdata.append(short.removeLast())
+                    newdata.append(shortNews.removeLast())
                 }
             } else if i % 3 == 1 {
                 if i == (longcount/2-1) {
                     continue
                 } else {
-                    newdata.append(short.removeLast())
+                    newdata.append(shortNews.removeLast())
                 }
-                newdata.append(long.removeLast())
-                newdata.append(long.removeLast())
+                newdata.append(longNews.removeLast())
+                newdata.append(longNews.removeLast())
             } else {
-                newdata.append(long.removeLast())
+                newdata.append(longNews.removeLast())
                 if i == (longcount/2-1) {
                     continue
                 } else {
-                    newdata.append(short.removeLast())
+                    newdata.append(shortNews.removeLast())
                 }
-                newdata.append(long.removeLast())
+                newdata.append(longNews.removeLast())
             }
         }
 
-        if !long.isEmpty {
-            newdata.append(long.removeLast())
+        if !longNews.isEmpty {
+            newdata.append(longNews.removeLast())
         }
 
-        if !short.isEmpty {
-            for _ in 0..<short.count {
-                newdata.append(short.removeLast())
+        if !shortNews.isEmpty {
+            for _ in 0..<shortNews.count {
+                newdata.append(shortNews.removeLast())
             }
         }
 
         return newdata
     }
 
-    private func calculateMoreShort(_ short: [News], _ long: [News]) -> [News] {
+    private func calculateMoreShortNews(_ shortNews: [News], _ longNews: [News]) -> [News] {
         var newdata = [News]()
-        var long = long
-        var short = short
-        let longcount = long.count
+        var longNews = longNews
+        var shortNews = shortNews
+        let longcount = longNews.count
 
         for i in 0..<longcount/2 {
             if i % 3 == 0 {
-                newdata.append(long.removeLast())
-                newdata.append(long.removeLast())
-                newdata.append(short.removeLast())
+                newdata.append(longNews.removeLast())
+                newdata.append(longNews.removeLast())
+                newdata.append(shortNews.removeLast())
             } else if i % 3 == 1 {
-                newdata.append(short.removeLast())
-                newdata.append(long.removeLast())
-                newdata.append(long.removeLast())
+                newdata.append(shortNews.removeLast())
+                newdata.append(longNews.removeLast())
+                newdata.append(longNews.removeLast())
             } else {
-                newdata.append(long.removeLast())
-                newdata.append(short.removeLast())
-                newdata.append(long.removeLast())
+                newdata.append(longNews.removeLast())
+                newdata.append(shortNews.removeLast())
+                newdata.append(longNews.removeLast())
             }
         }
 
-        if !long.isEmpty {
-            newdata.append(long.removeLast())
+        if !longNews.isEmpty {
+            newdata.append(longNews.removeLast())
         }
 
-        if !short.isEmpty {
-            for _ in 0..<short.count {
-                newdata.append(short.removeLast())
+        if !shortNews.isEmpty {
+            for _ in 0..<shortNews.count {
+                newdata.append(shortNews.removeLast())
             }
         }
 
