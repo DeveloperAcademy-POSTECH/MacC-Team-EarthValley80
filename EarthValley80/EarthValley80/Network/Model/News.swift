@@ -5,7 +5,7 @@
 //  Created by LeeJiSoo on 2022/10/27.
 //
 
-import UIKit
+import Foundation
 
 struct News {
     let title: String
