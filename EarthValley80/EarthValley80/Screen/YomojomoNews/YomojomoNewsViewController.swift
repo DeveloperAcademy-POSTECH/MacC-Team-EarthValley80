@@ -63,8 +63,8 @@ final class YomojomoNewsViewController: UIViewController {
     }
 
     private func arrangeNewsData(_ data: [News]) -> [News] {
-        let shortNews = data.filter { $0.newsTitle.count < Size.standardOfTitle }.map { $0 }
-        let longNews = data.filter { $0.newsTitle.count >= Size.standardOfTitle }.map { $0 }
+        let shortNews = data.filter { $0.title.count < Size.standardOfTitle }.map { $0 }
+        let longNews = data.filter { $0.title.count >= Size.standardOfTitle }.map { $0 }
         var newdata = [News]()
         if longNews.count / 2 <= shortNews.count {
             newdata = self.calculateMoreShortNews(shortNews, longNews)
@@ -88,7 +88,7 @@ final class YomojomoNewsViewController: UIViewController {
         }
 
         for _ in 0..<needShortCount {
-            shortNews.insert(News(newsTitle: "-", newsCategory: "-"), at: 0)
+            shortNews.insert(News(title: "-", category: "-"), at: 0)
         }
 
         for rowNum in 0..<longcount/2 {
@@ -175,14 +175,13 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if newsData[indexPath.row].newsTitle == "-" {
+        if newsData[indexPath.row].title == "-" {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
             cell.setupLayout()
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className, for: indexPath) as? YomojomoNewsTitleCollectionViewCell else { return UICollectionViewCell() }
-            cell.setupLayout()
-            cell.setData(newsTitle: newsData[indexPath.row].newsTitle, newsCategory: newsData[indexPath.row].newsCategory)
+            cell.setData(newsData[indexPath.row])
             return cell
         }
     }
