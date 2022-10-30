@@ -65,7 +65,7 @@ final class YomojomoNewsViewController: UIViewController {
     private func arrangeNewsData(_ data: [News]) -> [News] {
         let shortNews = data.filter { $0.title.count < Size.standardOfTitle }.map { $0 }
         let longNews = data.filter { $0.title.count >= Size.standardOfTitle }.map { $0 }
-        var newdata = [News]()
+        var newdata: [News] = []
         if longNews.count / 2 <= shortNews.count {
             newdata = self.calculateMoreShortNews(shortNews, longNews)
         } else {
@@ -75,7 +75,7 @@ final class YomojomoNewsViewController: UIViewController {
     }
 
     private func calculateMoreLongNews( _ shortNews: [News], _ longNews: [News]) -> [News] {
-        var newdata = [News]()
+        var newdata: [News] = []
         var longNews = longNews
         var shortNews = shortNews
         let longcount = longNews.count
@@ -133,7 +133,7 @@ final class YomojomoNewsViewController: UIViewController {
     }
 
     private func calculateMoreShortNews(_ shortNews: [News], _ longNews: [News]) -> [News] {
-        var newdata = [News]()
+        var newdata: [News] = []
         var longNews = longNews
         var shortNews = shortNews
         let longcount = longNews.count
