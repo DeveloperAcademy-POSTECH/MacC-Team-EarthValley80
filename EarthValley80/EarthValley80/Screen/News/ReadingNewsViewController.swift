@@ -13,6 +13,7 @@ final class ReadingNewsViewController: UIViewController {
         static let verticalPadding: CGFloat = 16.0
         static let questionViewFrameWidth: CGFloat = UIScreen.main.bounds.size.width * 0.48
         static let partOfQuestionViewFrameWidth = questionViewFrameWidth - 20
+        static let halfOfScreenWidth = UIScreen.main.bounds.size.width / 2
     }
     
     // MARK: - property
@@ -53,6 +54,7 @@ final class ReadingNewsViewController: UIViewController {
         super.viewDidLoad()
         self.setupLayout()
         self.configureUI()
+        self.setupTapGesture()
     }
     
     // MARK: - func
@@ -85,6 +87,32 @@ final class ReadingNewsViewController: UIViewController {
     private func configureUI() {
         // TODO: - background gradient Color가 나오면 적용
         self.view.backgroundColor = .black
+    }
+    
+    private func setupTapGesture() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    // MARK: - selector
+    
+    @objc
+    private func didTappedView(_ gestureRecognizer: UITapGestureRecognizer) {
+        if gestureRecognizer.state == UIGestureRecognizer.State.recognized {
+            let indexPath: IndexPath = IndexPath(row: 0, section: 0)
+            guard let contentCell = self.newsTableView.cellForRow(at: indexPath) as? NewsContentTableViewCell else { return }
+        
+            let location = gestureRecognizer.location(in: gestureRecognizer.view)
+            switch location.y {
+            case 0...Size.halfOfScreenWidth:
+                contentCell.shiftHighlight(to: .upper)
+            default:
+                contentCell.shiftHighlight(to: .lower)
+            }
+            
+            let scrollPosition = contentCell.checkCurrentPosition()
+            self.newsTableView.scrollToRow(at: indexPath, at: scrollPosition, animated: true)
+        }
     }
 }
 
