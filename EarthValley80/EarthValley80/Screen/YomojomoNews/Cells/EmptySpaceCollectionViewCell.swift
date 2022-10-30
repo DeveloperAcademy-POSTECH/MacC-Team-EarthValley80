@@ -24,7 +24,7 @@ final class EmptySpaceCollectionViewCell: UICollectionViewCell {
     // MARK: method
 
     func setupLayout() {
-        self.addSubview(addBackgroundView)
+        self.addSubview(self.addBackgroundView)
         self.addBackgroundView.constraint(to: self,
                                           insets: UIEdgeInsets.zero)
     }
