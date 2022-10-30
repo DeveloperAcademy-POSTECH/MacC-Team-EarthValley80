@@ -1,18 +1,17 @@
 //
-//  ReadingNewsViewController.swift
+//  FiveWsAndOneHViewController.swift
 //  EarthValley80
 //
-//  Created by SHIN YOON AH on 2022/10/25.
+//  Created by SHIN YOON AH on 2022/10/27.
 //
 
 import UIKit
 
-final class ReadingNewsViewController: UIViewController {
+final class FiveWsAndOneHViewController: UIViewController {
     
     private enum Size {
         static let verticalPadding: CGFloat = 16.0
         static let questionViewFrameWidth: CGFloat = UIScreen.main.bounds.size.width * 0.48
-        static let partOfQuestionViewFrameWidth = questionViewFrameWidth - 20
     }
     
     // MARK: - property
@@ -43,9 +42,15 @@ final class ReadingNewsViewController: UIViewController {
         
         return tableView
     }()
+    private let questionView: QuestionView = {
+        let view = QuestionView()
+        view.captionText = StringLiteral.answerWhoCaptionTitle
+        view.titleText = StringLiteral.answerWhoTitle
+        view.placeholder = StringLiteral.answerWhoPlaceholder
+        return view
+    }()
     private let backButton = BackButton()
-    private let titleHeaderView = NewsTitleView(status: .expanded)
-    private let questionView = QuestionView()
+    private let titleHeaderView = NewsTitleView(status: .compact)
     
     // MARK: - life cycle
 
@@ -62,7 +67,7 @@ final class ReadingNewsViewController: UIViewController {
         self.questionView.constraint(top: self.view.topAnchor,
                                      bottom: self.view.bottomAnchor,
                                      trailing: self.view.trailingAnchor,
-                                     padding: UIEdgeInsets(top: Size.verticalPadding, left: 0, bottom: Size.verticalPadding, right: -Size.partOfQuestionViewFrameWidth))
+                                     padding: UIEdgeInsets(top: Size.verticalPadding, left: 0, bottom: Size.verticalPadding, right: 16))
         
         self.view.addSubview(self.backButton)
         self.backButton.constraint(top: self.view.topAnchor,
@@ -72,14 +77,14 @@ final class ReadingNewsViewController: UIViewController {
         self.view.addSubview(self.captionLabel)
         self.captionLabel.constraint(top: self.view.topAnchor,
                                      leading: self.view.leadingAnchor,
-                                     padding: UIEdgeInsets(top: 76, left: 96, bottom: 0, right: 0))
+                                     padding: UIEdgeInsets(top: 76, left: 56, bottom: 0, right: 0))
         
         self.view.addSubview(self.newsTableView)
         self.newsTableView.constraint(top: self.captionLabel.bottomAnchor,
                                       leading: self.view.leadingAnchor,
                                       bottom: self.view.bottomAnchor,
                                       trailing: self.questionView.leadingAnchor,
-                                      padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 10))
+                                      padding: UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 10))
     }
     
     private func configureUI() {
@@ -89,20 +94,20 @@ final class ReadingNewsViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource
-extension ReadingNewsViewController: UITableViewDataSource {
+extension FiveWsAndOneHViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsContentTableViewCell.className) as? NewsContentTableViewCell else { return UITableViewCell() }
-        cell.status = .expanded
+        cell.status = .compact
         return cell
     }
 }
 
 // MARK: - UITableViewDelegate
-extension ReadingNewsViewController: UITableViewDelegate {
+extension FiveWsAndOneHViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return self.titleHeaderView
     }
