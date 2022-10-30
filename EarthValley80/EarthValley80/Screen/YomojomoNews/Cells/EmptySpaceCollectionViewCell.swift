@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmptySpaceCollectionViewCell: UICollectionViewCell {
+final class EmptySpaceCollectionViewCell: UICollectionViewCell {
 
     // MARK: view
 
