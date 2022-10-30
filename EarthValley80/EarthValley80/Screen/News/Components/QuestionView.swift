@@ -44,19 +44,6 @@ final class QuestionView: UIView {
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 83)
         return textView
     }()
-    private let nextButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.titleLabel?.font = .font(.medium, ofSize: 12)
-        // TODO: - 색상이 확정되면 추가
-        button.tintColor = .black
-        button.setTitleColor(.black, for: .normal)
-        button.semanticContentAttribute = .forceRightToLeft
-        button.setTitle(StringLiteral.nextButtonText, for: .normal)
-        button.setImage(ImageLiteral.icArrowRight, for: .normal)
-        button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .large), forImageIn: .normal)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
-        return button
-    }()
     private let previousButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .black
@@ -77,6 +64,7 @@ final class QuestionView: UIView {
         }
     }
     private let questionTitleStackView = QuestionTitleStackView()
+    private let nextButton = NextButton(configType: .next)
     
     var captionText: String = "" {
         willSet {
@@ -134,7 +122,6 @@ final class QuestionView: UIView {
         self.nextButton.constraint(bottom: self.bottomAnchor,
                                    trailing: self.trailingAnchor,
                                    padding: UIEdgeInsets(top: 0, left: 0, bottom: Size.buttonBottomConstant, right: Size.buttonHorizontalPadding))
-        self.nextButton.constraint(.heightAnchor, constant: Size.buttonSize)
         self.nextButton.constraint(.widthAnchor, constant: 104)
         
         self.addSubview(self.previousButton)
@@ -155,5 +142,9 @@ final class QuestionView: UIView {
     private func applyTextViewConfiguration(with state: TextMode, placeholder: String) {
         self.contentTextView.text = placeholder
         self.contentTextView.textColor = state.textColor
+    }
+    
+    func setCollectionViewHidden(to isHidden: Bool) {
+        self.questionTitleStackView.isHiddenCollectionView = isHidden
     }
 }

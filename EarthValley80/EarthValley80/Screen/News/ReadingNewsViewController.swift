@@ -12,8 +12,24 @@ final class ReadingNewsViewController: UIViewController {
     private enum Size {
         static let verticalPadding: CGFloat = 16.0
         static let questionViewFrameWidth: CGFloat = UIScreen.main.bounds.size.width * 0.48
-        static let partOfQuestionViewFrameWidth = questionViewFrameWidth - 20
-        static let halfOfScreenWidth = UIScreen.main.bounds.size.width / 2
+        static let partOfQuestionViewFrameWidth: CGFloat = questionViewFrameWidth - 20
+        static let halfOfScreenWidth: CGFloat = UIScreen.main.bounds.size.width / 2
+        static let disabledButtonWidth: CGFloat = 60.0
+        static let enabledButtonWidth: CGFloat = 104.0
+    }
+    
+    private enum Direction {
+        case left
+        case right
+        
+        var offset: CGFloat {
+            switch self {
+            case .left:
+                return 16
+            case .right:
+                return Size.partOfQuestionViewFrameWidth
+            }
+        }
     }
     
     // MARK: - property
@@ -44,9 +60,20 @@ final class ReadingNewsViewController: UIViewController {
         
         return tableView
     }()
+    private lazy var nextButton: NextButton = {
+        let button = NextButton(configType: .disabled, color: .evyWhite)
+        let action = UIAction { [weak self] _ in
+            self?.updateEntireView(with: 0)
+        }
+        button.addAction(action, for: .touchUpInside)
+        return button
+    }()
     private let backButton = BackButton()
-    private let titleHeaderView = NewsTitleView(status: .expanded)
     private let questionView = QuestionView()
+    private let titleHeaderView = NewsTitleView(status: .expanded)
+    
+    private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
+    private var questionViewConstraints: [ConstraintType: NSLayoutConstraint]?
     
     // MARK: - life cycle
 
@@ -54,14 +81,14 @@ final class ReadingNewsViewController: UIViewController {
         super.viewDidLoad()
         self.setupLayout()
         self.configureUI()
-        self.setupTapGesture()
+        self.setupInitialQuestionView()
     }
     
     // MARK: - func
     
     private func setupLayout() {
         self.view.addSubview(self.questionView)
-        self.questionView.constraint(top: self.view.topAnchor,
+        self.questionViewConstraints = self.questionView.constraint(top: self.view.topAnchor,
                                      bottom: self.view.bottomAnchor,
                                      trailing: self.view.trailingAnchor,
                                      padding: UIEdgeInsets(top: Size.verticalPadding, left: 0, bottom: Size.verticalPadding, right: -Size.partOfQuestionViewFrameWidth))
@@ -82,16 +109,55 @@ final class ReadingNewsViewController: UIViewController {
                                       bottom: self.view.bottomAnchor,
                                       trailing: self.questionView.leadingAnchor,
                                       padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 10))
+        
+        self.view.addSubview(self.nextButton)
+        self.nextButton.constraint(bottom: self.view.bottomAnchor,
+                                   trailing: self.view.trailingAnchor,
+                                   padding: UIEdgeInsets(top: 0, left: 0, bottom: 37, right: 56))
+        self.nextButton.widthAnchorConstraint = self.nextButton.widthAnchor.constraint(equalToConstant: Size.disabledButtonWidth)
     }
     
     private func configureUI() {
         // TODO: - background gradient Color가 나오면 적용
         self.view.backgroundColor = .black
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    private func setupTapGesture() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
-        self.view.addGestureRecognizer(tapGestureRecognizer)
+    private func setupInitialQuestionView() {
+        self.questionView.captionText = StringLiteral.answerWhoCaptionTitle
+        self.questionView.titleText = StringLiteral.answerWhoTitle
+        self.questionView.placeholder = StringLiteral.answerWhoPlaceholder
+        self.questionView.setCollectionViewHidden(to: true)
+    }
+    
+    private func updateView(with scrollPosition: UITableView.ScrollPosition,
+                            indexPath: IndexPath = IndexPath(row: 0, section: 0)) {
+        self.newsTableView.scrollToRow(at: indexPath, at: scrollPosition, animated: true)
+        
+        if scrollPosition == .middle {
+            self.nextButton.configType = .next
+            self.nextButton.widthAnchorConstraint?.constant = Size.enabledButtonWidth
+        }
+    }
+    
+    private func moveQuestionView(to direction: Direction) {
+        let durationTime: CGFloat = 0.9
+        
+        UIView.animate(withDuration: durationTime, animations: {
+            self.questionViewConstraints?[.trailing]?.constant = -direction.offset
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    // TODO: - status type enum 값에 따라서 전체 뷰가 바뀔 것
+    private func updateEntireView(with status: Int) {
+        switch status {
+        default:
+            self.moveQuestionView(to: .left)
+            self.nextButton.isHidden = true
+            self.newsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+            self.view.removeGestureRecognizer(self.tapGestureRecognizer)
+        }
     }
     
     // MARK: - selector
@@ -111,7 +177,7 @@ final class ReadingNewsViewController: UIViewController {
             }
             
             let scrollPosition = contentCell.checkCurrentPosition()
-            self.newsTableView.scrollToRow(at: indexPath, at: scrollPosition, animated: true)
+            self.updateView(with: scrollPosition)
         }
     }
 }
