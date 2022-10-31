@@ -38,7 +38,7 @@ final class YomojomoNewsViewController: UIViewController {
     }()
 
     private let newsModel = News(title: nil, category: nil)
-    private lazy var newsData = newsModel.arrangeNewsData(yomojomoViewDummyData)
+    private lazy var newsData = self.newsModel.arrangeNewsData(yomojomoViewDummyData)
 
     // MARK: - life cycle
 
