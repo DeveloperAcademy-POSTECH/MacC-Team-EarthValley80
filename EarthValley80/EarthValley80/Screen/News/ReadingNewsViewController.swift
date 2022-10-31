@@ -200,4 +200,14 @@ extension ReadingNewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return self.titleHeaderView
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        
+        if offsetY > 0 {
+            self.titleHeaderView.updateTitleStatus(to: .scrolled)
+        } else {
+            self.titleHeaderView.updateTitleStatus(to: .expanded)
+        }
+    }
 }

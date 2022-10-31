@@ -12,6 +12,8 @@ final class NewsTitleView: UIView {
     private enum Size {
         static let horizontalPadding: CGFloat = 96.0
         static let minimumHorizontalPadding: CGFloat = 56.0
+        static let verticalPadding: CGFloat = 40.0
+        static let minimumVeritcalPadding: CGFloat = 20.0
         static let originalFontSize: CGFloat = 54.0
         static let minimumFontSize: CGFloat = 40.0
     }
@@ -19,22 +21,32 @@ final class NewsTitleView: UIView {
     enum Status {
         case expanded
         case compact
+        case scrolled
         
         var fontSize: CGFloat {
             switch self {
             case .expanded:
                 return Size.originalFontSize
-            case .compact:
+            default:
                 return Size.minimumFontSize
             }
         }
         
         var horizontalPadding: CGFloat {
             switch self {
-            case .expanded:
-                return Size.horizontalPadding
             case .compact:
                 return Size.minimumHorizontalPadding
+            default:
+                return Size.horizontalPadding
+            }
+        }
+        
+        var verticalPadding: CGFloat {
+            switch self {
+            case .expanded:
+                return Size.verticalPadding
+            default:
+                return Size.minimumVeritcalPadding
             }
         }
     }
@@ -53,7 +65,14 @@ final class NewsTitleView: UIView {
         return label
     }()
     
-    private let status: Status
+    private var status: Status {
+        willSet {
+            titleLabel.font = .font(.bold, ofSize: newValue.fontSize)
+            updateLayout()
+        }
+    }
+    
+    private var titleConstraintConstant: [ConstraintType : NSLayoutConstraint]?
 
     // MARK: - init
     
@@ -61,6 +80,7 @@ final class NewsTitleView: UIView {
         self.status = status
         super.init(frame: .zero)
         self.setupLayout()
+        backgroundColor = .blue
     }
     
     @available(*, unavailable)
@@ -72,7 +92,18 @@ final class NewsTitleView: UIView {
     
     private func setupLayout() {
         self.addSubview(self.titleLabel)
-        self.titleLabel.constraint(to: self,
-                                   insets: UIEdgeInsets(top: 0, left: status.horizontalPadding, bottom: -40, right: -status.horizontalPadding))
+        self.titleConstraintConstant = self.titleLabel.constraint(top: self.topAnchor,
+                                                                     leading: self.leadingAnchor,
+                                                                     bottom: self.bottomAnchor,
+                                                                     trailing: self.trailingAnchor,
+                                                                     padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: self.status.verticalPadding, right: self.status.horizontalPadding))
+    }
+    
+    private func updateLayout() {
+        self.titleConstraintConstant?[.bottom]?.constant = self.status.verticalPadding
+    }
+    
+    func updateTitleStatus(to status: Status) {
+        self.status = status
     }
 }
