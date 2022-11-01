@@ -241,6 +241,7 @@
 		B5BE345328FD96BD00D09BEE /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				381AB42D290FB5CB00620635 /* Manager */,
 				381AB41B290A9DF200620635 /* UIComponent */,
 				B5BE347C28FDA21E00D09BEE /* Literals */,
 				B5BE347728FD9DCF00D09BEE /* Utils */,
@@ -274,7 +275,6 @@
 		B5BE345628FD96CA00D09BEE /* YomojomoNews */ = {
 			isa = PBXGroup;
 			children = (
-				381AB42D290FB5CB00620635 /* Manager */,
 				381AB423290AB8EE00620635 /* Cells */,
 				B5BE346328FD986600D09BEE /* YomojomoNewsViewController.swift */,
 			);
