@@ -15,6 +15,7 @@ final class NewsTitleView: UIView {
         static let originalFontSize: CGFloat = 54.0
         static let minimumFontSize: CGFloat = 40.0
         static let questionViewPadding: CGFloat = 16.0
+        static let bottomSpacing: CGFloat = 40.0
     }
     
     enum Status {
@@ -96,5 +97,18 @@ final class NewsTitleView: UIView {
     
     func updateTitleStatus(to status: Status) {
         self.status = status
+    }
+    
+    func heightOfTitleView() -> CGFloat {
+        let text = self.titleLabel.text
+        let label = UILabel()
+        
+        label.text = text
+        label.numberOfLines = 0
+        label.font = .font(.bold, ofSize: self.status.fontSize)
+        label.setLineSpacing(kernValue: -2.0, lineHeightMultiple: 1.16)
+        label.sizeToFit()
+        
+        return label.frame.height + Size.bottomSpacing * 2
     }
 }
