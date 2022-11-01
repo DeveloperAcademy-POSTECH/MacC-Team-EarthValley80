@@ -12,8 +12,6 @@ final class NewsTitleView: UIView {
     private enum Size {
         static let horizontalPadding: CGFloat = 96.0
         static let minimumHorizontalPadding: CGFloat = 56.0
-        static let verticalPadding: CGFloat = 40.0
-        static let minimumVerticalPadding: CGFloat = 20.0
         static let originalFontSize: CGFloat = 54.0
         static let minimumFontSize: CGFloat = 40.0
         static let questionViewPadding: CGFloat = 16.0
@@ -33,21 +31,21 @@ final class NewsTitleView: UIView {
             }
         }
         
+        var textColor: UIColor {
+            switch self {
+            case .scrolled:
+                return .evyWhite.withAlphaComponent(0.4)
+            default:
+                return .evyWhite
+            }
+        }
+        
         var horizontalPadding: CGFloat {
             switch self {
             case .compact:
                 return Size.minimumHorizontalPadding
             default:
                 return Size.horizontalPadding
-            }
-        }
-        
-        var verticalPadding: CGFloat {
-            switch self {
-            case .expanded:
-                return Size.verticalPadding
-            default:
-                return Size.minimumVerticalPadding
             }
         }
     }
@@ -61,39 +59,24 @@ final class NewsTitleView: UIView {
         label.text = "인류보다 로봇 진화 속도가 더 빠르대요, 청소로봇은 '루시'…생각하는 로봇 등장"
         label.numberOfLines = 0
         label.textColor = .white
-        label.font = .font(.bold, ofSize: status.fontSize)
+        label.font = .font(.bold, ofSize: self.status.fontSize)
         label.setLineSpacing(kernValue: -2.0, lineHeightMultiple: 1.16)
         return label
     }()
     
     private var status: Status {
         willSet {
-            titleLabel.font = .font(.bold, ofSize: newValue.fontSize)
+            self.titleLabel.font = .font(.bold, ofSize: newValue.fontSize)
+            self.titleLabel.textColor = newValue.textColor
         }
     }
     
-    private var heightToFit: CGFloat {
-        let width = UIScreen.main.bounds.size.width - Size.questionViewPadding - (Size.horizontalPadding * 2)
-        let label = UILabel(frame: CGRectMake(0, 0, width, CGFloat.greatestFiniteMagnitude))
-        
-        label.numberOfLines = 0
-        label.lineBreakMode = NSLineBreakMode.byWordWrapping
-        label.font = .font(.bold, ofSize: self.status.fontSize)
-        label.text = self.titleLabel.text
-        label.sizeToFit()
-        
-        return label.frame.height
-    }
-    
-    private var titleConstraintConstant: [ConstraintType : NSLayoutConstraint]?
-
     // MARK: - init
     
     init(status: Status) {
         self.status = status
         super.init(frame: .zero)
         self.setupLayout()
-        backgroundColor = .blue
     }
     
     @available(*, unavailable)
@@ -105,19 +88,13 @@ final class NewsTitleView: UIView {
     
     private func setupLayout() {
         self.addSubview(self.titleLabel)
-        self.titleConstraintConstant = self.titleLabel.constraint(top: self.topAnchor,
-                                                                  leading: self.leadingAnchor,
-                                                                  bottom: self.bottomAnchor,
-                                                                  trailing: self.trailingAnchor,
-                                                                  padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: self.status.verticalPadding, right: self.status.horizontalPadding))
-    }
-    
-    private func updateLayout() {
-        self.titleConstraintConstant?[.bottom]?.constant = -self.status.verticalPadding
+        self.titleLabel.constraint(top: self.topAnchor,
+                                   leading: self.leadingAnchor,
+                                   trailing: self.trailingAnchor,
+                                   padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: 0, right: self.status.horizontalPadding))
     }
     
     func updateTitleStatus(to status: Status) {
         self.status = status
-        self.updateLayout()
     }
 }

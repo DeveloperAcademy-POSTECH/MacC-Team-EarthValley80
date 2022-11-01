@@ -12,20 +12,27 @@ enum ConstraintType {
 }
 
 extension UIView {
+    
     enum Frame {
-        case widthAnchor
-        case heightAnchor
+        case widthAnchor, heightAnchor
     }
     
-    func constraint(_ anchor: Frame, constant: CGFloat) {
+    @discardableResult
+    func constraint(_ anchor: Frame, constant: CGFloat) -> [Frame: NSLayoutConstraint] {
+        var constraints: [Frame: NSLayoutConstraint] = [:]
+        
         self.translatesAutoresizingMaskIntoConstraints = false
         
         switch anchor {
         case .widthAnchor:
-            self.widthAnchor.constraint(equalToConstant: constant).isActive = true
+            constraints[.widthAnchor] = self.widthAnchor.constraint(equalToConstant: constant)
         case .heightAnchor:
-            self.heightAnchor.constraint(equalToConstant: constant).isActive = true
+            constraints[.heightAnchor] = self.heightAnchor.constraint(equalToConstant: constant)
         }
+        
+        let constraintsArray: [NSLayoutConstraint] = Array(constraints.values)
+        NSLayoutConstraint.activate(constraintsArray)
+        return constraints
     }
     
     func constraint(to view: UIView, insets: UIEdgeInsets = .zero) {
