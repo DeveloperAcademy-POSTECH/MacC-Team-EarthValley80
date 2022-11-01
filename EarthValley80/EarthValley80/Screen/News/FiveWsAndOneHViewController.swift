@@ -27,7 +27,6 @@ final class FiveWsAndOneHViewController: UIViewController {
     private lazy var newsTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
-        tableView.delegate = self
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
         tableView.indicatorStyle = .white
@@ -79,12 +78,18 @@ final class FiveWsAndOneHViewController: UIViewController {
                                      leading: self.view.leadingAnchor,
                                      padding: UIEdgeInsets(top: 76, left: 56, bottom: 0, right: 0))
         
+        self.view.addSubview(self.titleHeaderView)
+        self.titleHeaderView.constraint(top: self.captionLabel.bottomAnchor,
+                                      leading: self.view.leadingAnchor,
+                                      trailing: self.questionView.leadingAnchor,
+                                      padding: UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 10))
+        
         self.view.addSubview(self.newsTableView)
-        self.newsTableView.constraint(top: self.captionLabel.bottomAnchor,
+        self.newsTableView.constraint(top: self.titleHeaderView.bottomAnchor,
                                       leading: self.view.leadingAnchor,
                                       bottom: self.view.bottomAnchor,
                                       trailing: self.questionView.leadingAnchor,
-                                      padding: UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 10))
+                                      padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10))
     }
     
     private func configureUI() {
@@ -103,12 +108,5 @@ extension FiveWsAndOneHViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsContentTableViewCell.className) as? NewsContentTableViewCell else { return UITableViewCell() }
         cell.status = .compact
         return cell
-    }
-}
-
-// MARK: - UITableViewDelegate
-extension FiveWsAndOneHViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.titleHeaderView
     }
 }

@@ -15,8 +15,9 @@ final class NewsTitleView: UIView {
         static let originalFontSize: CGFloat = 54.0
         static let minimumFontSize: CGFloat = 40.0
         static let questionViewPadding: CGFloat = 16.0
-        static let bottomSpacing: CGFloat = 50.0
-        static let minimumBottomSpacing: CGFloat = 40.0
+        static let originalBottomSpacing: CGFloat = 50.0
+        static let scrolledBottomSpacing: CGFloat = 40.0
+        static let minimumBottomSpacing: CGFloat = 24.0
     }
     
     enum Status {
@@ -53,10 +54,12 @@ final class NewsTitleView: UIView {
         
         var bottomSpacing: CGFloat {
             switch self {
+            case .expanded:
+                return Size.originalBottomSpacing
             case .scrolled:
+                return Size.scrolledBottomSpacing
+            case .compact:
                 return Size.minimumBottomSpacing
-            default:
-                return Size.bottomSpacing
             }
         }
     }
@@ -112,10 +115,13 @@ final class NewsTitleView: UIView {
     
     private func setupLayout() {
         self.addSubview(self.titleLabel)
-        self.titleLabel.constraint(top: self.topAnchor,
-                                   leading: self.leadingAnchor,
-                                   trailing: self.trailingAnchor,
-                                   padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: 0, right: self.status.horizontalPadding))
+        let labelConstraint = self.titleLabel.constraint(top: self.topAnchor,
+                                                         leading: self.leadingAnchor,
+                                                         bottom: self.bottomAnchor,
+                                                         trailing: self.trailingAnchor,
+                                                         padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: self.status.bottomSpacing, right: self.status.horizontalPadding))
+        
+        labelConstraint[.bottom]?.isActive = self.status == .compact
     }
     
     func updateTitleStatus(to status: Status) {
