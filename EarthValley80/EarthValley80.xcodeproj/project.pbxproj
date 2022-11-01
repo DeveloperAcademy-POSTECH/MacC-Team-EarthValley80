@@ -153,8 +153,8 @@
 		381AB41B290A9DF200620635 /* UIComponent */ = {
 			isa = PBXGroup;
 			children = (
-				381AB435290FC96900620635 /* GotoYomojomoNewsView.swift */,
 				381AB41C290A9EFE00620635 /* MainTitleView.swift */,
+				381AB435290FC96900620635 /* GotoYomojomoNewsView.swift */,
 				381AB44729116D0D00620635 /* GotoSomewhereButton.swift */,
 			);
 			path = UIComponent;

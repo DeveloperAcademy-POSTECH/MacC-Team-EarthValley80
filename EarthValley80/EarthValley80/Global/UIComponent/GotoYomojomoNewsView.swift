@@ -9,37 +9,44 @@ import UIKit
 
 import Lottie
 
-class GotoYomojomoNewsView: UIView {
+final class GotoYomojomoNewsView: UIView {
 
     private enum Size {
-        static let greetingCommentLabelFontSize: CGFloat = 16
+        static let lottieViewWidth: CGFloat = 407
+        static let lotteiViewHeight: CGFloat = 240
+        static let buttonWidth: CGFloat = 205
+        static let buttonHeight: CGFloat = 50
     }
 
     // MARK: - property
-
-    private let greetingComment: UILabel = {
+    
+    private lazy var stackview: UIStackView = {
+        let stackview = UIStackView()
+        stackview.alignment = .center
+        stackview.axis = .vertical
+        return stackview
+    }()
+    private let greetingLabel: UILabel = {
         let label = UILabel()
-        label.text = StringLiteral.greetingComments
         label.numberOfLines = 0
-//        label.sizeToFit()
-        label.font = .font(.bold, ofSize: Size.greetingCommentLabelFontSize)
         label.textAlignment = .center
-        label.textColor = .evyBlack1
+        label.textColor = .black
+        label.sizeThatFits(label.frame.size)
         return label
     }()
-    // TODO: - 추후 lottie 파일 받아서 animationview로 바꿔야함
-    private let lottieImageView: UIImageView = {
-        var imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        imageView.backgroundColor = .red
-        return imageView
+    private lazy var lottieView: LottieAnimationView = {
+        let animationView = LottieAnimationView(name: lottieName)
+        animationView.play()
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .repeat(2)
+        return animationView
     }()
-    private let gotoYomojomoNewsButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .red
+    private lazy var gotoButton: GotoSomewhereButton = {
+        let button = GotoSomewhereButton()
         return button
     }()
+
+    private lazy var lottieName: String = ""
 
     // MARK: - init
 
@@ -53,25 +60,35 @@ class GotoYomojomoNewsView: UIView {
         super.init(coder: coder)
     }
 
-    // MARK: - life cycle
+    // MARK: - func
 
     private func setupLayout() {
-        self.addSubview(self.greetingComment)
-        self.greetingComment.constraint(top: self.topAnchor,
-                                        centerX: self.centerXAnchor,
-                                        padding: UIEdgeInsets.zero)
+        self.addSubview(self.stackview)
+        self.stackview.constraint(top: self.topAnchor,
+                             leading: self.leadingAnchor,
+                             padding: UIEdgeInsets.zero)
 
-        self.addSubview(self.lottieImageView)
-        self.lottieImageView.constraint(top: self.greetingComment.bottomAnchor,
-                                        centerX: self.greetingComment.centerXAnchor,
-                                        padding: UIEdgeInsets(top: 20, left: 276, bottom: 307, right: 276))
-//        self.lottieImageView.constraint(.widthAnchor, constant: 434)
-//        self.lottieImageView.constraint(.heightAnchor, constant: 289)
+        self.stackview.addArrangedSubview(self.greetingLabel)
+        self.stackview.addArrangedSubview(self.lottieView)
+        self.stackview.addArrangedSubview(self.gotoButton)
 
-        self.addSubview(self.gotoYomojomoNewsButton)
-        self.gotoYomojomoNewsButton.constraint(top: self.lottieImageView.bottomAnchor,
-                                               bottom: self.bottomAnchor,
-                                               centerX: self.centerXAnchor,
-                                               padding: UIEdgeInsets(top: 53, left: 0, bottom: 0, right: 0))
+        self.lottieView.constraint(.widthAnchor, constant: Size.lottieViewWidth)
+        self.lottieView.constraint(.heightAnchor, constant: Size.lotteiViewHeight)
+
+        self.gotoButton.constraint(.widthAnchor, constant: Size.buttonWidth)
+        self.gotoButton.constraint(.heightAnchor, constant: Size.buttonHeight)
+
+        self.stackview.setCustomSpacing(20, after: self.greetingLabel)
+        self.stackview.setCustomSpacing(53, after: self.lottieView)
+    }
+
+    func changeLabelText(greetingComments: String,
+                         lottieImageTitle: String,
+                         buttonImage: UIImage?,
+                         buttonTitle: String) {
+        self.greetingLabel.text = greetingComments
+        self.lottieName = lottieImageTitle
+        self.gotoButton.setImage(buttonImage, for: .normal)
+        self.gotoButton.setTitle(buttonTitle, for: .normal)
     }
 }
