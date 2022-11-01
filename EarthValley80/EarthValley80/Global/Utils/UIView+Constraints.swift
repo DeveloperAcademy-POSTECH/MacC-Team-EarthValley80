@@ -11,12 +11,11 @@ enum ConstraintType {
     case top, leading, trailing, bottom, centerX, centerY
 }
 
+enum Frame {
+    case widthAnchor, heightAnchor
+}
+
 extension UIView {
-    
-    enum Frame {
-        case widthAnchor, heightAnchor
-    }
-    
     @discardableResult
     func constraint(_ anchor: Frame, constant: CGFloat) -> [Frame: NSLayoutConstraint] {
         var constraints: [Frame: NSLayoutConstraint] = [:]

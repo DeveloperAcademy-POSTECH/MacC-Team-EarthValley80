@@ -15,7 +15,8 @@ final class NewsTitleView: UIView {
         static let originalFontSize: CGFloat = 54.0
         static let minimumFontSize: CGFloat = 40.0
         static let questionViewPadding: CGFloat = 16.0
-        static let bottomSpacing: CGFloat = 40.0
+        static let bottomSpacing: CGFloat = 50.0
+        static let minimumBottomSpacing: CGFloat = 40.0
     }
     
     enum Status {
@@ -49,6 +50,15 @@ final class NewsTitleView: UIView {
                 return Size.horizontalPadding
             }
         }
+        
+        var bottomSpacing: CGFloat {
+            switch self {
+            case .scrolled:
+                return Size.minimumBottomSpacing
+            default:
+                return Size.bottomSpacing
+            }
+        }
     }
     
     // MARK: - property
@@ -70,6 +80,19 @@ final class NewsTitleView: UIView {
             self.titleLabel.font = .font(.bold, ofSize: newValue.fontSize)
             self.titleLabel.textColor = newValue.textColor
         }
+    }
+    
+    var heightOfLabel: CGFloat {
+        let label = UILabel()
+        let text = self.titleLabel.text
+        
+        label.text = text
+        label.numberOfLines = 0
+        label.font = .font(.bold, ofSize: self.status.fontSize)
+        label.setLineSpacing(kernValue: -2.0, lineHeightMultiple: 1.16)
+        label.sizeToFit()
+        
+        return label.frame.height + self.status.bottomSpacing * 2
     }
     
     // MARK: - init
@@ -97,18 +120,5 @@ final class NewsTitleView: UIView {
     
     func updateTitleStatus(to status: Status) {
         self.status = status
-    }
-    
-    func heightOfTitleView() -> CGFloat {
-        let text = self.titleLabel.text
-        let label = UILabel()
-        
-        label.text = text
-        label.numberOfLines = 0
-        label.font = .font(.bold, ofSize: self.status.fontSize)
-        label.setLineSpacing(kernValue: -2.0, lineHeightMultiple: 1.16)
-        label.sizeToFit()
-        
-        return label.frame.height + Size.bottomSpacing * 2
     }
 }
