@@ -12,7 +12,9 @@ class MyNewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let goto = GotoYomojomoNewsView()
+        view.addSubview(goto)
+        goto.constraint(top: view.topAnchor, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: UIEdgeInsets.zero)
     }
     
 
