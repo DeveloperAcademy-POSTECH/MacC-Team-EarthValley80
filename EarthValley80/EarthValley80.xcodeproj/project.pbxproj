@@ -191,6 +191,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		3859DC5B2911978B00EDFB0B /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				381AB4492911726B00620635 /* mp4TempFile.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
 		B55BCECD28FC4C5F00AF7E45 = {
 			isa = PBXGroup;
 			children = (
@@ -295,7 +303,7 @@
 		B5BE345728FD96E400D09BEE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				381AB4492911726B00620635 /* mp4TempFile.json */,
+				3859DC5B2911978B00EDFB0B /* Json */,
 				B55BCEE228FC4C6000AF7E45 /* Assets.xcassets */,
 				B5BE345928FD970300D09BEE /* Storyboard */,
 			);
