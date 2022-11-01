@@ -13,9 +13,10 @@ final class NewsTitleView: UIView {
         static let horizontalPadding: CGFloat = 96.0
         static let minimumHorizontalPadding: CGFloat = 56.0
         static let verticalPadding: CGFloat = 40.0
-        static let minimumVeritcalPadding: CGFloat = 20.0
+        static let minimumVerticalPadding: CGFloat = 20.0
         static let originalFontSize: CGFloat = 54.0
         static let minimumFontSize: CGFloat = 40.0
+        static let questionViewPadding: CGFloat = 16.0
     }
     
     enum Status {
@@ -46,7 +47,7 @@ final class NewsTitleView: UIView {
             case .expanded:
                 return Size.verticalPadding
             default:
-                return Size.minimumVeritcalPadding
+                return Size.minimumVerticalPadding
             }
         }
     }
@@ -68,8 +69,20 @@ final class NewsTitleView: UIView {
     private var status: Status {
         willSet {
             titleLabel.font = .font(.bold, ofSize: newValue.fontSize)
-            updateLayout()
         }
+    }
+    
+    private var heightToFit: CGFloat {
+        let width = UIScreen.main.bounds.size.width - Size.questionViewPadding - (Size.horizontalPadding * 2)
+        let label = UILabel(frame: CGRectMake(0, 0, width, CGFloat.greatestFiniteMagnitude))
+        
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = .font(.bold, ofSize: self.status.fontSize)
+        label.text = self.titleLabel.text
+        label.sizeToFit()
+        
+        return label.frame.height
     }
     
     private var titleConstraintConstant: [ConstraintType : NSLayoutConstraint]?
@@ -93,17 +106,18 @@ final class NewsTitleView: UIView {
     private func setupLayout() {
         self.addSubview(self.titleLabel)
         self.titleConstraintConstant = self.titleLabel.constraint(top: self.topAnchor,
-                                                                     leading: self.leadingAnchor,
-                                                                     bottom: self.bottomAnchor,
-                                                                     trailing: self.trailingAnchor,
-                                                                     padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: self.status.verticalPadding, right: self.status.horizontalPadding))
+                                                                  leading: self.leadingAnchor,
+                                                                  bottom: self.bottomAnchor,
+                                                                  trailing: self.trailingAnchor,
+                                                                  padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: self.status.verticalPadding, right: self.status.horizontalPadding))
     }
     
     private func updateLayout() {
-        self.titleConstraintConstant?[.bottom]?.constant = self.status.verticalPadding
+        self.titleConstraintConstant?[.bottom]?.constant = -self.status.verticalPadding
     }
     
     func updateTitleStatus(to status: Status) {
         self.status = status
+        self.updateLayout()
     }
 }
