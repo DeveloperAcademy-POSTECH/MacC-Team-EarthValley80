@@ -149,6 +149,7 @@
 		381AB41B290A9DF200620635 /* UIComponent */ = {
 			isa = PBXGroup;
 			children = (
+				381AB435290FC96900620635 /* GotoYomojomoNewsView.swift */,
 				381AB41C290A9EFE00620635 /* MainTitleView.swift */,
 			);
 			path = UIComponent;
@@ -181,7 +182,6 @@
 		381AB434290FC8E000620635 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				381AB435290FC96900620635 /* GotoYomojomoNewsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
