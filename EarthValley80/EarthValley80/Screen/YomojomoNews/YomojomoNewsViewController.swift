@@ -33,9 +33,12 @@ final class YomojomoNewsViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(YomojomoNewsTitleCollectionViewCell.self, forCellWithReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className)
+        collectionView.register(EmptySpaceCollectionViewCell.self, forCellWithReuseIdentifier: EmptySpaceCollectionViewCell.className)
         return collectionView
     }()
-    private var newsData: [News] = yomojomoViewDummyData
+
+    private let newsModel = NewsSortingManager()
+    private lazy var newsData = self.newsModel.arrangeNewsData(yomojomoViewDummyData)
 
     // MARK: - life cycle
 
@@ -69,9 +72,15 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className, for: indexPath) as? YomojomoNewsTitleCollectionViewCell else { return UICollectionViewCell() }
-        cell.setData(newsData[indexPath.row])
-        return cell
+        if newsData[indexPath.row].title == nil {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
+            cell.setupLayout()
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className, for: indexPath) as? YomojomoNewsTitleCollectionViewCell else { return UICollectionViewCell() }
+            cell.setData(newsData[indexPath.row])
+            return cell
+        }
     }
 
 }
@@ -83,7 +92,7 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
         // MARK: - width 및 column 설정
 
         var width: CGFloat
-        if newsData[indexPath.item].title.count > Size.standardOfTitle {
+        if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
             width = ((collectionView.frame.width - (Size.cellInterval * 4)) / Size.column) * 2 + Size.cellInterval
         } else {
             width = (collectionView.frame.width - (Size.cellInterval * 4)) / Size.column

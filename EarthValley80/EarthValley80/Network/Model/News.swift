@@ -8,8 +8,8 @@
 import Foundation
 
 struct News {
-    let title: String
-    let category: String
+    let title: String?
+    let category: String?
 }
 
 //TODO: - 더미 데이터, 나중에 지우겠습니다.

@@ -11,6 +11,8 @@
 		381AB41D290A9EFE00620635 /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB41C290A9EFE00620635 /* MainTitleView.swift */; };
 		381AB422290AB6AD00620635 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB421290AB6AD00620635 /* News.swift */; };
 		381AB425290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB424290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift */; };
+		381AB429290AE18D00620635 /* EmptySpaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */; };
+		381AB42F290FB5EE00620635 /* NewsSortingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB42E290FB5EE00620635 /* NewsSortingManager.swift */; };
 		381AB432290FBFFF00620635 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 381AB431290FBFFF00620635 /* Lottie */; };
 		B532C42C290AAA0F001F672B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532C42B290AAA0F001F672B /* NextButton.swift */; };
 		B55BCEDA28FC4C6000AF7E45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BCED928FC4C6000AF7E45 /* AppDelegate.swift */; };
@@ -74,6 +76,8 @@
 		381AB41C290A9EFE00620635 /* MainTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
 		381AB421290AB6AD00620635 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		381AB424290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YomojomoNewsTitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceCollectionViewCell.swift; sourceTree = "<group>"; };
+		381AB42E290FB5EE00620635 /* NewsSortingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSortingManager.swift; sourceTree = "<group>"; };
 		B532C42B290AAA0F001F672B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		B55BCED628FC4C6000AF7E45 /* EarthValley80.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthValley80.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55BCED928FC4C6000AF7E45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -172,8 +176,17 @@
 			isa = PBXGroup;
 			children = (
 				381AB424290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift */,
+				381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		381AB42D290FB5CB00620635 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				381AB42E290FB5EE00620635 /* NewsSortingManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		B55BCECD28FC4C5F00AF7E45 = {
@@ -236,6 +249,7 @@
 		B5BE345328FD96BD00D09BEE /* Global */ = {
 			isa = PBXGroup;
 			children = (
+				381AB42D290FB5CB00620635 /* Manager */,
 				381AB41B290A9DF200620635 /* UIComponent */,
 				B5BE347C28FDA21E00D09BEE /* Literals */,
 				B5BE347728FD9DCF00D09BEE /* Utils */,
@@ -511,6 +525,7 @@
 				B55BCEDA28FC4C6000AF7E45 /* AppDelegate.swift in Sources */,
 				B5BE347928FD9DDE00D09BEE /* UIView+Constraints.swift in Sources */,
 				B5FAC8F72909471000537F58 /* GuidingView.swift in Sources */,
+				381AB42F290FB5EE00620635 /* NewsSortingManager.swift in Sources */,
 				B5BE347E28FDA22F00D09BEE /* ImageLiteral.swift in Sources */,
 				B55BCEDC28FC4C6000AF7E45 /* SceneDelegate.swift in Sources */,
 				381AB419290A9AE500620635 /* Date+Extension.swift in Sources */,
@@ -533,6 +548,7 @@
 				B5BE346C28FD9B7900D09BEE /* NSObject+Extension.swift in Sources */,
 				381AB425290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift in Sources */,
 				B5FAC8F529093CB500537F58 /* NewsGuideViewController.swift in Sources */,
+				381AB429290AE18D00620635 /* EmptySpaceCollectionViewCell.swift in Sources */,
 				B5BE347228FD9C9A00D09BEE /* UIViewController+Extension.swift in Sources */,
 				B5FAC8F12907D8C000537F58 /* BlurredLabel.swift in Sources */,
 				B5BE346E28FD9BB100D09BEE /* UITableView+Extension.swift in Sources */,
