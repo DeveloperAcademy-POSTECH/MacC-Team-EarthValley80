@@ -13,6 +13,7 @@
 		381AB425290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB424290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift */; };
 		381AB432290FBFFF00620635 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 381AB431290FBFFF00620635 /* Lottie */; };
 		381AB436290FC96900620635 /* GotoYomojomoNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB435290FC96900620635 /* GotoYomojomoNewsView.swift */; };
+		381AB44A2911726B00620635 /* mp4TempFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 381AB4492911726B00620635 /* mp4TempFile.json */; };
 		B532C42C290AAA0F001F672B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532C42B290AAA0F001F672B /* NextButton.swift */; };
 		B55BCEDA28FC4C6000AF7E45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BCED928FC4C6000AF7E45 /* AppDelegate.swift */; };
 		B55BCEDC28FC4C6000AF7E45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BCEDB28FC4C6000AF7E45 /* SceneDelegate.swift */; };
@@ -76,6 +77,7 @@
 		381AB421290AB6AD00620635 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		381AB424290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YomojomoNewsTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		381AB435290FC96900620635 /* GotoYomojomoNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoYomojomoNewsView.swift; sourceTree = "<group>"; };
+		381AB4492911726B00620635 /* mp4TempFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mp4TempFile.json; sourceTree = "<group>"; };
 		B532C42B290AAA0F001F672B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		B55BCED628FC4C6000AF7E45 /* EarthValley80.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthValley80.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55BCED928FC4C6000AF7E45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		B5BE345728FD96E400D09BEE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				381AB4492911726B00620635 /* mp4TempFile.json */,
 				B55BCEE228FC4C6000AF7E45 /* Assets.xcassets */,
 				B5BE345928FD970300D09BEE /* Storyboard */,
 			);
@@ -488,6 +491,7 @@
 				B55BCEE628FC4C6000AF7E45 /* LaunchScreen.storyboard in Resources */,
 				B5BE346628FD996D00D09BEE /* NewsFeed.storyboard in Resources */,
 				B5BE345C28FD981C00D09BEE /* MyNews.storyboard in Resources */,
+				381AB44A2911726B00620635 /* mp4TempFile.json in Resources */,
 				B55BCEE328FC4C6000AF7E45 /* Assets.xcassets in Resources */,
 				B5BE346028FD984C00D09BEE /* News.storyboard in Resources */,
 			);
