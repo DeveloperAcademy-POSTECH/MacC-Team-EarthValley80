@@ -13,6 +13,7 @@
 		381AB425290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB424290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift */; };
 		381AB432290FBFFF00620635 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 381AB431290FBFFF00620635 /* Lottie */; };
 		381AB436290FC96900620635 /* GotoYomojomoNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB435290FC96900620635 /* GotoYomojomoNewsView.swift */; };
+		381AB44829116D0D00620635 /* GotoSomewhereButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB44729116D0D00620635 /* GotoSomewhereButton.swift */; };
 		381AB44A2911726B00620635 /* mp4TempFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 381AB4492911726B00620635 /* mp4TempFile.json */; };
 		B532C42C290AAA0F001F672B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532C42B290AAA0F001F672B /* NextButton.swift */; };
 		B55BCEDA28FC4C6000AF7E45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BCED928FC4C6000AF7E45 /* AppDelegate.swift */; };
@@ -77,6 +78,7 @@
 		381AB421290AB6AD00620635 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		381AB424290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YomojomoNewsTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		381AB435290FC96900620635 /* GotoYomojomoNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoYomojomoNewsView.swift; sourceTree = "<group>"; };
+		381AB44729116D0D00620635 /* GotoSomewhereButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoSomewhereButton.swift; sourceTree = "<group>"; };
 		381AB4492911726B00620635 /* mp4TempFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mp4TempFile.json; sourceTree = "<group>"; };
 		B532C42B290AAA0F001F672B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		B55BCED628FC4C6000AF7E45 /* EarthValley80.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthValley80.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +155,7 @@
 			children = (
 				381AB435290FC96900620635 /* GotoYomojomoNewsView.swift */,
 				381AB41C290A9EFE00620635 /* MainTitleView.swift */,
+				381AB44729116D0D00620635 /* GotoSomewhereButton.swift */,
 			);
 			path = UIComponent;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				B5BE347E28FDA22F00D09BEE /* ImageLiteral.swift in Sources */,
 				B55BCEDC28FC4C6000AF7E45 /* SceneDelegate.swift in Sources */,
 				381AB419290A9AE500620635 /* Date+Extension.swift in Sources */,
+				381AB44829116D0D00620635 /* GotoSomewhereButton.swift in Sources */,
 				B5FAC8FB290A19F800537F58 /* QuestionTitleStackView.swift in Sources */,
 				B5FAC8F92909FD0300537F58 /* FiveWsAndOneHViewController.swift in Sources */,
 				B5BE345E28FD982700D09BEE /* MyNewsViewController.swift in Sources */,
