@@ -1,5 +1,5 @@
 //
-//  ArrangeManager.swift
+//  NewsSortingManager.swift
 //  EarthValley80
 //
 //  Created by LeeJiSoo on 2022/10/31.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ArrangeManager {
+struct NewsSortingManager {
 
     private enum Size {
         static let standardOfTitle: Int = 30
