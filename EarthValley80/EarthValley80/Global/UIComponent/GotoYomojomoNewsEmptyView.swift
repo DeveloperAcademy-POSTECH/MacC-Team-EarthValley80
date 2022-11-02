@@ -81,7 +81,7 @@ final class GotoYomojomoNewsEmptyView: UIView {
 
     func changeLabelText(greetingComments: String,
                          lottieImageTitle: String,
-                         buttonImage: UIImage?,
+                         buttonImage: UIImage,
                          buttonTitle: String) {
         self.greetingLabel.text = greetingComments
         self.lottieName = lottieImageTitle
