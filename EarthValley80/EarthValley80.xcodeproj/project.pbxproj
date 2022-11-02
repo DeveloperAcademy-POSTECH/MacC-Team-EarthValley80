@@ -12,7 +12,7 @@
 		381AB422290AB6AD00620635 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB421290AB6AD00620635 /* News.swift */; };
 		381AB425290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB424290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift */; };
 		381AB432290FBFFF00620635 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 381AB431290FBFFF00620635 /* Lottie */; };
-		381AB436290FC96900620635 /* GotoYomojomoNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB435290FC96900620635 /* GotoYomojomoNewsView.swift */; };
+		381AB436290FC96900620635 /* GotoYomojomoNewsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */; };
 		381AB44829116D0D00620635 /* GotoSomewhereButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB44729116D0D00620635 /* GotoSomewhereButton.swift */; };
 		381AB44A2911726B00620635 /* mp4TempFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 381AB4492911726B00620635 /* mp4TempFile.json */; };
 		B532C42C290AAA0F001F672B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532C42B290AAA0F001F672B /* NextButton.swift */; };
@@ -77,7 +77,7 @@
 		381AB41C290A9EFE00620635 /* MainTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
 		381AB421290AB6AD00620635 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		381AB424290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YomojomoNewsTitleCollectionViewCell.swift; sourceTree = "<group>"; };
-		381AB435290FC96900620635 /* GotoYomojomoNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoYomojomoNewsView.swift; sourceTree = "<group>"; };
+		381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoYomojomoNewsEmptyView.swift; sourceTree = "<group>"; };
 		381AB44729116D0D00620635 /* GotoSomewhereButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoSomewhereButton.swift; sourceTree = "<group>"; };
 		381AB4492911726B00620635 /* mp4TempFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mp4TempFile.json; sourceTree = "<group>"; };
 		B532C42B290AAA0F001F672B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -154,7 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				381AB41C290A9EFE00620635 /* MainTitleView.swift */,
-				381AB435290FC96900620635 /* GotoYomojomoNewsView.swift */,
+				381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */,
 				381AB44729116D0D00620635 /* GotoSomewhereButton.swift */,
 			);
 			path = UIComponent;
@@ -532,7 +532,7 @@
 				B532C42C290AAA0F001F672B /* NextButton.swift in Sources */,
 				B5BE347428FD9CD200D09BEE /* UIView+Extension.swift in Sources */,
 				B5BE347028FD9C2C00D09BEE /* UICollectionView+Extension.swift in Sources */,
-				381AB436290FC96900620635 /* GotoYomojomoNewsView.swift in Sources */,
+				381AB436290FC96900620635 /* GotoYomojomoNewsEmptyView.swift in Sources */,
 				B5BE348028FDA2A200D09BEE /* StringLiteral.swift in Sources */,
 				B5FAC8DF2907786F00537F58 /* NewsTitleView.swift in Sources */,
 				B55BCEDA28FC4C6000AF7E45 /* AppDelegate.swift in Sources */,

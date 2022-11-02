@@ -1,5 +1,5 @@
 //
-//  GotoYomojomoNewsView.swift
+//  GotoYomojomoNewsEmptyView.swift
 //  EarthValley80
 //
 //  Created by LeeJiSoo on 2022/10/31.
@@ -9,7 +9,7 @@ import UIKit
 
 import Lottie
 
-final class GotoYomojomoNewsView: UIView {
+final class GotoYomojomoNewsEmptyView: UIView {
 
     private enum Size {
         static let lottieViewWidth: CGFloat = 407
