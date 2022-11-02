@@ -13,7 +13,7 @@ class SideTabbarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    @IBSegueAction func SwiftUI(_ coder: NSCoder) -> UIViewController? {
+    @IBSegueAction func swiftUI(_ coder: NSCoder) -> UIViewController? {
         return UIHostingController(coder: coder, rootView: SideTabbarView())
     }
 
