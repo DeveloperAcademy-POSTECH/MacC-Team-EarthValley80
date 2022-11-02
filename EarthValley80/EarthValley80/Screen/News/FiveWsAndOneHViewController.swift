@@ -80,9 +80,9 @@ final class FiveWsAndOneHViewController: UIViewController {
         
         self.view.addSubview(self.titleHeaderView)
         self.titleHeaderView.constraint(top: self.captionLabel.bottomAnchor,
-                                      leading: self.view.leadingAnchor,
-                                      trailing: self.questionView.leadingAnchor,
-                                      padding: UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 10))
+                                        leading: self.view.leadingAnchor,
+                                        trailing: self.questionView.leadingAnchor,
+                                        padding: UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 10))
         
         self.view.addSubview(self.newsTableView)
         self.newsTableView.constraint(top: self.titleHeaderView.bottomAnchor,

@@ -78,12 +78,16 @@ final class NewsTitleView: UIView {
         return label
     }()
     
-    private var status: Status {
+    private(set) var status: Status {
         willSet {
+            print(newValue)
             self.titleLabel.font = .font(.bold, ofSize: newValue.fontSize)
             self.titleLabel.textColor = newValue.textColor
+            self.labelConstraint?[.bottom]?.isActive = newValue == .compact
         }
     }
+    
+    private var labelConstraint: [ConstraintType: NSLayoutConstraint]?
     
     var heightOfLabel: CGFloat {
         let label = UILabel()
@@ -115,13 +119,13 @@ final class NewsTitleView: UIView {
     
     private func setupLayout() {
         self.addSubview(self.titleLabel)
-        let labelConstraint = self.titleLabel.constraint(top: self.topAnchor,
-                                                         leading: self.leadingAnchor,
-                                                         bottom: self.bottomAnchor,
-                                                         trailing: self.trailingAnchor,
-                                                         padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: self.status.bottomSpacing, right: self.status.horizontalPadding))
+        self.labelConstraint = self.titleLabel.constraint(top: self.topAnchor,
+                                                          leading: self.leadingAnchor,
+                                                          bottom: self.bottomAnchor,
+                                                          trailing: self.trailingAnchor,
+                                                          padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: self.status.bottomSpacing, right: self.status.horizontalPadding))
         
-        labelConstraint[.bottom]?.isActive = self.status == .compact
+        self.labelConstraint?[.bottom]?.isActive = self.status == .compact
     }
     
     func updateTitleStatus(to status: Status) {

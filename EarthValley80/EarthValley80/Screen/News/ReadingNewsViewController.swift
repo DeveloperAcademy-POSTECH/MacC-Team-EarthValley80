@@ -162,6 +162,7 @@ final class ReadingNewsViewController: UIViewController {
         switch status {
         default:
             self.moveQuestionView(to: .left)
+            self.titleHeaderView.updateTitleStatus(to: .compact)
             self.nextButton.isHidden = true
             self.newsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
             self.view.removeGestureRecognizer(self.tapGestureRecognizer)
@@ -206,6 +207,7 @@ extension ReadingNewsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension ReadingNewsViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard self.titleHeaderView.status != .compact else { return }
         let offsetY = scrollView.contentOffset.y
         let isScrolled = offsetY > 0
         
