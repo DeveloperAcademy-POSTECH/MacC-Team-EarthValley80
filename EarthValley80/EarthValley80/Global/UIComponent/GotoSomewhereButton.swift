@@ -11,8 +11,9 @@ final class GotoSomewhereButton: UIButton {
 
     private enum Size {
         static let buttonContentEdgeIneset: CGFloat = -10.0
-        static let buttonCornerRadius: CGFloat = 26.5
         static let buttonFontSize: CGFloat = 16.0
+        static let buttonHeigth: CGFloat = 50.0
+        static let buttonImageSize: UIImage.SymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 35)
     }
 
     // MARK: - init
@@ -30,15 +31,17 @@ final class GotoSomewhereButton: UIButton {
     // MARK: - func
 
     private func configureUI() {
+        self.invalidateIntrinsicContentSize()
+        self.titleLabel?.textAlignment = .center
         self.backgroundColor = .evyBlack1
-        self.titleLabel?.font = .font(.medium, ofSize: Size.buttonFontSize)
-        self.contentMode = .scaleToFill
-        self.imageEdgeInsets = UIEdgeInsets(top: Size.buttonContentEdgeIneset,
-                                            left: Size.buttonContentEdgeIneset,
-                                            bottom: Size.buttonContentEdgeIneset,
-                                            right: 0)
-        self.titleEdgeInsets = UIEdgeInsets(top: 0, left: Size.buttonContentEdgeIneset, bottom: 0, right: 0)
         self.imageView?.contentMode = .scaleAspectFit
-        self.layer.cornerRadius = Size.buttonCornerRadius
+        self.constraint(.heightAnchor, constant: Size.buttonHeigth)
+
+        // TODO: - 15버젼에서 contentinset넣어야하고, cornerradius넣어야함
+        if #available(iOS 15.0, *) {
+            configuration?.preferredSymbolConfigurationForImage = Size.buttonImageSize
+        } else {
+            self.contentEdgeInsets = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 30)
+        }
     }
 }
