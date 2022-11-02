@@ -166,6 +166,10 @@ final class ReadingNewsViewController: UIViewController {
             self.headerFrameConstraints?[.heightAnchor]?.constant = self.titleHeaderView.heightOfLabel
             self.nextButton.isHidden = true
             self.newsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+            
+            guard let contentCell = self.newsTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NewsContentTableViewCell else { return }
+            contentCell.status = .compact
+            
             self.view.removeGestureRecognizer(self.tapGestureRecognizer)
         }
     }
