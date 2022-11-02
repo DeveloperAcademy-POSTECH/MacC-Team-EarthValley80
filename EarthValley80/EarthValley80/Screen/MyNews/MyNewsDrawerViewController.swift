@@ -9,7 +9,7 @@ import UIKit
 
 import Lottie
 
-class MyNewsDrawerViewController: UIViewController {
+final class MyNewsDrawerViewController: UIViewController {
 
     private enum Size {
         static let standardOfTitle: Int = 30
@@ -31,11 +31,11 @@ class MyNewsDrawerViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .vertical
-//        layout.minimumLineSpacing = Size.cellInterval
-//        layout.minimumInteritemSpacing = Size.cellInterval
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//        collectionView.register(YomojomoNewsTitleCollectionViewCell.self, forCellWithReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className)
+        layout.minimumLineSpacing = Size.cellInterval
+        layout.minimumInteritemSpacing = Size.cellInterval
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(MyNewsDrawerCollectionViewCell.self, forCellWithReuseIdentifier: MyNewsDrawerCollectionViewCell.className)
         return collectionView
     }()
 
@@ -45,6 +45,7 @@ class MyNewsDrawerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLayout()
     }
 
     // MARK: - func
@@ -72,10 +73,10 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }
+        cell.setData(newsData[indexPath.row])
+        return cell
     }
-
-
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
