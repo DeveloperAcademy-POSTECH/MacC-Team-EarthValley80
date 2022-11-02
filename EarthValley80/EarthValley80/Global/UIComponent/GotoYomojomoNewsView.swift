@@ -38,7 +38,7 @@ final class GotoYomojomoNewsView: UIView {
         let animationView = LottieAnimationView(name: lottieName)
         animationView.play()
         animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .repeat(2)
+        animationView.loopMode = .loop
         return animationView
     }()
 
