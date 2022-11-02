@@ -41,11 +41,8 @@ final class GotoYomojomoNewsView: UIView {
         animationView.loopMode = .repeat(2)
         return animationView
     }()
-    private lazy var gotoButton: GotoSomewhereButton = {
-        let button = GotoSomewhereButton()
-        return button
-    }()
 
+    private let gotoButton = GotoSomewhereButton()
     private lazy var lottieName: String = ""
 
     // MARK: - init
