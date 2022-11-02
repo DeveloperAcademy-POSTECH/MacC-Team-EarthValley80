@@ -28,7 +28,7 @@ final class MyNewsDrawerViewController: UIViewController {
         return titleView
     }()
     private lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
+        let layout = LeftAlignCollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = Size.cellInterval
