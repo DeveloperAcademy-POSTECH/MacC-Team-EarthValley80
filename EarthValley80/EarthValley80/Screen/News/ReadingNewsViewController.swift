@@ -157,19 +157,27 @@ final class ReadingNewsViewController: UIViewController {
         })
     }
     
-    // TODO: - status type enum 값에 따라서 전체 뷰가 바뀔 것
+    private func updateContentCellStatus(to status: NewsContentTableViewCell.Status) {
+        let indexPath = IndexPath(row: 0, section: 0)
+        guard let contentCell = self.newsTableView.cellForRow(at: indexPath) as? NewsContentTableViewCell else { return }
+        
+        contentCell.status = status
+        
+        self.newsTableView.beginUpdates()
+        self.newsTableView.endUpdates()
+        self.newsTableView.scrollToRow(at: indexPath, at: .top, animated: false)
+    }
+    
+    // TODO: - status type enum 값에 따라서 내부에 들어가는 값 설정되면 될 듯
     private func updateEntireView(with status: Int) {
         switch status {
         default:
             self.moveQuestionView(to: .left)
+            self.updateContentCellStatus(to: .compact)
             self.titleHeaderView.updateTitleStatus(to: .compact)
             self.headerFrameConstraints?[.heightAnchor]?.constant = self.titleHeaderView.heightOfLabel
             self.nextButton.isHidden = true
-            self.newsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-            
-            guard let contentCell = self.newsTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NewsContentTableViewCell else { return }
-            contentCell.status = .compact
-            
+            self.captionLabel.isHidden = true
             self.view.removeGestureRecognizer(self.tapGestureRecognizer)
         }
     }
