@@ -39,6 +39,7 @@ final class MyNewsDrawerViewController: UIViewController {
         return collectionView
     }()
 
+    // TODO: - 더미데이터 입니다. 추후 변경 예정입니다.
     private let newsData: [News] = yomojomoViewDummyData
 
     // MARK: - init
