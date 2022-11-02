@@ -14,7 +14,6 @@ final class GotoYomojomoNewsEmptyView: UIView {
     private enum Size {
         static let lottieViewWidth: CGFloat = 407
         static let lotteiViewHeight: CGFloat = 240
-        static let buttonWidth: CGFloat = 205
         static let buttonHeight: CGFloat = 50
     }
 
@@ -62,8 +61,9 @@ final class GotoYomojomoNewsEmptyView: UIView {
     private func setupLayout() {
         self.addSubview(self.stackview)
         self.stackview.constraint(top: self.topAnchor,
-                             leading: self.leadingAnchor,
-                             padding: UIEdgeInsets.zero)
+                                  leading: self.leadingAnchor,
+                                  trailing: self.trailingAnchor,
+                                  padding: UIEdgeInsets.zero)
 
         self.stackview.addArrangedSubview(self.greetingLabel)
         self.stackview.addArrangedSubview(self.lottieView)
@@ -71,9 +71,6 @@ final class GotoYomojomoNewsEmptyView: UIView {
 
         self.lottieView.constraint(.widthAnchor, constant: Size.lottieViewWidth)
         self.lottieView.constraint(.heightAnchor, constant: Size.lotteiViewHeight)
-
-        self.gotoButton.constraint(.widthAnchor, constant: Size.buttonWidth)
-        self.gotoButton.constraint(.heightAnchor, constant: Size.buttonHeight)
 
         self.stackview.setCustomSpacing(20, after: self.greetingLabel)
         self.stackview.setCustomSpacing(53, after: self.lottieView)
