@@ -84,7 +84,7 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
 extension MyNewsDrawerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var width: CGFloat
-        if newsData[indexPath.item].title.count > Size.standardOfTitle {
+        if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
             width = ((collectionView.frame.width - (Size.cellInterval * 4)) / Size.column) * 2 + Size.cellInterval
         } else {
             width = (collectionView.frame.width - (Size.cellInterval * 4)) / Size.column
