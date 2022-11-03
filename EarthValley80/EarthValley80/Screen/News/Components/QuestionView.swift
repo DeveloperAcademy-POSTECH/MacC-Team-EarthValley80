@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol QuestionViewDelegate: AnyObject {
+    func questionView(_ questionView: QuestionView, goTo step: QuestionView.Step)
+}
+
 final class QuestionView: UIView {
     
     private enum Size {
@@ -32,6 +36,11 @@ final class QuestionView: UIView {
         }
     }
     
+    enum Step {
+        case start
+        case who
+    }
+    
     // MARK: - property
     
     private lazy var contentTextView: UITextView = {
@@ -44,8 +53,13 @@ final class QuestionView: UIView {
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 83)
         return textView
     }()
-    private let previousButton: UIButton = {
+    private lazy var previousButton: UIButton = {
         let button = UIButton(type: .system)
+        let action = UIAction { [weak self] _ in
+            guard let self = self else { return }
+            self.delegate?.questionView(self, goTo: .start)
+        }
+        button.addAction(action, for: .touchUpInside)
         button.tintColor = .black
         button.setImage(ImageLiteral.icArrowLeft, for: .normal)
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .large), forImageIn: .normal)
@@ -85,6 +99,8 @@ final class QuestionView: UIView {
             self.contentTextView.text = newValue
         }
     }
+    
+    weak var delegate: QuestionViewDelegate?
 
     // MARK: - init
     

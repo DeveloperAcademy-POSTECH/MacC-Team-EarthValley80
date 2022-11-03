@@ -25,7 +25,7 @@ final class ReadingNewsViewController: UIViewController {
         var offset: CGFloat {
             switch self {
             case .left:
-                return 16
+                return -16
             case .right:
                 return Size.partOfQuestionViewFrameWidth
             }
@@ -68,8 +68,12 @@ final class ReadingNewsViewController: UIViewController {
         button.addAction(action, for: .touchUpInside)
         return button
     }()
+    private lazy var questionView: QuestionView = {
+        let view = QuestionView()
+        view.delegate = self
+        return view
+    }()
     private let backButton = BackButton()
-    private let questionView = QuestionView()
     private let titleHeaderView = NewsTitleView(status: .expanded)
     
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
@@ -152,7 +156,7 @@ final class ReadingNewsViewController: UIViewController {
         let durationTime: CGFloat = 0.9
         
         UIView.animate(withDuration: durationTime, animations: {
-            self.questionViewConstraints?[.trailing]?.constant = -direction.offset
+            self.questionViewConstraints?[.trailing]?.constant = direction.offset
             self.view.layoutIfNeeded()
         })
     }
@@ -171,7 +175,7 @@ final class ReadingNewsViewController: UIViewController {
     // TODO: - status type enum 값에 따라서 내부에 들어가는 값 설정되면 될 듯
     private func updateEntireView(with status: Int) {
         switch status {
-        default:
+        case 0:
             self.moveQuestionView(to: .left)
             self.updateContentCellStatus(to: .compact)
             self.titleHeaderView.updateTitleStatus(to: .compact)
@@ -179,6 +183,14 @@ final class ReadingNewsViewController: UIViewController {
             self.nextButton.isHidden = true
             self.captionLabel.isHidden = true
             self.view.removeGestureRecognizer(self.tapGestureRecognizer)
+        default:
+            self.moveQuestionView(to: .right)
+            self.updateContentCellStatus(to: .expanded)
+            self.titleHeaderView.updateTitleStatus(to: .expanded)
+            self.headerFrameConstraints?[.heightAnchor]?.constant = self.titleHeaderView.heightOfLabel
+            self.nextButton.isHidden = false
+            self.captionLabel.isHidden = false
+            self.view.addGestureRecognizer(self.tapGestureRecognizer)
         }
     }
     
@@ -226,5 +238,15 @@ extension ReadingNewsViewController: UITableViewDelegate {
         
         self.titleHeaderView.updateTitleStatus(to: isScrolled ? .scrolled : .expanded)
         self.headerFrameConstraints?[.heightAnchor]?.constant = self.titleHeaderView.heightOfLabel
+    }
+}
+
+// MARK: - QuestionViewDelegate
+extension ReadingNewsViewController: QuestionViewDelegate {
+    func questionView(_ questionView: QuestionView, goTo step: QuestionView.Step) {
+        switch step {
+        default:
+            self.updateEntireView(with: 2)
+        }
     }
 }
