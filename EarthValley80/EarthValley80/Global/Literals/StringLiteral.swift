@@ -20,10 +20,13 @@ enum StringLiteral {
     static let inferingNewsTitle = "이 기사는 어떤 내용의 기사일까요?"
     static let answerWhoTitle = "이 기사의 주인공은 누구인가요?"    
     static let yomojomoNewsTitle = "한 주의 요모조모 뉴스"
+    static let myNewsTitle = "나의 뉴스 서랍"
 
     // MARK: - title description
 
     static let yomojomoNewsTitleDescription = "마음에 드는 뉴스를 선택하여 읽고 글을 쓸 수 있어요!"
+    static let myNewsTitleDescription = "내가 쓴 뉴스을 이곳에서 볼 수 있어요"
+    static let greetingComments = "안녕!\n기사를 읽고 요약해보세요!"
 
     // MARK: - placeholder
     
