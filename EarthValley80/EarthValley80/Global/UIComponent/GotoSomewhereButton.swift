@@ -54,4 +54,9 @@ final class GotoSomewhereButton: UIButton {
             self.layer.cornerRadius = Size.buttonCornerRadius
         }
     }
+
+    func changeButtonContents(buttonImage: UIImage, buttonTitle: String) {
+        self.setImage(buttonImage, for: .normal)
+        self.setTitle(buttonTitle, for: .normal)
+    }
 }
