@@ -14,27 +14,52 @@ final class NewsTitleView: UIView {
         static let minimumHorizontalPadding: CGFloat = 56.0
         static let originalFontSize: CGFloat = 54.0
         static let minimumFontSize: CGFloat = 40.0
+        static let questionViewPadding: CGFloat = 16.0
+        static let originalBottomSpacing: CGFloat = 50.0
+        static let scrolledBottomSpacing: CGFloat = 40.0
+        static let minimumBottomSpacing: CGFloat = 24.0
     }
     
     enum Status {
         case expanded
         case compact
+        case scrolled
         
         var fontSize: CGFloat {
             switch self {
             case .expanded:
                 return Size.originalFontSize
-            case .compact:
+            default:
                 return Size.minimumFontSize
+            }
+        }
+        
+        var textColor: UIColor {
+            switch self {
+            case .scrolled:
+                return .evyWhite.withAlphaComponent(0.4)
+            default:
+                return .evyWhite
             }
         }
         
         var horizontalPadding: CGFloat {
             switch self {
-            case .expanded:
-                return Size.horizontalPadding
             case .compact:
                 return Size.minimumHorizontalPadding
+            default:
+                return Size.horizontalPadding
+            }
+        }
+        
+        var bottomSpacing: CGFloat {
+            switch self {
+            case .expanded:
+                return Size.originalBottomSpacing
+            case .scrolled:
+                return Size.scrolledBottomSpacing
+            case .compact:
+                return Size.minimumBottomSpacing
             }
         }
     }
@@ -48,13 +73,31 @@ final class NewsTitleView: UIView {
         label.text = "인류보다 로봇 진화 속도가 더 빠르대요, 청소로봇은 '루시'…생각하는 로봇 등장"
         label.numberOfLines = 0
         label.textColor = .white
-        label.font = .font(.bold, ofSize: status.fontSize)
+        label.font = .font(.bold, ofSize: self.status.fontSize)
         label.setLineSpacing(kernValue: -2.0, lineHeightMultiple: 1.16)
         return label
     }()
     
-    private let status: Status
-
+    private var status: Status {
+        willSet {
+            self.titleLabel.font = .font(.bold, ofSize: newValue.fontSize)
+            self.titleLabel.textColor = newValue.textColor
+        }
+    }
+    
+    var heightOfLabel: CGFloat {
+        let label = UILabel()
+        let text = self.titleLabel.text
+        
+        label.text = text
+        label.numberOfLines = 0
+        label.font = .font(.bold, ofSize: self.status.fontSize)
+        label.setLineSpacing(kernValue: -2.0, lineHeightMultiple: 1.16)
+        label.sizeToFit()
+        
+        return label.frame.height + self.status.bottomSpacing * 2
+    }
+    
     // MARK: - init
     
     init(status: Status) {
@@ -72,7 +115,16 @@ final class NewsTitleView: UIView {
     
     private func setupLayout() {
         self.addSubview(self.titleLabel)
-        self.titleLabel.constraint(to: self,
-                                   insets: UIEdgeInsets(top: 0, left: status.horizontalPadding, bottom: -40, right: -status.horizontalPadding))
+        let labelConstraint = self.titleLabel.constraint(top: self.topAnchor,
+                                                         leading: self.leadingAnchor,
+                                                         bottom: self.bottomAnchor,
+                                                         trailing: self.trailingAnchor,
+                                                         padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: self.status.bottomSpacing, right: self.status.horizontalPadding))
+        
+        labelConstraint[.bottom]?.isActive = self.status == .compact
+    }
+    
+    func updateTitleStatus(to status: Status) {
+        self.status = status
     }
 }

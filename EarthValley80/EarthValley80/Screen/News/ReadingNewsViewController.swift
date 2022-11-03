@@ -74,6 +74,7 @@ final class ReadingNewsViewController: UIViewController {
     
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
     private var questionViewConstraints: [ConstraintType: NSLayoutConstraint]?
+    private var headerFrameConstraints: [Frame: NSLayoutConstraint]?
     
     // MARK: - life cycle
 
@@ -103,12 +104,19 @@ final class ReadingNewsViewController: UIViewController {
                                      leading: self.view.leadingAnchor,
                                      padding: UIEdgeInsets(top: 76, left: 96, bottom: 0, right: 0))
         
+        self.view.addSubview(self.titleHeaderView)
+        self.titleHeaderView.constraint(top: self.captionLabel.bottomAnchor,
+                                        leading: self.view.leadingAnchor,
+                                        trailing: self.questionView.leadingAnchor,
+                                        padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0))
+        self.headerFrameConstraints = self.titleHeaderView.constraint(.heightAnchor, constant: self.titleHeaderView.heightOfLabel)
+        
         self.view.addSubview(self.newsTableView)
-        self.newsTableView.constraint(top: self.captionLabel.bottomAnchor,
+        self.newsTableView.constraint(top: self.titleHeaderView.bottomAnchor,
                                       leading: self.view.leadingAnchor,
                                       bottom: self.view.bottomAnchor,
                                       trailing: self.questionView.leadingAnchor,
-                                      padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 10))
+                                      padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10))
         
         self.view.addSubview(self.nextButton)
         self.nextButton.constraint(bottom: self.view.bottomAnchor,
@@ -197,7 +205,11 @@ extension ReadingNewsViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension ReadingNewsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.titleHeaderView
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let isScrolled = offsetY > 0
+        
+        self.titleHeaderView.updateTitleStatus(to: isScrolled ? .scrolled : .expanded)
+        self.headerFrameConstraints?[.heightAnchor]?.constant = self.titleHeaderView.heightOfLabel
     }
 }
