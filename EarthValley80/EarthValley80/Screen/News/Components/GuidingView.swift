@@ -161,6 +161,10 @@ final class GuidingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        self.lottieView.removeFromSuperview()
+    }
+    
     // MARK: - func
     
     private func setupMainComponentLayout(guidingType: GuideType) {
