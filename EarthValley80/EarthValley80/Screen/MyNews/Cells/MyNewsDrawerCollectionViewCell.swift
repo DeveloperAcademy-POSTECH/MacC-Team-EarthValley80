@@ -62,7 +62,7 @@ final class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
     // MARK: - func
 
     private func setupLayout() {
-        self.addSubview(self.newsBackgroundView)
+        self.contentView.addSubview(self.newsBackgroundView)
         self.newsBackgroundView.constraint(to: self)
 
         self.addSubview(self.newsCategoryLabel)
