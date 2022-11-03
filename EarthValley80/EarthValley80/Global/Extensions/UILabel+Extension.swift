@@ -18,8 +18,8 @@ extension UILabel {
         paragraphStyle.lineHeightMultiple = lineHeightMultiple
         
         let attributedString: NSMutableAttributedString
-        if let labelattributedText = self.attributedText {
-            attributedString = NSMutableAttributedString(attributedString: labelattributedText)
+        if let labelAttributedText = self.attributedText {
+            attributedString = NSMutableAttributedString(attributedString: labelAttributedText)
         } else {
             attributedString = NSMutableAttributedString(string: labelText)
         }
@@ -44,5 +44,22 @@ extension UILabel {
             
             self.attributedText = attributedString
         }
+    }
+    
+    func applyFont(to targetString: String, with font: UIFont) {
+        guard let labelText = self.text else { return }
+        
+        let attributedString: NSMutableAttributedString
+        if let labelAttributedText = self.attributedText {
+            attributedString = NSMutableAttributedString(attributedString: labelAttributedText)
+        } else {
+            attributedString = NSMutableAttributedString(string: labelText)
+        }
+        
+        attributedString.addAttribute(NSAttributedString.Key.font,
+                                      value: font,
+                                      range: NSMakeRange(0, attributedString.length))
+        
+        self.attributedText = attributedString
     }
 }

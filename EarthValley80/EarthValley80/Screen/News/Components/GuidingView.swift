@@ -18,11 +18,11 @@ final class GuidingView: UIView {
         var mainText: String {
             switch self {
             case .scrollGuide:
-                return StringLiteral.scrollGuideText
+                return "\(StringLiteral.scrollGuideCaptionText)\n\(StringLiteral.scrollGuideText)"
             case .touchGuide:
-                return StringLiteral.highlightTopTouchGuideText
+                return "\(StringLiteral.hightlightGuideCaptionText)\n\(StringLiteral.highlightTopTouchGuideText)"
             case .vocabularyGuide:
-                return StringLiteral.vocabularyGuideText
+                return "\(StringLiteral.vocabularyGuideCaptionText)\n\(StringLiteral.vocabularyGuideText)"
             case .complete:
                 return StringLiteral.completeGuideText
             }
@@ -36,6 +36,30 @@ final class GuidingView: UIView {
                 return StringLiteral.vocabularyGuidesubText
             default:
                 return nil
+            }
+        }
+        
+        var captionText: String {
+            switch self {
+            case .scrollGuide:
+                return StringLiteral.scrollGuideCaptionText
+            case .touchGuide:
+                return StringLiteral.hightlightGuideCaptionText
+            case .vocabularyGuide:
+                return StringLiteral.vocabularyGuideCaptionText
+            case .complete:
+                return ""
+            }
+        }
+        
+        var textAlignment: NSTextAlignment {
+            switch self {
+            case .touchGuide:
+                return .right
+            case .complete:
+                return .center
+            default:
+                return .left
             }
         }
         
@@ -88,7 +112,7 @@ final class GuidingView: UIView {
         let label = UILabel()
         label.font = .font(.medium, ofSize: 16)
         label.textColor = .evyWhite
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
     
@@ -96,7 +120,7 @@ final class GuidingView: UIView {
         let label = UILabel()
         label.font = .font(.medium, ofSize: 16)
         label.textColor = .evyWhite
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
     
@@ -119,14 +143,19 @@ final class GuidingView: UIView {
     
     private func setupMainComponent(guidingType: GuideType) {
         self.addSubview(self.mainGuideTextLabel)
-        let mainTextConstraint = self.setupLayout(with: self.mainGuideTextLabel, edgeInset: guidingType.mainTextLayout)
-        NSLayoutConstraint.activate(mainTextConstraint)
+        self.mainGuideTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.setupLayout(with: self.mainGuideTextLabel, edgeInset: guidingType.mainTextLayout)
+        
         self.mainGuideTextLabel.text = guidingType.mainText
+        self.mainGuideTextLabel.applyColor(to: guidingType.captionText, with: .evyWhite.withAlphaComponent(0.3))
+        self.mainGuideTextLabel.applyFont(to: guidingType.captionText, with: .font(.medium, ofSize: 12))
         self.mainGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
+        self.mainGuideTextLabel.textAlignment = guidingType.textAlignment
         
         self.addSubview(self.mainGuideImageView)
-        let mainImageConstraint = self.setupLayout(with: self.mainGuideImageView, edgeInset: guidingType.mainImageLayout)
-        NSLayoutConstraint.activate(mainImageConstraint)
+        self.mainGuideImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.setupLayout(with: self.mainGuideImageView, edgeInset: guidingType.mainImageLayout)
+        
         self.mainGuideImageView.image = guidingType.mainImage
     }
     
@@ -134,35 +163,29 @@ final class GuidingView: UIView {
         guard let subText = guidingType.subText else { return }
         
         self.addSubview(self.subGuideTextLabel)
-        let subTextConstraint = self.setupLayout(with: self.subGuideTextLabel, edgeInset: guidingType.subTextLayout)
-        NSLayoutConstraint.activate(subTextConstraint)
+        self.subGuideTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.setupLayout(with: self.subGuideTextLabel, edgeInset: guidingType.subTextLayout)
+        
         self.subGuideTextLabel.text = subText
         self.subGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
+        self.subGuideTextLabel.textAlignment = guidingType.textAlignment
     }
     
-    private func setupLayout(with subview: UIView, edgeInset: UIEdgeInsets) -> [NSLayoutConstraint] {
-        var constraint: [NSLayoutConstraint] = []
-        
+    private func setupLayout(with subview: UIView, edgeInset: UIEdgeInsets) {
         if edgeInset.top != 0 {
-            let topConstraint = subview.topAnchor.constraint(equalTo: self.topAnchor, constant: edgeInset.top)
-            constraint.append(topConstraint)
+            subview.topAnchor.constraint(equalTo: self.topAnchor, constant: edgeInset.top).isActive = true
         }
         
         if edgeInset.left != 0 {
-            let leadingConstraint = subview.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: edgeInset.left)
-            constraint.append(leadingConstraint)
+            subview.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: edgeInset.left).isActive = true
         }
         
         if edgeInset.bottom != 0 {
-            let bottomConstraint = subview.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: edgeInset.bottom)
-            constraint.append(bottomConstraint)
+            subview.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: edgeInset.bottom).isActive = true
         }
         
         if edgeInset.right != 0 {
-            let trailingConstraint = subview.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: edgeInset.right)
-            constraint.append(trailingConstraint)
+            subview.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: edgeInset.right).isActive = true
         }
-        
-        return constraint
     }
 }
