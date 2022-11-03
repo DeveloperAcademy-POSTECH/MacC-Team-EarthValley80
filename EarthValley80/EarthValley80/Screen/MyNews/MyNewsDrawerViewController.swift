@@ -46,7 +46,7 @@ final class MyNewsDrawerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLayout()
+        self.setupLayout()
     }
 
     // MARK: - func
