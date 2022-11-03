@@ -37,7 +37,7 @@ final class QuestionView: UIView {
     }
     
     enum Step {
-        case start
+        case reading
         case who
     }
     
@@ -57,7 +57,7 @@ final class QuestionView: UIView {
         let button = UIButton(type: .system)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            self.delegate?.questionView(self, goTo: .start)
+            self.delegate?.questionView(self, goTo: .reading)
         }
         button.addAction(action, for: .touchUpInside)
         button.tintColor = .black
