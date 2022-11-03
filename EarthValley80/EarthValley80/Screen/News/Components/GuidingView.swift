@@ -31,7 +31,7 @@ final class GuidingView: UIView {
         var subText: String? {
             switch self {
             case .touchGuide:
-                return StringLiteral.highlightBottomTouchGuideText
+                return "\(StringLiteral.hightlightGuideCaptionText)\n\(StringLiteral.highlightBottomTouchGuideText)"
             case .vocabularyGuide:
                 return StringLiteral.vocabularyGuidesubText
             default:
@@ -83,17 +83,20 @@ final class GuidingView: UIView {
             case .touchGuide:
                 return UIEdgeInsets(top: 352, left: 0, bottom: 0, right: -147)
             case .vocabularyGuide:
-                return UIEdgeInsets(top: 0, left: 395, bottom: -196, right: 0)
+                return UIEdgeInsets(top: 0, left: 220, bottom: -199, right: 0)
             case .complete:
-                return UIEdgeInsets.zero
+                return UIEdgeInsets(top: 0, left: UIScreen.main.bounds.size.width/2 - 90, bottom: -194, right: 0)
             }
         }
         
         var subTextLayout: UIEdgeInsets {
             switch self {
+            case .touchGuide:
+                return UIEdgeInsets(top: 594, left: 0, bottom: 0, right: -147)
+            case .vocabularyGuide:
+                return UIEdgeInsets(top: 0, left: 496, bottom: -331, right: 0)
             default:
-                // TODO: - 뷰가 확정되면 넣어줍니다.
-                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                return UIEdgeInsets.zero
             }
         }
         
@@ -167,6 +170,16 @@ final class GuidingView: UIView {
         self.setupLayout(with: self.subGuideTextLabel, edgeInset: guidingType.subTextLayout)
         
         self.subGuideTextLabel.text = subText
+        
+        if guidingType == .touchGuide {
+            self.subGuideTextLabel.applyColor(to: guidingType.captionText, with: .evyWhite.withAlphaComponent(0.3))
+            self.subGuideTextLabel.applyFont(to: guidingType.captionText, with: .font(.medium, ofSize: 12))
+        } else {
+            self.subGuideTextLabel.textColor = .evyWhite.withAlphaComponent(0.2)
+            self.subGuideTextLabel.applyColor(to: "단어", with: .evyWhite)
+            self.subGuideTextLabel.applyFont(to: guidingType.subText ?? "", with: .font(.bold, ofSize: 20))
+        }
+        
         self.subGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
         self.subGuideTextLabel.textAlignment = guidingType.textAlignment
     }

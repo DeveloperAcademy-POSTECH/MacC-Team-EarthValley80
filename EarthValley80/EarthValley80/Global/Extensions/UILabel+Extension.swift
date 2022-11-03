@@ -58,7 +58,7 @@ extension UILabel {
         
         attributedString.addAttribute(NSAttributedString.Key.font,
                                       value: font,
-                                      range: NSMakeRange(0, attributedString.length))
+                                      range: (labelText as NSString).range(of: targetString))
         
         self.attributedText = attributedString
     }
