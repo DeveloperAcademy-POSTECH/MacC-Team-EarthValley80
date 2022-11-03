@@ -85,6 +85,11 @@ final class ReadingNewsViewController: UIViewController {
         self.setupInitialQuestionView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.presentGuideViewController()
+    }
+    
     // MARK: - func
     
     private func setupLayout() {
@@ -166,6 +171,14 @@ final class ReadingNewsViewController: UIViewController {
             self.newsTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
             self.view.removeGestureRecognizer(self.tapGestureRecognizer)
         }
+    }
+    
+    // TODO: - UserDefault 값을 사용해서 뷰 띄워주기 관리
+    private func presentGuideViewController() {
+        let guideViewController = NewsGuideViewController()
+        guideViewController.modalTransitionStyle = .crossDissolve
+        guideViewController.modalPresentationStyle = .overCurrentContext
+        self.present(guideViewController, animated: true)
     }
     
     // MARK: - selector
