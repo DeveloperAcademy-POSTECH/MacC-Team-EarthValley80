@@ -15,6 +15,11 @@ enum ImageLiteral {
     static var icArrowLeft: UIImage { .load(systemName: "arrow.left") }
     static var icXmark: UIImage { .load(systemName: "xmark") }
     
+    // MARK: - image
+    
+    static var imgCoach: UIImage { .load(systemName: "img_coach") }
+    static var imgCoach1: UIImage { .load(systemName: "img_coach1") }
+    static var imgCoach2: UIImage { .load(systemName: "img_coach2") }
 }
 
 extension UIImage {

@@ -41,14 +41,13 @@ final class GuidingView: UIView {
         
         var mainImage: UIImage {
             switch self {
-            default:
-                return UIImage()
-            }
-        }
-        
-        var subImage: UIImage? {
-            switch self {
-            default:
+            case .scrollGuide:
+                return ImageLiteral.imgCoach1
+            case .touchGuide:
+                return ImageLiteral.imgCoach
+            case .vocabularyGuide:
+                return ImageLiteral.imgCoach2
+            case .complete:
                 return UIImage()
             }
         }
@@ -105,7 +104,6 @@ final class GuidingView: UIView {
     }()
     
     private let mainGuideImageView = UIImageView()
-    private lazy var subGuideImageView = UIImageView()
     
     // MARK: - init
 
@@ -140,11 +138,5 @@ final class GuidingView: UIView {
         self.subGuideTextLabel.constraint(to: self, insets: guidingType.subTextLayout)
         self.subGuideTextLabel.text = subText
         self.subGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
-        
-        guard let subImage = guidingType.subImage else { return }
-        
-        self.addSubview(self.subGuideImageView)
-        self.subGuideImageView.constraint(to: self, insets: guidingType.subImageLayout)
-        self.subGuideImageView.image = subImage
     }
 }
