@@ -39,7 +39,6 @@ final class GotoSomewhereButton: UIButton {
             buttonConfig.preferredSymbolConfigurationForImage = Size.buttonImageSize
             buttonConfig.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 30)
             configuration = buttonConfig
-            print("여길지나긴해?")
         } else {
             self.invalidateIntrinsicContentSize()
             self.titleLabel?.textAlignment = .center
