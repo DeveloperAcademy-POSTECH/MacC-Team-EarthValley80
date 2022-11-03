@@ -94,7 +94,7 @@ final class GuidingView: UIView {
             case .touchGuide:
                 return UIEdgeInsets(top: 594, left: 0, bottom: 0, right: -147)
             case .vocabularyGuide:
-                return UIEdgeInsets(top: 0, left: 496, bottom: -331, right: 0)
+                return UIEdgeInsets(top: 0, left: 496, bottom: -345, right: 0)
             default:
                 return UIEdgeInsets.zero
             }
@@ -102,9 +102,14 @@ final class GuidingView: UIView {
         
         var mainImageLayout: UIEdgeInsets {
             switch self {
+            case .scrollGuide:
+                return UIEdgeInsets(top: 0, left: 123, bottom: -206, right: 0)
+            case .touchGuide:
+                return UIEdgeInsets(top: 278, left: 0, bottom: 0, right: -130)
+            case .vocabularyGuide:
+                return UIEdgeInsets(top: 0, left: 395, bottom: -196, right: 0)
             default:
-                // TODO: - 뷰가 확정되면 넣어줍니다.
-                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                return UIEdgeInsets.zero
             }
         }
     }
@@ -133,8 +138,10 @@ final class GuidingView: UIView {
 
     init(guidingType: GuideType) {
         super.init(frame: .zero)
-        self.setupMainComponent(guidingType: guidingType)
-        self.setupSubComponent(guidingType: guidingType)
+        self.setupMainComponentLayout(guidingType: guidingType)
+        self.setupMainComponentConfiguration(guidingType: guidingType)
+        self.setupSubComponentLayout(guidingType: guidingType)
+        self.setupSubComponentConfiguration(guidingType: guidingType)
     }
     
     @available(*, unavailable)
@@ -144,30 +151,36 @@ final class GuidingView: UIView {
     
     // MARK: - func
     
-    private func setupMainComponent(guidingType: GuideType) {
+    private func setupMainComponentLayout(guidingType: GuideType) {
         self.addSubview(self.mainGuideTextLabel)
         self.mainGuideTextLabel.translatesAutoresizingMaskIntoConstraints = false
         self.setupLayout(with: self.mainGuideTextLabel, edgeInset: guidingType.mainTextLayout)
         
+        self.addSubview(self.mainGuideImageView)
+        self.mainGuideImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.setupLayout(with: self.mainGuideImageView, edgeInset: guidingType.mainImageLayout)
+    }
+    
+    private func setupMainComponentConfiguration(guidingType: GuideType) {
         self.mainGuideTextLabel.text = guidingType.mainText
         self.mainGuideTextLabel.applyColor(to: guidingType.captionText, with: .evyWhite.withAlphaComponent(0.3))
         self.mainGuideTextLabel.applyFont(to: guidingType.captionText, with: .font(.medium, ofSize: 12))
         self.mainGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
         self.mainGuideTextLabel.textAlignment = guidingType.textAlignment
         
-        self.addSubview(self.mainGuideImageView)
-        self.mainGuideImageView.translatesAutoresizingMaskIntoConstraints = false
-        self.setupLayout(with: self.mainGuideImageView, edgeInset: guidingType.mainImageLayout)
-        
         self.mainGuideImageView.image = guidingType.mainImage
     }
     
-    private func setupSubComponent(guidingType: GuideType) {
-        guard let subText = guidingType.subText else { return }
+    private func setupSubComponentLayout(guidingType: GuideType) {
+        guard guidingType.subText != nil else { return }
         
         self.addSubview(self.subGuideTextLabel)
         self.subGuideTextLabel.translatesAutoresizingMaskIntoConstraints = false
         self.setupLayout(with: self.subGuideTextLabel, edgeInset: guidingType.subTextLayout)
+    }
+    
+    private func setupSubComponentConfiguration(guidingType: GuideType) {
+        guard let subText = guidingType.subText else { return }
         
         self.subGuideTextLabel.text = subText
         
