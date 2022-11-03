@@ -31,16 +31,21 @@ final class GotoSomewhereButton: UIButton {
     // MARK: - func
 
     private func configureUI() {
-        self.invalidateIntrinsicContentSize()
-        self.titleLabel?.textAlignment = .center
-        self.backgroundColor = .evyBlack1
-        self.imageView?.contentMode = .scaleAspectFit
-        self.constraint(.heightAnchor, constant: Size.buttonHeigth)
-
-        // TODO: - 15버젼에서 contentinset넣어야하고, cornerradius넣어야함
         if #available(iOS 15.0, *) {
-            configuration?.preferredSymbolConfigurationForImage = Size.buttonImageSize
+            var buttonConfig = UIButton.Configuration.filled()
+            buttonConfig.titleAlignment = .leading
+            buttonConfig.baseBackgroundColor = .evyBlack1
+            buttonConfig.cornerStyle = .capsule
+            buttonConfig.preferredSymbolConfigurationForImage = Size.buttonImageSize
+            buttonConfig.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 30)
+            configuration = buttonConfig
+            print("여길지나긴해?")
         } else {
+            self.invalidateIntrinsicContentSize()
+            self.titleLabel?.textAlignment = .center
+            self.backgroundColor = .evyBlack1
+            self.imageView?.contentMode = .scaleAspectFit
+            self.constraint(.heightAnchor, constant: Size.buttonHeigth)
             self.contentEdgeInsets = UIEdgeInsets(top: 8, left: 10, bottom: 8, right: 30)
         }
     }
