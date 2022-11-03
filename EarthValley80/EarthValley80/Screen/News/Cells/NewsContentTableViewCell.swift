@@ -107,6 +107,7 @@ final class NewsContentTableViewCell: UITableViewCell {
             self.contentLabel.setLineSpacing(kernValue: -2.0,
                                              lineHeightMultiple: newValue.lineHeightMultiple)
             self.setupLayout(status: newValue)
+            self.updateReadingIndex(status: newValue)
         }
     }
     
@@ -170,6 +171,12 @@ final class NewsContentTableViewCell: UITableViewCell {
         
         self.contentLabel.setLineSpacing(kernValue: -2.0,
                                          lineHeightMultiple: self.status?.lineHeightMultiple ?? 0.0)
+    }
+    
+    private func updateReadingIndex(status: Status) {
+        guard status == .compact else { return }
+        
+        self.readingIndex = -1
     }
     
     func shiftHighlight(to direction: Direction) {
