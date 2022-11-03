@@ -54,9 +54,14 @@ final class GuidingView: UIView {
         
         var mainTextLayout: UIEdgeInsets {
             switch self {
-            default:
-                // TODO: - 뷰가 확정되면 넣어줍니다.
-                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            case .scrollGuide:
+                return UIEdgeInsets(top: 0, left: 226, bottom: -325, right: 0)
+            case .touchGuide:
+                return UIEdgeInsets(top: 352, left: 0, bottom: 0, right: -147)
+            case .vocabularyGuide:
+                return UIEdgeInsets(top: 0, left: 395, bottom: -196, right: 0)
+            case .complete:
+                return UIEdgeInsets.zero
             }
         }
         
@@ -69,14 +74,6 @@ final class GuidingView: UIView {
         }
         
         var mainImageLayout: UIEdgeInsets {
-            switch self {
-            default:
-                // TODO: - 뷰가 확정되면 넣어줍니다.
-                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            }
-        }
-        
-        var subImageLayout: UIEdgeInsets {
             switch self {
             default:
                 // TODO: - 뷰가 확정되면 넣어줍니다.
@@ -122,12 +119,14 @@ final class GuidingView: UIView {
     
     private func setupMainComponent(guidingType: GuideType) {
         self.addSubview(self.mainGuideTextLabel)
-        self.mainGuideTextLabel.constraint(to: self, insets: guidingType.mainTextLayout)
+        let mainTextConstraint = self.setupLayout(with: self.mainGuideTextLabel, edgeInset: guidingType.mainTextLayout)
+        NSLayoutConstraint.activate(mainTextConstraint)
         self.mainGuideTextLabel.text = guidingType.mainText
         self.mainGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
         
         self.addSubview(self.mainGuideImageView)
-        self.mainGuideImageView.constraint(to: self, insets: guidingType.mainImageLayout)
+        let mainImageConstraint = self.setupLayout(with: self.mainGuideImageView, edgeInset: guidingType.mainImageLayout)
+        NSLayoutConstraint.activate(mainImageConstraint)
         self.mainGuideImageView.image = guidingType.mainImage
     }
     
@@ -135,8 +134,35 @@ final class GuidingView: UIView {
         guard let subText = guidingType.subText else { return }
         
         self.addSubview(self.subGuideTextLabel)
-        self.subGuideTextLabel.constraint(to: self, insets: guidingType.subTextLayout)
+        let subTextConstraint = self.setupLayout(with: self.subGuideTextLabel, edgeInset: guidingType.subTextLayout)
+        NSLayoutConstraint.activate(subTextConstraint)
         self.subGuideTextLabel.text = subText
         self.subGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
+    }
+    
+    private func setupLayout(with subview: UIView, edgeInset: UIEdgeInsets) -> [NSLayoutConstraint] {
+        var constraint: [NSLayoutConstraint] = []
+        
+        if edgeInset.top != 0 {
+            let topConstraint = subview.topAnchor.constraint(equalTo: self.topAnchor, constant: edgeInset.top)
+            constraint.append(topConstraint)
+        }
+        
+        if edgeInset.left != 0 {
+            let leadingConstraint = subview.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: edgeInset.left)
+            constraint.append(leadingConstraint)
+        }
+        
+        if edgeInset.bottom != 0 {
+            let bottomConstraint = subview.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: edgeInset.bottom)
+            constraint.append(bottomConstraint)
+        }
+        
+        if edgeInset.right != 0 {
+            let trailingConstraint = subview.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: edgeInset.right)
+            constraint.append(trailingConstraint)
+        }
+        
+        return constraint
     }
 }
