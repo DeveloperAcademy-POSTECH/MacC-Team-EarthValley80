@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Lottie
+
 final class GuidingView: UIView {
 
     enum GuideType {
@@ -132,6 +134,15 @@ final class GuidingView: UIView {
         return label
     }()
     
+    private lazy var lottieView: LottieAnimationView = {
+        // TODO: - 추후에 제 뷰에 맞게 변경
+        let animationView = LottieAnimationView(name: "mp4TempFile")
+        animationView.play()
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        return animationView
+    }()
+    
     private let mainGuideImageView = UIImageView()
     
     // MARK: - init
@@ -142,6 +153,7 @@ final class GuidingView: UIView {
         self.setupMainComponentConfiguration(guidingType: guidingType)
         self.setupSubComponentLayout(guidingType: guidingType)
         self.setupSubComponentConfiguration(guidingType: guidingType)
+        self.setupLottieView(guidingType: guidingType)
     }
     
     @available(*, unavailable)
@@ -213,5 +225,17 @@ final class GuidingView: UIView {
         if edgeInset.right != 0 {
             subview.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: edgeInset.right).isActive = true
         }
+    }
+    
+    private func setupLottieView(guidingType: GuideType) {
+        guard guidingType == .complete else { return }
+        
+        self.lottieView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(lottieView)
+        self.lottieView.constraint(top: self.topAnchor,
+                                   leading: self.leadingAnchor,
+                                   bottom: self.bottomAnchor,
+                                   trailing: self.trailingAnchor,
+                                   padding: UIEdgeInsets(top: 0, left: 108, bottom: 188, right: 108))
     }
 }
