@@ -13,7 +13,7 @@ private extension UIColor {
     }
 }
 
-final class TitleInferingViewController: UIViewController {
+final class TitleInferringViewController: UIViewController {
     
     private enum Size {
         static let verticalPadding: CGFloat = 16.0
