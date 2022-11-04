@@ -37,6 +37,11 @@ enum StringLiteral {
     
     static let inferringPlaceholder = "제목을 보고 떠오르는 것을 자유롭게 적어보세요"
     static let answerWhoPlaceholder = "짧고 간단하게 대답해보세요!"
+    static let answerWhenPlaceholder = "5가지 질문이 남아있어요"
+    static let answerWherePlaceholder = "4가지 질문이 남아있어요"
+    static let answerWhatPlaceholder = "3가지 질문이 남아있어요"
+    static let answerHowPlaceholder = "2가지 질문이 남아있어요"
+    static let answerWhyPlaceholder = "마지막 질문이에요"
     
     // MARK: - button
     
