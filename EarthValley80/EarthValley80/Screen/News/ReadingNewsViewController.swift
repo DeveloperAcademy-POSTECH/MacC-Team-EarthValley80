@@ -229,6 +229,7 @@ final class ReadingNewsViewController: UIViewController {
         switch status {
         case .question:
             self.view.removeGestureRecognizer(self.tapGestureRecognizer)
+            self.presentFiveWsOneHViewController()
         case .justRead:
             self.view.addGestureRecognizer(self.tapGestureRecognizer)
         }
@@ -240,6 +241,16 @@ final class ReadingNewsViewController: UIViewController {
         guideViewController.modalTransitionStyle = .crossDissolve
         guideViewController.modalPresentationStyle = .overCurrentContext
         self.present(guideViewController, animated: true)
+    }
+    
+    private func presentFiveWsOneHViewController() {
+        guard let fiveWsOneHViewController = self.storyboard?.instantiateViewController(withIdentifier: FiveWsAndOneHViewController.className) as? FiveWsAndOneHViewController else { return }
+        fiveWsOneHViewController.modalTransitionStyle = .crossDissolve
+        fiveWsOneHViewController.modalPresentationStyle = .fullScreen
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            self.present(fiveWsOneHViewController, animated: false)
+        })
     }
     
     // MARK: - selector
@@ -293,8 +304,10 @@ extension ReadingNewsViewController: UITableViewDelegate {
 extension ReadingNewsViewController: QuestionViewDelegate {
     func questionView(_ questionView: QuestionView, goTo step: QuestionView.Step) {
         switch step {
-        default:
+        case .reading:
             self.updateEntireView(to: .justRead)
+        default:
+            return
         }
     }
 }

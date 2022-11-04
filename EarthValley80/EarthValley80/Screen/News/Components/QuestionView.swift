@@ -40,6 +40,11 @@ final class QuestionView: UIView {
         case infer
         case reading
         case who
+        case when
+        case `where`
+        case what
+        case how
+        case why
         
         var previousButtonIsHidden: Bool {
             switch self {
@@ -52,7 +57,7 @@ final class QuestionView: UIView {
         
         var collectionViewIsHidden: Bool {
             switch self {
-            case .infer, .reading:
+            case .infer, .reading, .who:
                 return true
             default:
                 return false
