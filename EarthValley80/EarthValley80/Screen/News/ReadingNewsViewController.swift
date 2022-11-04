@@ -231,8 +231,9 @@ final class ReadingNewsViewController: UIViewController {
         }
     }
     
-    // TODO: - UserDefault 값을 사용해서 뷰 띄워주기 관리
     private func presentGuideViewController() {
+        guard !UserDefaultStorage.isSeenGuide else { return }
+        
         let guideViewController = NewsGuideViewController()
         guideViewController.modalTransitionStyle = .crossDissolve
         guideViewController.modalPresentationStyle = .overCurrentContext
