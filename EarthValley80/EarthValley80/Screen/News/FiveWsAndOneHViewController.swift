@@ -45,6 +45,13 @@ final class FiveWsAndOneHViewController: UIViewController {
     }()
     private lazy var questionView: QuestionView = {
         let view = QuestionView(step: .who)
+        let action = UIAction { [weak self] _ in
+            guard view.step.rawValue < QuestionView.Step.allCases.count else { return }
+            guard let nextStep = QuestionView.Step(rawValue: view.step.rawValue + 1) else { return }
+            
+            view.updateConfiguration(with: nextStep)
+        }
+        view.setupNextAction(action)
         view.delegate = self
         view.questions = [
             "이 기사의 주인공은 누구인가요?",

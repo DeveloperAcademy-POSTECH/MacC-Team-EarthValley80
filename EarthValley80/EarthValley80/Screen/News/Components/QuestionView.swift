@@ -36,15 +36,15 @@ final class QuestionView: UIView {
         }
     }
     
-    enum Step {
-        case infer
-        case reading
-        case who
-        case when
-        case `where`
-        case what
-        case how
-        case why
+    enum Step: Int, CaseIterable {
+        case infer = -2
+        case reading = -1
+        case who = 0
+        case when = 1
+        case `where` = 2
+        case what = 3
+        case how = 4
+        case why = 5
         
         var previousButtonIsHidden: Bool {
             switch self {
@@ -166,6 +166,8 @@ final class QuestionView: UIView {
         }
     }
     
+    private(set) var step: Step = .infer
+    
     var questions: [String]? {
         willSet {
             self.titleText = newValue?.first ?? ""
@@ -227,17 +229,20 @@ final class QuestionView: UIView {
         self.textMode = .beforeWriting
     }
     
-    private func updateConfiguration(with step: Step) {
+    private func applyTextViewConfiguration(with state: TextMode, placeholder: String) {
+        self.contentTextView.text = placeholder
+        self.contentTextView.textColor = state.textColor
+    }
+    
+    func updateConfiguration(with step: Step) {
+        self.step = step
+        
         self.previousButton.isHidden = step.previousButtonIsHidden
         self.questionTitleStackView.isHiddenCollectionView = step.collectionViewIsHidden
         
         self.captionText = step.captionText
         self.placeholder = step.placeholder
-    }
-    
-    private func applyTextViewConfiguration(with state: TextMode, placeholder: String) {
-        self.contentTextView.text = placeholder
-        self.contentTextView.textColor = state.textColor
+        self.titleText = self.questions?[step.rawValue] ?? ""
     }
     
     func setupNextAction(_ action: UIAction) {
