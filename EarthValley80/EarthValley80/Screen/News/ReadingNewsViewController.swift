@@ -110,7 +110,7 @@ final class ReadingNewsViewController: UIViewController {
         return button
     }()
     private lazy var questionView: QuestionView = {
-        let view = QuestionView()
+        let view = QuestionView(step: .reading)
         view.delegate = self
         return view
     }()

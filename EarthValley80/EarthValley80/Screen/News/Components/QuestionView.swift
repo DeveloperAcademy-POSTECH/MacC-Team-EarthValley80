@@ -37,8 +37,27 @@ final class QuestionView: UIView {
     }
     
     enum Step {
+        case infer
         case reading
         case who
+        
+        var previousButtonIsHidden: Bool {
+            switch self {
+            case .infer:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        var collectionViewIsHidden: Bool {
+            switch self {
+            case .infer, .reading:
+                return true
+            default:
+                return false
+            }
+        }
     }
     
     // MARK: - property
@@ -78,7 +97,7 @@ final class QuestionView: UIView {
         }
     }
     private let questionTitleStackView = QuestionTitleStackView()
-    private let nextButton = NextButton(configType: .next)
+    private let nextButton = NextButton(configType: .disabled)
     
     var captionText: String = "" {
         willSet {
@@ -104,10 +123,11 @@ final class QuestionView: UIView {
 
     // MARK: - init
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(step: Step) {
+        super.init(frame: .zero)
         self.setupLayout()
         self.configureUI()
+        self.updateConfiguration(with: step)
     }
     
     @available(*, unavailable)
@@ -153,6 +173,11 @@ final class QuestionView: UIView {
         self.layer.cornerRadius = 30
         
         self.textMode = .beforeWriting
+    }
+    
+    private func updateConfiguration(with step: Step) {
+        self.previousButton.isHidden = step.previousButtonIsHidden
+        self.questionTitleStackView.isHiddenCollectionView = step.collectionViewIsHidden
     }
     
     private func applyTextViewConfiguration(with state: TextMode, placeholder: String) {

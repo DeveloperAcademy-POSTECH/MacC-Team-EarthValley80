@@ -60,7 +60,7 @@ final class TitleInferringViewController: UIViewController {
         return label
     }()
     private lazy var questionView: QuestionView = {
-        let view = QuestionView()
+        let view = QuestionView(step: .infer)
         let action = UIAction { [weak self] _ in
             guard let readingNewsViewController = self?.storyboard?.instantiateViewController(withIdentifier: ReadingNewsViewController.className) as? ReadingNewsViewController else { return }
             readingNewsViewController.modalTransitionStyle = .crossDissolve

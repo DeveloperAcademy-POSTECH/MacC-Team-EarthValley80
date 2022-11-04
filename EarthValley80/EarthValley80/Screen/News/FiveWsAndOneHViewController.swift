@@ -42,7 +42,7 @@ final class FiveWsAndOneHViewController: UIViewController {
         return tableView
     }()
     private let questionView: QuestionView = {
-        let view = QuestionView()
+        let view = QuestionView(step: .who)
         view.captionText = StringLiteral.answerWhoCaptionTitle
         view.titleText = StringLiteral.answerWhoTitle
         view.placeholder = StringLiteral.answerWhoPlaceholder
