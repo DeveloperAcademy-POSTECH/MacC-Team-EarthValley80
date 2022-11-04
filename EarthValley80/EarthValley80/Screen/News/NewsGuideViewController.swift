@@ -13,6 +13,13 @@ final class NewsGuideViewController: UIViewController {
         static let buttonSize: CGFloat = 60.0
     }
     
+    private enum Step: Int, CaseIterable {
+        case scroll = 0
+        case touch = 1
+        case vocabulary = 2
+        case complete = 3
+    }
+    
     // MARK: - property
     
     private lazy var xmarkButton: UIButton = {
@@ -32,12 +39,16 @@ final class NewsGuideViewController: UIViewController {
     private let vocabularyGuidingView = GuidingView(guidingType: .vocabularyGuide)
     private let completeGuidingView = GuidingView(guidingType: .complete)
     
+    private var step: Step = .scroll
+    
     // MARK: - life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupBlurEffect()
+        self.setupTapGesture()
         self.setupLayout()
+        self.updateGuideStep(to: step)
     }
     
     // MARK: - func
@@ -48,6 +59,11 @@ final class NewsGuideViewController: UIViewController {
         blurEffectView.frame = self.view.bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(blurEffectView)
+    }
+    
+    private func setupTapGesture() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func setupLayout() {
@@ -63,5 +79,27 @@ final class NewsGuideViewController: UIViewController {
                                     padding: UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0))
         self.xmarkButton.constraint(.heightAnchor, constant: Size.buttonSize)
         self.xmarkButton.constraint(.widthAnchor, constant: Size.buttonSize)
+    }
+    
+    private func updateGuideStep(to step: Step) {
+        self.scrollGuidingView.isHidden = (step != .scroll)
+        self.touchGuidingView.isHidden = (step != .touch)
+        self.vocabularyGuidingView.isHidden = (step != .vocabulary)
+        self.completeGuidingView.isHidden = (step != .complete)
+    }
+    
+    // MARK: - selector
+    
+    @objc
+    private func didTappedView(_ gestureRecognizer: UITapGestureRecognizer) {
+        guard
+            let nextStep = Step(rawValue: self.step.rawValue + 1),
+            nextStep.rawValue < Step.allCases.count
+        else {
+            self.dismiss(animated: true); return
+        }
+        
+        self.step = nextStep
+        self.updateGuideStep(to: nextStep)
     }
 }
