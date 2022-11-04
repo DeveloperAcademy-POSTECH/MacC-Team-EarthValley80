@@ -163,4 +163,8 @@ final class QuestionView: UIView {
     func setCollectionViewHidden(to isHidden: Bool) {
         self.questionTitleStackView.isHiddenCollectionView = isHidden
     }
+    
+    func setupNextAction(_ action: UIAction) {
+        self.nextButton.addAction(action, for: .touchUpInside)
+    }
 }
