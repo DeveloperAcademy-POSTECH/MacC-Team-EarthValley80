@@ -22,8 +22,7 @@ enum StringLiteral {
     
     // MARK: - title
     
-    static let inferringNewsTitle = "이 기사는 어떤 내용의 기사일까요?"
-    static let answerWhoTitle = "이 기사의 주인공은 누구인가요?"    
+    static let inferringNewsTitle = "이 기사는 어떤 내용의 기사일까요?" 
     static let yomojomoNewsTitle = "한 주의 요모조모 뉴스"
     static let myNewsTitle = "나의 뉴스 서랍"
 

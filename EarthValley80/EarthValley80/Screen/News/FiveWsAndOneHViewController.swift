@@ -46,9 +46,6 @@ final class FiveWsAndOneHViewController: UIViewController {
     private lazy var questionView: QuestionView = {
         let view = QuestionView(step: .who)
         view.delegate = self
-        view.captionText = StringLiteral.answerWhoCaptionTitle
-        view.titleText = StringLiteral.answerWhoTitle
-        view.placeholder = StringLiteral.answerWhoPlaceholder
         return view
     }()
     private let backButton = BackButton()

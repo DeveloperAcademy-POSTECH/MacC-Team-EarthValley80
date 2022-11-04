@@ -63,6 +63,48 @@ final class QuestionView: UIView {
                 return false
             }
         }
+        
+        var captionText: String {
+            switch self {
+            case .infer:
+                return StringLiteral.inferringNewsCaptionTitle
+            case .who:
+                return StringLiteral.answerWhoCaptionTitle
+            case .when:
+                return StringLiteral.answerWhenCaptionTitle
+            case .where:
+                return StringLiteral.answerWhereCaptionTitle
+            case .what:
+                return StringLiteral.answerWhatCaptionTitle
+            case .how:
+                return StringLiteral.answerHowCaptionTitle
+            case .why:
+                return StringLiteral.answerWhyCaptionTitle
+            case .reading:
+                return ""
+            }
+        }
+        
+        var placeholder: String {
+            switch self {
+            case .infer:
+                return StringLiteral.inferringPlaceholder
+            case .who:
+                return StringLiteral.answerWhoPlaceholder
+            case .when:
+                return StringLiteral.answerWhenPlaceholder
+            case .where:
+                return StringLiteral.answerWherePlaceholder
+            case .what:
+                return StringLiteral.answerWhatPlaceholder
+            case .how:
+                return StringLiteral.answerHowPlaceholder
+            case .why:
+                return StringLiteral.answerWhyPlaceholder
+            case .reading:
+                return ""
+            }
+        }
     }
     
     // MARK: - property
@@ -104,26 +146,31 @@ final class QuestionView: UIView {
     private let questionTitleStackView = QuestionTitleStackView()
     private let nextButton = NextButton(configType: .disabled)
     
-    var captionText: String = "" {
+    private var captionText: String = "" {
         willSet {
             self.questionTitleStackView.captionLabel.text = newValue
             self.questionTitleStackView.captionLabel.setLineSpacing(kernValue: -0.2)
         }
     }
     
-    var titleText: String = "" {
+    private var titleText: String = "" {
         willSet {
             self.questionTitleStackView.titleLabel.text = newValue
             self.questionTitleStackView.titleLabel.setLineSpacing(kernValue: -0.3)
         }
     }
     
-    var placeholder: String = "" {
+    private var placeholder: String = "" {
         willSet {
             self.contentTextView.text = newValue
         }
     }
     
+    var questions: [String]? {
+        willSet {
+            self.titleText = newValue?.first ?? ""
+        }
+    }
     weak var delegate: QuestionViewDelegate?
 
     // MARK: - init
@@ -183,6 +230,9 @@ final class QuestionView: UIView {
     private func updateConfiguration(with step: Step) {
         self.previousButton.isHidden = step.previousButtonIsHidden
         self.questionTitleStackView.isHiddenCollectionView = step.collectionViewIsHidden
+        
+        self.captionText = step.captionText
+        self.placeholder = step.placeholder
     }
     
     private func applyTextViewConfiguration(with state: TextMode, placeholder: String) {
