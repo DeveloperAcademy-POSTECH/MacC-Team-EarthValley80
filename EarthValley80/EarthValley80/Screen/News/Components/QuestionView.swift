@@ -235,6 +235,12 @@ final class QuestionView: UIView {
     }
     
     func updateConfiguration(with step: Step) {
+        let isNextStep = step.rawValue > self.step.rawValue
+        if isNextStep {
+            self.textMode = .beforeWriting
+            self.nextButton.configType = .disabled
+        }
+        
         self.step = step
         
         self.previousButton.isHidden = step.previousButtonIsHidden
@@ -243,6 +249,8 @@ final class QuestionView: UIView {
         self.captionText = step.captionText
         self.placeholder = step.placeholder
         self.titleText = self.questions?[step.rawValue] ?? ""
+        
+        self.contentTextView.resignFirstResponder()
     }
     
     func setupNextAction(_ action: UIAction) {
