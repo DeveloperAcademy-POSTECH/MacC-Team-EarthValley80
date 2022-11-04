@@ -123,7 +123,9 @@ final class QuestionView: UIView {
         let button = UIButton(type: .system)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            self.delegate?.questionView(self, goTo: .reading)
+            guard let previousStep = Step(rawValue: self.step.rawValue - 1) else { return }
+            self.step = previousStep
+            self.delegate?.questionView(self, goTo: previousStep)
         }
         button.addAction(action, for: .touchUpInside)
         button.tintColor = .black
