@@ -213,4 +213,10 @@ extension QuestionView: UITextViewDelegate {
         
         self.textMode = .complete
     }
+    
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        guard self.textMode != .beforeWriting else { return }
+        
+        self.nextButton.configType = textView.hasText ? .next : .disabled
+    }
 }
