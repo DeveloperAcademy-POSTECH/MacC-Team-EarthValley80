@@ -81,7 +81,7 @@ final class QuestionView: UIView {
             case .why:
                 return StringLiteral.answerWhyCaptionTitle
             case .reading:
-                return ""
+                return StringLiteral.answerWhoCaptionTitle
             }
         }
         
@@ -102,7 +102,7 @@ final class QuestionView: UIView {
             case .why:
                 return StringLiteral.answerWhyPlaceholder
             case .reading:
-                return ""
+                return StringLiteral.answerWhoPlaceholder
             }
         }
     }
@@ -238,10 +238,6 @@ final class QuestionView: UIView {
     private func applyTextViewConfiguration(with state: TextMode, placeholder: String) {
         self.contentTextView.text = placeholder
         self.contentTextView.textColor = state.textColor
-    }
-    
-    func setCollectionViewHidden(to isHidden: Bool) {
-        self.questionTitleStackView.isHiddenCollectionView = isHidden
     }
     
     func setupNextAction(_ action: UIAction) {

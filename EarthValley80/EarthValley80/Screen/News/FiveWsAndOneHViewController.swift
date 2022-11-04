@@ -46,6 +46,14 @@ final class FiveWsAndOneHViewController: UIViewController {
     private lazy var questionView: QuestionView = {
         let view = QuestionView(step: .who)
         view.delegate = self
+        view.questions = [
+            "이 기사의 주인공은 누구인가요?",
+            "이 기사는 언제 일어난 일인가요?",
+            "이 기사는 어디서 일어난 일인가요?",
+            "무엇 때문에 일어난 일인가요?",
+            "어떻게 일어난 일인가요?",
+            "왜 이런일이 일어났나요?"
+        ]
         return view
     }()
     private let backButton = BackButton()
