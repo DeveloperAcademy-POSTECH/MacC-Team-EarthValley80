@@ -29,9 +29,9 @@ final class QuestionView: UIView {
         var textColor: UIColor {
             switch self {
             case .beforeWriting:
-                return .tertiaryLabel
+                return .evyGray3
             default:
-                return .black
+                return .evyBlack1
             }
         }
     }
@@ -67,9 +67,9 @@ final class QuestionView: UIView {
         textView.textContainer.lineBreakMode = .byCharWrapping
         textView.setTypingAttributes(lineSpacing: 10.0)
         textView.font = .font(.bold, ofSize: 40)
-        // TODO: - 색상이 확정되면 추가
-        textView.tintColor = .black
+        textView.tintColor = .evyBlack1
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 83)
+        textView.delegate = self
         return textView
     }()
     private lazy var previousButton: UIButton = {
@@ -191,5 +191,26 @@ final class QuestionView: UIView {
     
     func setupNextAction(_ action: UIAction) {
         self.nextButton.addAction(action, for: .touchUpInside)
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension QuestionView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == self.placeholder {
+            textView.text = nil
+        }
+        
+        self.textMode = .write
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = self.placeholder
+            self.textMode = .beforeWriting
+            return
+        }
+        
+        self.textMode = .complete
     }
 }
