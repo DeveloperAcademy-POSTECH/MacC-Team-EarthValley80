@@ -15,7 +15,7 @@ final class NextButton: UIButton {
         case complete
         case disabled
         
-        var title: String? {
+        var title: String {
             switch self {
             case .next:
                 return StringLiteral.nextButtonText
@@ -24,7 +24,7 @@ final class NextButton: UIButton {
             case .complete:
                 return StringLiteral.completeButtonText
             case .disabled:
-                return nil
+                return ""
             }
         }
         
@@ -91,9 +91,7 @@ final class NextButton: UIButton {
         self.tintColor = color
         self.setTitleColor(color, for: .normal)
         
-        if let title = type.title {
-            self.setTitle(title, for: .normal)
-            self.titleLabel?.font = .font(.medium, ofSize: 12)
-        }
+        self.setTitle(type.title, for: .normal)
+        self.titleLabel?.font = .font(.medium, ofSize: 12)
     }
 }
