@@ -130,12 +130,17 @@ extension FiveWsAndOneHViewController: UITableViewDataSource {
 extension FiveWsAndOneHViewController: QuestionViewDelegate {
     func questionView(_ questionView: QuestionView, goTo step: QuestionView.Step) {
         switch step {
+        case .infer:
+            return
         case .reading:
             self.dismiss(animated: false, completion: { [weak self] in
                 self?.dismissQuestionView?()
             })
         default:
-            return
+            guard questionView.step.rawValue >= 0 else { return }
+            guard let previousStep = QuestionView.Step(rawValue: questionView.step.rawValue) else { return }
+            
+            questionView.updateConfiguration(with: previousStep)
         }
     }
 }
