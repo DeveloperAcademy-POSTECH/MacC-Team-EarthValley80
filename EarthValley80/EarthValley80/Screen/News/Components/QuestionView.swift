@@ -109,7 +109,7 @@ final class QuestionView: UIView {
     
     // MARK: - property
     
-    private lazy var contentTextView: UITextView = {
+    private(set) lazy var contentTextView: UITextView = {
         let textView = UITextView()
         textView.textContainer.lineBreakMode = .byCharWrapping
         textView.setTypingAttributes(lineSpacing: 10.0)
@@ -141,7 +141,7 @@ final class QuestionView: UIView {
             case .write:
                 self.applyTextViewConfiguration(with: newValue, placeholder: "")
             case .complete:
-                break
+                self.applyTextViewConfiguration(with: newValue, placeholder: nil)
             }
         }
     }
@@ -170,6 +170,7 @@ final class QuestionView: UIView {
     
     private(set) var step: Step = .infer
     
+    var answers: [String] = Array(repeating: "", count: 6)
     var questions: [String]? {
         willSet {
             self.titleText = newValue?.first ?? ""
@@ -231,18 +232,14 @@ final class QuestionView: UIView {
         self.textMode = .beforeWriting
     }
     
-    private func applyTextViewConfiguration(with state: TextMode, placeholder: String) {
-        self.contentTextView.text = placeholder
+    private func applyTextViewConfiguration(with state: TextMode, placeholder: String?) {
+        if let placeholder = placeholder {
+            self.contentTextView.text = placeholder
+        }
         self.contentTextView.textColor = state.textColor
     }
     
     func updateConfiguration(with step: Step) {
-        let isNextStep = step.rawValue > self.step.rawValue
-        if isNextStep {
-            self.textMode = .beforeWriting
-            self.nextButton.configType = .disabled
-        }
-        
         self.step = step
         
         self.previousButton.isHidden = step.previousButtonIsHidden
@@ -253,6 +250,23 @@ final class QuestionView: UIView {
         self.titleText = self.questions?[step.rawValue] ?? ""
         
         self.contentTextView.resignFirstResponder()
+        
+        dump(self.answers)
+        let index = step.rawValue
+        print("index : ", index)
+        guard
+            index >= 0 && index < 6,
+            self.answers[index] != ""
+        else {
+            self.textMode = .beforeWriting
+            self.nextButton.configType = .disabled
+            return
+        }
+        let hasAnswer = self.answers[index] != ""
+        
+        self.textMode = hasAnswer ? .complete : .beforeWriting
+        self.nextButton.configType = hasAnswer ? .next : .disabled
+        self.contentTextView.text = self.answers[index]
     }
     
     func setupNextAction(_ action: UIAction) {
