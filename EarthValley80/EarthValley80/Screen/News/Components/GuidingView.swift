@@ -125,7 +125,6 @@ final class GuidingView: UIView {
         label.numberOfLines = 0
         return label
     }()
-    
     private lazy var subGuideTextLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.medium, ofSize: 16)
@@ -133,7 +132,6 @@ final class GuidingView: UIView {
         label.numberOfLines = 0
         return label
     }()
-    
     private lazy var lottieView: LottieAnimationView = {
         // TODO: - 추후에 제 뷰에 맞게 변경
         let animationView = LottieAnimationView(name: "mp4TempFile")
@@ -142,7 +140,6 @@ final class GuidingView: UIView {
         animationView.loopMode = .loop
         return animationView
     }()
-    
     private let mainGuideImageView = UIImageView()
     
     // MARK: - init
