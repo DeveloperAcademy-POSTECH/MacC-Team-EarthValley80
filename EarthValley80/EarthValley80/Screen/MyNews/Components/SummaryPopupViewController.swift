@@ -45,6 +45,7 @@ final class SummaryPopupViewController: UIViewController {
         label.textColor = .evyBlack2
         label.font = .font(.bold, ofSize: Size.newsTitleFontSize)
         label.numberOfLines = 0
+        label.lineBreakStrategy = .hangulWordPriority
         return label
     }()
     private let myPredictionStackView: UIStackView = {
@@ -67,6 +68,7 @@ final class SummaryPopupViewController: UIViewController {
         label.textColor = .evyBlack1
         label.font = .font(.bold, ofSize: Size.contentsFontSize)
         label.numberOfLines = 0
+        label.lineBreakStrategy = .hangulWordPriority
         return label
     }()
     private let mySummaryStackView: UIStackView = {
@@ -89,6 +91,7 @@ final class SummaryPopupViewController: UIViewController {
         label.textColor = .evyBlack1
         label.font = .font(.bold, ofSize: Size.contentsFontSize)
         label.numberOfLines = 0
+        label.lineBreakStrategy = .hangulWordPriority
         return label
     }()
 
