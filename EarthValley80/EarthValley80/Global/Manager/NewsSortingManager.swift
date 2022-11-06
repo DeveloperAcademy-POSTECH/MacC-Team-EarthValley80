@@ -13,6 +13,8 @@ struct NewsSortingManager {
         static let standardOfTitle: Int = 30
     }
 
+    // MARK: - Yomojomo News
+
     func arrangeNewsData(_ data: [News]) -> [News] {
         let shortNews = data.filter { $0.title?.count ?? 0 < Size.standardOfTitle }.map { $0 }
         let longNews = data.filter { $0.title?.count ?? 0 >= Size.standardOfTitle }.map { $0 }
@@ -116,5 +118,13 @@ struct NewsSortingManager {
         }
 
         return newdata
+    }
+
+    // MARK: - My Newws Drawer
+
+    func appendNilDataForMyNewsDrawer(_ data: [News]) -> [News] {
+        var data = data
+        data.append(News(title: nil, category: nil))
+        return data
     }
 }

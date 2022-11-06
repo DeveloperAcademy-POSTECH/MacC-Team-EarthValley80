@@ -40,7 +40,8 @@ final class MyNewsDrawerViewController: UIViewController {
     }()
 
     // TODO: - 더미데이터 입니다. 추후 변경 예정입니다.
-    private let newsData: [News] = yomojomoViewDummyData
+    private let newsModel = NewsSortingManager()
+    private lazy var newsData: [News] = self.newsModel.appendNilDataForMyNewsDrawer(yomojomoViewDummyData)
 
     // MARK: - init
 
