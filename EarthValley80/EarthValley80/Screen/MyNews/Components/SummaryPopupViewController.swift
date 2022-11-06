@@ -24,6 +24,7 @@ final class SummaryPopupViewController: UIViewController {
     }()
     private let newstitleCaptionLabel: UILabel = {
         let label = UILabel()
+        label.text = StringLiteral.newstitleCaptionTitle
         label.font = .font(.bold, ofSize: 12)
         label.textColor = .evyGray1
         return label
@@ -45,6 +46,7 @@ final class SummaryPopupViewController: UIViewController {
     }()
     private let myPredictionCaptionLabel: UILabel = {
         let label = UILabel()
+        label.text = StringLiteral.myPredictionCaptionTitle
         label.font = .font(.bold, ofSize: 20)
         label.textColor = .evyGray1
         return label
@@ -66,6 +68,7 @@ final class SummaryPopupViewController: UIViewController {
     }()
     private let mySummaryCaptionLabel: UILabel = {
         let label = UILabel()
+        label.text = StringLiteral.mySummaryCaptionTitle
         label.font = .font(.bold, ofSize: 20)
         label.textColor = .evyGray1
         return label
@@ -84,6 +87,7 @@ final class SummaryPopupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupLayout()
     }
 
 }
