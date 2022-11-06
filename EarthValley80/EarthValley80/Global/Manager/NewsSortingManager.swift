@@ -123,8 +123,18 @@ struct NewsSortingManager {
     // MARK: - My Newws Drawer
 
     func appendNilDataForMyNewsDrawer(_ data: [News]) -> [News] {
+        let lottieCount = data.count / 3 + 1
+        var lottieLocation = 0
         var data = data
-        data.append(News(title: nil, category: nil))
+
+        for count in 0..<lottieCount {
+            if count == 0  {
+                data.insert(News(title: nil, category: nil), at: count)
+            } else {
+                data.insert(News(title: nil, category: nil), at: lottieLocation)
+            }
+            lottieLocation += 4
+        }
         return data
     }
 }
