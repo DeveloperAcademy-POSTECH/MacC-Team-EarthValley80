@@ -249,10 +249,9 @@ final class QuestionView: UIView {
             self.nextButton.configType = .disabled
             return
         }
-        let hasAnswer = self.answers[index] != ""
         
-        self.textMode = hasAnswer ? .complete : .beforeWriting
-        self.nextButton.configType = hasAnswer ? .next : .disabled
+        self.textMode = .complete
+        self.nextButton.configType = .next
         self.contentTextView.text = self.answers[index]
     }
     
