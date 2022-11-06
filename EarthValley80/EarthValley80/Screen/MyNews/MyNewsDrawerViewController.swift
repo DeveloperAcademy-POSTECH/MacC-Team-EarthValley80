@@ -78,6 +78,8 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if myNewsData[indexPath.row].title == nil {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchieveSummaryLottieCollectionViewCell.className, for: indexPath) as? AchieveSummaryLottieCollectionViewCell else { return UICollectionViewCell() }
+            // TODO: - 각 인덱스 번호에 맞게 Lottie이미지가 저장되어있어야합니다. 나중에 LottieImageLiteral 만들고, 지우겠습니다.
+            cell.setLottieImage("MynewsDrawerLottie\(indexPath.row)")
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }

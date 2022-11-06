@@ -30,7 +30,7 @@ final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
         return animationView
     }()
     // TODO: - lottie뷰 이름을 랜덤으로 돌려줘야 함
-    private lazy var lottieName: String = "mp4TempFile"
+    private lazy var lottieName: String = ""
 
     // MARK: - init
 
@@ -47,11 +47,15 @@ final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
 
     // MARK: method
 
-    func setupLayout() {
+    private func setupLayout() {
         self.contentView.addSubview(addBackgroundView)
         self.addBackgroundView.constraint(to: self, insets: UIEdgeInsets.zero)
 
         self.addBackgroundView.addSubview(self.lottieView)
         self.lottieView.constraint(to: self.addBackgroundView, insets: UIEdgeInsets.zero)
+    }
+
+    func setLottieImage(_ lottieImageTitle: String) {
+        self.lottieName = lottieImageTitle
     }
 }
