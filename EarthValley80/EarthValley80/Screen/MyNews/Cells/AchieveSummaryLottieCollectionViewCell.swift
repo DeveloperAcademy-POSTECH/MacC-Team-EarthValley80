@@ -56,7 +56,7 @@ final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
     // MARK: - func
 
     private func setupLayout() {
-        self.contentView.addSubview(addBackgroundView)
+        self.contentView.addSubview(self.addBackgroundView)
         self.addBackgroundView.constraint(to: self, insets: UIEdgeInsets.zero)
 
         self.addBackgroundView.addSubview(self.lottieView)
