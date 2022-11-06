@@ -15,6 +15,7 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         static let titleFontSize: CGFloat = 20.0
         static let categoryLabelFontSize: CGFloat = 12.0
     }
+    
     // MARK: view
 
     private let newsBackgroundView: UIImageView = {
@@ -61,7 +62,7 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
     // MARK: func
 
     func setupLayout() {
-        self.addSubview(self.newsBackgroundView)
+        self.contentView.addSubview(self.newsBackgroundView)
         self.newsBackgroundView.constraint(to: self)
 
         self.addSubview(self.newsCategoryLabel)
