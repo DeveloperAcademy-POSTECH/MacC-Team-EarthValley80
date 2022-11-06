@@ -40,7 +40,7 @@ final class MyNewsDrawerViewController: UIViewController {
         return collectionView
     }()
 
-    // TODO: - 더미데이터 입니다. 추후 변경 예정입니다.
+    // TODO: - 더미데이터 입니다. 추후 변경 예정입니다. nil데이터를 추가해주고 다시 db에 저장해주어야합니다.
     private let newsModel = NewsSortingManager()
     private lazy var myNewsData: [News] = self.newsModel.appendNilDataForMyNewsDrawer(yomojomoViewDummyData)
 
@@ -78,8 +78,8 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if myNewsData[indexPath.row].title == nil {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchieveSummaryLottieCollectionViewCell.className, for: indexPath) as? AchieveSummaryLottieCollectionViewCell else { return UICollectionViewCell() }
-            // TODO: - 각 인덱스 번호에 맞게 Lottie이미지가 저장되어있어야합니다. 나중에 LottieImageLiteral 만들고, 지우겠습니다.
-            cell.setLottieImage("MynewsDrawerLottie\(indexPath.row)")
+            // TODO: - Lottie이미지가 순서대로 저장되어있어야합니다. 나중에 LottieImageLiteral 만들고, 지우겠습니다.
+            cell.setLottieImage("MynewsDrawerLottie\(indexPath.row / 4)")
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }
