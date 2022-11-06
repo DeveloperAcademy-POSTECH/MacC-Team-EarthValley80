@@ -7,6 +7,8 @@
 
 import UIKit
 
+import Lottie
+
 final class GuidingView: UIView {
 
     enum GuideType {
@@ -18,11 +20,11 @@ final class GuidingView: UIView {
         var mainText: String {
             switch self {
             case .scrollGuide:
-                return StringLiteral.scrollGuideText
+                return "\(StringLiteral.scrollGuideCaptionText)\n\(StringLiteral.scrollGuideText)"
             case .touchGuide:
-                return StringLiteral.highlightTopTouchGuideText
+                return "\(StringLiteral.hightlightGuideCaptionText)\n\(StringLiteral.highlightTopTouchGuideText)"
             case .vocabularyGuide:
-                return StringLiteral.vocabularyGuideText
+                return "\(StringLiteral.vocabularyGuideCaptionText)\n\(StringLiteral.vocabularyGuideText)"
             case .complete:
                 return StringLiteral.completeGuideText
             }
@@ -31,7 +33,7 @@ final class GuidingView: UIView {
         var subText: String? {
             switch self {
             case .touchGuide:
-                return StringLiteral.highlightBottomTouchGuideText
+                return "\(StringLiteral.hightlightGuideCaptionText)\n\(StringLiteral.highlightBottomTouchGuideText)"
             case .vocabularyGuide:
                 return StringLiteral.vocabularyGuidesubText
             default:
@@ -39,49 +41,77 @@ final class GuidingView: UIView {
             }
         }
         
-        var mainImage: UIImage {
+        var captionText: String {
             switch self {
-            default:
-                return UIImage()
+            case .scrollGuide:
+                return StringLiteral.scrollGuideCaptionText
+            case .touchGuide:
+                return StringLiteral.hightlightGuideCaptionText
+            case .vocabularyGuide:
+                return StringLiteral.vocabularyGuideCaptionText
+            case .complete:
+                return ""
             }
         }
         
-        var subImage: UIImage? {
+        var textAlignment: NSTextAlignment {
             switch self {
+            case .touchGuide:
+                return .right
+            case .complete:
+                return .center
             default:
+                return .left
+            }
+        }
+        
+        var mainImage: UIImage {
+            switch self {
+            case .scrollGuide:
+                return ImageLiteral.imgCoach1
+            case .touchGuide:
+                return ImageLiteral.imgCoach
+            case .vocabularyGuide:
+                return ImageLiteral.imgCoach2
+            case .complete:
                 return UIImage()
             }
         }
         
         var mainTextLayout: UIEdgeInsets {
             switch self {
-            default:
-                // TODO: - 뷰가 확정되면 넣어줍니다.
-                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            case .scrollGuide:
+                return UIEdgeInsets(top: 0, left: 226, bottom: -325, right: 0)
+            case .touchGuide:
+                return UIEdgeInsets(top: 352, left: 0, bottom: 0, right: -147)
+            case .vocabularyGuide:
+                return UIEdgeInsets(top: 0, left: 220, bottom: -199, right: 0)
+            case .complete:
+                return UIEdgeInsets(top: 0, left: UIScreen.main.bounds.size.width/2 - 90, bottom: -194, right: 0)
             }
         }
         
         var subTextLayout: UIEdgeInsets {
             switch self {
+            case .touchGuide:
+                return UIEdgeInsets(top: 594, left: 0, bottom: 0, right: -147)
+            case .vocabularyGuide:
+                return UIEdgeInsets(top: 0, left: 496, bottom: -345, right: 0)
             default:
-                // TODO: - 뷰가 확정되면 넣어줍니다.
-                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                return UIEdgeInsets.zero
             }
         }
         
         var mainImageLayout: UIEdgeInsets {
             switch self {
+            case .scrollGuide:
+                return UIEdgeInsets(top: 0, left: 123, bottom: -206, right: 0)
+            case .touchGuide:
+                return UIEdgeInsets(top: 278, left: 0, bottom: 0, right: -130)
+            case .vocabularyGuide:
+                return UIEdgeInsets(top: 0, left: 395, bottom: -196, right: 0)
             default:
-                // TODO: - 뷰가 확정되면 넣어줍니다.
-                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            }
-        }
-        
-        var subImageLayout: UIEdgeInsets {
-            switch self {
-            default:
-                // TODO: - 뷰가 확정되면 넣어줍니다.
-                return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+                return UIEdgeInsets.zero
             }
         }
     }
@@ -92,27 +122,35 @@ final class GuidingView: UIView {
         let label = UILabel()
         label.font = .font(.medium, ofSize: 16)
         label.textColor = .evyWhite
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
-    
     private lazy var subGuideTextLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.medium, ofSize: 16)
         label.textColor = .evyWhite
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         return label
     }()
-    
+    private lazy var lottieView: LottieAnimationView = {
+        // TODO: - 추후에 제 뷰에 맞게 변경
+        let animationView = LottieAnimationView(name: "mp4TempFile")
+        animationView.play()
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        return animationView
+    }()
     private let mainGuideImageView = UIImageView()
-    private lazy var subGuideImageView = UIImageView()
     
     // MARK: - init
 
     init(guidingType: GuideType) {
         super.init(frame: .zero)
-        self.setupMainComponent(guidingType: guidingType)
-        self.setupSubComponent(guidingType: guidingType)
+        self.setupMainComponentLayout(guidingType: guidingType)
+        self.setupMainComponentConfiguration(guidingType: guidingType)
+        self.setupSubComponentLayout(guidingType: guidingType)
+        self.setupSubComponentConfiguration(guidingType: guidingType)
+        self.setupLottieView(guidingType: guidingType)
     }
     
     @available(*, unavailable)
@@ -120,31 +158,85 @@ final class GuidingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        self.lottieView.removeFromSuperview()
+    }
+    
     // MARK: - func
     
-    private func setupMainComponent(guidingType: GuideType) {
+    private func setupMainComponentLayout(guidingType: GuideType) {
         self.addSubview(self.mainGuideTextLabel)
-        self.mainGuideTextLabel.constraint(to: self, insets: guidingType.mainTextLayout)
-        self.mainGuideTextLabel.text = guidingType.mainText
-        self.mainGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
+        self.mainGuideTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.setupLayout(with: self.mainGuideTextLabel, edgeInset: guidingType.mainTextLayout)
         
         self.addSubview(self.mainGuideImageView)
-        self.mainGuideImageView.constraint(to: self, insets: guidingType.mainImageLayout)
+        self.mainGuideImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.setupLayout(with: self.mainGuideImageView, edgeInset: guidingType.mainImageLayout)
+    }
+    
+    private func setupMainComponentConfiguration(guidingType: GuideType) {
+        self.mainGuideTextLabel.text = guidingType.mainText
+        self.mainGuideTextLabel.applyColor(to: guidingType.captionText, with: .evyWhite.withAlphaComponent(0.3))
+        self.mainGuideTextLabel.applyFont(to: guidingType.captionText, with: .font(.medium, ofSize: 12))
+        self.mainGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
+        self.mainGuideTextLabel.textAlignment = guidingType.textAlignment
+        
         self.mainGuideImageView.image = guidingType.mainImage
     }
     
-    private func setupSubComponent(guidingType: GuideType) {
-        guard let subText = guidingType.subText else { return }
+    private func setupSubComponentLayout(guidingType: GuideType) {
+        guard guidingType.subText != nil else { return }
         
         self.addSubview(self.subGuideTextLabel)
-        self.subGuideTextLabel.constraint(to: self, insets: guidingType.subTextLayout)
+        self.subGuideTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.setupLayout(with: self.subGuideTextLabel, edgeInset: guidingType.subTextLayout)
+    }
+    
+    private func setupSubComponentConfiguration(guidingType: GuideType) {
+        guard let subText = guidingType.subText else { return }
+        
         self.subGuideTextLabel.text = subText
+        
+        if guidingType == .touchGuide {
+            self.subGuideTextLabel.applyColor(to: guidingType.captionText, with: .evyWhite.withAlphaComponent(0.3))
+            self.subGuideTextLabel.applyFont(to: guidingType.captionText, with: .font(.medium, ofSize: 12))
+        } else {
+            self.subGuideTextLabel.textColor = .evyWhite.withAlphaComponent(0.2)
+            self.subGuideTextLabel.applyColor(to: "단어", with: .evyWhite)
+            self.subGuideTextLabel.applyFont(to: guidingType.subText ?? "", with: .font(.bold, ofSize: 20))
+        }
+        
         self.subGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
+        self.subGuideTextLabel.textAlignment = guidingType.textAlignment
+    }
+    
+    private func setupLayout(with subview: UIView, edgeInset: UIEdgeInsets) {
+        if edgeInset.top != 0 {
+            subview.topAnchor.constraint(equalTo: self.topAnchor, constant: edgeInset.top).isActive = true
+        }
         
-        guard let subImage = guidingType.subImage else { return }
+        if edgeInset.left != 0 {
+            subview.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: edgeInset.left).isActive = true
+        }
         
-        self.addSubview(self.subGuideImageView)
-        self.subGuideImageView.constraint(to: self, insets: guidingType.subImageLayout)
-        self.subGuideImageView.image = subImage
+        if edgeInset.bottom != 0 {
+            subview.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: edgeInset.bottom).isActive = true
+        }
+        
+        if edgeInset.right != 0 {
+            subview.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: edgeInset.right).isActive = true
+        }
+    }
+    
+    private func setupLottieView(guidingType: GuideType) {
+        guard guidingType == .complete else { return }
+        
+        self.lottieView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(lottieView)
+        self.lottieView.constraint(top: self.topAnchor,
+                                   leading: self.leadingAnchor,
+                                   bottom: self.bottomAnchor,
+                                   trailing: self.trailingAnchor,
+                                   padding: UIEdgeInsets(top: 0, left: 108, bottom: 188, right: 108))
     }
 }
