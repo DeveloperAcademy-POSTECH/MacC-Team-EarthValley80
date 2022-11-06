@@ -107,11 +107,13 @@ final class NewsContentTableViewCell: UITableViewCell {
             self.contentLabel.setLineSpacing(kernValue: -2.0,
                                              lineHeightMultiple: newValue.lineHeightMultiple)
             self.setupLayout(status: newValue)
+            self.updateReadingIndex(status: newValue)
         }
     }
     
     private var sentences: [String] = []
     private var readingIndex: Int = -1
+    private var contentConstraints: [ConstraintType: NSLayoutConstraint]?
 
     // MARK: - init
     
@@ -129,9 +131,18 @@ final class NewsContentTableViewCell: UITableViewCell {
     // MARK: - func
     
     private func setupLayout(status: Status) {
+        if self.contentView.subviews.contains(self.contentLabel) {
+            self.contentConstraints?[.leading]?.constant = status.horizontalPadding
+            self.contentConstraints?[.trailing]?.constant = -status.horizontalPadding
+            return
+        }
+        
         self.contentView.addSubview(self.contentLabel)
-        self.contentLabel.constraint(to: self.contentView,
-                                     insets: UIEdgeInsets(top: 0, left: status.horizontalPadding, bottom: 0, right: -status.horizontalPadding))
+        self.contentConstraints = self.contentLabel.constraint(top: self.contentView.topAnchor,
+                                                               leading: self.contentView.leadingAnchor,
+                                                               bottom: self.contentView.bottomAnchor,
+                                                               trailing: self.contentView.trailingAnchor,
+                                                               padding: UIEdgeInsets(top: 0, left: status.horizontalPadding, bottom: 0, right: status.horizontalPadding))
     }
     
     private func configureUI() {
@@ -160,6 +171,12 @@ final class NewsContentTableViewCell: UITableViewCell {
         
         self.contentLabel.setLineSpacing(kernValue: -2.0,
                                          lineHeightMultiple: self.status?.lineHeightMultiple ?? 0.0)
+    }
+    
+    private func updateReadingIndex(status: Status) {
+        guard status == .compact else { return }
+        
+        self.readingIndex = -1
     }
     
     func shiftHighlight(to direction: Direction) {

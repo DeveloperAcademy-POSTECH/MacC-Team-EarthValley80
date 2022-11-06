@@ -12,12 +12,12 @@ enum StringLiteral {
     // MARK: - caption
     
     static let readingNewsCaptionTitle = "기사읽기"
-    static let inferingNewsCaptionTitle = "유추하기"
+    static let inferringNewsCaptionTitle = "유추하기"
     static let answerWhoCaptionTitle = "대답하기 | 누가"
     
     // MARK: - title
     
-    static let inferingNewsTitle = "이 기사는 어떤 내용의 기사일까요?"
+    static let inferringNewsTitle = "이 기사는 어떤 내용의 기사일까요?"
     static let answerWhoTitle = "이 기사의 주인공은 누구인가요?"    
     static let yomojomoNewsTitle = "한 주의 요모조모 뉴스"
     static let myNewsDrawerTitle = "나의 뉴스 서랍"
@@ -30,7 +30,7 @@ enum StringLiteral {
 
     // MARK: - placeholder
     
-    static let inferingPlaceholder = "제목을 보고 떠오르는 것을 자유롭게 적어보세요"
+    static let inferringPlaceholder = "제목을 보고 떠오르는 것을 자유롭게 적어보세요"
     static let answerWhoPlaceholder = "짧고 간단하게 대답해보세요!"
     
     // MARK: - button
