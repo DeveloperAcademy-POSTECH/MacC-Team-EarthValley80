@@ -90,4 +90,29 @@ final class SummaryPopupViewController: UIViewController {
         self.setupLayout()
     }
 
+    // MARK: - func
+
+    private func setupLayout() {
+        self.view.addSubview(self.sheetStackView)
+        self.sheetStackView.constraint(top: self.view.topAnchor,
+                                       leading: self.view.leadingAnchor,
+                                       trailing: self.view.trailingAnchor,
+                                       padding: UIEdgeInsets(top: 40, left: 40, bottom: 0, right: 40))
+
+        self.sheetStackView.addArrangedSubview(self.newsTitleStackView)
+        self.sheetStackView.addArrangedSubview(self.myPredictionStackView)
+        self.sheetStackView.addArrangedSubview(self.mySummaryStackView)
+
+        self.newsTitleStackView.addArrangedSubview(self.newstitleCaptionLabel)
+        self.newsTitleStackView.addArrangedSubview(self.newsTitleLabel)
+
+        self.myPredictionStackView.addArrangedSubview(self.myPredictionCaptionLabel)
+        self.myPredictionStackView.addArrangedSubview(self.myPredictionLabel)
+
+        self.mySummaryStackView.addArrangedSubview(self.mySummaryCaptionLabel)
+        self.mySummaryStackView.addArrangedSubview(self.mySummaryLabel)
+
+        self.sheetStackView.setCustomSpacing(53, after: self.newsTitleStackView)
+        self.sheetStackView.setCustomSpacing(75, after: self.myPredictionStackView)
+    }
 }
