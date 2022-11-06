@@ -17,6 +17,7 @@ final class YomojomoNewsViewController: UIViewController {
     }
 
     // MARK: - property
+
     private let yomojomoTitleView: MainTitleView = {
         let titleView = MainTitleView()
         titleView.changeLabelText(date: Date().dateFormatted("EEEE, MM d"),

@@ -16,7 +16,7 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         static let categoryLabelFontSize: CGFloat = 12.0
     }
     
-    // MARK: view
+    // MARK: - property
 
     private let newsBackgroundView: UIImageView = {
         let imageView = UIImageView()
@@ -59,7 +59,7 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: func
+    // MARK: - func
 
     func setupLayout() {
         self.contentView.addSubview(self.newsBackgroundView)

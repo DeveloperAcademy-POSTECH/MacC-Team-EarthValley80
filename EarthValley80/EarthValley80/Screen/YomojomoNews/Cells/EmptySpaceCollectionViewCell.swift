@@ -9,7 +9,7 @@ import UIKit
 
 final class EmptySpaceCollectionViewCell: UICollectionViewCell {
 
-    // MARK: view
+    // MARK: - property
 
     private let addBackgroundView: UIImageView = {
         let backgroundView = UIImageView()
@@ -33,7 +33,7 @@ final class EmptySpaceCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: method
+    // MARK: - func
 
     func setupLayout() {
         self.contentView.addSubview(self.addBackgroundView)

@@ -11,6 +11,8 @@ import Lottie
 
 final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
 
+    // MARK: - property
+
     override var isSelected: Bool {
         didSet {
             if isSelected {
@@ -18,8 +20,6 @@ final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-
-    // MARK: view
 
     private let addBackgroundView: UIImageView = {
         let addBackgroundView = UIImageView()
@@ -53,7 +53,7 @@ final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
     }
 
 
-    // MARK: method
+    // MARK: - func
 
     private func setupLayout() {
         self.contentView.addSubview(addBackgroundView)
