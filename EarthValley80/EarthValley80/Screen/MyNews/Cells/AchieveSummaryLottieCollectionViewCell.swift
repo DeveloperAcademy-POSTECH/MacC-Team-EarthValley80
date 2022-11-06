@@ -32,6 +32,19 @@ final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
     // TODO: - lottie뷰 이름을 랜덤으로 돌려줘야 함
     private lazy var lottieName: String = "mp4TempFile"
 
+    // MARK: - init
+
+    override init(frame: CGRect) {
+        super .init(frame: frame)
+        self.setupLayout()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+
     // MARK: method
 
     func setupLayout() {

@@ -36,12 +36,13 @@ final class MyNewsDrawerViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MyNewsDrawerCollectionViewCell.self, forCellWithReuseIdentifier: MyNewsDrawerCollectionViewCell.className)
+        collectionView.register(AchieveSummaryLottieCollectionViewCell.self, forCellWithReuseIdentifier: AchieveSummaryLottieCollectionViewCell.className)
         return collectionView
     }()
 
     // TODO: - 더미데이터 입니다. 추후 변경 예정입니다.
     private let newsModel = NewsSortingManager()
-    private lazy var newsData: [News] = self.newsModel.appendNilDataForMyNewsDrawer(yomojomoViewDummyData)
+    private lazy var myNewsData: [News] = self.newsModel.appendNilDataForMyNewsDrawer(yomojomoViewDummyData)
 
     // MARK: - init
 
@@ -71,13 +72,18 @@ final class MyNewsDrawerViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension MyNewsDrawerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.newsData.count
+        return self.myNewsData.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }
-        cell.setData(newsData[indexPath.row])
-        return cell
+        if myNewsData[indexPath.row].title == nil {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchieveSummaryLottieCollectionViewCell.className, for: indexPath) as? AchieveSummaryLottieCollectionViewCell else { return UICollectionViewCell() }
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }
+            cell.setData(myNewsData[indexPath.row])
+            return cell
+        }
     }
 }
 
@@ -85,7 +91,7 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
 extension MyNewsDrawerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var width: CGFloat
-        if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
+        if myNewsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
             width = ((collectionView.frame.width - (Size.cellInterval * 4)) / Size.column) * 2 + Size.cellInterval
         } else {
             width = (collectionView.frame.width - (Size.cellInterval * 4)) / Size.column - 0.00000001
