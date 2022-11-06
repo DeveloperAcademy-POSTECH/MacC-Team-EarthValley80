@@ -11,6 +11,14 @@ import Lottie
 
 final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
 
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                lottieView.play()
+            }
+        }
+    }
+
     // MARK: view
 
     private let addBackgroundView: UIImageView = {
@@ -26,7 +34,7 @@ final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
         let animationView = LottieAnimationView(name: lottieName)
         animationView.play()
         animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .loop
+        animationView.loopMode = .repeat(2)
         return animationView
     }()
     // TODO: - lottie뷰 이름을 랜덤으로 돌려줘야 함
