@@ -239,21 +239,8 @@ final class QuestionView: UIView {
         self.contentTextView.textColor = state.textColor
     }
     
-    func updateConfiguration(with step: Step) {
-        self.step = step
-        
-        self.previousButton.isHidden = step.previousButtonIsHidden
-        self.questionTitleStackView.isHiddenCollectionView = step.collectionViewIsHidden
-        
-        self.captionText = step.captionText
-        self.placeholder = step.placeholder
-        self.titleText = self.questions?[step.rawValue] ?? ""
-        
-        self.contentTextView.resignFirstResponder()
-        
-        dump(self.answers)
+    private func updateTextViewContentToAnswer(with step: Step) {
         let index = step.rawValue
-        print("index : ", index)
         guard
             index >= 0 && index < 6,
             self.answers[index] != ""
@@ -267,6 +254,20 @@ final class QuestionView: UIView {
         self.textMode = hasAnswer ? .complete : .beforeWriting
         self.nextButton.configType = hasAnswer ? .next : .disabled
         self.contentTextView.text = self.answers[index]
+    }
+    
+    func updateConfiguration(with step: Step) {
+        self.step = step
+        
+        self.previousButton.isHidden = step.previousButtonIsHidden
+        self.questionTitleStackView.isHiddenCollectionView = step.collectionViewIsHidden
+        
+        self.captionText = step.captionText
+        self.placeholder = step.placeholder
+        self.titleText = self.questions?[step.rawValue] ?? ""
+        
+        self.contentTextView.resignFirstResponder()
+        self.updateTextViewContentToAnswer(with: step)
     }
     
     func setupNextAction(_ action: UIAction) {

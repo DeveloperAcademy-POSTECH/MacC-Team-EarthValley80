@@ -18,14 +18,6 @@ final class FiveWsAndOneHViewController: UIViewController {
     
     // MARK: - property
     
-    private let captionLabel: UILabel = {
-        let label = UILabel()
-        label.font = .font(.bold, ofSize: 12)
-        label.lineBreakStrategy = .hangulWordPriority
-        label.text = StringLiteral.readingNewsCaptionTitle
-        label.textColor = .white.withAlphaComponent(0.5)
-        return label
-    }()
     private lazy var newsTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
@@ -89,16 +81,11 @@ final class FiveWsAndOneHViewController: UIViewController {
                                    leading: self.view.leadingAnchor,
                                    padding: UIEdgeInsets(top: 26, left: 10, bottom: 0, right: 0))
         
-        self.view.addSubview(self.captionLabel)
-        self.captionLabel.constraint(top: self.view.topAnchor,
-                                     leading: self.view.leadingAnchor,
-                                     padding: UIEdgeInsets(top: 76, left: 56, bottom: 0, right: 0))
-        
         self.view.addSubview(self.titleHeaderView)
-        self.titleHeaderView.constraint(top: self.captionLabel.bottomAnchor,
+        self.titleHeaderView.constraint(top: self.backButton.bottomAnchor,
                                         leading: self.view.leadingAnchor,
                                         trailing: self.questionView.leadingAnchor,
-                                        padding: UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 10))
+                                        padding: UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 10))
         
         self.view.addSubview(self.newsTableView)
         self.newsTableView.constraint(top: self.titleHeaderView.bottomAnchor,
