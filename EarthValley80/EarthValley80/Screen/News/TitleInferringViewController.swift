@@ -59,11 +59,16 @@ final class TitleInferringViewController: UIViewController {
         
         return label
     }()
-    private let questionView: QuestionView = {
-        let view = QuestionView()
-        view.captionText = StringLiteral.inferringNewsCaptionTitle
-        view.titleText = StringLiteral.inferringNewsTitle
-        view.placeholder = StringLiteral.inferringPlaceholder
+    private lazy var questionView: QuestionView = {
+        let view = QuestionView(step: .infer)
+        let action = UIAction { [weak self] _ in
+            guard let readingNewsViewController = self?.storyboard?.instantiateViewController(withIdentifier: ReadingNewsViewController.className) as? ReadingNewsViewController else { return }
+            readingNewsViewController.modalTransitionStyle = .crossDissolve
+            readingNewsViewController.modalPresentationStyle = .fullScreen
+            self?.present(readingNewsViewController, animated: true)
+        }
+        view.setupNextAction(action)
+        view.questions = [StringLiteral.inferringNewsTitle]
         return view
     }()
     private let titleView = NewsTitleView(status: .expanded)
