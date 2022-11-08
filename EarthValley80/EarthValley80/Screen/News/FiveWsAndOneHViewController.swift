@@ -18,14 +18,6 @@ final class FiveWsAndOneHViewController: UIViewController {
     
     // MARK: - property
     
-    private let captionLabel: UILabel = {
-        let label = UILabel()
-        label.font = .font(.bold, ofSize: 12)
-        label.lineBreakStrategy = .hangulWordPriority
-        label.text = StringLiteral.readingNewsCaptionTitle
-        label.textColor = .white.withAlphaComponent(0.5)
-        return label
-    }()
     private lazy var newsTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
@@ -45,10 +37,23 @@ final class FiveWsAndOneHViewController: UIViewController {
     }()
     private lazy var questionView: QuestionView = {
         let view = QuestionView(step: .who)
+        let action = UIAction { [weak self] _ in
+            guard view.step.rawValue < QuestionView.Step.allCases.count else { return }
+            guard let nextStep = QuestionView.Step(rawValue: view.step.rawValue + 1) else { return }
+            
+            view.answers[view.step.rawValue] = view.contentTextView.text
+            view.updateConfiguration(with: nextStep)
+        }
+        view.setupNextAction(action)
         view.delegate = self
-        view.captionText = StringLiteral.answerWhoCaptionTitle
-        view.titleText = StringLiteral.answerWhoTitle
-        view.placeholder = StringLiteral.answerWhoPlaceholder
+        view.questions = [
+            "이 기사의 주인공은 누구인가요?",
+            "이 기사는 언제 일어난 일인가요?",
+            "이 기사는 어디서 일어난 일인가요?",
+            "무엇 때문에 일어난 일인가요?",
+            "어떻게 일어난 일인가요?",
+            "왜 이런일이 일어났나요?"
+        ]
         return view
     }()
     private let backButton = BackButton()
@@ -76,16 +81,11 @@ final class FiveWsAndOneHViewController: UIViewController {
                                    leading: self.view.leadingAnchor,
                                    padding: UIEdgeInsets(top: 26, left: 10, bottom: 0, right: 0))
         
-        self.view.addSubview(self.captionLabel)
-        self.captionLabel.constraint(top: self.view.topAnchor,
-                                     leading: self.view.leadingAnchor,
-                                     padding: UIEdgeInsets(top: 76, left: 56, bottom: 0, right: 0))
-        
         self.view.addSubview(self.titleHeaderView)
-        self.titleHeaderView.constraint(top: self.captionLabel.bottomAnchor,
+        self.titleHeaderView.constraint(top: self.backButton.bottomAnchor,
                                         leading: self.view.leadingAnchor,
                                         trailing: self.questionView.leadingAnchor,
-                                        padding: UIEdgeInsets(top: 12, left: 0, bottom: 0, right: 10))
+                                        padding: UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 10))
         
         self.view.addSubview(self.newsTableView)
         self.newsTableView.constraint(top: self.titleHeaderView.bottomAnchor,
@@ -118,12 +118,17 @@ extension FiveWsAndOneHViewController: UITableViewDataSource {
 extension FiveWsAndOneHViewController: QuestionViewDelegate {
     func questionView(_ questionView: QuestionView, goTo step: QuestionView.Step) {
         switch step {
+        case .infer:
+            return
         case .reading:
             self.dismiss(animated: false, completion: { [weak self] in
                 self?.dismissQuestionView?()
             })
         default:
-            return
+            guard questionView.step.rawValue >= 0 else { return }
+            guard let previousStep = QuestionView.Step(rawValue: questionView.step.rawValue) else { return }
+            
+            questionView.updateConfiguration(with: previousStep)
         }
     }
 }

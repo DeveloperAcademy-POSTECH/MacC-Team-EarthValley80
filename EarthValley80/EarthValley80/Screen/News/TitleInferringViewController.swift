@@ -68,9 +68,7 @@ final class TitleInferringViewController: UIViewController {
             self?.present(readingNewsViewController, animated: true)
         }
         view.setupNextAction(action)
-        view.captionText = StringLiteral.inferringNewsCaptionTitle
-        view.titleText = StringLiteral.inferringNewsTitle
-        view.placeholder = StringLiteral.inferringPlaceholder
+        view.questions = [StringLiteral.inferringNewsTitle]
         return view
     }()
     private let titleView = NewsTitleView(status: .expanded)

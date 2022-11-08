@@ -178,10 +178,7 @@ final class ReadingNewsViewController: UIViewController {
     }
     
     private func setupInitialQuestionView() {
-        self.questionView.captionText = StringLiteral.answerWhoCaptionTitle
-        self.questionView.titleText = StringLiteral.answerWhoTitle
-        self.questionView.placeholder = StringLiteral.answerWhoPlaceholder
-        self.questionView.setCollectionViewHidden(to: true)
+        self.questionView.questions = ["이 기사의 주인공은 누구인가요?"]
     }
     
     private func updateView(with scrollPosition: UITableView.ScrollPosition,

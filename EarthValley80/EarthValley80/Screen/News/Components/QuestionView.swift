@@ -36,15 +36,15 @@ final class QuestionView: UIView {
         }
     }
     
-    enum Step {
-        case infer
-        case reading
-        case who
-        case when
-        case `where`
-        case what
-        case how
-        case why
+    enum Step: Int, CaseIterable {
+        case infer = -2
+        case reading = -1
+        case who = 0
+        case when = 1
+        case `where` = 2
+        case what = 3
+        case how = 4
+        case why = 5
         
         var previousButtonIsHidden: Bool {
             switch self {
@@ -63,11 +63,53 @@ final class QuestionView: UIView {
                 return false
             }
         }
+        
+        var captionText: String {
+            switch self {
+            case .infer:
+                return StringLiteral.inferringNewsCaptionTitle
+            case .who:
+                return StringLiteral.answerWhoCaptionTitle
+            case .when:
+                return StringLiteral.answerWhenCaptionTitle
+            case .where:
+                return StringLiteral.answerWhereCaptionTitle
+            case .what:
+                return StringLiteral.answerWhatCaptionTitle
+            case .how:
+                return StringLiteral.answerHowCaptionTitle
+            case .why:
+                return StringLiteral.answerWhyCaptionTitle
+            case .reading:
+                return StringLiteral.answerWhoCaptionTitle
+            }
+        }
+        
+        var placeholder: String {
+            switch self {
+            case .infer:
+                return StringLiteral.inferringPlaceholder
+            case .who:
+                return StringLiteral.answerWhoPlaceholder
+            case .when:
+                return StringLiteral.answerWhenPlaceholder
+            case .where:
+                return StringLiteral.answerWherePlaceholder
+            case .what:
+                return StringLiteral.answerWhatPlaceholder
+            case .how:
+                return StringLiteral.answerHowPlaceholder
+            case .why:
+                return StringLiteral.answerWhyPlaceholder
+            case .reading:
+                return StringLiteral.answerWhoPlaceholder
+            }
+        }
     }
     
     // MARK: - property
     
-    private lazy var contentTextView: UITextView = {
+    private(set) lazy var contentTextView: UITextView = {
         let textView = UITextView()
         textView.textContainer.lineBreakMode = .byCharWrapping
         textView.setTypingAttributes(lineSpacing: 10.0)
@@ -81,7 +123,9 @@ final class QuestionView: UIView {
         let button = UIButton(type: .system)
         let action = UIAction { [weak self] _ in
             guard let self = self else { return }
-            self.delegate?.questionView(self, goTo: .reading)
+            guard let previousStep = Step(rawValue: self.step.rawValue - 1) else { return }
+            self.step = previousStep
+            self.delegate?.questionView(self, goTo: previousStep)
         }
         button.addAction(action, for: .touchUpInside)
         button.tintColor = .black
@@ -97,33 +141,41 @@ final class QuestionView: UIView {
             case .write:
                 self.applyTextViewConfiguration(with: newValue, placeholder: "")
             case .complete:
-                break
+                self.applyTextViewConfiguration(with: newValue, placeholder: nil)
             }
         }
     }
     private let questionTitleStackView = QuestionTitleStackView()
     private let nextButton = NextButton(configType: .disabled)
     
-    var captionText: String = "" {
+    private var captionText: String = "" {
         willSet {
             self.questionTitleStackView.captionLabel.text = newValue
             self.questionTitleStackView.captionLabel.setLineSpacing(kernValue: -0.2)
         }
     }
     
-    var titleText: String = "" {
+    private var titleText: String = "" {
         willSet {
             self.questionTitleStackView.titleLabel.text = newValue
             self.questionTitleStackView.titleLabel.setLineSpacing(kernValue: -0.3)
         }
     }
     
-    var placeholder: String = "" {
+    private var placeholder: String = "" {
         willSet {
             self.contentTextView.text = newValue
         }
     }
     
+    private(set) var step: Step = .infer
+    
+    var answers: [String] = Array(repeating: "", count: 6)
+    var questions: [String]? {
+        willSet {
+            self.titleText = newValue?.first ?? ""
+        }
+    }
     weak var delegate: QuestionViewDelegate?
 
     // MARK: - init
@@ -180,18 +232,41 @@ final class QuestionView: UIView {
         self.textMode = .beforeWriting
     }
     
-    private func updateConfiguration(with step: Step) {
-        self.previousButton.isHidden = step.previousButtonIsHidden
-        self.questionTitleStackView.isHiddenCollectionView = step.collectionViewIsHidden
-    }
-    
-    private func applyTextViewConfiguration(with state: TextMode, placeholder: String) {
-        self.contentTextView.text = placeholder
+    private func applyTextViewConfiguration(with state: TextMode, placeholder: String?) {
+        if let placeholder = placeholder {
+            self.contentTextView.text = placeholder
+        }
         self.contentTextView.textColor = state.textColor
     }
     
-    func setCollectionViewHidden(to isHidden: Bool) {
-        self.questionTitleStackView.isHiddenCollectionView = isHidden
+    private func updateTextViewContentToAnswer(with step: Step) {
+        let index = step.rawValue
+        guard
+            index >= 0 && index < 6,
+            self.answers[index] != ""
+        else {
+            self.textMode = .beforeWriting
+            self.nextButton.configType = .disabled
+            return
+        }
+        
+        self.textMode = .complete
+        self.nextButton.configType = .next
+        self.contentTextView.text = self.answers[index]
+    }
+    
+    func updateConfiguration(with step: Step) {
+        self.step = step
+        
+        self.previousButton.isHidden = step.previousButtonIsHidden
+        self.questionTitleStackView.isHiddenCollectionView = step.collectionViewIsHidden
+        
+        self.captionText = step.captionText
+        self.placeholder = step.placeholder
+        self.titleText = self.questions?[step.rawValue] ?? ""
+        
+        self.contentTextView.resignFirstResponder()
+        self.updateTextViewContentToAnswer(with: step)
     }
     
     func setupNextAction(_ action: UIAction) {
