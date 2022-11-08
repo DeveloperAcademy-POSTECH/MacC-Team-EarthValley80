@@ -11,8 +11,7 @@ import Lottie
 
 final class UserGoalAttainmentLottieCollectionViewCell: UICollectionViewCell {
 
-    private enum attainmentStamp: Int {
-        // [1, 3, 6, 10, 13, 15, 20, 25, 30, 35, 40, 45, 50]
+    private enum attainmentLabelText: Int {
         case attainment1 = 0
         case attainment3 = 3
         case attainment6 = 6
@@ -81,7 +80,6 @@ final class UserGoalAttainmentLottieCollectionViewCell: UICollectionViewCell {
         animationView.loopMode = .repeat(2)
         return animationView
     }()
-    // TODO: - lottie뷰 이름을 랜덤으로 돌려줘야 함
     private lazy var lottieName: String = ""
 
     // MARK: - init
