@@ -64,21 +64,22 @@ final class UserGoalAttainmentLottieCollectionViewCell: UICollectionViewCell {
     // MARK: - func
 
     private func setupLayout() {
-        self.contentView.addSubview(self.attainmentBackgroundView)
-        self.attainmentBackgroundView.constraint(to: self, insets: UIEdgeInsets.zero)
-
-        self.attainmentBackgroundView.addSubview(self.lottieView)
-        self.lottieView.constraint(top: self.attainmentBackgroundView.topAnchor,
-                                   leading: self.attainmentBackgroundView.leadingAnchor,
-                                   trailing: self.attainmentBackgroundView.trailingAnchor,
+        self.contentView.addSubview(self.lottieView)
+        self.lottieView.constraint(top: self.contentView.topAnchor,
+                                   leading: self.contentView.leadingAnchor,
+                                   trailing: self.contentView.trailingAnchor,
                                    padding: UIEdgeInsets(top: 30, left: 28, bottom: 0, right: 28))
+        self.lottieView.constraint(.heightAnchor, constant: (self.bounds.size.width - 56) * 0.752)
 
-        self.attainmentBackgroundView.addSubview(self.attainmentLabel)
-        self.attainmentLabel.constraint(top: self.lottieView.bottomAnchor,
-                                        leading: self.lottieView.leadingAnchor,
-                                        bottom: self.attainmentBackgroundView.bottomAnchor,
+        self.contentView.addSubview(self.attainmentLabel)
+        self.attainmentLabel.constraint(leading: self.lottieView.leadingAnchor,
+                                        bottom: self.contentView.bottomAnchor,
                                         trailing: self.lottieView.trailingAnchor,
-                                        padding: UIEdgeInsets(top: 25, left: 0, bottom: 24, right: 0))
+                                        padding: UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0))
+    }
+
+    func setLottieImage(to lottieName: String) {
+        self.lottieName = lottieName
     }
 
     func setLottieImage(to lottieImageTitle: String) {
