@@ -120,7 +120,7 @@ struct NewsSortingManager {
         return newdata
     }
 
-    // MARK: - My Newws Drawer
+    // MARK: - My News Drawer
 
     func appendNilDataForMyNewsDrawer(_ data: [News]) -> [News] {
         let lottieCount = data.count / 3 + 1
