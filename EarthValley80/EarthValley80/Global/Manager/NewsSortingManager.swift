@@ -125,16 +125,17 @@ struct NewsSortingManager {
     func appendNilDataForMyNewsDrawer(_ data: [News]) -> [News] {
         let lottieCount = data.count / 3 + 1
         var lottieLocation = 0
-        var data = data
+        var reversedData = data
+        reversedData.reverse()
 
         for count in 0..<lottieCount {
             if count == 0  {
-                data.insert(News(title: nil, category: nil), at: count)
+                reversedData.insert(News(title: nil, category: nil), at: count)
             } else {
-                data.insert(News(title: nil, category: nil), at: lottieLocation)
+                reversedData.insert(News(title: nil, category: nil), at: lottieLocation)
             }
             lottieLocation += 4
         }
-        return data
+        return reversedData
     }
 }
