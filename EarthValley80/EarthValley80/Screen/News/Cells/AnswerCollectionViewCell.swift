@@ -9,6 +9,10 @@ import UIKit
 
 final class AnswerCollectionViewCell: UICollectionViewCell {
     
+    private enum Size {
+        static let innerViewHeight: CGFloat = 30.0
+    }
+    
     // MARK: - property
     
     private let captionLabel: UILabel = {
@@ -34,6 +38,7 @@ final class AnswerCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupLayout()
+        self.configureUI()
     }
     
     @available(*, unavailable)
@@ -53,11 +58,16 @@ final class AnswerCollectionViewCell: UICollectionViewCell {
                                     leading: self.contentView.leadingAnchor,
                                     bottom: self.contentView.bottomAnchor,
                                     trailing: self.contentView.trailingAnchor)
-        self.capsuleView.constraint(.heightAnchor, constant: 30)
+        self.capsuleView.constraint(.heightAnchor, constant: Size.innerViewHeight)
         
         self.capsuleView.addSubview(self.contentLabel)
         self.contentLabel.constraint(to: self.capsuleView,
                                      insets: UIEdgeInsets(top: 6, left: 12, bottom: -4, right: -12))
+    }
+    
+    private func configureUI() {
+        let cellCornerRadius = (self.bounds.size.width * (Size.innerViewHeight / self.bounds.size.width)) / 2
+        self.capsuleView.layer.cornerRadius = cellCornerRadius
     }
     
     func setupAnswerCell(of caption: String, answer: String) {

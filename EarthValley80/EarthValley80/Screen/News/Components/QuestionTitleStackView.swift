@@ -9,6 +9,11 @@ import UIKit
 
 final class QuestionTitleStackView: UIStackView {
     
+    private enum Size {
+        static let cellHeight: CGFloat = 42.0
+        static let cellInsetPadding: CGFloat = 12.0
+    }
+    
     // MARK: - property
     
     var isHiddenCollectionView: Bool? {
@@ -44,8 +49,13 @@ final class QuestionTitleStackView: UIStackView {
     private lazy var fiveWsOneHCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        flowLayout.minimumLineSpacing = 6
+        flowLayout.minimumInteritemSpacing = 6
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(AnswerCollectionViewCell.self, forCellWithReuseIdentifier: AnswerCollectionViewCell.className)
         return collectionView
     }()
@@ -83,7 +93,7 @@ final class QuestionTitleStackView: UIStackView {
         self.innerStackView.addArrangedSubview(self.captionLabel)
         self.innerStackView.addArrangedSubview(self.titleLabel)
         
-        self.fiveWsOneHCollectionView.constraint(.heightAnchor, constant: 42)
+        self.fiveWsOneHCollectionView.constraint(.heightAnchor, constant: Size.cellHeight)
     }
     
     private func configureUI() {
@@ -92,13 +102,20 @@ final class QuestionTitleStackView: UIStackView {
         self.alignment = .fill
         self.distribution = .fill
     }
+    
+    private func calculateCellWidth(with text: String) -> CGFloat {
+        let label = UILabel()
+        label.text = text
+        label.font = .font(.bold, ofSize: 16)
+        label.sizeToFit()
+        return label.frame.width + Size.cellInsetPadding * 2
+    }
 }
 
 // MARK: - UICollectionViewDataSource
 extension QuestionTitleStackView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let filteredAnswers = self.answers.filter { $0 != "" }
-        return filteredAnswers.count
+        return self.answers.filter { $0 != "" }.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -106,5 +123,14 @@ extension QuestionTitleStackView: UICollectionViewDataSource {
         let index = indexPath.item
         cell.setupAnswerCell(of: self.captions[index], answer: self.answers[index])
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension QuestionTitleStackView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height: CGFloat = Size.cellHeight
+        let width: CGFloat = self.calculateCellWidth(with: self.answers[indexPath.item])
+        return CGSize(width: width, height: height)
     }
 }
