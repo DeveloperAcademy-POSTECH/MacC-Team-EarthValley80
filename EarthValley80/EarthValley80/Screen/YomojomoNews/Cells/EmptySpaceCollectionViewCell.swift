@@ -11,7 +11,7 @@ final class EmptySpaceCollectionViewCell: UICollectionViewCell {
 
     // MARK: - property
 
-    private let addBackgroundView: UIImageView = {
+    private let emptyBackgroundView: UIImageView = {
         let backgroundView = UIImageView()
         backgroundView.contentMode = .scaleToFill
         backgroundView.clipsToBounds = true
@@ -36,8 +36,8 @@ final class EmptySpaceCollectionViewCell: UICollectionViewCell {
     // MARK: - func
 
     func setupLayout() {
-        self.contentView.addSubview(self.addBackgroundView)
-        self.addBackgroundView.constraint(to: self,
+        self.contentView.addSubview(self.emptyBackgroundView)
+        self.emptyBackgroundView.constraint(to: self,
                                           insets: UIEdgeInsets.zero)
     }
 }
