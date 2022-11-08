@@ -29,16 +29,40 @@ final class QuestionView: UIView {
         var textColor: UIColor {
             switch self {
             case .beforeWriting:
-                return .tertiaryLabel
+                return .evyGray3
             default:
-                return .black
+                return .evyBlack1
             }
         }
     }
     
     enum Step {
+        case infer
         case reading
         case who
+        case when
+        case `where`
+        case what
+        case how
+        case why
+        
+        var previousButtonIsHidden: Bool {
+            switch self {
+            case .infer:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        var collectionViewIsHidden: Bool {
+            switch self {
+            case .infer, .reading, .who:
+                return true
+            default:
+                return false
+            }
+        }
     }
     
     // MARK: - property
@@ -48,9 +72,9 @@ final class QuestionView: UIView {
         textView.textContainer.lineBreakMode = .byCharWrapping
         textView.setTypingAttributes(lineSpacing: 10.0)
         textView.font = .font(.bold, ofSize: 40)
-        // TODO: - 색상이 확정되면 추가
-        textView.tintColor = .black
+        textView.tintColor = .evyBlack1
         textView.textContainerInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 83)
+        textView.delegate = self
         return textView
     }()
     private lazy var previousButton: UIButton = {
@@ -78,7 +102,7 @@ final class QuestionView: UIView {
         }
     }
     private let questionTitleStackView = QuestionTitleStackView()
-    private let nextButton = NextButton(configType: .next)
+    private let nextButton = NextButton(configType: .disabled)
     
     var captionText: String = "" {
         willSet {
@@ -104,10 +128,11 @@ final class QuestionView: UIView {
 
     // MARK: - init
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(step: Step) {
+        super.init(frame: .zero)
         self.setupLayout()
         self.configureUI()
+        self.updateConfiguration(with: step)
     }
     
     @available(*, unavailable)
@@ -155,6 +180,11 @@ final class QuestionView: UIView {
         self.textMode = .beforeWriting
     }
     
+    private func updateConfiguration(with step: Step) {
+        self.previousButton.isHidden = step.previousButtonIsHidden
+        self.questionTitleStackView.isHiddenCollectionView = step.collectionViewIsHidden
+    }
+    
     private func applyTextViewConfiguration(with state: TextMode, placeholder: String) {
         self.contentTextView.text = placeholder
         self.contentTextView.textColor = state.textColor
@@ -162,5 +192,36 @@ final class QuestionView: UIView {
     
     func setCollectionViewHidden(to isHidden: Bool) {
         self.questionTitleStackView.isHiddenCollectionView = isHidden
+    }
+    
+    func setupNextAction(_ action: UIAction) {
+        self.nextButton.addAction(action, for: .touchUpInside)
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension QuestionView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == self.placeholder {
+            textView.text = nil
+        }
+        
+        self.textMode = .write
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text == "" {
+            textView.text = self.placeholder
+            self.textMode = .beforeWriting
+            return
+        }
+        
+        self.textMode = .complete
+    }
+    
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        guard self.textMode != .beforeWriting else { return }
+        
+        self.nextButton.configType = textView.hasText ? .next : .disabled
     }
 }

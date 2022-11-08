@@ -109,11 +109,7 @@ final class ReadingNewsViewController: UIViewController {
         button.addAction(action, for: .touchUpInside)
         return button
     }()
-    private lazy var questionView: QuestionView = {
-        let view = QuestionView()
-        view.delegate = self
-        return view
-    }()
+    private let questionView = QuestionView(step: .reading)
     private let backButton = BackButton()
     private let titleHeaderView = NewsTitleView(status: .expanded)
     
@@ -229,17 +225,32 @@ final class ReadingNewsViewController: UIViewController {
         switch status {
         case .question:
             self.view.removeGestureRecognizer(self.tapGestureRecognizer)
+            self.presentFiveWsOneHViewController()
         case .justRead:
             self.view.addGestureRecognizer(self.tapGestureRecognizer)
         }
     }
     
-    // TODO: - UserDefault 값을 사용해서 뷰 띄워주기 관리
     private func presentGuideViewController() {
+        guard !UserDefaultStorage.isSeenGuide else { return }
+        
         let guideViewController = NewsGuideViewController()
         guideViewController.modalTransitionStyle = .crossDissolve
         guideViewController.modalPresentationStyle = .overCurrentContext
         self.present(guideViewController, animated: true)
+    }
+    
+    private func presentFiveWsOneHViewController() {
+        guard let fiveWsOneHViewController = self.storyboard?.instantiateViewController(withIdentifier: FiveWsAndOneHViewController.className) as? FiveWsAndOneHViewController else { return }
+        fiveWsOneHViewController.modalTransitionStyle = .crossDissolve
+        fiveWsOneHViewController.modalPresentationStyle = .fullScreen
+        fiveWsOneHViewController.dismissQuestionView = { [weak self] in
+            self?.updateEntireView(to: .justRead)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            self.present(fiveWsOneHViewController, animated: false)
+        })
     }
     
     // MARK: - selector
@@ -286,15 +297,5 @@ extension ReadingNewsViewController: UITableViewDelegate {
         
         self.titleHeaderView.updateTitleStatus(to: isScrolled ? .scrolled : .expanded)
         self.headerFrameConstraints?[.heightAnchor]?.constant = self.titleHeaderView.heightOfLabel
-    }
-}
-
-// MARK: - QuestionViewDelegate
-extension ReadingNewsViewController: QuestionViewDelegate {
-    func questionView(_ questionView: QuestionView, goTo step: QuestionView.Step) {
-        switch step {
-        default:
-            self.updateEntireView(to: .justRead)
-        }
     }
 }

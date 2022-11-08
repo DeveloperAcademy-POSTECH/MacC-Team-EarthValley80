@@ -14,6 +14,8 @@ final class FiveWsAndOneHViewController: UIViewController {
         static let questionViewFrameWidth: CGFloat = UIScreen.main.bounds.size.width * 0.48
     }
     
+    var dismissQuestionView: (() -> ())?
+    
     // MARK: - property
     
     private let captionLabel: UILabel = {
@@ -41,8 +43,9 @@ final class FiveWsAndOneHViewController: UIViewController {
         
         return tableView
     }()
-    private let questionView: QuestionView = {
-        let view = QuestionView()
+    private lazy var questionView: QuestionView = {
+        let view = QuestionView(step: .who)
+        view.delegate = self
         view.captionText = StringLiteral.answerWhoCaptionTitle
         view.titleText = StringLiteral.answerWhoTitle
         view.placeholder = StringLiteral.answerWhoPlaceholder
@@ -108,5 +111,19 @@ extension FiveWsAndOneHViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsContentTableViewCell.className) as? NewsContentTableViewCell else { return UITableViewCell() }
         cell.status = .compact
         return cell
+    }
+}
+
+// MARK: - QuestionViewDelegate
+extension FiveWsAndOneHViewController: QuestionViewDelegate {
+    func questionView(_ questionView: QuestionView, goTo step: QuestionView.Step) {
+        switch step {
+        case .reading:
+            self.dismiss(animated: false, completion: { [weak self] in
+                self?.dismissQuestionView?()
+            })
+        default:
+            return
+        }
     }
 }
