@@ -30,6 +30,14 @@ final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
         addBackgroundView.backgroundColor = .red
         return addBackgroundView
     }()
+    private let attainmentLabel: UILabel = {
+        let label = UILabel()
+        // TODO: - 더미데이터, 나중에 지우겠습니다.
+        label.text = "기사를 요약했구나"
+        label.font = .font(.bold, ofSize: 10)
+        label.textAlignment = .center
+        return label
+    }()
     private lazy var lottieView: LottieAnimationView = {
         let animationView = LottieAnimationView(name: lottieName)
         animationView.play()
@@ -60,10 +68,20 @@ final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
         self.addBackgroundView.constraint(to: self, insets: UIEdgeInsets.zero)
 
         self.addBackgroundView.addSubview(self.lottieView)
-        self.lottieView.constraint(to: self.addBackgroundView, insets: UIEdgeInsets.zero)
+        self.lottieView.constraint(top: self.addBackgroundView.topAnchor,
+                                   leading: self.addBackgroundView.leadingAnchor,
+                                   trailing: self.addBackgroundView.trailingAnchor,
+                                   padding: UIEdgeInsets(top: 30, left: 28, bottom: 0, right: 28))
+
+        self.addBackgroundView.addSubview(self.attainmentLabel)
+        self.attainmentLabel.constraint(top: self.lottieView.bottomAnchor,
+                                        leading: self.lottieView.leadingAnchor,
+                                        bottom: self.addBackgroundView.bottomAnchor,
+                                        trailing: self.lottieView.trailingAnchor,
+                                        padding: UIEdgeInsets(top: 25, left: 0, bottom: 24, right: 0))
     }
 
-    func setLottieImage(_ lottieImageTitle: String) {
+    func setLottieImage(to lottieImageTitle: String) {
         self.lottieName = lottieImageTitle
     }
 }
