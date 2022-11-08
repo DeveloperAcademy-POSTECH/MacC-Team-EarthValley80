@@ -27,7 +27,7 @@
         <!--Title Inferring View Controller-->
         <scene sceneID="ZbP-6z-TPA">
             <objects>
-                <viewController storyboardIdentifier="TitleInferingViewController" id="Sdw-pF-1Y8" customClass="TitleInferringViewController" customModule="EarthValley80" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TitleInferringViewController" id="Sdw-pF-1Y8" customClass="TitleInferringViewController" customModule="EarthValley80" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wdu-h0-Off">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
