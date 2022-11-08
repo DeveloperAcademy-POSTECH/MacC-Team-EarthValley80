@@ -273,7 +273,8 @@ final class QuestionView: UIView {
     }
     
     func updateAnswer(at index: Int, to answer: String) {
-        self.questionTitleStackView.answers[index] = answer
+        let processedAnswer = answer.replacingOccurrences(of: "\n", with: " ")
+        self.questionTitleStackView.answers[index] = processedAnswer
     }
 }
 
