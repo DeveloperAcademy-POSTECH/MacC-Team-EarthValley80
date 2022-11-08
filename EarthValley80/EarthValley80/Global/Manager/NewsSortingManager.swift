@@ -124,7 +124,7 @@ struct NewsSortingManager {
 
     func appendNilDataForMyNewsDrawer(_ data: [News]) -> [News] {
         let lottieAttainmentStandard = [1, 3, 6, 10, 13, 15, 20, 25, 30, 35, 40, 45, 50]
-        let locationOfNil = [0, 4, 8, 13, 17, 24, 29, 34, 39, 44, 49, 54, 59]
+        let locationOfNil = [0, 4, 8, 13, 17, 20, 26, 31, 36, 41, 46, 51, 56]
         let myNewsDataCount = data.count
         var reversedData = data
         var nilIndex = 0
@@ -135,7 +135,6 @@ struct NewsSortingManager {
                 break
             } else if myNewsDataCount < number {
                 nilIndex = lottieAttainmentStandard.firstIndex(of: number) ?? 0
-                nilIndex -= 1
                 for i in 0..<nilIndex {
                     reversedData.insert(News(title: nil, category: nil), at: locationOfNil[i])
                 }
