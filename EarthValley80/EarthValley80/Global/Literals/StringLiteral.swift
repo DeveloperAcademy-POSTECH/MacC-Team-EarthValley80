@@ -14,9 +14,6 @@ enum StringLiteral {
     static let readingNewsCaptionTitle = "기사읽기"
     static let inferringNewsCaptionTitle = "유추하기"
     static let answerWhoCaptionTitle = "대답하기 | 누가"
-    static let newstitleCaptionTitle = "기사제목"
-    static let myPredictionCaptionTitle = "나의 유추"
-    static let mySummaryCaptionTitle = "나의 요약"
     
     // MARK: - title
     
@@ -24,6 +21,10 @@ enum StringLiteral {
     static let answerWhoTitle = "이 기사의 주인공은 누구인가요?"    
     static let yomojomoNewsTitle = "한 주의 요모조모 뉴스"
     static let myNewsDrawerTitle = "나의 뉴스 서랍"
+    static let popUpNewsTitle = "기사제목"
+    static let popUpMyPredictionTitle = "나의 유추"
+    static let popUpMySummaryTitle = "나의 요약"
+
 
     // MARK: - title description
 
