@@ -138,7 +138,6 @@ struct NewsSortingManager {
                 nilIndex -= 1
                 for i in 0..<nilIndex {
                     reversedData.insert(News(title: nil, category: nil), at: locationOfNil[i])
-                    print(reversedData.count)
                 }
                 break
             }
