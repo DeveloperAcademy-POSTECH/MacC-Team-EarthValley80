@@ -20,17 +20,6 @@ final class UserGoalAttainmentLottieCollectionViewCell: UICollectionViewCell {
             }
         }
     }
-
-    private let attainmentBackgroundView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 30
-        // TODO: - 로티를 넣어야합니다.
-        imageView.backgroundColor = .red
-        return imageView
-    }()
-    private let attainmentLabel: UILabel = {
         let label = UILabel()
         // TODO: - 더미데이터, 나중에 지우겠습니다.
         label.text = "기사를 요약했구나"
