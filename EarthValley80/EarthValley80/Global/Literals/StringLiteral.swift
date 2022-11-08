@@ -19,6 +19,12 @@ enum StringLiteral {
     static let answerWhatCaptionTitle = "대답하기 | 무엇을"
     static let answerHowCaptionTitle = "대답하기 | 어떻게"
     static let answerWhyCaptionTitle = "대답하기 | 왜"
+    static let answerCellWhoCaptionTitle = "누가"
+    static let answerCellWhenCaptionTitle = "언제"
+    static let answerCellWhereCaptionTitle = "어디서"
+    static let answerCellWhatCaptionTitle = "무엇을"
+    static let answerCellHowCaptionTitle = "어떻게"
+    static let answerCellWhyCaptionTitle = "왜"
     
     // MARK: - title
     

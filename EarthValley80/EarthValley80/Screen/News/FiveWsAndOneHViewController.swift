@@ -41,7 +41,7 @@ final class FiveWsAndOneHViewController: UIViewController {
             guard view.step.rawValue < QuestionView.Step.allCases.count else { return }
             guard let nextStep = QuestionView.Step(rawValue: view.step.rawValue + 1) else { return }
             
-            view.answers[view.step.rawValue] = view.contentTextView.text
+            view.updateAnswer(at: view.step.rawValue, to: view.contentTextView.text)
             view.updateConfiguration(with: nextStep)
         }
         view.setupNextAction(action)

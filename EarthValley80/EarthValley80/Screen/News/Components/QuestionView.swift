@@ -170,7 +170,6 @@ final class QuestionView: UIView {
     
     private(set) var step: Step = .infer
     
-    var answers: [String] = Array(repeating: "", count: 6)
     var questions: [String]? {
         willSet {
             self.titleText = newValue?.first ?? ""
@@ -243,7 +242,7 @@ final class QuestionView: UIView {
         let index = step.rawValue
         guard
             index >= 0 && index < 6,
-            self.answers[index] != ""
+            self.questionTitleStackView.answers[index] != ""
         else {
             self.textMode = .beforeWriting
             self.nextButton.configType = .disabled
@@ -252,7 +251,7 @@ final class QuestionView: UIView {
         
         self.textMode = .complete
         self.nextButton.configType = .next
-        self.contentTextView.text = self.answers[index]
+        self.contentTextView.text = self.questionTitleStackView.answers[index]
     }
     
     func updateConfiguration(with step: Step) {
@@ -271,6 +270,10 @@ final class QuestionView: UIView {
     
     func setupNextAction(_ action: UIAction) {
         self.nextButton.addAction(action, for: .touchUpInside)
+    }
+    
+    func updateAnswer(at index: Int, to answer: String) {
+        self.questionTitleStackView.answers[index] = answer
     }
 }
 
