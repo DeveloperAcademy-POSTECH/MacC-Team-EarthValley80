@@ -11,6 +11,54 @@ import Lottie
 
 final class UserGoalAttainmentLottieCollectionViewCell: UICollectionViewCell {
 
+    private enum attainmentStamp: Int {
+        // [1, 3, 6, 10, 13, 15, 20, 25, 30, 35, 40, 45, 50]
+        case attainment1 = 0
+        case attainment3 = 3
+        case attainment6 = 6
+        case attainment10 = 10
+        case attainment13 = 13
+        case attainment15 = 15
+        case attainment20 = 20
+        case attainment25 = 25
+        case attainment30 = 30
+        case attainment35 = 35
+        case attainment40 = 40
+        case attainment45 = 45
+        case attainment50 = 50
+
+        var labelText: String {
+            switch self {
+            case .attainment1:
+                return "드디어 첫 기사를 썼군요!"
+            case .attainment3:
+                return "와우 벌써 3개!"
+            case .attainment6:
+                return "지금처럼 천천히 조금씩 나아가는거에요"
+            case .attainment10:
+                return "축하합니다, 10개의 기사를 요약한 당신은 요모조모 달인!"
+            case .attainment13:
+                return "꾸준히 글을 쓰는 모습이 정말 아름다워요!"
+            case .attainment15:
+                return "꾸준히 앞으로 나아가고 있군요?"
+            case .attainment20:
+                return "지금처럼 천천히 조금씩 나아가는거에요"
+            case .attainment25:
+                return "멋져요! 벌써 25개나 달성!"
+            case .attainment30:
+                return "30개 달성! 당신은 요모조모에게 특별한 사람이에요"
+            case .attainment35:
+                return "꾸준히 앞으로 나아가고 있군요?"
+            case .attainment40:
+                return "와우, 대단한데요 40개째에요!"
+            case .attainment45:
+                return "지금처럼 천천히 조금씩 나아가는거에요"
+            case .attainment50:
+                return "축하합니다, 50개의 기사를 요약한 당신은 요모조모 그자체"
+            }
+        }
+    }
+
     // MARK: - property
 
     override var isSelected: Bool {
@@ -20,9 +68,8 @@ final class UserGoalAttainmentLottieCollectionViewCell: UICollectionViewCell {
             }
         }
     }
+    private lazy var attainmentLabel: UILabel = {
         let label = UILabel()
-        // TODO: - 더미데이터, 나중에 지우겠습니다.
-        label.text = "기사를 요약했구나"
         label.font = .font(.bold, ofSize: 10)
         label.textAlignment = .center
         return label
@@ -71,7 +118,7 @@ final class UserGoalAttainmentLottieCollectionViewCell: UICollectionViewCell {
         self.lottieName = lottieName
     }
 
-    func setLottieImage(to lottieImageTitle: String) {
-        self.lottieName = lottieImageTitle
+    func setLottieLabel(index: Int) {
+        self.attainmentLabel.text = attainmentStamp.init(rawValue: index)?.labelText
     }
 }
