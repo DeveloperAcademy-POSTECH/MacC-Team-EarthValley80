@@ -49,7 +49,7 @@ final class QuestionTitleStackView: UIStackView {
     private lazy var fiveWsOneHCollectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
         flowLayout.minimumLineSpacing = 6
         flowLayout.minimumInteritemSpacing = 6
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
