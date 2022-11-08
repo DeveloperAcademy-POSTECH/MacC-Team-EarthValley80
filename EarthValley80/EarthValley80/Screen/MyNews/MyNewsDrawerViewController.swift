@@ -36,7 +36,7 @@ final class MyNewsDrawerViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MyNewsDrawerCollectionViewCell.self, forCellWithReuseIdentifier: MyNewsDrawerCollectionViewCell.className)
-        collectionView.register(AchieveSummaryLottieCollectionViewCell.self, forCellWithReuseIdentifier: AchieveSummaryLottieCollectionViewCell.className)
+        collectionView.register(UserGoalAttainmentLottieCollectionViewCell.self, forCellWithReuseIdentifier: UserGoalAttainmentLottieCollectionViewCell.className)
         return collectionView
     }()
 
@@ -77,7 +77,7 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if myNewsData[indexPath.row].title == nil {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchieveSummaryLottieCollectionViewCell.className, for: indexPath) as? AchieveSummaryLottieCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserGoalAttainmentLottieCollectionViewCell.className, for: indexPath) as? UserGoalAttainmentLottieCollectionViewCell else { return UICollectionViewCell() }
             // TODO: - 테플에서는 로티 4개정도 random, 나중에 수정하겠습니다.
             let lottieNumber = Int.random(in: 0...3)
             cell.setLottieImage(to: "myNewsDrawerLottie\(lottieNumber)")

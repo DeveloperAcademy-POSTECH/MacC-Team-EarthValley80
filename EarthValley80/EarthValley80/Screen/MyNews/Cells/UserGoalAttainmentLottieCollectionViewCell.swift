@@ -1,5 +1,5 @@
 //
-//  AchieveSummaryLottieCollectionViewCell.swift
+//  UserGoalAttainmentLottieCollectionViewCell.swift
 //  EarthValley80
 //
 //  Created by LeeJiSoo on 2022/11/06.
@@ -9,7 +9,7 @@ import UIKit
 
 import Lottie
 
-final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
+final class UserGoalAttainmentLottieCollectionViewCell: UICollectionViewCell {
 
     // MARK: - property
 
