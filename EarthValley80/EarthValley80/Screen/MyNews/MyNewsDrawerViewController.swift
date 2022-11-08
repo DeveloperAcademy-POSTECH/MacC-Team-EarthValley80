@@ -79,7 +79,7 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
         if myNewsData[indexPath.row].title == nil {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchieveSummaryLottieCollectionViewCell.className, for: indexPath) as? AchieveSummaryLottieCollectionViewCell else { return UICollectionViewCell() }
             // TODO: - Lottie이미지가 순서대로 저장되어있어야합니다. 나중에 LottieImageLiteral 만들고, 지우겠습니다.
-            cell.setLottieImage("MynewsDrawerLottie\(indexPath.row / 4)")
+            cell.setLottieImage(to: "MynewsDrawerLottie\(indexPath.row / 4)")
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }
