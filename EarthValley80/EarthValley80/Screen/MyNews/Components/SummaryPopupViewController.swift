@@ -31,14 +31,14 @@ final class SummaryPopupViewController: UIViewController {
         stackView.spacing = Size.stackViewSpacing
         return stackView
     }()
-    private let newstitleCaptionLabel: UILabel = {
+    private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.text = StringLiteral.popUpNewsTitle
         label.font = .font(.bold, ofSize: Size.newstitleCaptionFontSize)
         label.textColor = .evyGray1
         return label
     }()
-    private let newsTitleLabel: UILabel = {
+    private let newsTitleContentLabel: UILabel = {
         let label = UILabel()
         // TODO: - 더미데이터입니다. 나중에 지우겠습니다.
         label.text = "인류보다 로봇 진화 속도가 더 빠르대요, 청소로봇은 '루시'…생각하는 로봇 등장"
@@ -54,14 +54,14 @@ final class SummaryPopupViewController: UIViewController {
         stackView.spacing = Size.stackViewSpacing
         return stackView
     }()
-    private let myPredictionCaptionLabel: UILabel = {
+    private let myPredictionTitleLabel: UILabel = {
         let label = UILabel()
         label.text = StringLiteral.popUpMyPredictionTitle
         label.font = .font(.bold, ofSize: Size.captionFontSize)
         label.textColor = .evyGray1
         return label
     }()
-    private let myPredictionLabel: UILabel = {
+    private let myPredictionContentLabel: UILabel = {
         let label = UILabel()
         // TODO: - 더미데이터입니다. 나중에 지우겠습니다.
         label.text = "새로운 로봇"
@@ -77,14 +77,14 @@ final class SummaryPopupViewController: UIViewController {
         stackView.spacing = Size.stackViewSpacing
         return stackView
     }()
-    private let mySummaryCaptionLabel: UILabel = {
+    private let mySummaryTitleLabel: UILabel = {
         let label = UILabel()
         label.text = StringLiteral.popUpMySummaryTitle
         label.font = .font(.bold, ofSize: Size.captionFontSize)
         label.textColor = .evyGray1
         return label
     }()
-    private let mySummaryLabel: UILabel = {
+    private let mySummaryContentLabel: UILabel = {
         let label = UILabel()
         // TODO: - 더미데이터입니다. 나중에 지우겠습니다.
         label.text = "타다 앱서비스가 2019년 10월에 법원에서 재판을 했다. 치열하게 3년동안 싸웠는데 무면허 택시일 수도 있어서 그랬다."
@@ -118,14 +118,14 @@ final class SummaryPopupViewController: UIViewController {
         self.sheetStackView.addArrangedSubview(self.myPredictionStackView)
         self.sheetStackView.addArrangedSubview(self.mySummaryStackView)
 
-        self.newsTitleStackView.addArrangedSubview(self.newstitleCaptionLabel)
         self.newsTitleStackView.addArrangedSubview(self.newsTitleLabel)
+        self.newsTitleStackView.addArrangedSubview(self.newsTitleContentLabel)
 
-        self.myPredictionStackView.addArrangedSubview(self.myPredictionCaptionLabel)
-        self.myPredictionStackView.addArrangedSubview(self.myPredictionLabel)
+        self.myPredictionStackView.addArrangedSubview(self.myPredictionTitleLabel)
+        self.myPredictionStackView.addArrangedSubview(self.myPredictionContentLabel)
 
-        self.mySummaryStackView.addArrangedSubview(self.mySummaryCaptionLabel)
-        self.mySummaryStackView.addArrangedSubview(self.mySummaryLabel)
+        self.mySummaryStackView.addArrangedSubview(self.mySummaryTitleLabel)
+        self.mySummaryStackView.addArrangedSubview(self.mySummaryContentLabel)
 
         self.sheetStackView.setCustomSpacing(53, after: self.newsTitleStackView)
         self.sheetStackView.setCustomSpacing(75, after: self.myPredictionStackView)
