@@ -15,8 +15,8 @@ final class AchieveSummaryLottieCollectionViewCell: UICollectionViewCell {
 
     override var isSelected: Bool {
         didSet {
-            if isSelected {
-                lottieView.play()
+            if self.isSelected {
+                self.lottieView.play()
             }
         }
     }
