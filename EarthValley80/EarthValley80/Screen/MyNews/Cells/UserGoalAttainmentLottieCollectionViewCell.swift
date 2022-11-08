@@ -11,7 +11,7 @@ import Lottie
 
 final class UserGoalAttainmentLottieCollectionViewCell: UICollectionViewCell {
 
-    private enum attainmentLabelText: Int {
+    private enum AttainmentLabelText: Int {
         case attainment1 = 0
         case attainment3 = 3
         case attainment6 = 6
@@ -117,6 +117,6 @@ final class UserGoalAttainmentLottieCollectionViewCell: UICollectionViewCell {
     }
 
     func setLottieLabel(index: Int) {
-        self.attainmentLabel.text = attainmentStamp.init(rawValue: index)?.labelText
+        self.attainmentLabel.text = AttainmentLabelText.init(rawValue: index)?.labelText
     }
 }
