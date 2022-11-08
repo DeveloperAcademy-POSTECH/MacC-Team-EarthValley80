@@ -78,8 +78,9 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if myNewsData[indexPath.row].title == nil {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchieveSummaryLottieCollectionViewCell.className, for: indexPath) as? AchieveSummaryLottieCollectionViewCell else { return UICollectionViewCell() }
-            // TODO: - Lottie이미지가 순서대로 저장되어있어야합니다. 나중에 LottieImageLiteral 만들고, 지우겠습니다.
-            cell.setLottieImage(to: "MynewsDrawerLottie\(indexPath.row / 4)")
+            // TODO: - 테플에서는 로티 4개정도 random, 나중에 수정하겠습니다.
+            let lottieNumber = Int.random(in: 0...3)
+            cell.setLottieImage(to: "myNewsDrawerLottie\(lottieNumber)")
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }
