@@ -17,10 +17,10 @@
 		381AB436290FC96900620635 /* GotoYomojomoNewsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */; };
 		381AB44829116D0D00620635 /* GotoSomewhereButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB44729116D0D00620635 /* GotoSomewhereButton.swift */; };
 		381AB44A2911726B00620635 /* mp4TempFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 381AB4492911726B00620635 /* mp4TempFile.json */; };
-		B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD72914E86900821C8B /* UserDefaultStorage.swift */; };
-		B5205BDA2914E8B200821C8B /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */; };
 		3851FC032912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */; };
 		3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */; };
+		B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD72914E86900821C8B /* UserDefaultStorage.swift */; };
+		B5205BDA2914E8B200821C8B /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */; };
 		B532C42C290AAA0F001F672B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532C42B290AAA0F001F672B /* NextButton.swift */; };
 		B53B2D6C29193B13009C4AC2 /* AnswerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B2D6B29193B13009C4AC2 /* AnswerCollectionViewCell.swift */; };
 		B55BCEDA28FC4C6000AF7E45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BCED928FC4C6000AF7E45 /* AppDelegate.swift */; };
@@ -98,8 +98,6 @@
 		3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		B5205BD72914E86900821C8B /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
-		381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceCollectionViewCell.swift; sourceTree = "<group>"; };
-		381AB42E290FB5EE00620635 /* NewsSortingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSortingManager.swift; sourceTree = "<group>"; };
 		B532C42B290AAA0F001F672B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		B53B2D6B29193B13009C4AC2 /* AnswerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewCell.swift; sourceTree = "<group>"; };
 		B55BCED628FC4C6000AF7E45 /* EarthValley80.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthValley80.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,13 +207,6 @@
 				381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		381AB434290FC8E000620635 /* Components */ = {
-            isa = PBXGroup;
-			children = (
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		381AB42D290FB5CB00620635 /* Manager */ = {
@@ -822,6 +813,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EarthValley80/Global/Supports/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "요모조모";
@@ -854,6 +846,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EarthValley80/Global/Supports/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "요모조모";

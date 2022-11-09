@@ -19,6 +19,7 @@ final class QuestionView: UIView {
         static let buttonBottomConstant: CGFloat = 21.0
         static let buttonHorizontalPadding: CGFloat = 30.0
         static let buttonSize: CGFloat = 60.0
+        static let contentViewBottomSpacing: CGFloat = 130.0
     }
     
     enum TextMode {
@@ -150,6 +151,16 @@ final class QuestionView: UIView {
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .large), forImageIn: .normal)
         return button
     }()
+    private let keywordCollectionView: UICollectionView = {
+        let flowLayout = LeftAlignCollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+        flowLayout.minimumLineSpacing = 6
+        flowLayout.minimumInteritemSpacing = 10
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = .red
+        return collectionView
+    }()
     private var textMode: TextMode = .beforeWriting {
         willSet {
             switch newValue {
@@ -225,7 +236,7 @@ final class QuestionView: UIView {
                                         leading: self.leadingAnchor,
                                         bottom: self.bottomAnchor,
                                         trailing: self.trailingAnchor,
-                                        padding: UIEdgeInsets(top: 40, left: 0, bottom: 130, right: 0))
+                                        padding: UIEdgeInsets(top: 40, left: 0, bottom: Size.contentViewBottomSpacing, right: 0))
         
         self.addSubview(self.nextButton)
         self.nextButton.constraint(bottom: self.bottomAnchor,
@@ -239,6 +250,13 @@ final class QuestionView: UIView {
                                        padding: UIEdgeInsets(top: 0, left: Size.buttonHorizontalPadding, bottom: Size.buttonBottomConstant, right: 0))
         self.previousButton.constraint(.widthAnchor, constant: Size.buttonSize)
         self.previousButton.constraint(.heightAnchor, constant: Size.buttonSize)
+        
+        self.addSubview(self.keywordCollectionView)
+        self.keywordCollectionView.constraint(top: self.questionTitleStackView.bottomAnchor,
+                                              leading: self.leadingAnchor,
+                                              bottom: self.bottomAnchor,
+                                              trailing: self.trailingAnchor,
+                                              padding: UIEdgeInsets(top: 54, left: 0, bottom: Size.contentViewBottomSpacing, right: 0))
     }
     
     private func configureUI() {
