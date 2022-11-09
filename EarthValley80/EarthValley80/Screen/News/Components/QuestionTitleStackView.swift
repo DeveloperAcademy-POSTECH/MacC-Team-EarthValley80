@@ -59,13 +59,13 @@ final class QuestionTitleStackView: UIStackView {
         collectionView.register(AnswerCollectionViewCell.self, forCellWithReuseIdentifier: AnswerCollectionViewCell.className)
         return collectionView
     }()
-
-    private let captions: [String] = [StringLiteral.answerCellWhoCaptionTitle,
-                                      StringLiteral.answerCellWhenCaptionTitle,
-                                      StringLiteral.answerCellWhereCaptionTitle,
-                                      StringLiteral.answerCellWhatCaptionTitle,
-                                      StringLiteral.answerCellHowCaptionTitle,
-                                      StringLiteral.answerCellWhyCaptionTitle]
+    
+    let captions: [String] = [StringLiteral.answerCellWhoCaptionTitle,
+                              StringLiteral.answerCellWhenCaptionTitle,
+                              StringLiteral.answerCellWhereCaptionTitle,
+                              StringLiteral.answerCellWhatCaptionTitle,
+                              StringLiteral.answerCellHowCaptionTitle,
+                              StringLiteral.answerCellWhyCaptionTitle]
     var answers: [String] = Array(repeating: "", count: 6) {
         didSet {
             self.fiveWsOneHCollectionView.reloadData()

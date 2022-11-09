@@ -368,7 +368,7 @@ extension QuestionView: UICollectionViewDataSource {
         let cell: AnswerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
         let index = indexPath.item
         
-        cell.setupAnswerCell(of: self.questions?[index] ?? "",
+        cell.setupAnswerCell(of: self.questionTitleStackView.captions[index],
                              answer: self.questionTitleStackView.answers[index])
         
         return cell
