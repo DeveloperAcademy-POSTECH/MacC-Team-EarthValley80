@@ -69,4 +69,38 @@ class AlertViewController: UIViewController {
         return label
     }()
 
+    // MARK: - init
+
+    convenience init(lottieName: String, smallTitle: String, bitTitle: String) {
+        self.init()
+        self.lottieName = lottieName
+        self.smallTitle = smallTitle
+        self.bigTitle = bigTitle
+        self.modalPresentationStyle = .overFullScreen
+    }
+
+    convenience init(contentView: UIView) {
+        self.init()
+        self.contentView = contentView
+        self.modalPresentationStyle = .overFullScreen
+    }
+
+    // MARK: - life cycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+    }
+
+    // MARK: - func
+
 }
