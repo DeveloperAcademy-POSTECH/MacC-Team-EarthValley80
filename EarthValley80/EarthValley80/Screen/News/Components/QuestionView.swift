@@ -57,7 +57,7 @@ final class QuestionView: UIView {
             }
         }
         
-        var collectionViewIsHidden: Bool {
+        var answerCollectionViewIsHidden: Bool {
             switch self {
             case .infer,
                  .reading,
@@ -66,6 +66,15 @@ final class QuestionView: UIView {
                 return true
             default:
                 return false
+            }
+        }
+        
+        var keywordCollectionViewIsHidden: Bool {
+            switch self {
+            case .summarize:
+                return false
+            default:
+                return true
             }
         }
         
@@ -299,7 +308,8 @@ final class QuestionView: UIView {
         
         self.previousButton.isHidden = step.previousButtonIsHidden
         self.contentTextView.isHidden = step.textViewIsHidden
-        self.questionTitleStackView.isHiddenCollectionView = step.collectionViewIsHidden
+        self.keywordCollectionView.isHidden = step.keywordCollectionViewIsHidden
+        self.questionTitleStackView.isHiddenCollectionView = step.answerCollectionViewIsHidden
         
         self.captionText = step.captionText
         self.placeholder = step.placeholder
