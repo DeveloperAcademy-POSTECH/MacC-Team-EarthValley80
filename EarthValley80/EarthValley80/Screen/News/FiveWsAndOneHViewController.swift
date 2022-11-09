@@ -41,7 +41,9 @@ final class FiveWsAndOneHViewController: UIViewController {
             guard view.step.rawValue < QuestionView.Step.allCases.count else { return }
             guard let nextStep = QuestionView.Step(rawValue: view.step.rawValue + 1) else { return }
             
-            view.updateAnswer(at: view.step.rawValue, to: view.contentTextView.text)
+            if view.step.rawValue >= 0 && view.step.rawValue < 6 {
+                view.updateAnswer(at: view.step.rawValue, to: view.contentTextView.text)
+            }
             view.updateConfiguration(with: nextStep)
         }
         view.setupNextAction(action)
@@ -53,6 +55,7 @@ final class FiveWsAndOneHViewController: UIViewController {
             "무엇 때문에 일어난 일인가요?",
             "어떻게 일어난 일인가요?",
             "왜 이런일이 일어났나요?",
+            StringLiteral.keywordNewsTitle,
             StringLiteral.summarizeNewsTitle
         ]
         return view

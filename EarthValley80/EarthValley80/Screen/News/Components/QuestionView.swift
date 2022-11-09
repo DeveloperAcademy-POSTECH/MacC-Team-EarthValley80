@@ -48,7 +48,8 @@ final class QuestionView: UIView {
         case what = 3
         case how = 4
         case why = 5
-        case summarize = 6
+        case keyword = 6
+        case summarize = 7
         
         var previousButtonIsHidden: Bool {
             switch self {
@@ -64,7 +65,7 @@ final class QuestionView: UIView {
             case .infer,
                  .reading,
                  .who,
-                 .summarize:
+                 .keyword:
                 return true
             default:
                 return false
@@ -73,7 +74,7 @@ final class QuestionView: UIView {
         
         var keywordCollectionViewIsHidden: Bool {
             switch self {
-            case .summarize:
+            case .keyword:
                 return false
             default:
                 return true
@@ -82,7 +83,7 @@ final class QuestionView: UIView {
         
         var textViewIsHidden: Bool {
             switch self {
-            case .summarize:
+            case .keyword:
                 return true
             default:
                 return false
@@ -107,7 +108,8 @@ final class QuestionView: UIView {
                 return StringLiteral.answerWhyCaptionTitle
             case .reading:
                 return StringLiteral.answerWhoCaptionTitle
-            case .summarize:
+            case .keyword,
+                 .summarize:
                 return StringLiteral.summarizeNewsCaptionTitle
             }
         }
@@ -131,6 +133,8 @@ final class QuestionView: UIView {
             case .reading:
                 return StringLiteral.answerWhoPlaceholder
             case .summarize:
+                return StringLiteral.summarizePlaceholder
+            default:
                 return ""
             }
         }
@@ -211,7 +215,7 @@ final class QuestionView: UIView {
     
     private(set) var step: Step = .infer {
         didSet {
-            if self.step == .summarize {
+            if self.step == .keyword {
                 self.keywordCollectionView.reloadData()
             }
         }
@@ -330,7 +334,7 @@ final class QuestionView: UIView {
         
         self.contentTextView.resignFirstResponder()
         
-        if step != .summarize {
+        if step != .keyword {
             self.updateTextViewContentToAnswer(with: step)
         }
     }
@@ -368,7 +372,7 @@ extension QuestionView: UITextViewDelegate {
     func textViewDidChangeSelection(_ textView: UITextView) {
         guard
             self.textMode != .beforeWriting,
-            self.step != .summarize
+            self.step != .keyword
         else { return }
         
         self.nextButton.configType = textView.hasText ? .next : .disabled
@@ -378,12 +382,12 @@ extension QuestionView: UITextViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension QuestionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard step == .summarize else { return 0 }
+        guard step == .keyword else { return 0 }
         return self.questionTitleStackView.answers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard step == .summarize else { return UICollectionViewCell() }
+        guard step == .keyword else { return UICollectionViewCell() }
         let cell: AnswerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
         let index = indexPath.item
         
