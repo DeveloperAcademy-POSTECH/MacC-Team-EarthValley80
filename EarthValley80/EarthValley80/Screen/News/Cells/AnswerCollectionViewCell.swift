@@ -101,13 +101,14 @@ final class AnswerCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureUI() {
-        let cellCornerRadius = (self.bounds.size.width * (self.cellType?.cellInnerViewHeight ?? 0 / self.bounds.size.width)) / 2
-        self.capsuleView.layer.cornerRadius = cellCornerRadius
+        if let height = self.cellType?.cellInnerViewHeight {
+            let cellCornerRadius = (self.bounds.size.width * (height / self.bounds.size.width)) / 2
+            self.capsuleView.layer.cornerRadius = cellCornerRadius
+        }
     }
     
     func setupAnswerCell(of caption: String, answer: String) {
         self.captionLabel.text = caption
         self.contentLabel.text = answer
-        self.capsuleView.backgroundColor = .red
     }
 }
