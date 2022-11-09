@@ -27,6 +27,9 @@ final class NewsFlowCompleteView: UIView {
         label.textColor = .evyBlack2
         label.font = .font(.bold, ofSize: 20)
         label.numberOfLines = 2
+        label.applyColor(to: "완성했어요!", with: .evyBlack1)
+        label.applyFont(to: "완성했어요!", with: .font(.bold, ofSize: 40))
+        label.setLineSpacing(kernValue: -1.0, lineSpacing: 10.0)
         label.textAlignment = .center
         return label
     }()
