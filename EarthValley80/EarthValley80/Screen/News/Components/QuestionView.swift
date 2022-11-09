@@ -151,14 +151,15 @@ final class QuestionView: UIView {
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .large), forImageIn: .normal)
         return button
     }()
-    private let keywordCollectionView: UICollectionView = {
+    private lazy var keywordCollectionView: UICollectionView = {
         let flowLayout = LeftAlignCollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
         flowLayout.minimumLineSpacing = 6
         flowLayout.minimumInteritemSpacing = 10
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = .red
+        collectionView.dataSource = self
+        collectionView.register(cell: AnswerCollectionViewCell.self)
         return collectionView
     }()
     private var textMode: TextMode = .beforeWriting {
@@ -338,5 +339,17 @@ extension QuestionView: UITextViewDelegate {
         guard self.textMode != .beforeWriting else { return }
         
         self.nextButton.configType = textView.hasText ? .next : .disabled
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension QuestionView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.questionTitleStackView.answers.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: AnswerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        return cell
     }
 }
