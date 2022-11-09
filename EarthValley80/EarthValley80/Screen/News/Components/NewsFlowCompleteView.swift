@@ -68,6 +68,6 @@ final class NewsFlowCompleteView: UIView {
     }
     
     private func configureUI() {
-        self.backgroundColor = .white.withAlphaComponent(0.85)
+        self.backgroundColor = .white.withAlphaComponent(0.9)
     }
 }
