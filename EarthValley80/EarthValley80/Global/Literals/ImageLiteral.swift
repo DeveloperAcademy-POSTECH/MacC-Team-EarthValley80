@@ -21,6 +21,14 @@ enum ImageLiteral {
     static var imgCoach: UIImage { .load(name: "img_coach") }
     static var imgCoach1: UIImage { .load(name: "img_coach1") }
     static var imgCoach2: UIImage { .load(name: "img_coach2") }
+    
+    // MARK: - button
+    
+    static var btnHome: UIImage { .load(name: "btn_home") }
+    
+    // MARK: - background
+    
+    static var cardSicL3: UIImage { .load(name: "card_sic_L3") }
 }
 
 extension UIImage {
