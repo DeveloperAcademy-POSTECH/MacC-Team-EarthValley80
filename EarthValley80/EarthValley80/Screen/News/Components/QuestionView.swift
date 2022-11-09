@@ -166,8 +166,8 @@ final class QuestionView: UIView {
         let flowLayout = LeftAlignCollectionViewFlowLayout()
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
-        flowLayout.minimumLineSpacing = 6
-        flowLayout.minimumInteritemSpacing = 10
+        flowLayout.minimumLineSpacing = 10
+        flowLayout.minimumInteritemSpacing = 6
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -211,7 +211,9 @@ final class QuestionView: UIView {
     
     private(set) var step: Step = .infer {
         didSet {
-            self.keywordCollectionView.reloadData()
+            if self.step == .summarize {
+                self.keywordCollectionView.reloadData()
+            }
         }
     }
     
@@ -327,7 +329,10 @@ final class QuestionView: UIView {
         self.titleText = self.questions?[step.rawValue] ?? ""
         
         self.contentTextView.resignFirstResponder()
-        self.updateTextViewContentToAnswer(with: step)
+        
+        if step != .summarize {
+            self.updateTextViewContentToAnswer(with: step)
+        }
     }
     
     func setupNextAction(_ action: UIAction) {
@@ -361,7 +366,10 @@ extension QuestionView: UITextViewDelegate {
     }
     
     func textViewDidChangeSelection(_ textView: UITextView) {
-        guard self.textMode != .beforeWriting else { return }
+        guard
+            self.textMode != .beforeWriting,
+            self.step != .summarize
+        else { return }
         
         self.nextButton.configType = textView.hasText ? .next : .disabled
     }
