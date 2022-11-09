@@ -43,6 +43,7 @@ final class FiveWsAndOneHViewController: UIViewController {
                 let nextStep = QuestionView.Step(rawValue: view.step.rawValue + 1)
             else {
                 view.updateLayoutToComplete()
+                view.contentTextView.resignFirstResponder()
                 return
             }
             
