@@ -232,7 +232,6 @@ final class QuestionView: UIView {
         self.setupLayout()
         self.configureUI()
         self.updateConfiguration(with: step)
-        self.updateLayoutToComplete()
     }
     
     @available(*, unavailable)
