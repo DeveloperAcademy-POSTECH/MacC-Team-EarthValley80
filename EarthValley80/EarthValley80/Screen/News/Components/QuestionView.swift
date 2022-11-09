@@ -45,6 +45,7 @@ final class QuestionView: UIView {
         case what = 3
         case how = 4
         case why = 5
+        case summarize = 6
         
         var previousButtonIsHidden: Bool {
             switch self {
@@ -57,7 +58,19 @@ final class QuestionView: UIView {
         
         var collectionViewIsHidden: Bool {
             switch self {
-            case .infer, .reading, .who:
+            case .infer,
+                 .reading,
+                 .who,
+                 .summarize:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        var textViewIsHidden: Bool {
+            switch self {
+            case .summarize:
                 return true
             default:
                 return false
@@ -82,6 +95,8 @@ final class QuestionView: UIView {
                 return StringLiteral.answerWhyCaptionTitle
             case .reading:
                 return StringLiteral.answerWhoCaptionTitle
+            case .summarize:
+                return StringLiteral.summarizeNewsCaptionTitle
             }
         }
         
@@ -103,6 +118,8 @@ final class QuestionView: UIView {
                 return StringLiteral.answerWhyPlaceholder
             case .reading:
                 return StringLiteral.answerWhoPlaceholder
+            case .summarize:
+                return ""
             }
         }
     }
@@ -258,6 +275,7 @@ final class QuestionView: UIView {
         self.step = step
         
         self.previousButton.isHidden = step.previousButtonIsHidden
+        self.contentTextView.isHidden = step.textViewIsHidden
         self.questionTitleStackView.isHiddenCollectionView = step.collectionViewIsHidden
         
         self.captionText = step.captionText

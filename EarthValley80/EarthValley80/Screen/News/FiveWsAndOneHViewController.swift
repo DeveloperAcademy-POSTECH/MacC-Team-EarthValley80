@@ -52,7 +52,8 @@ final class FiveWsAndOneHViewController: UIViewController {
             "이 기사는 어디서 일어난 일인가요?",
             "무엇 때문에 일어난 일인가요?",
             "어떻게 일어난 일인가요?",
-            "왜 이런일이 일어났나요?"
+            "왜 이런일이 일어났나요?",
+            StringLiteral.summarizeNewsTitle
         ]
         return view
     }()
