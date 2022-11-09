@@ -232,6 +232,7 @@ final class QuestionView: UIView {
         self.setupLayout()
         self.configureUI()
         self.updateConfiguration(with: step)
+        self.updateLayoutToComplete()
     }
     
     @available(*, unavailable)
@@ -279,11 +280,6 @@ final class QuestionView: UIView {
                                               padding: UIEdgeInsets(top: 54, left: 0, bottom: Size.contentViewBottomSpacing, right: 0))
     }
     
-    private func updateLayoutToComplete() {
-        self.addSubview(self.completeView)
-        self.completeView.constraint(to: self)
-    }
-    
     private func configureUI() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 30
@@ -320,6 +316,11 @@ final class QuestionView: UIView {
         label.font = .font(.bold, ofSize: 30)
         label.sizeToFit()
         return label.frame.width + Size.cellInsetPadding * 2
+    }
+    
+    func updateLayoutToComplete() {
+        self.addSubview(self.completeView)
+        self.completeView.constraint(to: self)
     }
     
     func updateConfiguration(with step: Step) {

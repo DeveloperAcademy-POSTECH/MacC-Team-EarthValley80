@@ -26,6 +26,8 @@ final class NewsFlowCompleteView: UIView {
         label.text = StringLiteral.completeTitleDescription
         label.textColor = .evyBlack2
         label.font = .font(.bold, ofSize: 20)
+        label.numberOfLines = 2
+        label.textAlignment = .center
         return label
     }()
 
@@ -51,7 +53,7 @@ final class NewsFlowCompleteView: UIView {
         self.addSubview(self.lottieView)
         self.lottieView.constraint(top: self.topAnchor,
                                    centerX: self.centerXAnchor,
-                                   padding: UIEdgeInsets(top: self.frame.size.height * 0.39, left: 0, bottom: 0, right: 0))
+                                   padding: UIEdgeInsets(top: 220, left: 0, bottom: 0, right: 0))
         self.lottieView.constraint(.widthAnchor, constant: 150)
         self.lottieView.constraint(.heightAnchor, constant: 137)
         
