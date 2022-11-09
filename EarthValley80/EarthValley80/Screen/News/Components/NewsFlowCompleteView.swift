@@ -39,6 +39,7 @@ final class NewsFlowCompleteView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupLayout()
+        self.configureUI()
     }
     
     @available(*, unavailable)
@@ -64,5 +65,9 @@ final class NewsFlowCompleteView: UIView {
         self.titleLabel.constraint(top: self.lottieView.bottomAnchor,
                                    centerX: self.centerXAnchor,
                                    padding: UIEdgeInsets(top: 31, left: 0, bottom: 0, right: 0))
+    }
+    
+    private func configureUI() {
+        self.backgroundColor = .white.withAlphaComponent(0.85)
     }
 }

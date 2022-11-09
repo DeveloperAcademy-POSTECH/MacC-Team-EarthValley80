@@ -283,6 +283,7 @@ final class QuestionView: UIView {
     private func configureUI() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 30
+        self.layer.masksToBounds = true
         
         self.textMode = .beforeWriting
     }
