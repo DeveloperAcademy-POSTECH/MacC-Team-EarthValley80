@@ -197,7 +197,11 @@ final class QuestionView: UIView {
         }
     }
     
-    private(set) var step: Step = .infer
+    private(set) var step: Step = .infer {
+        didSet {
+            self.keywordCollectionView.reloadData()
+        }
+    }
     
     var questions: [String]? {
         willSet {
@@ -345,11 +349,18 @@ extension QuestionView: UITextViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension QuestionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard step == .summarize else { return 0 }
         return self.questionTitleStackView.answers.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard step == .summarize else { return UICollectionViewCell() }
         let cell: AnswerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        let index = indexPath.item
+        
+        cell.setupAnswerCell(of: self.questions?[index] ?? "",
+                             answer: self.questionTitleStackView.answers[index])
+        
         return cell
     }
 }
