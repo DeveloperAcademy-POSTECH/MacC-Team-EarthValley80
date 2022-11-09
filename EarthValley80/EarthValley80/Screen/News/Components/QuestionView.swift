@@ -170,6 +170,7 @@ final class QuestionView: UIView {
         flowLayout.minimumInteritemSpacing = 10
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(cell: AnswerCollectionViewCell.self)
         return collectionView
     }()
@@ -378,6 +379,7 @@ extension QuestionView: UICollectionViewDataSource {
         let cell: AnswerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
         let index = indexPath.item
         
+        cell.cellType = .keyword
         cell.setupAnswerCell(of: self.questionTitleStackView.captions[index],
                              answer: self.questionTitleStackView.answers[index])
         

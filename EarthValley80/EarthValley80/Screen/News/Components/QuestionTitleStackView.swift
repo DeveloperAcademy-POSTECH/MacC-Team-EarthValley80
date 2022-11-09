@@ -121,7 +121,10 @@ extension QuestionTitleStackView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: AnswerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
         let index = indexPath.item
+        
+        cell.cellType = .answer
         cell.setupAnswerCell(of: self.captions[index], answer: self.answers[index])
+        
         return cell
     }
 }

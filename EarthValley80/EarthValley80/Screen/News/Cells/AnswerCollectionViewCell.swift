@@ -10,15 +10,57 @@ import UIKit
 final class AnswerCollectionViewCell: UICollectionViewCell {
     
     private enum Size {
-        static let innerViewHeight: CGFloat = 30.0
+        static let answerInnerViewHeight: CGFloat = 30.0
+        static let keywordInnerViewHeight: CGFloat = 56.0
+    }
+    
+    enum CellType {
+        case answer
+        case keyword
+        
+        var contentFont: UIFont {
+            switch self {
+            case .answer:
+                return .font(.bold, ofSize: 16)
+            case .keyword:
+                return .font(.bold, ofSize: 30)
+            }
+        }
+        
+        var captionFont: UIFont {
+            switch self {
+            case .answer:
+                return .font(.bold, ofSize: 10)
+            case .keyword:
+                return .font(.bold, ofSize: 12)
+            }
+        }
+        
+        var contentInset: UIEdgeInsets {
+            switch self {
+            case .answer:
+                return UIEdgeInsets(top: 6, left: 12, bottom: -4, right: -12)
+            case .keyword:
+                return UIEdgeInsets(top: 16, left: 20, bottom: -10, right: -20)
+            }
+        }
+        
+        var cellInnerViewHeight: CGFloat {
+            switch self {
+            case .answer:
+                return Size.answerInnerViewHeight
+            case .keyword:
+                return Size.keywordInnerViewHeight
+            }
+        }
     }
     
     // MARK: - property
     
-    private let captionLabel: UILabel = {
+    private lazy var captionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .evyGray1
-        label.font = .font(.bold, ofSize: 10)
+        label.font = self.cellType?.captionFont
         return label
     }()
     private let capsuleView: UIView = {
@@ -26,24 +68,17 @@ final class AnswerCollectionViewCell: UICollectionViewCell {
         view.backgroundColor = .evyGray2
         return view
     }()
-    private let contentLabel: UILabel = {
+    private lazy var contentLabel: UILabel = {
         let label = UILabel()
         label.textColor = .evyBlack2
-        label.font = .font(.bold, ofSize: 16)
+        label.font = self.cellType?.contentFont
         return label
     }()
-    
-    // MARK: - init
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setupLayout()
-        self.configureUI()
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var cellType: CellType? {
+        didSet {
+            self.setupLayout()
+            self.configureUI()
+        }
     }
     
     // MARK: - func
@@ -58,20 +93,21 @@ final class AnswerCollectionViewCell: UICollectionViewCell {
                                     leading: self.contentView.leadingAnchor,
                                     bottom: self.contentView.bottomAnchor,
                                     trailing: self.contentView.trailingAnchor)
-        self.capsuleView.constraint(.heightAnchor, constant: Size.innerViewHeight)
+        self.capsuleView.constraint(.heightAnchor, constant: self.cellType?.cellInnerViewHeight ?? 0)
         
         self.capsuleView.addSubview(self.contentLabel)
         self.contentLabel.constraint(to: self.capsuleView,
-                                     insets: UIEdgeInsets(top: 6, left: 12, bottom: -4, right: -12))
+                                     insets: self.cellType?.contentInset ?? .zero)
     }
     
     private func configureUI() {
-        let cellCornerRadius = (self.bounds.size.width * (Size.innerViewHeight / self.bounds.size.width)) / 2
+        let cellCornerRadius = (self.bounds.size.width * (self.cellType?.cellInnerViewHeight ?? 0 / self.bounds.size.width)) / 2
         self.capsuleView.layer.cornerRadius = cellCornerRadius
     }
     
     func setupAnswerCell(of caption: String, answer: String) {
         self.captionLabel.text = caption
         self.contentLabel.text = answer
+        self.capsuleView.backgroundColor = .red
     }
 }
