@@ -188,6 +188,7 @@ final class QuestionView: UIView {
     }
     private let questionTitleStackView = QuestionTitleStackView()
     private let nextButton = NextButton(configType: .disabled)
+    private lazy var completeView = NewsFlowCompleteView()
     
     private var captionText: String = "" {
         willSet {
@@ -276,6 +277,11 @@ final class QuestionView: UIView {
                                               bottom: self.bottomAnchor,
                                               trailing: self.trailingAnchor,
                                               padding: UIEdgeInsets(top: 54, left: 0, bottom: Size.contentViewBottomSpacing, right: 0))
+    }
+    
+    private func updateLayoutToComplete() {
+        self.addSubview(self.completeView)
+        self.completeView.constraint(to: self)
     }
     
     private func configureUI() {
