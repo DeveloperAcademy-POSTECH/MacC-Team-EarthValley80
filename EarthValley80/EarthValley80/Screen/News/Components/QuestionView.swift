@@ -90,6 +90,17 @@ final class QuestionView: UIView {
             }
         }
         
+        var nextTitleConfigType: NextButton.ConfigType {
+            switch self {
+            case .summarize:
+                return .complete
+            case .keyword:
+                return .summarize
+            default:
+                return .next
+            }
+        }
+        
         var captionText: String {
             switch self {
             case .infer:
@@ -373,9 +384,14 @@ extension QuestionView: UITextViewDelegate {
         guard
             self.textMode != .beforeWriting,
             self.step != .keyword
-        else { return }
+        else {
+            if self.step == .keyword {
+                self.nextButton.configType = self.step.nextTitleConfigType
+            }
+            return
+        }
         
-        self.nextButton.configType = textView.hasText ? .next : .disabled
+        self.nextButton.configType = textView.hasText ? self.step.nextTitleConfigType : .disabled
     }
 }
 
