@@ -20,6 +20,8 @@ final class QuestionView: UIView {
         static let buttonHorizontalPadding: CGFloat = 30.0
         static let buttonSize: CGFloat = 60.0
         static let contentViewBottomSpacing: CGFloat = 130.0
+        static let cellHeight: CGFloat = 70.0
+        static let cellInsetPadding: CGFloat = 20.0
     }
     
     enum TextMode {
@@ -303,6 +305,14 @@ final class QuestionView: UIView {
         self.contentTextView.text = self.questionTitleStackView.answers[index]
     }
     
+    private func calculateCellWidth(with text: String) -> CGFloat {
+        let label = UILabel()
+        label.text = text
+        label.font = .font(.bold, ofSize: 30)
+        label.sizeToFit()
+        return label.frame.width + Size.cellInsetPadding * 2
+    }
+    
     func updateConfiguration(with step: Step) {
         self.step = step
         
@@ -372,5 +382,14 @@ extension QuestionView: UICollectionViewDataSource {
                              answer: self.questionTitleStackView.answers[index])
         
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension QuestionView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height: CGFloat = Size.cellHeight
+        let width: CGFloat = self.calculateCellWidth(with: self.questionTitleStackView.answers[indexPath.item])
+        return CGSize(width: width, height: height)
     }
 }
