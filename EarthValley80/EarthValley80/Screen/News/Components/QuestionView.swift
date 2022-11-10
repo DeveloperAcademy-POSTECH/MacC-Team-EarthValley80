@@ -311,10 +311,11 @@ final class QuestionView: UIView {
     
     private func setupNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func applyTextViewConfiguration(with state: TextMode, placeholder: String?) {
-        if let placeholder = placeholder {
+        if let placeholder = placeholder, self.contentTextView.text == "" {
             self.contentTextView.text = placeholder
         }
         self.contentTextView.textColor = state.textColor
@@ -387,6 +388,11 @@ final class QuestionView: UIView {
             
             self.textViewConstraint?[.bottom]?.constant = -keyboardHeight
         }
+    }
+    
+    @objc
+    private func keyboardWillHide(_ notification: NSNotification) {
+        self.textViewConstraint?[.bottom]?.constant = -Size.contentViewBottomSpacing
     }
 }
 
