@@ -13,12 +13,9 @@ final class NewsFlowCompleteView: UIView {
     
     // MARK: - property
     
-    private lazy var lottieView: LottieAnimationView = {
+    private lazy var lottieView: UIImageView = {
         // TODO: - 추후에 제 뷰에 맞게 변경
-        let animationView = LottieAnimationView(name: "mp4TempFile")
-        animationView.play()
-        animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .loop
+        let animationView = UIImageView(image: UIImage(named: "image 123"))
         return animationView
     }()
     private let titleLabel: UILabel = {
