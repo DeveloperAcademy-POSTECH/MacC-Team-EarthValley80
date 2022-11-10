@@ -133,8 +133,7 @@ final class GuidingView: UIView {
         return label
     }()
     private lazy var lottieView: LottieAnimationView = {
-        // TODO: - 추후에 제 뷰에 맞게 변경
-        let animationView = LottieAnimationView(name: "mp4TempFile")
+        let animationView = LottieAnimationView(name: "guide_lottie")
         animationView.play()
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop
@@ -234,9 +233,9 @@ final class GuidingView: UIView {
         self.lottieView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(lottieView)
         self.lottieView.constraint(top: self.topAnchor,
-                                   leading: self.leadingAnchor,
-                                   bottom: self.bottomAnchor,
-                                   trailing: self.trailingAnchor,
-                                   padding: UIEdgeInsets(top: 0, left: 108, bottom: 188, right: 108))
+                                   centerX: self.centerXAnchor,
+                                   padding: UIEdgeInsets(top: 156, left: 0, bottom: 0, right: 0))
+        self.lottieView.constraint(.widthAnchor, constant: 640)
+        self.lottieView.constraint(.heightAnchor, constant: 446)
     }
 }
