@@ -79,12 +79,6 @@ class AlertViewController: UIViewController {
         self.modalPresentationStyle = .overFullScreen
     }
 
-    convenience init(contentView: UIView) {
-        self.init()
-        self.contentView = contentView
-        self.modalPresentationStyle = .overFullScreen
-    }
-
     // MARK: - life cycle
 
     override func viewDidLoad() {
