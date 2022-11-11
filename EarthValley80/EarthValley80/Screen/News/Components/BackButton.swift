@@ -30,7 +30,18 @@ final class BackButton: UIButton {
     }
     
     private func configureUI() {
-        // TODO: - 홈으로 이미지 적용
-        self.setBackgroundColor(.blue, for: .normal)
+        if #available(iOS 15.0, *) {
+            var configuration = UIButton.Configuration.plain()
+            configuration.attributedTitle = AttributedString(stringLiteral: StringLiteral.backButtonText)
+            configuration.image = ImageLiteral.icChevronLeft
+            configuration.baseForegroundColor = .white
+            configuration.imagePadding = 10
+            self.configuration = configuration
+        } else {
+            self.tintColor = .evyWhite
+            self.setImage(ImageLiteral.icChevronLeft, for: .normal)
+            self.setTitle(StringLiteral.backButtonText, for: .normal)
+            self.imageEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0)
+        }
     }
 }
