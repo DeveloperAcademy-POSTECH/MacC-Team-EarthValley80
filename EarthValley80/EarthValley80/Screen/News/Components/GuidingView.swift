@@ -132,9 +132,12 @@ final class GuidingView: UIView {
         label.numberOfLines = 0
         return label
     }()
-    private lazy var lottieView: UIImageView = {
+    private lazy var lottieView: LottieAnimationView = {
         // TODO: - 추후에 제 뷰에 맞게 변경
-        let animationView = UIImageView(image: UIImage(named: "lottie"))
+        let animationView = LottieAnimationView(name: "mp4TempFile")
+        animationView.play()
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
         return animationView
     }()
     private let mainGuideImageView = UIImageView()

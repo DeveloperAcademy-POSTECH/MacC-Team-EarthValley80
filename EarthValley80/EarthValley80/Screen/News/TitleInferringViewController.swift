@@ -84,7 +84,6 @@ final class TitleInferringViewController: UIViewController {
         self.setupLayout()
         self.configureUI()
         self.openQuestionView()
-        UserDefaultHandler.setIsSeenGuide(to: false)
     }
     
     // MARK: - func
