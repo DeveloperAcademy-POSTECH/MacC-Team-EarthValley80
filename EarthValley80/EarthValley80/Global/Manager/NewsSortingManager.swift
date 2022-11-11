@@ -135,8 +135,8 @@ struct NewsSortingManager {
                 break
             } else if myNewsDataCount < number {
                 nilIndex = lottieAttainmentStandard.firstIndex(of: number) ?? 0
-                for i in 0..<nilIndex {
-                    reversedData.insert(News(title: nil, category: nil), at: locationOfNil[i])
+                for index in 0..<nilIndex {
+                    reversedData.insert(News(title: nil, category: nil), at: locationOfNil[index])
                 }
                 break
             }
