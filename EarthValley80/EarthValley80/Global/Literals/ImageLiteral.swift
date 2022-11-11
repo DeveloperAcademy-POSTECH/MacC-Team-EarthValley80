@@ -21,6 +21,8 @@ enum ImageLiteral {
     static var imgCoach: UIImage { .load(name: "img_coach") }
     static var imgCoach1: UIImage { .load(name: "img_coach1") }
     static var imgCoach2: UIImage { .load(name: "img_coach2") }
+    static var imgClap: UIImage { .load(name: "img_clap") }
+    static var imgCongrat: UIImage { .load(name: "img_congrat") }
 }
 
 extension UIImage {

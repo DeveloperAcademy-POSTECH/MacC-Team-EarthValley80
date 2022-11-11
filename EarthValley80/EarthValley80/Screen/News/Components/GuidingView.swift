@@ -132,13 +132,7 @@ final class GuidingView: UIView {
         label.numberOfLines = 0
         return label
     }()
-    private lazy var lottieView: LottieAnimationView = {
-        let animationView = LottieAnimationView(name: "guide_lottie")
-        animationView.play()
-        animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .loop
-        return animationView
-    }()
+    private let clapImageView: UIImageView = UIImageView(image: ImageLiteral.imgClap)
     private let mainGuideImageView = UIImageView()
     
     // MARK: - init
@@ -158,7 +152,7 @@ final class GuidingView: UIView {
     }
     
     deinit {
-        self.lottieView.removeFromSuperview()
+        self.clapImageView.removeFromSuperview()
     }
     
     // MARK: - func
@@ -230,12 +224,12 @@ final class GuidingView: UIView {
     private func setupLottieView(guidingType: GuideType) {
         guard guidingType == .complete else { return }
         
-        self.lottieView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(lottieView)
-        self.lottieView.constraint(top: self.topAnchor,
-                                   centerX: self.centerXAnchor,
-                                   padding: UIEdgeInsets(top: 156, left: 0, bottom: 0, right: 0))
-        self.lottieView.constraint(.widthAnchor, constant: 640)
-        self.lottieView.constraint(.heightAnchor, constant: 446)
+        self.clapImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(clapImageView)
+        self.clapImageView.constraint(top: self.topAnchor,
+                                      centerX: self.centerXAnchor,
+                                      padding: UIEdgeInsets(top: 156, left: 0, bottom: 0, right: 0))
+        self.clapImageView.constraint(.widthAnchor, constant: 640)
+        self.clapImageView.constraint(.heightAnchor, constant: 446)
     }
 }

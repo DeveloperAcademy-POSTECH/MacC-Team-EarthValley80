@@ -13,13 +13,7 @@ final class NewsFlowCompleteView: UIView {
     
     // MARK: - property
     
-    private lazy var lottieView: LottieAnimationView = {
-        let animationView = LottieAnimationView(name: "cong_lottie")
-        animationView.play()
-        animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .loop
-        return animationView
-    }()
+    private let congratImageView: UIImageView = UIImageView(image: ImageLiteral.imgCongrat)
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = StringLiteral.completeTitleDescription
@@ -47,21 +41,21 @@ final class NewsFlowCompleteView: UIView {
     }
     
     deinit {
-        self.lottieView.removeFromSuperview()
+        self.congratImageView.removeFromSuperview()
     }
     
     // MARK: - func
     
     private func setupLayout() {
-        self.addSubview(self.lottieView)
-        self.lottieView.constraint(top: self.topAnchor,
-                                   centerX: self.centerXAnchor,
-                                   padding: UIEdgeInsets(top: 220, left: 0, bottom: 0, right: 0))
-        self.lottieView.constraint(.widthAnchor, constant: 150)
-        self.lottieView.constraint(.heightAnchor, constant: 137)
+        self.addSubview(self.congratImageView)
+        self.congratImageView.constraint(top: self.topAnchor,
+                                         centerX: self.centerXAnchor,
+                                         padding: UIEdgeInsets(top: 220, left: 0, bottom: 0, right: 0))
+        self.congratImageView.constraint(.widthAnchor, constant: 150)
+        self.congratImageView.constraint(.heightAnchor, constant: 137)
         
         self.addSubview(self.titleLabel)
-        self.titleLabel.constraint(top: self.lottieView.bottomAnchor,
+        self.titleLabel.constraint(top: self.congratImageView.bottomAnchor,
                                    centerX: self.centerXAnchor,
                                    padding: UIEdgeInsets(top: 31, left: 0, bottom: 0, right: 0))
     }
