@@ -57,4 +57,40 @@ extension UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+
+    func makeCustomAlert(lottieName: String,
+                          smallTitle: String,
+                          bigTitle: String,
+                          leftTitle: String = "취소",
+                          rightTitle: String = "확인",
+                          leftAction: (() -> Void)? = nil,
+                          rightAction: (() -> Void)? = nil) {
+        let alertViewController = AlertViewController(lottieName: lottieName,
+                                                      smallTitle: smallTitle,
+                                                      bigTitle: rightTitle)
+        self.makeAlert(alertViewController: alertViewController,
+                       leftTitle: leftTitle,
+                       rightTitle: rightTitle,
+                       leftAction: leftAction,
+                       rightAction: rightAction)
+    }
+
+    private func makeAlert(alertViewController: AlertViewController,
+                           leftTitle: String,
+                           rightTitle: String,
+                           leftAction: (() -> Void)?,
+                           rightAction: (() -> Void)?) {
+        alertViewController.addActionToButton(title: leftTitle,
+                                              titleColor: .evyBlack2,
+                                              backgroundColor: .red) {
+            alertViewController.dismiss(animated: false, completion: leftAction)
+        }
+
+        alertViewController.addActionToButton(title: rightTitle,
+                                              titleColor: .evyBlack2,
+                                              backgroundColor: .red) {
+            alertViewController.dismiss(animated: false, completion: rightAction)
+        }
+        present(alertViewController, animated: false, completion: nil)
+    }
 }
