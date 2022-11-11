@@ -27,14 +27,14 @@ final class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
         imageView.backgroundColor = .evyBlack1
         return imageView
     }()
-    let newsTitleLabel: UILabel = {
+    private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .font(.bold, ofSize: Size.titleFontSize)
         label.textColor = .white
         return label
     }()
-    let newsCategoryLabel: UILabel = {
+    private let newsCategoryLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
