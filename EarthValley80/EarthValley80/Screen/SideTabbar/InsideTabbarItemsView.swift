@@ -12,6 +12,9 @@ struct InsideTabBarItems: View {
     
     var body: some View {
         VStack {
+            
+//            SideTabbarLottieView(filename: "Brown.actionsheet.mp4.lottie")
+//                .frame(width: 155, height: 60)
             Image("Logo")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -28,11 +31,6 @@ struct InsideTabBarItems: View {
             }
             Spacer()
             
-            Image("Logo_illust")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 147, height: 206)
-                .padding(EdgeInsets(top: 150, leading: 40, bottom: 0, trailing: 40))
         }
     }
 }
