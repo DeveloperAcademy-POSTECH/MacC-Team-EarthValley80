@@ -83,7 +83,7 @@ final class GuidingView: UIView {
             case .scrollGuide:
                 return UIEdgeInsets(top: 0, left: 226, bottom: -325, right: 0)
             case .touchGuide:
-                return UIEdgeInsets(top: 250, left: 0, bottom: 0, right: -147)
+                return UIEdgeInsets(top: 352, left: 0, bottom: 0, right: -147)
             case .vocabularyGuide:
                 return UIEdgeInsets(top: 0, left: 220, bottom: -199, right: 0)
             case .complete:
@@ -94,7 +94,7 @@ final class GuidingView: UIView {
         var subTextLayout: UIEdgeInsets {
             switch self {
             case .touchGuide:
-                return UIEdgeInsets(top: 494, left: 0, bottom: 0, right: -147)
+                return UIEdgeInsets(top: 594, left: 0, bottom: 0, right: -147)
             case .vocabularyGuide:
                 return UIEdgeInsets(top: 0, left: 496, bottom: -345, right: 0)
             default:
@@ -107,7 +107,7 @@ final class GuidingView: UIView {
             case .scrollGuide:
                 return UIEdgeInsets(top: 0, left: 123, bottom: -206, right: 0)
             case .touchGuide:
-                return UIEdgeInsets(top: 178, left: 0, bottom: 0, right: -130)
+                return UIEdgeInsets(top: 278, left: 0, bottom: 0, right: -130)
             case .vocabularyGuide:
                 return UIEdgeInsets(top: 0, left: 395, bottom: -196, right: 0)
             default:
@@ -143,7 +143,7 @@ final class GuidingView: UIView {
     private let mainGuideImageView = UIImageView()
     
     // MARK: - init
-    
+
     init(guidingType: GuideType) {
         super.init(frame: .zero)
         self.setupMainComponentLayout(guidingType: guidingType)
