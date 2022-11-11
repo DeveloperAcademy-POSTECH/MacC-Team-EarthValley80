@@ -134,4 +134,24 @@ class AlertViewController: UIViewController {
         self.alertImageView.constraint(.heightAnchor, constant: 60)
     }
 
+    public func addActionToButton(title: String? = nil,
+                                  titleColor: UIColor = .white,
+                                  backgroundColor: UIColor = .blue,
+                                  completion: (() -> Void)? = nil) {
+        let button = UIButton()
+        button.titleLabel?.font = .font(.bold, ofSize: 16)
+        // enable
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.evyBlack2, for: .normal)
+        // disable
+        button.setTitleColor(.evyGray3, for: .disabled)
+        button.addAction(for: .touchUpInside) { _ in
+            completion?()
+        }
+        self.alertButtonStackView.addArrangedSubview(button)
+        self.alertButtonStackView.constraint(.widthAnchor, constant: 270)
+        // TODO: - 개수에 따라서 빠꿔줘야하는데,,
+        self.alertButtonStackView.constraint(.heightAnchor, constant: 50)
+    }
+}
 }
