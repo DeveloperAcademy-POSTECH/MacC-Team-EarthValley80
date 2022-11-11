@@ -154,4 +154,72 @@ class AlertViewController: UIViewController {
         self.alertButtonStackView.constraint(.heightAnchor, constant: 50)
     }
 }
+
+// MARK: - UIControl extension
+extension UIControl {
+    public typealias UIControlTargetClosure = (UIControl) -> ()
+
+    private class UIControlClosureWrapper: NSObject {
+        let closure: UIControlTargetClosure
+        init(_ closure: @escaping UIControlTargetClosure) {
+            self.closure = closure
+        }
+    }
+
+    private struct AssociatedKeys {
+        static var targetClosure = "targetClosure"
+    }
+
+    private var targetClosure: UIControlTargetClosure? {
+        get {
+            guard let closureWrapper = objc_getAssociatedObject(self, &AssociatedKeys.self.targetClosure) as? UIControlClosureWrapper else { return nil }
+            return closureWrapper.closure
+
+        } set(newValue) {
+            guard let newValue = newValue else { return }
+            objc_setAssociatedObject(self, &AssociatedKeys.self.targetClosure, UIControlClosureWrapper(newValue),
+                                     objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
+    @objc func closureAction() {
+        guard let targetClosure = self.targetClosure else { return }
+        targetClosure(self)
+    }
+
+    public func addAction(for event: UIControl.Event, closure: @escaping UIControlTargetClosure) {
+        self.targetClosure = closure
+        addTarget(self, action: #selector(UIControl.closureAction), for: event)
+    }
+}
+
+// TODO: - testcode 삭제해야합니다!!!! ------------------------------------------------
+
+final class TempViewController: UIViewController {
+
+    private let tempbutton: GotoSomewhereButton = {
+        let button = GotoSomewhereButton()
+        button.setImage(UIImage(named: "ico_news"), for: .normal)
+        button.setTitle("헬로헤로", for: .normal)
+        button.addTarget(self, action: #selector(buttonDidTap), for: .touchUpInside)
+        return button
+    }()
+
+    override func viewDidLoad() {
+        setupLayout()
+    }
+
+    private func setupLayout() {
+        view.addSubview(tempbutton)
+        tempbutton.constraint(top: view.topAnchor, leading: view.leadingAnchor, padding: UIEdgeInsets(top: 100, left: 100, bottom: 0, right: 0))
+        tempbutton.constraint(.widthAnchor, constant: 200)
+    }
+
+    @objc
+    func buttonDidTap() {
+        print("버튼눌림")
+
+        self.makeCustomAlert(lottieName: "mp4TempFile", smallTitle: "gkdll", bigTitle: "gkdl")
+    }
+
 }
