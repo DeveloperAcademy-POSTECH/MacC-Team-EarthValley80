@@ -12,13 +12,17 @@ enum StringLiteral {
     // MARK: - caption
     
     static let readingNewsCaptionTitle = "기사읽기"
-    static let inferingNewsCaptionTitle = "유추하기"
+    static let inferringNewsCaptionTitle = "유추하기"
     static let answerWhoCaptionTitle = "대답하기 | 누가"
+    static let answerWhenCaptionTitle = "대답하기 | 언제"
+    static let answerWhereCaptionTitle = "대답하기 | 어디서"
+    static let answerWhatCaptionTitle = "대답하기 | 무엇을"
+    static let answerHowCaptionTitle = "대답하기 | 어떻게"
+    static let answerWhyCaptionTitle = "대답하기 | 왜"
     
     // MARK: - title
     
-    static let inferingNewsTitle = "이 기사는 어떤 내용의 기사일까요?"
-    static let answerWhoTitle = "이 기사의 주인공은 누구인가요?"    
+    static let inferringNewsTitle = "이 기사는 어떤 내용의 기사일까요?" 
     static let yomojomoNewsTitle = "한 주의 요모조모 뉴스"
     static let myNewsDrawerTitle = "나의 뉴스 서랍"
 
@@ -30,8 +34,13 @@ enum StringLiteral {
 
     // MARK: - placeholder
     
-    static let inferingPlaceholder = "제목을 보고 떠오르는 것을 자유롭게 적어보세요"
+    static let inferringPlaceholder = "제목을 보고 떠오르는 것을 자유롭게 적어보세요"
     static let answerWhoPlaceholder = "짧고 간단하게 대답해보세요!"
+    static let answerWhenPlaceholder = "5가지 질문이 남아있어요"
+    static let answerWherePlaceholder = "4가지 질문이 남아있어요"
+    static let answerWhatPlaceholder = "3가지 질문이 남아있어요"
+    static let answerHowPlaceholder = "2가지 질문이 남아있어요"
+    static let answerWhyPlaceholder = "마지막 질문이에요"
     
     // MARK: - button
     
@@ -41,9 +50,12 @@ enum StringLiteral {
     
     // MARK: - guide
     
+    static let scrollGuideCaptionText = "가이드1"
     static let scrollGuideText = "기사를 스크롤 하여 읽을 수 있어요"
-    static let highlightTopTouchGuideText = "화면의 윗 부분을 터치하면\n이전의 줄글을 하이라이트해요"
-    static let highlightBottomTouchGuideText = "화면의 아랫 부분을 터치하면\n이후의 줄글을 하이라이트해요"
+    static let hightlightGuideCaptionText = "가이드2"
+    static let highlightTopTouchGuideText = "화면의 윗 부분을 터치하면\n이전의 문장을 보여줘요"
+    static let highlightBottomTouchGuideText = "화면의 아랫 부분을 터치하면\n순서대로 문장을 보여줘요"
+    static let vocabularyGuideCaptionText = "가이드3"
     static let vocabularyGuideText = "모르는 단어가 있다면\n꾹- 눌러 단어장에 추가할 수 있어요"
     static let vocabularyGuidesubText = "어려운 단어가 있나요?"
     static let completeGuideText = "완벽해요\n그럼 기사를 읽으러 가볼까요?"

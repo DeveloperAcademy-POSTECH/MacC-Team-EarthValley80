@@ -13,7 +13,7 @@ private extension UIColor {
     }
 }
 
-final class TitleInferingViewController: UIViewController {
+final class TitleInferringViewController: UIViewController {
     
     private enum Size {
         static let verticalPadding: CGFloat = 16.0
@@ -59,17 +59,23 @@ final class TitleInferingViewController: UIViewController {
         
         return label
     }()
-    private let questionView: QuestionView = {
-        let view = QuestionView()
-        view.captionText = StringLiteral.inferingNewsCaptionTitle
-        view.titleText = StringLiteral.inferingNewsTitle
-        view.placeholder = StringLiteral.inferingPlaceholder
+    private lazy var questionView: QuestionView = {
+        let view = QuestionView(step: .infer)
+        let action = UIAction { [weak self] _ in
+            guard let readingNewsViewController = self?.storyboard?.instantiateViewController(withIdentifier: ReadingNewsViewController.className) as? ReadingNewsViewController else { return }
+            readingNewsViewController.modalTransitionStyle = .crossDissolve
+            readingNewsViewController.modalPresentationStyle = .fullScreen
+            self?.present(readingNewsViewController, animated: true)
+        }
+        view.setupNextAction(action)
+        view.questions = [StringLiteral.inferringNewsTitle]
         return view
     }()
     private let titleView = NewsTitleView(status: .expanded)
     private let backButton = BackButton()
     
     private var questionViewConstraints: [ConstraintType: NSLayoutConstraint]?
+    private var contentConstraints: [ConstraintType: NSLayoutConstraint]?
     
     // MARK: - life cycle
 
@@ -95,7 +101,7 @@ final class TitleInferingViewController: UIViewController {
                                    padding: UIEdgeInsets(top: 26, left: 10, bottom: 0, right: 0))
         
         self.view.addSubview(self.blurContentLabel)
-        self.blurContentLabel.constraint(leading: self.view.leadingAnchor,
+        self.contentConstraints = self.blurContentLabel.constraint(leading: self.view.leadingAnchor,
                                          bottom: self.view.bottomAnchor,
                                          trailing: self.questionView.leadingAnchor,
                                          padding: UIEdgeInsets(top: 0, left: 90, bottom: 0, right: 90))
@@ -119,6 +125,8 @@ final class TitleInferingViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
             self.moveQuestionView(to: .left)
+            self.titleView.updateTitleStatus(to: .compact)
+            self.updateContentLayout()
         })
     }
     
@@ -129,5 +137,10 @@ final class TitleInferingViewController: UIViewController {
             self.questionViewConstraints?[.trailing]?.constant = -direction.offset
             self.view.layoutIfNeeded()
         })
+    }
+    
+    private func updateContentLayout() {
+        self.contentConstraints?[.leading]?.constant = 50.0
+        self.contentConstraints?[.trailing]?.constant = -50.0
     }
 }

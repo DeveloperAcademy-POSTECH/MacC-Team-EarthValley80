@@ -18,6 +18,7 @@ final class NewsTitleView: UIView {
         static let originalBottomSpacing: CGFloat = 50.0
         static let scrolledBottomSpacing: CGFloat = 40.0
         static let minimumBottomSpacing: CGFloat = 24.0
+        static let questionViewFrameWidth: CGFloat = UIScreen.main.bounds.size.width * 0.48
     }
     
     enum Status {
@@ -62,6 +63,15 @@ final class NewsTitleView: UIView {
                 return Size.minimumBottomSpacing
             }
         }
+        
+        var labelWidth: CGFloat {
+            switch self {
+            case .compact:
+                return UIScreen.main.bounds.size.width - Size.questionViewFrameWidth - (self.horizontalPadding * 2)
+            default:
+                return UIScreen.main.bounds.size.width - 20 - (self.horizontalPadding * 2)
+            }
+        }
     }
     
     // MARK: - property
@@ -78,15 +88,18 @@ final class NewsTitleView: UIView {
         return label
     }()
     
-    private var status: Status {
+    private(set) var status: Status {
         willSet {
             self.titleLabel.font = .font(.bold, ofSize: newValue.fontSize)
             self.titleLabel.textColor = newValue.textColor
         }
     }
     
+    private var labelConstraint: [ConstraintType: NSLayoutConstraint]?
+    
     var heightOfLabel: CGFloat {
-        let label = UILabel()
+        let label = UILabel(frame: CGRect(origin: .zero,
+                                          size: CGSize(width: self.status.labelWidth, height: CGFloat.greatestFiniteMagnitude)))
         let text = self.titleLabel.text
         
         label.text = text
@@ -95,7 +108,7 @@ final class NewsTitleView: UIView {
         label.setLineSpacing(kernValue: -2.0, lineHeightMultiple: 1.16)
         label.sizeToFit()
         
-        return label.frame.height + self.status.bottomSpacing * 2
+        return label.frame.height + self.status.bottomSpacing
     }
     
     // MARK: - init
@@ -115,16 +128,25 @@ final class NewsTitleView: UIView {
     
     private func setupLayout() {
         self.addSubview(self.titleLabel)
-        let labelConstraint = self.titleLabel.constraint(top: self.topAnchor,
-                                                         leading: self.leadingAnchor,
-                                                         bottom: self.bottomAnchor,
-                                                         trailing: self.trailingAnchor,
-                                                         padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: self.status.bottomSpacing, right: self.status.horizontalPadding))
+        self.labelConstraint = self.titleLabel.constraint(top: self.topAnchor,
+                                                          leading: self.leadingAnchor,
+                                                          bottom: self.bottomAnchor,
+                                                          trailing: self.trailingAnchor,
+                                                          padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: self.status.bottomSpacing, right: self.status.horizontalPadding))
         
-        labelConstraint[.bottom]?.isActive = self.status == .compact
+        self.labelConstraint?[.bottom]?.isActive = self.status == .compact
+    }
+    
+    private func updateLayout(with status: Status) {
+        self.labelConstraint?[.bottom]?.isActive = status == .compact
+        
+        self.labelConstraint?[.leading]?.constant = status.horizontalPadding
+        self.labelConstraint?[.trailing]?.constant = -status.horizontalPadding
+        self.labelConstraint?[.bottom]?.constant = -status.bottomSpacing
     }
     
     func updateTitleStatus(to status: Status) {
         self.status = status
+        self.updateLayout(with: status)
     }
 }
