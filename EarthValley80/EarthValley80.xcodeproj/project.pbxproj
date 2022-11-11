@@ -19,6 +19,8 @@
 		381AB44A2911726B00620635 /* mp4TempFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 381AB4492911726B00620635 /* mp4TempFile.json */; };
 		3851FC032912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */; };
 		3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */; };
+		B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD72914E86900821C8B /* UserDefaultStorage.swift */; };
+		B5205BDA2914E8B200821C8B /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */; };
 		B532C42C290AAA0F001F672B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532C42B290AAA0F001F672B /* NextButton.swift */; };
 		B55BCEDA28FC4C6000AF7E45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BCED928FC4C6000AF7E45 /* AppDelegate.swift */; };
 		B55BCEDC28FC4C6000AF7E45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BCEDB28FC4C6000AF7E45 /* SceneDelegate.swift */; };
@@ -92,6 +94,8 @@
 		381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoYomojomoNewsEmptyView.swift; sourceTree = "<group>"; };
 		381AB44729116D0D00620635 /* GotoSomewhereButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoSomewhereButton.swift; sourceTree = "<group>"; };
 		381AB4492911726B00620635 /* mp4TempFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mp4TempFile.json; sourceTree = "<group>"; };
+		B5205BD72914E86900821C8B /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
+		B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
 		3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
 		3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		B532C42B290AAA0F001F672B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -211,6 +215,13 @@
 				381AB42E290FB5EE00620635 /* NewsSortingManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		381AB434290FC8E000620635 /* Components */ = {
+            isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		381AB434290FC8E000620635 /* Cells */ = {
@@ -396,6 +407,8 @@
 			children = (
 				B5BE347828FD9DDE00D09BEE /* UIView+Constraints.swift */,
 				B5BE347A28FD9E5500D09BEE /* UIViewController+Alert.swift */,
+				B5205BD72914E86900821C8B /* UserDefaultStorage.swift */,
+				B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -595,6 +608,7 @@
 				CD3A48DB290A66EF002D7C15 /* SideTabbarViewController.swift in Sources */,
 				B532C42C290AAA0F001F672B /* NextButton.swift in Sources */,
 				B5BE347428FD9CD200D09BEE /* UIView+Extension.swift in Sources */,
+				B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */,
 				B5BE347028FD9C2C00D09BEE /* UICollectionView+Extension.swift in Sources */,
 				381AB436290FC96900620635 /* GotoYomojomoNewsEmptyView.swift in Sources */,
 				B5BE348028FDA2A200D09BEE /* StringLiteral.swift in Sources */,
@@ -606,6 +620,7 @@
 				381AB42F290FB5EE00620635 /* NewsSortingManager.swift in Sources */,
 				B5BE347E28FDA22F00D09BEE /* ImageLiteral.swift in Sources */,
 				B55BCEDC28FC4C6000AF7E45 /* SceneDelegate.swift in Sources */,
+				B5205BDA2914E8B200821C8B /* UserDefaultHandler.swift in Sources */,
 				381AB419290A9AE500620635 /* Date+Extension.swift in Sources */,
 				381AB44829116D0D00620635 /* GotoSomewhereButton.swift in Sources */,
 				B5FAC8FB290A19F800537F58 /* QuestionTitleStackView.swift in Sources */,
