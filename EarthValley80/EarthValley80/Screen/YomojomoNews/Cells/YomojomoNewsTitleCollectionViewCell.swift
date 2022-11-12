@@ -103,9 +103,9 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         self.newsCategoryLabel.text = newsData.category
 
         if newsData.title?.count ?? 0 > Size.standardOfTitle {
-            setGradationImage(category: newsData.category ?? "", type: "L")
+            self.setGradationImage(category: newsData.category ?? "", type: "L")
         } else {
-            setGradationImage(category: newsData.category ?? "", type: "S")
+            self.setGradationImage(category: newsData.category ?? "", type: "S")
         }
     }
 
@@ -118,6 +118,6 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         } else {
             cardImageName = cardImageNameHead + type + String(Int.random(in: 1...5))
         }
-        newsBackgroundView.image = UIImage(named: cardImageName)
+        self.newsBackgroundView.image = UIImage(named: cardImageName)
     }
 }
