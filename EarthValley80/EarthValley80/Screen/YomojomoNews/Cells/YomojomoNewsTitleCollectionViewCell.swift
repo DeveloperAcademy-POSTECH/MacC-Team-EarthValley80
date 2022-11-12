@@ -23,8 +23,6 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 30
-        // TODO: - 임시로 색상을 넣었습니다. 추후 디자인된 png를 넣을 예정입니다.
-        imageView.backgroundColor = .evyBlack1
         return imageView
     }()
     let newsTitleLabel: UILabel = {
@@ -82,5 +80,10 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
     func setData(_ newsData: News) {
         self.newsTitleLabel.text = newsData.title
         self.newsCategoryLabel.text = newsData.category
+        setGradationImage(newsData.category ?? "")
+    }
+
+    private func setGradationImage(_ category: String) {
+        newsBackgroundView.image = UIImage(named: "card_sic_L2")
     }
 }
