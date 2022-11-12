@@ -10,10 +10,31 @@ import UIKit
 final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
 
     private enum Size {
+        static let standardOfTitle: Int = 30
         static let categoryLabelWidth: CGFloat = 40.0
         static let categoryLabelHeigth: CGFloat = 20.0
         static let titleFontSize: CGFloat = 20.0
         static let categoryLabelFontSize: CGFloat = 12.0
+    }
+
+    private enum CardImage: String {
+        case economy = "경제"
+        case science = "과학"
+        case culture = "교양"
+        case history = "역사"
+
+        var imageNameHead: String {
+            switch self {
+            case .economy:
+                return "card_ecnmy_"
+            case .science:
+                return "card_sic_"
+            case .culture:
+                return "card_cul_"
+            case .history:
+                return "card_histy_"
+            }
+        }
     }
     
     // MARK: - property
