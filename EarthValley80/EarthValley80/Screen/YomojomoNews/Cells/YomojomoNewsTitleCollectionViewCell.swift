@@ -46,14 +46,14 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 30
         return imageView
     }()
-    let newsTitleLabel: UILabel = {
+    private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .font(.bold, ofSize: Size.titleFontSize)
         label.textColor = .white
         return label
     }()
-    let newsCategoryLabel: UILabel = {
+    private let newsCategoryLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
