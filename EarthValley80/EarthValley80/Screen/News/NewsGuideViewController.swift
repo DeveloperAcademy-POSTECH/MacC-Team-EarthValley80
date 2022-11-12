@@ -45,6 +45,7 @@ final class NewsGuideViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupUserDefaultValue()
         self.setupBlurEffect()
         self.setupTapGesture()
         self.setupLayout()
@@ -52,6 +53,10 @@ final class NewsGuideViewController: UIViewController {
     }
     
     // MARK: - func
+    
+    private func setupUserDefaultValue() {
+        UserDefaultHandler.setIsSeenGuide(to: true)
+    }
     
     private func setupBlurEffect() {
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.systemUltraThinMaterialDark)
