@@ -101,7 +101,12 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
     func setData(_ newsData: News) {
         self.newsTitleLabel.text = newsData.title
         self.newsCategoryLabel.text = newsData.category
-        setGradationImage(newsData.category ?? "")
+
+        if newsData.title?.count ?? 0 > Size.standardOfTitle {
+            setGradationImage(category: newsData.category ?? "", type: "L")
+        } else {
+            setGradationImage(category: newsData.category ?? "", type: "S")
+        }
     }
 
     private func setGradationImage(category: String, type: String) {
