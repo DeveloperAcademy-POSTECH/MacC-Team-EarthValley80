@@ -30,7 +30,6 @@ struct InsideTabBarItems: View {
                 Divider().frame(width: 165, height: 1)
             }
             Spacer()
-            
         }
     }
 }
