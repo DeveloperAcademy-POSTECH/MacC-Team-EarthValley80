@@ -9,9 +9,9 @@ import UIKit
 
 final class EmptySpaceCollectionViewCell: UICollectionViewCell {
 
-    // MARK: view
+    // MARK: - property
 
-    private let addBackgroundView: UIImageView = {
+    private let emptyBackgroundView: UIImageView = {
         let backgroundView = UIImageView()
         backgroundView.contentMode = .scaleToFill
         backgroundView.clipsToBounds = true
@@ -21,11 +21,23 @@ final class EmptySpaceCollectionViewCell: UICollectionViewCell {
         return backgroundView
     }()
 
-    // MARK: method
+    // MARK: - init
+
+    override init(frame: CGRect) {
+        super .init(frame: frame)
+        self.setupLayout()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - func
 
     func setupLayout() {
-        self.addSubview(self.addBackgroundView)
-        self.addBackgroundView.constraint(to: self,
+        self.contentView.addSubview(self.emptyBackgroundView)
+        self.emptyBackgroundView.constraint(to: self,
                                           insets: UIEdgeInsets.zero)
     }
 }
