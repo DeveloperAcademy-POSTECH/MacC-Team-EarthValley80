@@ -13,6 +13,7 @@ struct InsideTabBarItems: View {
     var body: some View {
         VStack {
             
+            // TODO: -
 //            SideTabbarLottieView(filename: "Brown.actionsheet.mp4.lottie")
 //                .frame(width: 155, height: 60)
             Image("Logo")
