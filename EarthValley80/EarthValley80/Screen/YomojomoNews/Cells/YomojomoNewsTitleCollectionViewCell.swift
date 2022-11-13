@@ -120,8 +120,10 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         } else {
             self.setGradationImage(category: newsData.category ?? "", type: "S")
         }
+
+        self.newsCategoryLabel.textColor = CardUI(rawValue: newsData.category ?? "")?.categoryFontColor
     }
-    
+
     func calculateLabelWidth(_ newsData: News) {
         let label = UILabel()
         label.text = newsData.category
