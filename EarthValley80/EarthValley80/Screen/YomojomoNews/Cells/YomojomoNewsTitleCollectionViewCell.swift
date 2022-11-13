@@ -18,7 +18,7 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         static let categoryLabelFontSize: CGFloat = 12.0
     }
 
-    private enum CardImage: String {
+    private enum CardUI: String {
         case economy = "경제"
         case science = "과학"
         case culture = "교양"
@@ -134,7 +134,7 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
 
     private func setGradationImage(category: String, type: String) {
         var cardImageName = ""
-        guard let cardImageNameHead = CardImage(rawValue: category)?.imageNameHead else { return }
+        guard let cardImageNameHead = CardUI(rawValue: category)?.imageNameHead else { return }
 
         if type == "L" {
             cardImageName = cardImageNameHead + type + String(Int.random(in: 1...3))
