@@ -11,8 +11,9 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
 
     private enum Size {
         static let standardOfTitle: Int = 30
-        static let categoryLabelWidth: CGFloat = 40.0
         static let categoryLabelHeigth: CGFloat = 20.0
+        static let categoryCornerRadius: CGFloat = 10.0
+        static let newsCardCornerRadius: CGFloat = 30.0
         static let titleFontSize: CGFloat = 20.0
         static let categoryLabelFontSize: CGFloat = 12.0
     }
@@ -43,7 +44,7 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 30
+        imageView.layer.cornerRadius = Size.newsCardCornerRadius
         return imageView
     }()
     private let newsTitleLabel: UILabel = {
@@ -58,9 +59,9 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .center
         label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
         label.layer.masksToBounds = true
-        label.layer.cornerRadius = 10
-        label.layer.opacity = 0.6
+        label.layer.cornerRadius = Size.categoryCornerRadius
         label.backgroundColor = .white
+        label.layer.opacity = 0.6
         // TODO: - 카테고리에 적절한 색상을 넣어야합니다.
         label.textColor = .evyBlack1
         return label
