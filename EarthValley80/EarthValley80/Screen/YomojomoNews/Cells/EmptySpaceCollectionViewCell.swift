@@ -36,8 +36,8 @@ final class EmptySpaceCollectionViewCell: UICollectionViewCell {
     // MARK: - func
 
     func setupLayout() {
-        self.contentView.addSubview(self.emptyBackgroundView)
-        self.emptyBackgroundView.constraint(to: self,
+        self.contentView.addSubview(self.emptySpaceLottieView)
+        self.emptySpaceLottieView.constraint(to: self,
                                           insets: UIEdgeInsets.zero)
     }
 }
