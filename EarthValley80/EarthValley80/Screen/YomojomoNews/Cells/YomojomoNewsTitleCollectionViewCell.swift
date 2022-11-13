@@ -64,7 +64,8 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .font(.bold, ofSize: Size.titleFontSize)
-        label.textColor = .white
+        label.textColor = .evyWhite
+        label.setLineSpacing(kernValue: -1.2, lineSpacing: 5, lineHeightMultiple: 1.42)
         return label
     }()
     private let newsCategoryLabel: UILabel = {
@@ -73,10 +74,8 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
         label.layer.masksToBounds = true
         label.layer.cornerRadius = Size.categoryCornerRadius
-        label.backgroundColor = .white
+        label.backgroundColor = .evyWhite
         label.layer.opacity = 0.6
-        // TODO: - 카테고리에 적절한 색상을 넣어야합니다.
-        label.textColor = .evyBlack1
         return label
     }()
 
