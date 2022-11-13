@@ -79,6 +79,7 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className, for: indexPath) as? YomojomoNewsTitleCollectionViewCell else { return UICollectionViewCell() }
             cell.setData(newsData[indexPath.row])
+            cell.calculateLabelWidth(newsData[indexPath.row])
             return cell
         }
     }

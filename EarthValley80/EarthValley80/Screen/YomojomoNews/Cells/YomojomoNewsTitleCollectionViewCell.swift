@@ -90,7 +90,6 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
                                      leading: self.newsBackgroundView.leadingAnchor,
                                      padding: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0))
         self.newsCategoryLabel.constraint(.heightAnchor, constant: Size.categoryLabelHeigth)
-        self.newsCategoryLabel.constraint(.widthAnchor, constant: Size.categoryLabelWidth)
 
         self.addSubview(self.newsTitleLabel)
         self.newsTitleLabel.constraint(top: self.newsCategoryLabel.bottomAnchor,
@@ -108,6 +107,14 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         } else {
             self.setGradationImage(category: newsData.category ?? "", type: "S")
         }
+    }
+    
+    func calculateLabelWidth(_ newsData: News) {
+        let label = UILabel()
+        label.text = newsData.category
+        label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
+        label.sizeToFit()
+        self.newsCategoryLabel.constraint(.widthAnchor, constant: label.frame.width + 18.0)
     }
 
     private func setGradationImage(category: String, type: String) {
