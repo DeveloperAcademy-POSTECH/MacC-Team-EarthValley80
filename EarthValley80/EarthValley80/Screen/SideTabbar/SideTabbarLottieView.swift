@@ -6,8 +6,8 @@
 //
 
 import Lottie
-import UIKit
 import SwiftUI
+import UIKit
 
 struct SideTabbarLottieView: UIViewRepresentable {
     
