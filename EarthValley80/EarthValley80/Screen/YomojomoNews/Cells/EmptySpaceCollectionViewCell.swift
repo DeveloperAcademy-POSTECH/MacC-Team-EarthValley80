@@ -13,6 +13,14 @@ final class EmptySpaceCollectionViewCell: UICollectionViewCell {
 
     // MARK: - property
 
+    override var isSelected: Bool {
+        didSet {
+            if self.isSelected {
+                self.emptySpaceLottieView.play()
+            }
+        }
+    }
+
     private lazy var emptySpaceLottieView: LottieAnimationView = {
         let animationView = LottieAnimationView(name: "mp4TempFile")
         animationView.play()
