@@ -95,7 +95,7 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         self.newsTitleLabel.constraint(top: self.newsCategoryLabel.bottomAnchor,
                                   leading: self.newsBackgroundView.leadingAnchor,
                                   trailing: self.newsBackgroundView.trailingAnchor,
-                                  padding: UIEdgeInsets(top: 14, left: 20, bottom: -20, right: 0))
+                                  padding: UIEdgeInsets(top: 14, left: 20, bottom: 0, right: 20))
     }
 
     func setData(_ newsData: News) {
