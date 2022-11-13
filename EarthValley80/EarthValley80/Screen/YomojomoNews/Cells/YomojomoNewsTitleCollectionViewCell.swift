@@ -36,6 +36,19 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
                 return "card_histy_"
             }
         }
+
+        var categoryFontColor: UIColor {
+            switch self {
+            case .economy:
+                return .evyCategoryEcnmy
+            case .science:
+                return .evyCategorySic
+            case .culture:
+                return .evyCategoryCul
+            case .history:
+                return .evyCategoryHisty
+            }
+        }
     }
     
     // MARK: - property
