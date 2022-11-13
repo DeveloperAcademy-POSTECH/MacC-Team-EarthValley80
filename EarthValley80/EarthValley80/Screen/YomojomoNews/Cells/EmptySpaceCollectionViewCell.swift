@@ -7,18 +7,18 @@
 
 import UIKit
 
+import Lottie
+
 final class EmptySpaceCollectionViewCell: UICollectionViewCell {
 
     // MARK: - property
 
-    private let emptyBackgroundView: UIImageView = {
-        let backgroundView = UIImageView()
-        backgroundView.contentMode = .scaleToFill
-        backgroundView.clipsToBounds = true
-        backgroundView.layer.cornerRadius = 30
-        // TODO: - 카테고리에 적절한 색상을 넣어야합니다.
-        backgroundView.backgroundColor = .red
-        return backgroundView
+    private lazy var emptySpaceLottieView: LottieAnimationView = {
+        let animationView = LottieAnimationView(name: "mp4TempFile")
+        animationView.play()
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .repeat(2)
+        return animationView
     }()
 
     // MARK: - init
