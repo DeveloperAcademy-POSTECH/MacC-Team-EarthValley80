@@ -117,13 +117,15 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         let isLargeTitle = newsData.title?.count ?? 0 > Size.standardOfTitle
         let imageType = isLargeTitle ? "L" : "S"
         self.setGradationImage(category: newsData.category ?? "", type: imageType)
+    }
+
     func calculateLabelWidth(_ newsData: News) {
         let label = UILabel()
+        label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
         label.text = newsData.category
         label.sizeToFit()
+
         self.newsCategoryLabel.constraint(.widthAnchor, constant: label.frame.width + Size.categoryLabelPadding)
-        label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
-    }
         self.newsCategoryLabel.textColor = CardUI(rawValue: newsData.category ?? "")?.categoryFontColor
     }
 
