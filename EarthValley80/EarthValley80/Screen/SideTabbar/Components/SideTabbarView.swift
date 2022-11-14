@@ -24,6 +24,7 @@ struct SideTabbar: View {
     var body: some View {
         ZStack(alignment: .leading, content:  {
             TabView(selection: $selectedTab) {
+            // TODO: 버튼과 화면 연결시 이용, 필요없을 경우 삭제 예정
 //                Text("요모조모 뉴스")
 //                    .tag("요모조모 뉴스")
 //                    .ignoresSafeArea(.all, edges: .all)

@@ -37,5 +37,4 @@ struct SideTabbarLottieView: UIViewRepresentable {
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<SideTabbarLottieView>) {
         
     }
-    
 }
