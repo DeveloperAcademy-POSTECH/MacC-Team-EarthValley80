@@ -11,8 +11,6 @@ import UIKit
 
 struct SideTabbarLottieView: UIViewRepresentable {
     
-    typealias UIViewType = UIView
-    
     var filename: String
     
     func makeUIView(context: UIViewRepresentableContext<SideTabbarLottieView>) -> UIView {
