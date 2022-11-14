@@ -50,3 +50,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+// MARK: - View Navigation Helpers
+extension SceneDelegate {
+    func navigateToNewsFeedViewController() {
+        let storyboard = UIStoryboard(name: "NewsFeed", bundle: nil)
+        guard let newsFeedViewController = storyboard.instantiateViewController(withIdentifier: YomojomoNewsViewController.className) as? YomojomoNewsViewController else { return }
+        
+        self.window?.rootViewController = newsFeedViewController
+    }
+}

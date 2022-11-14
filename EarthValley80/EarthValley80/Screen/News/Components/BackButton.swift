@@ -15,6 +15,7 @@ final class BackButton: UIButton {
         super.init(frame: frame)
         self.setupLayout()
         self.configureUI()
+        self.setupBackAction()
     }
     
     @available(*, unavailable)
@@ -31,5 +32,13 @@ final class BackButton: UIButton {
     
     private func configureUI() {
         self.setImage(ImageLiteral.btnHome, for: .normal)
+    }
+    
+    private func setupBackAction() {
+        let backAction = UIAction { _ in
+            guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+            sceneDelegate.navigateToNewsFeedViewController()
+        }
+        self.addAction(backAction, for: .touchUpInside)
     }
 }
