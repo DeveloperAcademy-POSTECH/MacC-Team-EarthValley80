@@ -38,7 +38,6 @@ enum StringLiteral {
     static let popUpMyPredictionTitle = "나의 유추"
     static let popUpMySummaryTitle = "나의 요약"
 
-
     // MARK: - title description
 
     static let yomojomoNewsTitleDescription = "마음에 드는 뉴스를 선택하여 읽고 글을 쓸 수 있어요!"
