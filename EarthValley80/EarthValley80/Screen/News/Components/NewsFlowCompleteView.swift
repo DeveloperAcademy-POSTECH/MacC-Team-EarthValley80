@@ -39,6 +39,7 @@ final class NewsFlowCompleteView: UIView {
         super.init(frame: frame)
         self.setupLayout()
         self.configureUI()
+        self.setupButtonAction()
     }
     
     @available(*, unavailable)
@@ -73,5 +74,13 @@ final class NewsFlowCompleteView: UIView {
     
     private func configureUI() {
         self.backgroundColor = .white.withAlphaComponent(0.9)
+    }
+    
+    private func setupButtonAction() {
+        let checkAction = UIAction { _ in
+            guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+            sceneDelegate.navigateToNewsFeedViewController()
+        }
+        self.checkButton.addAction(checkAction, for: .touchUpInside)
     }
 }
