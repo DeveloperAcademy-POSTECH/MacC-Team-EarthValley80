@@ -20,8 +20,8 @@
 		3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */; };
 		3851FC032912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */; };
 		3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */; };
-		B50E79D9291BE368009D8410 /* NewsFlowCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */; };
 		38F0297929177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */; };
+		B50E79D9291BE368009D8410 /* NewsFlowCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */; };
 		B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD72914E86900821C8B /* UserDefaultStorage.swift */; };
 		B5205BDA2914E8B200821C8B /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */; };
 		B532C42C290AAA0F001F672B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532C42B290AAA0F001F672B /* NextButton.swift */; };
@@ -65,6 +65,7 @@
 		B5FAC8FB290A19F800537F58 /* QuestionTitleStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8FA290A19F800537F58 /* QuestionTitleStackView.swift */; };
 		CD3A48D9290A6687002D7C15 /* SideTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A48D8290A6687002D7C15 /* SideTabbarView.swift */; };
 		CD3A48DB290A66EF002D7C15 /* SideTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */; };
+		CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4AC940291DEF1A003D02E4 /* SideTabbarLottieView.swift */; };
 		CDE23AA2290ABC5000EEB824 /* InsideTabbarItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */; };
 		CDE23AA4290ABCAE00EEB824 /* TabbarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */; };
 		CDE23AA7290ABE2200EEB824 /* SwiftUI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA6290ABE2200EEB824 /* SwiftUI+Extension.swift */; };
@@ -97,15 +98,13 @@
 		381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoYomojomoNewsEmptyView.swift; sourceTree = "<group>"; };
 		381AB44729116D0D00620635 /* GotoSomewhereButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoSomewhereButton.swift; sourceTree = "<group>"; };
 		381AB4492911726B00620635 /* mp4TempFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mp4TempFile.json; sourceTree = "<group>"; };
-		3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
-		3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFlowCompleteView.swift; sourceTree = "<group>"; };
-		B5205BD72914E86900821C8B /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
-		B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
+		3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPopupViewController.swift; sourceTree = "<group>"; };
 		3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
 		3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoalAttainmentLottieCollectionViewCell.swift; sourceTree = "<group>"; };
-		3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPopupViewController.swift; sourceTree = "<group>"; };
+		B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFlowCompleteView.swift; sourceTree = "<group>"; };
+		B5205BD72914E86900821C8B /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
+		B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
 		B532C42B290AAA0F001F672B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		B53B2D6B29193B13009C4AC2 /* AnswerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewCell.swift; sourceTree = "<group>"; };
 		B55BCED628FC4C6000AF7E45 /* EarthValley80.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthValley80.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +150,7 @@
 		B5FAC8FA290A19F800537F58 /* QuestionTitleStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTitleStackView.swift; sourceTree = "<group>"; };
 		CD3A48D8290A6687002D7C15 /* SideTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarView.swift; sourceTree = "<group>"; };
 		CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarViewController.swift; sourceTree = "<group>"; };
+		CD4AC940291DEF1A003D02E4 /* SideTabbarLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarLottieView.swift; sourceTree = "<group>"; };
 		CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTabbarItemsView.swift; sourceTree = "<group>"; };
 		CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarButtonView.swift; sourceTree = "<group>"; };
 		CDE23AA6290ABE2200EEB824 /* SwiftUI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Extension.swift"; sourceTree = "<group>"; };
@@ -460,12 +460,21 @@
 		CD3A48D7290A6654002D7C15 /* SideTabbar */ = {
 			isa = PBXGroup;
 			children = (
-				CD3A48D8290A6687002D7C15 /* SideTabbarView.swift */,
+				CD4AC94429220A5A003D02E4 /* Components */,
 				CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */,
-				CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */,
-				CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */,
 			);
 			path = SideTabbar;
+			sourceTree = "<group>";
+		};
+		CD4AC94429220A5A003D02E4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */,
+				CD3A48D8290A6687002D7C15 /* SideTabbarView.swift */,
+				CD4AC940291DEF1A003D02E4 /* SideTabbarLottieView.swift */,
+				CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		CDE23AA5290ABDF400EEB824 /* SwiftUIExtensions */ = {
@@ -650,6 +659,7 @@
 				B5FAC8EB2907BA6000537F58 /* UIFont+Extension.swift in Sources */,
 				3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */,
 				B5FAC8ED2907D18800537F58 /* TitleInferringViewController.swift in Sources */,
+				CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */,
 				381AB422290AB6AD00620635 /* News.swift in Sources */,
 				B5FAC8DC2907652800537F58 /* ReadingNewsViewController.swift in Sources */,
 				B5FAC8E5290786B800537F58 /* UILabel+Extension.swift in Sources */,
@@ -842,6 +852,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = NewsFeed;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -875,6 +886,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = NewsFeed;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
