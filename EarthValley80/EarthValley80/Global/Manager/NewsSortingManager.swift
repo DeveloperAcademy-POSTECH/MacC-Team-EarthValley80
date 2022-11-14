@@ -13,6 +13,8 @@ struct NewsSortingManager {
         static let standardOfTitle: Int = 30
     }
 
+    // MARK: - Yomojomo News
+
     func arrangeNewsData(_ data: [News]) -> [News] {
         let shortNews = data.filter { $0.title?.count ?? 0 < Size.standardOfTitle }.map { $0 }
         let longNews = data.filter { $0.title?.count ?? 0 >= Size.standardOfTitle }.map { $0 }
@@ -116,5 +118,29 @@ struct NewsSortingManager {
         }
 
         return newdata
+    }
+
+    // MARK: - My News Drawer
+
+    func appendNilDataForMyNewsDrawer(_ data: [News]) -> [News] {
+        let lottieAttainmentStandard = [1, 3, 6, 10, 13, 15, 20, 25, 30, 35, 40, 45, 50]
+        let locationOfNil = [0, 4, 8, 13, 17, 20, 26, 31, 36, 41, 46, 51, 56]
+        let myNewsDataCount = data.count
+        var reversedData = data
+        var nilIndex = 0
+
+        for number in lottieAttainmentStandard {
+            if myNewsDataCount == 1 {
+                reversedData.insert(News(title: nil, category: nil), at: 0)
+                break
+            } else if myNewsDataCount < number {
+                nilIndex = lottieAttainmentStandard.firstIndex(of: number) ?? 0
+                for index in 0..<nilIndex {
+                    reversedData.insert(News(title: nil, category: nil), at: locationOfNil[index])
+                }
+                break
+            }
+        }
+        return reversedData.reversed()
     }
 }

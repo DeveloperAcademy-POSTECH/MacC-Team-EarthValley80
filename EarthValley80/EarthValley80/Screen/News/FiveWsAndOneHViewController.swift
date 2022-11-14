@@ -38,10 +38,18 @@ final class FiveWsAndOneHViewController: UIViewController {
     private lazy var questionView: QuestionView = {
         let view = QuestionView(step: .who)
         let action = UIAction { [weak self] _ in
-            guard view.step.rawValue < QuestionView.Step.allCases.count else { return }
-            guard let nextStep = QuestionView.Step(rawValue: view.step.rawValue + 1) else { return }
+            guard
+                view.step.rawValue < QuestionView.Step.allCases.count,
+                let nextStep = QuestionView.Step(rawValue: view.step.rawValue + 1)
+            else {
+                view.updateLayoutToComplete()
+                view.contentTextView.resignFirstResponder()
+                return
+            }
             
-            view.answers[view.step.rawValue] = view.contentTextView.text
+            if view.step.rawValue >= 0 && view.step.rawValue < 6 {
+                view.updateAnswer(at: view.step.rawValue, to: view.contentTextView.text)
+            }
             view.updateConfiguration(with: nextStep)
         }
         view.setupNextAction(action)
@@ -52,10 +60,13 @@ final class FiveWsAndOneHViewController: UIViewController {
             "이 기사는 어디서 일어난 일인가요?",
             "무엇 때문에 일어난 일인가요?",
             "어떻게 일어난 일인가요?",
-            "왜 이런일이 일어났나요?"
+            "왜 이런일이 일어났나요?",
+            StringLiteral.keywordNewsTitle,
+            StringLiteral.summarizeNewsTitle
         ]
         return view
     }()
+    private let backgroundView = UIImageView(image: ImageLiteral.cardSicL3)
     private let backButton = BackButton()
     private let titleHeaderView = NewsTitleView(status: .compact)
     
@@ -70,6 +81,9 @@ final class FiveWsAndOneHViewController: UIViewController {
     // MARK: - func
     
     private func setupLayout() {
+        self.view.addSubview(self.backgroundView)
+        self.backgroundView.constraint(to: self.view)
+        
         self.view.addSubview(self.questionView)
         self.questionView.constraint(top: self.view.topAnchor,
                                      bottom: self.view.bottomAnchor,
