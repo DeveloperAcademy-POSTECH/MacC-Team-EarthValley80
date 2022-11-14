@@ -5,9 +5,10 @@
 //  Created by seojeon22 on 2022/11/11.
 //
 
-import Lottie
 import SwiftUI
 import UIKit
+
+import Lottie
 
 struct SideTabbarLottieView: UIViewRepresentable {
     
