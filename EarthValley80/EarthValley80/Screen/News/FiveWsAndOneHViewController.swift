@@ -38,8 +38,14 @@ final class FiveWsAndOneHViewController: UIViewController {
     private lazy var questionView: QuestionView = {
         let view = QuestionView(step: .who)
         let action = UIAction { [weak self] _ in
-            guard view.step.rawValue < QuestionView.Step.allCases.count else { return }
-            guard let nextStep = QuestionView.Step(rawValue: view.step.rawValue + 1) else { return }
+            guard
+                view.step.rawValue < QuestionView.Step.allCases.count,
+                let nextStep = QuestionView.Step(rawValue: view.step.rawValue + 1)
+            else {
+                view.updateLayoutToComplete()
+                view.contentTextView.resignFirstResponder()
+                return
+            }
             
             if view.step.rawValue >= 0 && view.step.rawValue < 6 {
                 view.updateAnswer(at: view.step.rawValue, to: view.contentTextView.text)

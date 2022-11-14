@@ -203,6 +203,7 @@ final class QuestionView: UIView {
     }
     private let questionTitleStackView = QuestionTitleStackView()
     private let nextButton = NextButton(configType: .disabled)
+    private lazy var completeView = NewsFlowCompleteView()
     
     private var captionText: String = "" {
         willSet {
@@ -296,6 +297,7 @@ final class QuestionView: UIView {
     private func configureUI() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 30
+        self.layer.masksToBounds = true
         
         self.textMode = .beforeWriting
     }
@@ -329,6 +331,11 @@ final class QuestionView: UIView {
         label.font = .font(.bold, ofSize: 30)
         label.sizeToFit()
         return label.frame.width + Size.cellInsetPadding * 2
+    }
+    
+    func updateLayoutToComplete() {
+        self.addSubview(self.completeView)
+        self.completeView.constraint(to: self)
     }
     
     func updateConfiguration(with step: Step) {
