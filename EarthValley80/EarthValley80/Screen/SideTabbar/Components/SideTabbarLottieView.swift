@@ -11,11 +11,11 @@ import UIKit
 import Lottie
 
 struct SideTabbarLottieView: UIViewRepresentable {
-    
+    // MARK: - property
     var filename: String
     
+    // MARK: - func
     func makeUIView(context: UIViewRepresentableContext<SideTabbarLottieView>) -> UIView {
-        
         let view = UIView(frame: .zero)
         let animationView = LottieAnimationView()
         animationView.animation = Animation.named(self.filename)
@@ -30,7 +30,6 @@ struct SideTabbarLottieView: UIViewRepresentable {
             animationView.widthAnchor.constraint(equalTo: view.widthAnchor),
             animationView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
-        
         return view
     }
     

@@ -14,7 +14,6 @@ struct SideTabbarView: View {
 }
 
 struct SideTabbar: View {
-    
     init() {
         UITabBar.appearance().isHidden = true
     }
@@ -39,7 +38,6 @@ struct SideTabbar: View {
             }
             VStack(spacing: 10) {
                 InsideTabBarItems(selectedTab: $selectedTab)
-                
                 Spacer()
             }
             .background(Color.sidemenuColor)
