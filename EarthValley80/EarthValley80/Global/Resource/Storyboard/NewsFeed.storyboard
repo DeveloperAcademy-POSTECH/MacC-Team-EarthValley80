@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--News Feed View Controller-->
+        <!--Yomojomo News View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="NewsFeedViewController" id="Y6W-OH-hqX" customClass="NewsFeedViewController" customModule="EarthValley80" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="YomojomoNewsViewController" id="Y6W-OH-hqX" customClass="YomojomoNewsViewController" customModule="EarthValley80" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
