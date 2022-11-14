@@ -13,7 +13,7 @@ struct InsideTabBarItems: View {
     var body: some View {
         VStack {
             
-            // TODO: -
+            // TODO: 로티 이미지 추가 시 코드 사용
 //            SideTabbarLottieView(filename: "Brown.actionsheet.mp4.lottie")
 //                .frame(width: 155, height: 60)
             Image("Logo")
