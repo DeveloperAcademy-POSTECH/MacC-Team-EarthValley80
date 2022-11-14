@@ -21,7 +21,7 @@ struct SideTabbar: View {
     @State var selectedTab = "요모조모 뉴스"
     
     var body: some View {
-        ZStack(alignment: .leading, content:  {
+        ZStack(alignment: .leading, content: {
             TabView(selection: $selectedTab) {
             // TODO: 버튼과 화면 연결시 이용, 필요없을 경우 삭제 예정
 //                Text("요모조모 뉴스")

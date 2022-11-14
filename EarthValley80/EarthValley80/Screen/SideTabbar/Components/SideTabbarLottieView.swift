@@ -16,6 +16,15 @@ struct SideTabbarLottieView: UIViewRepresentable {
     
     // MARK: - func
     func makeUIView(context: UIViewRepresentableContext<SideTabbarLottieView>) -> UIView {
+        let view = setupAnimationView()
+        return view
+    }
+    
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<SideTabbarLottieView>) {
+        
+    }
+    
+    private func setupAnimationView() -> UIView {
         let view = UIView(frame: .zero)
         let animationView = LottieAnimationView()
         animationView.animation = Animation.named(self.filename)
@@ -30,10 +39,7 @@ struct SideTabbarLottieView: UIViewRepresentable {
             animationView.widthAnchor.constraint(equalTo: view.widthAnchor),
             animationView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
-        return view
-    }
-    
-    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<SideTabbarLottieView>) {
         
+        return view
     }
 }
