@@ -18,7 +18,7 @@ struct SideTabbarLottieView: UIViewRepresentable {
         
         let view = UIView(frame: .zero)
         let animationView = LottieAnimationView()
-        animationView.animation = Animation.named(filename)
+        animationView.animation = Animation.named(self.filename)
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .loop
         animationView.play()
