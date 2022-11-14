@@ -225,7 +225,7 @@ final class GuidingView: UIView {
         guard guidingType == .complete else { return }
         
         self.clapImageView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(clapImageView)
+        self.addSubview(self.clapImageView)
         self.clapImageView.constraint(top: self.topAnchor,
                                       centerX: self.centerXAnchor,
                                       padding: UIEdgeInsets(top: 156, left: 0, bottom: 0, right: 0))
