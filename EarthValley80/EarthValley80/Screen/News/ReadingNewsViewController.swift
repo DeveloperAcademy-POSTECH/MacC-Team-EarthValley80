@@ -109,6 +109,7 @@ final class ReadingNewsViewController: UIViewController {
         button.addAction(action, for: .touchUpInside)
         return button
     }()
+    private let backgroundView = UIImageView(image: ImageLiteral.cardSicL3)
     private let questionView = QuestionView(step: .reading)
     private let backButton = BackButton()
     private let titleHeaderView = NewsTitleView(status: .expanded)
@@ -134,6 +135,9 @@ final class ReadingNewsViewController: UIViewController {
     // MARK: - func
     
     private func setupLayout() {
+        self.view.addSubview(self.backgroundView)
+        self.backgroundView.constraint(to: self.view)
+        
         self.view.addSubview(self.questionView)
         self.questionViewConstraints = self.questionView.constraint(top: self.view.topAnchor,
                                      bottom: self.view.bottomAnchor,
@@ -172,8 +176,6 @@ final class ReadingNewsViewController: UIViewController {
     }
     
     private func configureUI() {
-        // TODO: - background gradient Color가 나오면 적용
-        self.view.backgroundColor = .black
         self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     

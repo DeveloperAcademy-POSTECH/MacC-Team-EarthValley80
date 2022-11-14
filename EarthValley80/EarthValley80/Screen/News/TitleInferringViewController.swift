@@ -71,6 +71,7 @@ final class TitleInferringViewController: UIViewController {
         view.questions = [StringLiteral.inferringNewsTitle]
         return view
     }()
+    private let backgroundView = UIImageView(image: ImageLiteral.cardSicL3)
     private let titleView = NewsTitleView(status: .expanded)
     private let backButton = BackButton()
     
@@ -89,6 +90,9 @@ final class TitleInferringViewController: UIViewController {
     // MARK: - func
     
     private func setupLayout() {
+        self.view.addSubview(self.backgroundView)
+        self.backgroundView.constraint(to: self.view)
+        
         self.view.addSubview(self.questionView)
         self.questionViewConstraints = self.questionView.constraint(top: self.view.topAnchor,
                                      bottom: self.view.bottomAnchor,

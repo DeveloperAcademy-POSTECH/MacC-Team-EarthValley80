@@ -36,11 +36,14 @@ final class MyNewsDrawerViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(MyNewsDrawerCollectionViewCell.self, forCellWithReuseIdentifier: MyNewsDrawerCollectionViewCell.className)
+        collectionView.register(UserGoalAttainmentLottieCollectionViewCell.self, forCellWithReuseIdentifier: UserGoalAttainmentLottieCollectionViewCell.className)
         return collectionView
     }()
 
-    // TODO: - 더미데이터 입니다. 추후 변경 예정입니다.
-    private let newsData: [News] = yomojomoViewDummyData
+    // TODO: - 더미데이터 입니다. 추후 변경 예정입니다. nil데이터를 추가해주고 다시 db에 저장해주어야합니다.
+    private let newsModel = NewsSortingManager()
+    private lazy var myNewsData: [News] = self.newsModel.appendNilDataForMyNewsDrawer(yomojomoViewDummyData)
+    private lazy var totalCountExcludeNil: Int = self.myNewsData.filter{ ($0.title != nil) }.count
 
     // MARK: - init
 
@@ -65,18 +68,33 @@ final class MyNewsDrawerViewController: UIViewController {
                                   trailing: self.view.trailingAnchor,
                                   padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
     }
+
+    private func calculateLabelIndex(indexPath: Int) -> Int {
+        let fromZeroToindex = self.myNewsData[0...indexPath]
+        return self.totalCountExcludeNil - fromZeroToindex.filter{ $0.title != nil }.count
+    }
 }
 
 // MARK: - UICollectionViewDataSource
 extension MyNewsDrawerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.newsData.count
+        return self.myNewsData.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }
-        cell.setData(newsData[indexPath.row])
-        return cell
+        if myNewsData[indexPath.row].title == nil {
+            let labelIndex: Int = self.calculateLabelIndex(indexPath: indexPath.row)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserGoalAttainmentLottieCollectionViewCell.className, for: indexPath) as? UserGoalAttainmentLottieCollectionViewCell else { return UICollectionViewCell() }
+            // TODO: - 테플에서는 로티 4개정도 random, 나중에 수정하겠습니다.
+            let lottieNumber = Int.random(in: 0...3)
+            cell.setLottieImage(to: "myNewsDrawerLottie\(lottieNumber)")
+            cell.setLottieLabel(index: labelIndex)
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }
+            cell.setData(myNewsData[indexPath.row])
+            return cell
+        }
     }
 }
 
@@ -84,7 +102,7 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
 extension MyNewsDrawerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var width: CGFloat
-        if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
+        if myNewsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
             width = ((collectionView.frame.width - (Size.cellInterval * 4)) / Size.column) * 2 + Size.cellInterval
         } else {
             width = (collectionView.frame.width - (Size.cellInterval * 4)) / Size.column - 0.00000001
