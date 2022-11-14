@@ -38,7 +38,6 @@ enum StringLiteral {
     static let popUpMyPredictionTitle = "나의 유추"
     static let popUpMySummaryTitle = "나의 요약"
 
-
     // MARK: - title description
 
     static let yomojomoNewsTitleDescription = "마음에 드는 뉴스를 선택하여 읽고 글을 쓸 수 있어요!"
@@ -62,6 +61,7 @@ enum StringLiteral {
     static let nextButtonText = "다음으로"
     static let summarizeButtonText = "요약하러 가기"
     static let completeButtonText = "완성했어요!"
+    static let backButtonText = "홈으로"
     
     // MARK: - guide
     
