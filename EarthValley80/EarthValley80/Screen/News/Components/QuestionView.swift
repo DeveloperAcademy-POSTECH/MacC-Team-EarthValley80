@@ -19,6 +19,9 @@ final class QuestionView: UIView {
         static let buttonBottomConstant: CGFloat = 21.0
         static let buttonHorizontalPadding: CGFloat = 30.0
         static let buttonSize: CGFloat = 60.0
+        static let contentViewBottomSpacing: CGFloat = 130.0
+        static let cellHeight: CGFloat = 70.0
+        static let cellInsetPadding: CGFloat = 20.0
     }
     
     enum TextMode {
@@ -45,6 +48,8 @@ final class QuestionView: UIView {
         case what = 3
         case how = 4
         case why = 5
+        case keyword = 6
+        case summarize = 7
         
         var previousButtonIsHidden: Bool {
             switch self {
@@ -55,12 +60,44 @@ final class QuestionView: UIView {
             }
         }
         
-        var collectionViewIsHidden: Bool {
+        var answerCollectionViewIsHidden: Bool {
             switch self {
-            case .infer, .reading, .who:
+            case .infer,
+                 .reading,
+                 .who,
+                 .keyword:
                 return true
             default:
                 return false
+            }
+        }
+        
+        var keywordCollectionViewIsHidden: Bool {
+            switch self {
+            case .keyword:
+                return false
+            default:
+                return true
+            }
+        }
+        
+        var textViewIsHidden: Bool {
+            switch self {
+            case .keyword:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        var nextTitleConfigType: NextButton.ConfigType {
+            switch self {
+            case .summarize:
+                return .complete
+            case .keyword:
+                return .summarize
+            default:
+                return .next
             }
         }
         
@@ -82,6 +119,9 @@ final class QuestionView: UIView {
                 return StringLiteral.answerWhyCaptionTitle
             case .reading:
                 return StringLiteral.answerWhoCaptionTitle
+            case .keyword,
+                 .summarize:
+                return StringLiteral.summarizeNewsCaptionTitle
             }
         }
         
@@ -103,6 +143,10 @@ final class QuestionView: UIView {
                 return StringLiteral.answerWhyPlaceholder
             case .reading:
                 return StringLiteral.answerWhoPlaceholder
+            case .summarize:
+                return StringLiteral.summarizePlaceholder
+            default:
+                return ""
             }
         }
     }
@@ -133,6 +177,18 @@ final class QuestionView: UIView {
         button.setPreferredSymbolConfiguration(.init(pointSize: 20, weight: .regular, scale: .large), forImageIn: .normal)
         return button
     }()
+    private lazy var keywordCollectionView: UICollectionView = {
+        let flowLayout = LeftAlignCollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+        flowLayout.minimumLineSpacing = 10
+        flowLayout.minimumInteritemSpacing = 6
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(cell: AnswerCollectionViewCell.self)
+        return collectionView
+    }()
     private var textMode: TextMode = .beforeWriting {
         willSet {
             switch newValue {
@@ -147,6 +203,7 @@ final class QuestionView: UIView {
     }
     private let questionTitleStackView = QuestionTitleStackView()
     private let nextButton = NextButton(configType: .disabled)
+    private lazy var completeView = NewsFlowCompleteView()
     
     private var captionText: String = "" {
         willSet {
@@ -168,9 +225,16 @@ final class QuestionView: UIView {
         }
     }
     
-    private(set) var step: Step = .infer
+    private(set) var step: Step = .infer {
+        didSet {
+            if self.step == .keyword {
+                self.keywordCollectionView.reloadData()
+            }
+        }
+    }
     
-    var answers: [String] = Array(repeating: "", count: 6)
+    private var textViewConstraint: [ConstraintType: NSLayoutConstraint]?
+    
     var questions: [String]? {
         willSet {
             self.titleText = newValue?.first ?? ""
@@ -184,12 +248,17 @@ final class QuestionView: UIView {
         super.init(frame: .zero)
         self.setupLayout()
         self.configureUI()
+        self.setupNotificationCenter()
         self.updateConfiguration(with: step)
     }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - func
@@ -205,11 +274,11 @@ final class QuestionView: UIView {
                                                padding: UIEdgeInsets(top: 55, left: 0, bottom: 0, right: 0))
         
         self.addSubview(self.contentTextView)
-        self.contentTextView.constraint(top: self.questionTitleStackView.bottomAnchor,
-                                        leading: self.leadingAnchor,
-                                        bottom: self.bottomAnchor,
-                                        trailing: self.trailingAnchor,
-                                        padding: UIEdgeInsets(top: 40, left: 0, bottom: 130, right: 0))
+        self.textViewConstraint = self.contentTextView.constraint(top: self.questionTitleStackView.bottomAnchor,
+                                                                  leading: self.leadingAnchor,
+                                                                  bottom: self.bottomAnchor,
+                                                                  trailing: self.trailingAnchor,
+                                                                  padding: UIEdgeInsets(top: 40, left: 0, bottom: Size.contentViewBottomSpacing, right: 0))
         
         self.addSubview(self.nextButton)
         self.nextButton.constraint(bottom: self.bottomAnchor,
@@ -223,17 +292,30 @@ final class QuestionView: UIView {
                                        padding: UIEdgeInsets(top: 0, left: Size.buttonHorizontalPadding, bottom: Size.buttonBottomConstant, right: 0))
         self.previousButton.constraint(.widthAnchor, constant: Size.buttonSize)
         self.previousButton.constraint(.heightAnchor, constant: Size.buttonSize)
+        
+        self.addSubview(self.keywordCollectionView)
+        self.keywordCollectionView.constraint(top: self.questionTitleStackView.bottomAnchor,
+                                              leading: self.leadingAnchor,
+                                              bottom: self.bottomAnchor,
+                                              trailing: self.trailingAnchor,
+                                              padding: UIEdgeInsets(top: 54, left: 0, bottom: Size.contentViewBottomSpacing, right: 0))
     }
     
     private func configureUI() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 30
+        self.layer.masksToBounds = true
         
         self.textMode = .beforeWriting
     }
     
+    private func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     private func applyTextViewConfiguration(with state: TextMode, placeholder: String?) {
-        if let placeholder = placeholder {
+        if let placeholder = placeholder, self.contentTextView.text == "" {
             self.contentTextView.text = placeholder
         }
         self.contentTextView.textColor = state.textColor
@@ -243,7 +325,7 @@ final class QuestionView: UIView {
         let index = step.rawValue
         guard
             index >= 0 && index < 6,
-            self.answers[index] != ""
+            self.questionTitleStackView.answers[index] != ""
         else {
             self.textMode = .beforeWriting
             self.nextButton.configType = .disabled
@@ -252,25 +334,65 @@ final class QuestionView: UIView {
         
         self.textMode = .complete
         self.nextButton.configType = .next
-        self.contentTextView.text = self.answers[index]
+        self.contentTextView.text = self.questionTitleStackView.answers[index]
+    }
+    
+    private func calculateCellWidth(with text: String) -> CGFloat {
+        let label = UILabel()
+        label.text = text
+        label.font = .font(.bold, ofSize: 30)
+        label.sizeToFit()
+        return label.frame.width + Size.cellInsetPadding * 2
+    }
+    
+    func updateLayoutToComplete() {
+        self.addSubview(self.completeView)
+        self.completeView.constraint(to: self)
     }
     
     func updateConfiguration(with step: Step) {
         self.step = step
         
         self.previousButton.isHidden = step.previousButtonIsHidden
-        self.questionTitleStackView.isHiddenCollectionView = step.collectionViewIsHidden
+        self.contentTextView.isHidden = step.textViewIsHidden
+        self.keywordCollectionView.isHidden = step.keywordCollectionViewIsHidden
+        self.questionTitleStackView.isHiddenCollectionView = step.answerCollectionViewIsHidden
         
         self.captionText = step.captionText
         self.placeholder = step.placeholder
         self.titleText = self.questions?[step.rawValue] ?? ""
         
         self.contentTextView.resignFirstResponder()
-        self.updateTextViewContentToAnswer(with: step)
+        
+        if step != .keyword {
+            self.updateTextViewContentToAnswer(with: step)
+        }
     }
     
     func setupNextAction(_ action: UIAction) {
         self.nextButton.addAction(action, for: .touchUpInside)
+    }
+    
+    func updateAnswer(at index: Int, to answer: String) {
+        let processedAnswer = answer.replacingOccurrences(of: "\n", with: " ")
+        self.questionTitleStackView.answers[index] = processedAnswer
+    }
+    
+    // MARK: - selector
+    
+    @objc
+    private func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            self.textViewConstraint?[.bottom]?.constant = -keyboardHeight
+        }
+    }
+    
+    @objc
+    private func keyboardWillHide(_ notification: NSNotification) {
+        self.textViewConstraint?[.bottom]?.constant = -Size.contentViewBottomSpacing
     }
 }
 
@@ -295,8 +417,45 @@ extension QuestionView: UITextViewDelegate {
     }
     
     func textViewDidChangeSelection(_ textView: UITextView) {
-        guard self.textMode != .beforeWriting else { return }
+        guard
+            self.textMode != .beforeWriting,
+            self.step != .keyword
+        else {
+            if self.step == .keyword {
+                self.nextButton.configType = self.step.nextTitleConfigType
+            }
+            return
+        }
         
-        self.nextButton.configType = textView.hasText ? .next : .disabled
+        self.nextButton.configType = textView.hasText ? self.step.nextTitleConfigType : .disabled
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension QuestionView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard step == .keyword else { return 0 }
+        return self.questionTitleStackView.answers.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard step == .keyword else { return UICollectionViewCell() }
+        let cell: AnswerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        let index = indexPath.item
+        
+        cell.cellType = .keyword
+        cell.setupAnswerCell(of: self.questionTitleStackView.captions[index],
+                             answer: self.questionTitleStackView.answers[index])
+        
+        return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension QuestionView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height: CGFloat = Size.cellHeight
+        let width: CGFloat = self.calculateCellWidth(with: self.questionTitleStackView.answers[indexPath.item])
+        return CGSize(width: width, height: height)
     }
 }
