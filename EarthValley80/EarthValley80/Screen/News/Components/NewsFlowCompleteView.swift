@@ -26,6 +26,12 @@ final class NewsFlowCompleteView: UIView {
         label.textAlignment = .center
         return label
     }()
+    private let checkButton: GotoSomewhereButton = {
+        let button = GotoSomewhereButton()
+        button.changeButtonContents(buttonImage: ImageLiteral.icoCheck,
+                                    buttonTitle: StringLiteral.newsCompleteCheckButtonText)
+        return button
+    }()
 
     // MARK: - init
     
@@ -58,6 +64,11 @@ final class NewsFlowCompleteView: UIView {
         self.titleLabel.constraint(top: self.congratImageView.bottomAnchor,
                                    centerX: self.centerXAnchor,
                                    padding: UIEdgeInsets(top: 31, left: 0, bottom: 0, right: 0))
+        
+        self.addSubview(self.checkButton)
+        self.checkButton.constraint(bottom: self.bottomAnchor,
+                                    trailing: self.trailingAnchor,
+                                    padding: UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 30))
     }
     
     private func configureUI() {
