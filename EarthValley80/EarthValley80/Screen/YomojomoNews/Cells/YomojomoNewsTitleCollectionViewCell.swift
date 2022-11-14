@@ -16,6 +16,7 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         static let newsCardCornerRadius: CGFloat = 30.0
         static let titleFontSize: CGFloat = 20.0
         static let categoryLabelFontSize: CGFloat = 12.0
+        static let categoryLabelPadding: CGFloat = 18.0
     }
 
     private enum CardUI: String {
@@ -128,7 +129,7 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         label.text = newsData.category
         label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
         label.sizeToFit()
-        self.newsCategoryLabel.constraint(.widthAnchor, constant: label.frame.width + 18.0)
+        self.newsCategoryLabel.constraint(.widthAnchor, constant: label.frame.width + Size.categoryLabelPadding)
     }
 
     private func setGradationImage(category: String, type: String) {
