@@ -17,8 +17,10 @@
 		381AB436290FC96900620635 /* GotoYomojomoNewsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */; };
 		381AB44829116D0D00620635 /* GotoSomewhereButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB44729116D0D00620635 /* GotoSomewhereButton.swift */; };
 		381AB44A2911726B00620635 /* mp4TempFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 381AB4492911726B00620635 /* mp4TempFile.json */; };
+		3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */; };
 		3851FC032912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */; };
 		3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */; };
+		38F0297929177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */; };
 		B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD72914E86900821C8B /* UserDefaultStorage.swift */; };
 		B5205BDA2914E8B200821C8B /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */; };
 		B532C42C290AAA0F001F672B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532C42B290AAA0F001F672B /* NextButton.swift */; };
@@ -98,6 +100,10 @@
 		3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		B5205BD72914E86900821C8B /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
+		3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
+		3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoalAttainmentLottieCollectionViewCell.swift; sourceTree = "<group>"; };
+		3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPopupViewController.swift; sourceTree = "<group>"; };
 		B532C42B290AAA0F001F672B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
 		B53B2D6B29193B13009C4AC2 /* AnswerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCollectionViewCell.swift; sourceTree = "<group>"; };
 		B55BCED628FC4C6000AF7E45 /* EarthValley80.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthValley80.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,8 +227,17 @@
 			isa = PBXGroup;
 			children = (
 				3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */,
+				38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		3846FBFB2918101E003784F3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		3851FC042912E58300CF3E89 /* Helper */ = {
@@ -317,6 +332,7 @@
 		B5BE345428FD96C100D09BEE /* MyNews */ = {
 			isa = PBXGroup;
 			children = (
+				3846FBFB2918101E003784F3 /* Components */,
 				3851FC042912E58300CF3E89 /* Helper */,
 				381AB434290FC8E000620635 /* Cells */,
 				B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */,
@@ -624,6 +640,7 @@
 				381AB41D290A9EFE00620635 /* MainTitleView.swift in Sources */,
 				B5BE347628FD9CF800D09BEE /* UIButton+Extension.swift in Sources */,
 				B5FAC8F32908E11900537F58 /* UITextView+Extension.swift in Sources */,
+				38F0297929177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift in Sources */,
 				B5FAC8E9290792C500537F58 /* QuestionView.swift in Sources */,
 				B5BE346A28FD9AEC00D09BEE /* UIColor+Extension.swift in Sources */,
 				B5FAC8EB2907BA6000537F58 /* UIFont+Extension.swift in Sources */,
@@ -644,6 +661,7 @@
 				B5FAC8F12907D8C000537F58 /* BlurredLabel.swift in Sources */,
 				B5BE346E28FD9BB100D09BEE /* UITableView+Extension.swift in Sources */,
 				B5BE347B28FD9E5500D09BEE /* UIViewController+Alert.swift in Sources */,
+				3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */,
 				CDE23AA2290ABC5000EEB824 /* InsideTabbarItemsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

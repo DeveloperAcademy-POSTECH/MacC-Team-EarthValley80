@@ -33,6 +33,10 @@ enum StringLiteral {
     static let summarizeNewsTitle = "와우! 키워드를 모두 완성시켰군요"
     static let yomojomoNewsTitle = "한 주의 요모조모 뉴스"
     static let myNewsDrawerTitle = "나의 뉴스 서랍"
+    static let popUpNewsTitle = "기사제목"
+    static let popUpMyPredictionTitle = "나의 유추"
+    static let popUpMySummaryTitle = "나의 요약"
+
 
     // MARK: - title description
 
