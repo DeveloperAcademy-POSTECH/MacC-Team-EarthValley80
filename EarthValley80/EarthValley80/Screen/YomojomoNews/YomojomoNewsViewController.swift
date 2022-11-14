@@ -17,6 +17,7 @@ final class YomojomoNewsViewController: UIViewController {
     }
 
     // MARK: - property
+
     private let yomojomoTitleView: MainTitleView = {
         let titleView = MainTitleView()
         titleView.changeLabelText(date: Date().dateFormatted("EEEE, MM d"),
@@ -74,11 +75,11 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if newsData[indexPath.row].title == nil {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
-            cell.setupLayout()
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className, for: indexPath) as? YomojomoNewsTitleCollectionViewCell else { return UICollectionViewCell() }
             cell.setData(newsData[indexPath.row])
+            cell.calculateLabelWidth(newsData[indexPath.row])
             return cell
         }
     }

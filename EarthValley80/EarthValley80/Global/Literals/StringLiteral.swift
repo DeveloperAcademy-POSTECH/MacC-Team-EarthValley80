@@ -19,18 +19,32 @@ enum StringLiteral {
     static let answerWhatCaptionTitle = "대답하기 | 무엇을"
     static let answerHowCaptionTitle = "대답하기 | 어떻게"
     static let answerWhyCaptionTitle = "대답하기 | 왜"
+    static let answerCellWhoCaptionTitle = "누가"
+    static let answerCellWhenCaptionTitle = "언제"
+    static let answerCellWhereCaptionTitle = "어디서"
+    static let answerCellWhatCaptionTitle = "무엇을"
+    static let answerCellHowCaptionTitle = "어떻게"
+    static let answerCellWhyCaptionTitle = "왜"
+    static let summarizeNewsCaptionTitle = "요약하기"
     
     // MARK: - title
     
-    static let inferringNewsTitle = "이 기사는 어떤 내용의 기사일까요?" 
+    static let inferringNewsTitle = "이 기사는 어떤 내용의 기사일까요?"
+    static let keywordNewsTitle = "와우! 키워드를 모두 완성시켰군요"
+    static let summarizeNewsTitle = "아래 키워드를 보며 이 기사를 요약해볼까요?"
     static let yomojomoNewsTitle = "한 주의 요모조모 뉴스"
     static let myNewsDrawerTitle = "나의 뉴스 서랍"
+    static let popUpNewsTitle = "기사제목"
+    static let popUpMyPredictionTitle = "나의 유추"
+    static let popUpMySummaryTitle = "나의 요약"
+
 
     // MARK: - title description
 
     static let yomojomoNewsTitleDescription = "마음에 드는 뉴스를 선택하여 읽고 글을 쓸 수 있어요!"
     static let myNewsDrawerTitleDescription = "내가 쓴 뉴스을 이곳에서 볼 수 있어요"
     static let greetingComments = "안녕!\n기사를 읽고 요약해보세요!"
+    static let completeTitleDescription = "이 기사에 대한 요약을 모두\n완성했어요!"
 
     // MARK: - placeholder
     
@@ -41,6 +55,7 @@ enum StringLiteral {
     static let answerWhatPlaceholder = "3가지 질문이 남아있어요"
     static let answerHowPlaceholder = "2가지 질문이 남아있어요"
     static let answerWhyPlaceholder = "마지막 질문이에요"
+    static let summarizePlaceholder = "키워드의 단어와 단어 사이를 연결하면 쉬워요"
     
     // MARK: - button
     
@@ -59,5 +74,8 @@ enum StringLiteral {
     static let vocabularyGuideText = "모르는 단어가 있다면\n꾹- 눌러 단어장에 추가할 수 있어요"
     static let vocabularyGuidesubText = "어려운 단어가 있나요?"
     static let completeGuideText = "완벽해요\n그럼 기사를 읽으러 가볼까요?"
-    
+
+    // MARK: - lottie
+
+    static let tempLottieFile = "mp4TempFile"
 }

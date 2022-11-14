@@ -7,25 +7,45 @@
 
 import UIKit
 
+import Lottie
+
 final class EmptySpaceCollectionViewCell: UICollectionViewCell {
 
-    // MARK: view
+    // MARK: - property
 
-    private let addBackgroundView: UIImageView = {
-        let backgroundView = UIImageView()
-        backgroundView.contentMode = .scaleToFill
-        backgroundView.clipsToBounds = true
-        backgroundView.layer.cornerRadius = 30
-        // TODO: - 카테고리에 적절한 색상을 넣어야합니다.
-        backgroundView.backgroundColor = .red
-        return backgroundView
+    override var isSelected: Bool {
+        didSet {
+            if self.isSelected {
+                self.emptySpaceLottieView.play()
+            }
+        }
+    }
+
+    private lazy var emptySpaceLottieView: LottieAnimationView = {
+        let animationView = LottieAnimationView(name: StringLiteral.tempLottieFile)
+        animationView.play()
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .repeat(2)
+        return animationView
     }()
 
-    // MARK: method
+    // MARK: - init
+
+    override init(frame: CGRect) {
+        super .init(frame: frame)
+        self.setupLayout()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - func
 
     func setupLayout() {
-        self.addSubview(self.addBackgroundView)
-        self.addBackgroundView.constraint(to: self,
+        self.contentView.addSubview(self.emptySpaceLottieView)
+        self.emptySpaceLottieView.constraint(to: self,
                                           insets: UIEdgeInsets.zero)
     }
 }
