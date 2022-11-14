@@ -59,13 +59,13 @@ final class QuestionTitleStackView: UIStackView {
         collectionView.register(AnswerCollectionViewCell.self, forCellWithReuseIdentifier: AnswerCollectionViewCell.className)
         return collectionView
     }()
-
-    private let captions: [String] = [StringLiteral.answerCellWhoCaptionTitle,
-                                      StringLiteral.answerCellWhenCaptionTitle,
-                                      StringLiteral.answerCellWhereCaptionTitle,
-                                      StringLiteral.answerCellWhatCaptionTitle,
-                                      StringLiteral.answerCellHowCaptionTitle,
-                                      StringLiteral.answerCellWhyCaptionTitle]
+    
+    let captions: [String] = [StringLiteral.answerCellWhoCaptionTitle,
+                              StringLiteral.answerCellWhenCaptionTitle,
+                              StringLiteral.answerCellWhereCaptionTitle,
+                              StringLiteral.answerCellWhatCaptionTitle,
+                              StringLiteral.answerCellHowCaptionTitle,
+                              StringLiteral.answerCellWhyCaptionTitle]
     var answers: [String] = Array(repeating: "", count: 6) {
         didSet {
             self.fiveWsOneHCollectionView.reloadData()
@@ -121,7 +121,10 @@ extension QuestionTitleStackView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: AnswerCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
         let index = indexPath.item
+        
+        cell.cellType = .answer
         cell.setupAnswerCell(of: self.captions[index], answer: self.answers[index])
+        
         return cell
     }
 }

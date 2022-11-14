@@ -25,10 +25,12 @@ enum StringLiteral {
     static let answerCellWhatCaptionTitle = "무엇을"
     static let answerCellHowCaptionTitle = "어떻게"
     static let answerCellWhyCaptionTitle = "왜"
+    static let summarizeNewsCaptionTitle = "요약하기"
     
     // MARK: - title
     
-    static let inferringNewsTitle = "이 기사는 어떤 내용의 기사일까요?" 
+    static let inferringNewsTitle = "이 기사는 어떤 내용의 기사일까요?"
+    static let summarizeNewsTitle = "와우! 키워드를 모두 완성시켰군요"
     static let yomojomoNewsTitle = "한 주의 요모조모 뉴스"
     static let myNewsDrawerTitle = "나의 뉴스 서랍"
     static let popUpNewsTitle = "기사제목"
