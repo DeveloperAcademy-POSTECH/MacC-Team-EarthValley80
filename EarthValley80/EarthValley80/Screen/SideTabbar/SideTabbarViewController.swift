@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 
-class SideTabbarViewController: UIViewController {
+final class SideTabbarViewController: UIViewController {
     
     private let sideTabbar = UIHostingController(rootView: SideTabbarView())
     private let viewController = YomojomoNewsViewController()
