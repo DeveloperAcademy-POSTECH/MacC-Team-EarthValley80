@@ -113,34 +113,25 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
     func setData(_ newsData: News) {
         self.newsTitleLabel.text = newsData.title
         self.newsCategoryLabel.text = newsData.category
-        self.newsTitleLabel.setLineSpacing(kernValue: -1.2, lineSpacing: 5, lineHeightMultiple: 1.15)
 
-        if newsData.title?.count ?? 0 > Size.standardOfTitle {
-            self.setGradationImage(category: newsData.category ?? "", type: "L")
-        } else {
-            self.setGradationImage(category: newsData.category ?? "", type: "S")
-        }
-
-        self.newsCategoryLabel.textColor = CardUI(rawValue: newsData.category ?? "")?.categoryFontColor
-    }
-
+        let isLargeTitle = newsData.title?.count ?? 0 > Size.standardOfTitle
+        let imageType = isLargeTitle ? "L" : "S"
+        self.setGradationImage(category: newsData.category ?? "", type: imageType)
     func calculateLabelWidth(_ newsData: News) {
         let label = UILabel()
         label.text = newsData.category
-        label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
         label.sizeToFit()
         self.newsCategoryLabel.constraint(.widthAnchor, constant: label.frame.width + Size.categoryLabelPadding)
+        label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
+    }
+        self.newsCategoryLabel.textColor = CardUI(rawValue: newsData.category ?? "")?.categoryFontColor
     }
 
     private func setGradationImage(category: String, type: String) {
         var cardImageName = ""
         guard let cardImageNameHead = CardUI(rawValue: category)?.imageNameHead else { return }
-
-        if type == "L" {
-            cardImageName = cardImageNameHead + type + String(Int.random(in: 1...3))
-        } else {
-            cardImageName = cardImageNameHead + type + String(Int.random(in: 1...5))
-        }
+        let randomNumber = type == "L" ? String(Int.random(in: 1...3)) : String(Int.random(in: 1...5))
+        cardImageName = cardImageNameHead + type + randomNumber
         self.newsBackgroundView.image = UIImage(named: cardImageName)
     }
 }

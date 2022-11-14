@@ -22,7 +22,7 @@ final class EmptySpaceCollectionViewCell: UICollectionViewCell {
     }
 
     private lazy var emptySpaceLottieView: LottieAnimationView = {
-        let animationView = LottieAnimationView(name: "mp4TempFile")
+        let animationView = LottieAnimationView(name: StringLiteral.tempLottieFile)
         animationView.play()
         animationView.contentMode = .scaleAspectFit
         animationView.loopMode = .repeat(2)
