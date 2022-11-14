@@ -109,13 +109,9 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
 
     private func setGradationImage(category: String, type: String) {
         var cardImageName = ""
+        let randomNumber = type == "L" ? String(Int.random(in: 1...3)) : String(Int.random(in: 1...5))
         guard let cardImageNameHead = CardImage(rawValue: category)?.imageNameHead else { return }
-
-        if type == "L" {
-            cardImageName = cardImageNameHead + type + String(Int.random(in: 1...3))
-        } else {
-            cardImageName = cardImageNameHead + type + String(Int.random(in: 1...5))
-        }
+        cardImageName = cardImageNameHead + type + randomNumber
         self.newsBackgroundView.image = UIImage(named: cardImageName)
     }
 }
