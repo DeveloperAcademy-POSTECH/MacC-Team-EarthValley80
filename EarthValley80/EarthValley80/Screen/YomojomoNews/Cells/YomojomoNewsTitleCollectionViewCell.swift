@@ -10,10 +10,31 @@ import UIKit
 final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
 
     private enum Size {
+        static let standardOfTitle: Int = 30
         static let categoryLabelWidth: CGFloat = 40.0
         static let categoryLabelHeigth: CGFloat = 20.0
         static let titleFontSize: CGFloat = 20.0
         static let categoryLabelFontSize: CGFloat = 12.0
+    }
+
+    private enum CardImage: String {
+        case economy = "경제"
+        case science = "과학"
+        case culture = "교양"
+        case history = "역사"
+
+        var imageNameHead: String {
+            switch self {
+            case .economy:
+                return "card_ecnmy_"
+            case .science:
+                return "card_sic_"
+            case .culture:
+                return "card_cul_"
+            case .history:
+                return "card_histy_"
+            }
+        }
     }
     
     // MARK: - property
@@ -23,18 +44,16 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 30
-        // TODO: - 임시로 색상을 넣었습니다. 추후 디자인된 png를 넣을 예정입니다.
-        imageView.backgroundColor = .evyBlack1
         return imageView
     }()
-    let newsTitleLabel: UILabel = {
+    private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .font(.bold, ofSize: Size.titleFontSize)
         label.textColor = .white
         return label
     }()
-    let newsCategoryLabel: UILabel = {
+    private let newsCategoryLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
@@ -82,5 +101,17 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
     func setData(_ newsData: News) {
         self.newsTitleLabel.text = newsData.title
         self.newsCategoryLabel.text = newsData.category
+
+        let isLargeTitle = newsData.title?.count ?? 0 > Size.standardOfTitle
+        let imageType = isLargeTitle ? "L" : "S"
+        self.setGradationImage(category: newsData.category ?? "", type: imageType)
+    }
+
+    private func setGradationImage(category: String, type: String) {
+        var cardImageName = ""
+        let randomNumber = type == "L" ? String(Int.random(in: 1...3)) : String(Int.random(in: 1...5))
+        guard let cardImageNameHead = CardImage(rawValue: category)?.imageNameHead else { return }
+        cardImageName = cardImageNameHead + type + randomNumber
+        self.newsBackgroundView.image = UIImage(named: cardImageName)
     }
 }
