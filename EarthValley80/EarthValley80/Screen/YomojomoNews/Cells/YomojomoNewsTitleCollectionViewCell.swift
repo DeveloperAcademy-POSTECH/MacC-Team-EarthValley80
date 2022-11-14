@@ -66,7 +66,6 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.font = .font(.bold, ofSize: Size.titleFontSize)
         label.textColor = .evyWhite
-        label.setLineSpacing(kernValue: -1.2, lineSpacing: 5, lineHeightMultiple: 1.42)
         return label
     }()
     private let newsCategoryLabel: UILabel = {
@@ -114,6 +113,7 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
     func setData(_ newsData: News) {
         self.newsTitleLabel.text = newsData.title
         self.newsCategoryLabel.text = newsData.category
+        self.newsTitleLabel.setLineSpacing(kernValue: -1.2, lineSpacing: 5, lineHeightMultiple: 1.15)
 
         if newsData.title?.count ?? 0 > Size.standardOfTitle {
             self.setGradationImage(category: newsData.category ?? "", type: "L")
