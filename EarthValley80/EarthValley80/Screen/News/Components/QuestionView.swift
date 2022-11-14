@@ -233,6 +233,8 @@ final class QuestionView: UIView {
         }
     }
     
+    private var textViewConstraint: [ConstraintType: NSLayoutConstraint]?
+    
     var questions: [String]? {
         willSet {
             self.titleText = newValue?.first ?? ""
@@ -246,12 +248,17 @@ final class QuestionView: UIView {
         super.init(frame: .zero)
         self.setupLayout()
         self.configureUI()
+        self.setupNotificationCenter()
         self.updateConfiguration(with: step)
     }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - func
@@ -267,11 +274,11 @@ final class QuestionView: UIView {
                                                padding: UIEdgeInsets(top: 55, left: 0, bottom: 0, right: 0))
         
         self.addSubview(self.contentTextView)
-        self.contentTextView.constraint(top: self.questionTitleStackView.bottomAnchor,
-                                        leading: self.leadingAnchor,
-                                        bottom: self.bottomAnchor,
-                                        trailing: self.trailingAnchor,
-                                        padding: UIEdgeInsets(top: 40, left: 0, bottom: Size.contentViewBottomSpacing, right: 0))
+        self.textViewConstraint = self.contentTextView.constraint(top: self.questionTitleStackView.bottomAnchor,
+                                                                  leading: self.leadingAnchor,
+                                                                  bottom: self.bottomAnchor,
+                                                                  trailing: self.trailingAnchor,
+                                                                  padding: UIEdgeInsets(top: 40, left: 0, bottom: Size.contentViewBottomSpacing, right: 0))
         
         self.addSubview(self.nextButton)
         self.nextButton.constraint(bottom: self.bottomAnchor,
@@ -302,8 +309,13 @@ final class QuestionView: UIView {
         self.textMode = .beforeWriting
     }
     
+    private func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     private func applyTextViewConfiguration(with state: TextMode, placeholder: String?) {
-        if let placeholder = placeholder {
+        if let placeholder = placeholder, self.contentTextView.text == "" {
             self.contentTextView.text = placeholder
         }
         self.contentTextView.textColor = state.textColor
@@ -364,6 +376,23 @@ final class QuestionView: UIView {
     func updateAnswer(at index: Int, to answer: String) {
         let processedAnswer = answer.replacingOccurrences(of: "\n", with: " ")
         self.questionTitleStackView.answers[index] = processedAnswer
+    }
+    
+    // MARK: - selector
+    
+    @objc
+    private func keyboardWillShow(_ notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            self.textViewConstraint?[.bottom]?.constant = -keyboardHeight
+        }
+    }
+    
+    @objc
+    private func keyboardWillHide(_ notification: NSNotification) {
+        self.textViewConstraint?[.bottom]?.constant = -Size.contentViewBottomSpacing
     }
 }
 
