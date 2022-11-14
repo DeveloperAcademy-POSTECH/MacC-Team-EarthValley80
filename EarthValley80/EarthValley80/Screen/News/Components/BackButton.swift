@@ -30,7 +30,6 @@ final class BackButton: UIButton {
     }
     
     private func configureUI() {
-        // TODO: - 홈으로 이미지 적용
-        self.setBackgroundColor(.blue, for: .normal)
+        self.setImage(ImageLiteral.btnHome, for: .normal)
     }
 }

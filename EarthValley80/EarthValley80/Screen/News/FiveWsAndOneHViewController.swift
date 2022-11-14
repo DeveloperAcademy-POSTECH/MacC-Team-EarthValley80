@@ -66,6 +66,7 @@ final class FiveWsAndOneHViewController: UIViewController {
         ]
         return view
     }()
+    private let backgroundView = UIImageView(image: ImageLiteral.cardSicL3)
     private let backButton = BackButton()
     private let titleHeaderView = NewsTitleView(status: .compact)
     
@@ -80,6 +81,9 @@ final class FiveWsAndOneHViewController: UIViewController {
     // MARK: - func
     
     private func setupLayout() {
+        self.view.addSubview(self.backgroundView)
+        self.backgroundView.constraint(to: self.view)
+        
         self.view.addSubview(self.questionView)
         self.questionView.constraint(top: self.view.topAnchor,
                                      bottom: self.view.bottomAnchor,
