@@ -31,6 +31,22 @@ extension UIColor {
     static var evyWhite: UIColor {
         return UIColor(hex: "#FFFFFF")
     }
+
+    static var evyCategoryEcnmy: UIColor {
+        return UIColor(hex: "#707FB9")
+    }
+
+    static var evyCategorySic: UIColor {
+        return UIColor(hex: "#3C43B8", alpha: 0.8)
+    }
+
+    static var evyCategoryHisty: UIColor {
+        return UIColor(hex: "#D27B52")
+    }
+
+    static var evyCategoryCul: UIColor {
+        return UIColor(hex: "#C32B2A")
+    }
 }
 
 extension UIColor {

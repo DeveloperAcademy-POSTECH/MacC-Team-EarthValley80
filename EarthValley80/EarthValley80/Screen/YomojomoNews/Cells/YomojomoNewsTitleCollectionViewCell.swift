@@ -11,13 +11,15 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
 
     private enum Size {
         static let standardOfTitle: Int = 30
-        static let categoryLabelWidth: CGFloat = 40.0
         static let categoryLabelHeigth: CGFloat = 20.0
+        static let categoryCornerRadius: CGFloat = 10.0
+        static let newsCardCornerRadius: CGFloat = 30.0
         static let titleFontSize: CGFloat = 20.0
         static let categoryLabelFontSize: CGFloat = 12.0
+        static let categoryLabelPadding: CGFloat = 18.0
     }
 
-    private enum CardImage: String {
+    private enum CardUI: String {
         case economy = "경제"
         case science = "과학"
         case culture = "교양"
@@ -35,6 +37,19 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
                 return "card_histy_"
             }
         }
+
+        var categoryFontColor: UIColor {
+            switch self {
+            case .economy:
+                return .evyCategoryEcnmy
+            case .science:
+                return .evyCategorySic
+            case .culture:
+                return .evyCategoryCul
+            case .history:
+                return .evyCategoryHisty
+            }
+        }
     }
     
     // MARK: - property
@@ -43,14 +58,14 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleToFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 30
+        imageView.layer.cornerRadius = Size.newsCardCornerRadius
         return imageView
     }()
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .font(.bold, ofSize: Size.titleFontSize)
-        label.textColor = .white
+        label.textColor = .evyWhite
         return label
     }()
     private let newsCategoryLabel: UILabel = {
@@ -58,11 +73,9 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .center
         label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
         label.layer.masksToBounds = true
-        label.layer.cornerRadius = 10
+        label.layer.cornerRadius = Size.categoryCornerRadius
+        label.backgroundColor = .evyWhite
         label.layer.opacity = 0.6
-        label.backgroundColor = .white
-        // TODO: - 카테고리에 적절한 색상을 넣어야합니다.
-        label.textColor = .evyBlack1
         return label
     }()
 
@@ -89,13 +102,12 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
                                      leading: self.newsBackgroundView.leadingAnchor,
                                      padding: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0))
         self.newsCategoryLabel.constraint(.heightAnchor, constant: Size.categoryLabelHeigth)
-        self.newsCategoryLabel.constraint(.widthAnchor, constant: Size.categoryLabelWidth)
 
         self.addSubview(self.newsTitleLabel)
         self.newsTitleLabel.constraint(top: self.newsCategoryLabel.bottomAnchor,
                                   leading: self.newsBackgroundView.leadingAnchor,
                                   trailing: self.newsBackgroundView.trailingAnchor,
-                                  padding: UIEdgeInsets(top: 14, left: 20, bottom: -20, right: 0))
+                                  padding: UIEdgeInsets(top: 14, left: 20, bottom: 0, right: 20))
     }
 
     func setData(_ newsData: News) {
@@ -107,10 +119,20 @@ final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
         self.setGradationImage(category: newsData.category ?? "", type: imageType)
     }
 
+    func calculateLabelWidth(_ newsData: News) {
+        let label = UILabel()
+        label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
+        label.text = newsData.category
+        label.sizeToFit()
+
+        self.newsCategoryLabel.constraint(.widthAnchor, constant: label.frame.width + Size.categoryLabelPadding)
+        self.newsCategoryLabel.textColor = CardUI(rawValue: newsData.category ?? "")?.categoryFontColor
+    }
+
     private func setGradationImage(category: String, type: String) {
         var cardImageName = ""
+        guard let cardImageNameHead = CardUI(rawValue: category)?.imageNameHead else { return }
         let randomNumber = type == "L" ? String(Int.random(in: 1...3)) : String(Int.random(in: 1...5))
-        guard let cardImageNameHead = CardImage(rawValue: category)?.imageNameHead else { return }
         cardImageName = cardImageNameHead + type + randomNumber
         self.newsBackgroundView.image = UIImage(named: cardImageName)
     }
