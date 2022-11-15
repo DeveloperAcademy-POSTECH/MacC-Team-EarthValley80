@@ -65,7 +65,6 @@ final class GotoSomewhereButton: UIButton {
             buttonTitleAttribute.font = .font(.medium, ofSize: 16)
             buttonConfig.attributedTitle = buttonTitleAttribute
             buttonConfig.titleAlignment = .leading
-            buttonConfig.baseBackgroundColor = .evyBlack1
             buttonConfig.cornerStyle = .capsule
             buttonConfig.preferredSymbolConfigurationForImage = Size.buttonImageSize
             buttonConfig.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 10, bottom: 7, trailing: 30)
@@ -76,7 +75,6 @@ final class GotoSomewhereButton: UIButton {
             self.invalidateIntrinsicContentSize()
             self.titleLabel?.textAlignment = .center
             self.titleLabel?.setLineSpacing(kernValue: -0.32, lineHeightMultiple: 0.83)
-            self.backgroundColor = .evyBlack1
             self.imageView?.contentMode = .scaleAspectFit
             self.constraint(.heightAnchor, constant: Size.buttonHeigth)
             self.contentEdgeInsets = UIEdgeInsets(top: 8, left: 10, bottom: 7, right: 30)
@@ -102,5 +100,15 @@ final class GotoSomewhereButton: UIButton {
     func changeButtonContents(buttonImage: UIImage, buttonTitle: String) {
         self.setImage(buttonImage, for: .normal)
         self.setTitle(buttonTitle, for: .normal)
+
+        if #available(iOS 15.0, *) {
+            self.configuration?.baseForegroundColor = ButtonColor(rawValue: buttonTitle)?.fontColor
+            self.configuration?.baseBackgroundColor = ButtonColor(rawValue: buttonTitle)?.backgroundColor
+        } else {
+            self.setTitleColor(ButtonColor(rawValue: buttonTitle)?.fontColor, for: .normal)
+            self.backgroundColor = ButtonColor(rawValue: buttonTitle)?.backgroundColor
+        }
+    }
+}
     }
 }
