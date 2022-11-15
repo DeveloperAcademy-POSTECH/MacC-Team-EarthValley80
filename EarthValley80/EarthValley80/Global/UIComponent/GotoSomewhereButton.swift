@@ -69,6 +69,8 @@ final class GotoSomewhereButton: UIButton {
             buttonConfig.cornerStyle = .capsule
             buttonConfig.preferredSymbolConfigurationForImage = Size.buttonImageSize
             buttonConfig.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 10, bottom: 7, trailing: 30)
+            buttonConfig.background.strokeWidth = 1
+            buttonConfig.background.strokeColor = .evyWhite
             configuration = buttonConfig
         } else {
             self.invalidateIntrinsicContentSize()
@@ -79,6 +81,8 @@ final class GotoSomewhereButton: UIButton {
             self.constraint(.heightAnchor, constant: Size.buttonHeigth)
             self.contentEdgeInsets = UIEdgeInsets(top: 8, left: 10, bottom: 7, right: 30)
             self.layer.cornerRadius = Size.buttonCornerRadius
+            self.layer.borderWidth = 1.0
+            self.layer.borderColor = UIColor.evyWhite.cgColor
         }
     }
 
