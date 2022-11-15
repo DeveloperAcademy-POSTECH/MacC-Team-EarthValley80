@@ -17,6 +17,31 @@ final class GotoSomewhereButton: UIButton {
         static let buttonImageSize: UIImage.SymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 35)
     }
 
+    private enum ButtonColor: String {
+        case finishRead = "다읽었어요!"
+        case findImportantLine = "중심문장 찾으러 가기"
+        case shareArticle = "기사 공유하기"
+        case gotoNewsDrawer = "뉴스서랍가기"
+
+        var backgroundColor: UIColor {
+            switch self {
+            case .shareArticle:
+                return .evyWhite2
+            default:
+                return .evyWhite
+            }
+        }
+
+        var fontColor: UIColor {
+            switch self {
+            case .shareArticle:
+                return .evyWhite
+            default:
+                return .evyBlack1
+            }
+        }
+    }
+
     // MARK: - init
 
     override init(frame: CGRect) {
