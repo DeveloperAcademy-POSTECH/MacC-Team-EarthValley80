@@ -47,6 +47,7 @@ final class GotoSomewhereButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureUI()
+        self.setButtonShadow()
     }
 
     @available(*, unavailable)
@@ -78,6 +79,13 @@ final class GotoSomewhereButton: UIButton {
             self.contentEdgeInsets = UIEdgeInsets(top: 8, left: 10, bottom: 7, right: 30)
             self.layer.cornerRadius = Size.buttonCornerRadius
         }
+    }
+
+    private func setButtonShadow() {
+        self.layer.shadowOpacity = 0.4
+        self.layer.shadowRadius = 20
+        self.layer.shadowOffset = CGSize(width: 4, height: 10)
+        self.layer.shadowColor = UIColor.evyBlack1.cgColor
     }
 
     func changeButtonContents(buttonImage: UIImage, buttonTitle: String) {
