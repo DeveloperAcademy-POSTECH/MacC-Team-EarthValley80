@@ -48,6 +48,7 @@ final class GotoSomewhereButton: UIButton {
         super.init(frame: frame)
         self.configureUI()
         self.setButtonShadow()
+        self.moveImageLeftToRight()
     }
 
     @available(*, unavailable)
@@ -79,6 +80,12 @@ final class GotoSomewhereButton: UIButton {
             self.contentEdgeInsets = UIEdgeInsets(top: 8, left: 10, bottom: 7, right: 30)
             self.layer.cornerRadius = Size.buttonCornerRadius
         }
+    }
+
+    private func moveImageLeftToRight() {
+        transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
     }
 
     private func setButtonShadow() {
