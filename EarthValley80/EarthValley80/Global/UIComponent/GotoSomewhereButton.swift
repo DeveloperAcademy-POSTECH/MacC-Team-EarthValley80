@@ -18,14 +18,14 @@ final class GotoSomewhereButton: UIButton {
     }
 
     private enum ButtonColor: String {
-        case finishRead = "다읽었어요!"
-        case findImportantLine = "중심문장 찾으러 가기"
-        case shareArticle = "기사 공유하기"
-        case gotoNewsDrawer = "뉴스서랍가기"
+        case finishReadButtonText = "다읽었어요!"
+        case findCentralSentenceButtonText = "중심문장 찾으러 가기"
+        case shareArticleButtonText = "기사 공유하기"
+        case goToNewsDrawerButtonText = "뉴스서랍가기"
 
         var backgroundColor: UIColor {
             switch self {
-            case .shareArticle:
+            case .shareArticleButtonText:
                 return .evyWhite2
             default:
                 return .evyWhite
@@ -34,7 +34,7 @@ final class GotoSomewhereButton: UIButton {
 
         var fontColor: UIColor {
             switch self {
-            case .shareArticle:
+            case .shareArticleButtonText:
                 return .evyWhite
             default:
                 return .evyBlack1
