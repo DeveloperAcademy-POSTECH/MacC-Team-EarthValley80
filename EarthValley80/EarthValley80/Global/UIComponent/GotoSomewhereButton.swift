@@ -10,11 +10,14 @@ import UIKit
 final class GotoSomewhereButton: UIButton {
 
     private enum Size {
-        static let buttonContentEdgeIneset: CGFloat = -10.0
         static let buttonFontSize: CGFloat = 16.0
         static let buttonHeigth: CGFloat = 50.0
         static let buttonCornerRadius: CGFloat = 25.0
-        static let buttonImageSize: UIImage.SymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 35)
+        static let buttonImageSize: UIImage.SymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 34)
+        static let buttonLeadingPadding: CGFloat = 10
+        static let buttonTrailingPadding: CGFloat = 28
+        static let buttonTopAndBottomPadding: CGFloat = 8
+        static let buttonStrokeWidth: CGFloat = 1
     }
 
     private enum ButtonColor: String {
@@ -61,13 +64,16 @@ final class GotoSomewhereButton: UIButton {
         if #available(iOS 15.0, *) {
             var buttonConfig = UIButton.Configuration.filled()
             var buttonTitleAttribute = AttributedString()
-            buttonTitleAttribute.font = .font(.medium, ofSize: 16)
+            buttonTitleAttribute.font = .font(.medium, ofSize: Size.buttonFontSize)
             buttonConfig.attributedTitle = buttonTitleAttribute
             buttonConfig.titleAlignment = .leading
             buttonConfig.cornerStyle = .capsule
             buttonConfig.preferredSymbolConfigurationForImage = Size.buttonImageSize
-            buttonConfig.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 10, bottom: 7, trailing: 30)
-            buttonConfig.background.strokeWidth = 1
+            buttonConfig.contentInsets = NSDirectionalEdgeInsets(top: Size.buttonTopAndBottomPadding,
+                                                                 leading: Size.buttonLeadingPadding,
+                                                                 bottom: Size.buttonTopAndBottomPadding,
+                                                                 trailing: Size.buttonTrailingPadding)
+            buttonConfig.background.strokeWidth = Size.buttonStrokeWidth
             buttonConfig.background.strokeColor = .evyWhite
             configuration = buttonConfig
         } else {
@@ -76,9 +82,12 @@ final class GotoSomewhereButton: UIButton {
             self.titleLabel?.setLineSpacing(kernValue: -0.32, lineHeightMultiple: 0.83)
             self.imageView?.contentMode = .scaleAspectFit
             self.constraint(.heightAnchor, constant: Size.buttonHeigth)
-            self.contentEdgeInsets = UIEdgeInsets(top: 8, left: 10, bottom: 7, right: 30)
+            self.contentEdgeInsets = UIEdgeInsets(top: Size.buttonTopAndBottomPadding,
+                                                  left: Size.buttonLeadingPadding,
+                                                  bottom: Size.buttonTopAndBottomPadding,
+                                                  right: Size.buttonTrailingPadding)
             self.layer.cornerRadius = Size.buttonCornerRadius
-            self.layer.borderWidth = 1.0
+            self.layer.borderWidth = Size.buttonStrokeWidth
             self.layer.borderColor = UIColor.evyWhite.cgColor
         }
     }
@@ -90,21 +99,20 @@ final class GotoSomewhereButton: UIButton {
     }
 
     private func setButtonShadow(with buttonTitle: String) {
+        let shadowWidth = self.calculateButtonWidth(with: buttonTitle) + 20
         self.layer.shadowOpacity = 0.4
         self.layer.shadowRadius = 20
         self.layer.shadowOffset = CGSize(width: 4, height: 10)
         self.layer.shadowColor = UIColor.evyBlack1.cgColor
-        let buttonWidth = self.calculateButtonWidth(with: buttonTitle) + 20
-        let renderRect = CGRect(origin: .zero, size: CGSize(width: buttonWidth, height: Size.buttonHeigth))
-        self.layer.shadowPath = UIBezierPath(ovalIn: renderRect).cgPath
+        self.layer.shadowPath = UIBezierPath(ovalIn: CGRect(origin: .zero, size: CGSize(width: shadowWidth, height: Size.buttonHeigth))).cgPath
     }
 
     private func calculateButtonWidth(with buttonTitle: String) -> CGFloat {
         let label = UILabel()
         label.text = buttonTitle
-        label.font = .font(.bold, ofSize: 16)
+        label.font = .font(.bold, ofSize: Size.buttonFontSize)
         label.sizeToFit()
-        return label.frame.width + 28 + 44
+        return label.frame.width + Size.buttonLeadingPadding + Size.buttonTrailingPadding + 34
     }
 
     func changeButtonContents(buttonImage: UIImage, buttonTitle: String) {
