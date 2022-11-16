@@ -63,6 +63,10 @@ enum StringLiteral {
     static let completeButtonText = "완성했어요!"
     static let backButtonText = "홈으로"
     static let newsCompleteCheckButtonText = "내 피드에서 확인하기"
+    static let finishReadButtonText = "다읽었어요!"
+    static let findCentralSentenceButtonText = "중심문장 찾으러 가기"
+    static let shareArticleButtonText = "기사 공유하기"
+    static let goToNewsDrawerButtonText = "뉴스서랍가기"
     
     // MARK: - guide
     
