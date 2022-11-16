@@ -95,6 +95,13 @@ final class GotoSomewhereButton: UIButton {
         self.layer.shadowRadius = 20
         self.layer.shadowOffset = CGSize(width: 4, height: 10)
         self.layer.shadowColor = UIColor.evyBlack1.cgColor
+
+    private func calculateButtonWidth(with buttonTitle: String) -> CGFloat {
+        let label = UILabel()
+        label.text = buttonTitle
+        label.font = .font(.bold, ofSize: 16)
+        label.sizeToFit()
+        return label.frame.width + 28 + 44
     }
 
     func changeButtonContents(buttonImage: UIImage, buttonTitle: String) {
