@@ -47,7 +47,6 @@ final class GotoSomewhereButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.configureUI()
-        self.setButtonShadow()
         self.moveImageLeftToRight()
     }
 
@@ -90,11 +89,15 @@ final class GotoSomewhereButton: UIButton {
         imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
     }
 
-    private func setButtonShadow() {
+    private func setButtonShadow(with buttonTitle: String) {
         self.layer.shadowOpacity = 0.4
         self.layer.shadowRadius = 20
         self.layer.shadowOffset = CGSize(width: 4, height: 10)
         self.layer.shadowColor = UIColor.evyBlack1.cgColor
+        let buttonWidth = self.calculateButtonWidth(with: buttonTitle) + 20
+        let renderRect = CGRect(origin: .zero, size: CGSize(width: buttonWidth, height: Size.buttonHeigth))
+        self.layer.shadowPath = UIBezierPath(ovalIn: renderRect).cgPath
+    }
 
     private func calculateButtonWidth(with buttonTitle: String) -> CGFloat {
         let label = UILabel()
@@ -107,7 +110,7 @@ final class GotoSomewhereButton: UIButton {
     func changeButtonContents(buttonImage: UIImage, buttonTitle: String) {
         self.setImage(buttonImage, for: .normal)
         self.setTitle(buttonTitle, for: .normal)
-
+        self.setButtonShadow(with: buttonTitle)
         if #available(iOS 15.0, *) {
             self.configuration?.baseForegroundColor = ButtonColor(rawValue: buttonTitle)?.fontColor
             self.configuration?.baseBackgroundColor = ButtonColor(rawValue: buttonTitle)?.backgroundColor
