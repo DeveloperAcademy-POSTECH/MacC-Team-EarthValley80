@@ -128,5 +128,3 @@ final class GotoSomewhereButton: UIButton {
         }
     }
 }
-    }
-}
