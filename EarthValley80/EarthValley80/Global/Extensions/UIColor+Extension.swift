@@ -51,10 +51,6 @@ extension UIColor {
     static var evyWhite2: UIColor {
         return UIColor(hex: "#FFFFFF", alpha: 0.14)
     }
-
-    static var temp: UIColor {
-        return UIColor(hex: "#261301", alpha: 0.94)
-    }
 }
 
 extension UIColor {
