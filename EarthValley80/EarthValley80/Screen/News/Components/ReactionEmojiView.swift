@@ -96,8 +96,7 @@ final class ReactionEmojiView: UIView {
          self.sadReactionButton,
          self.scaryReactionButton,
          self.angryReactionButton,
-         self.surpriseReactionButton].enumerated().forEach { index, item in
-            item.tag = index
+         self.surpriseReactionButton].forEach { item in
             item.addTarget(self, action: #selector(self.didTappedEmotion(_:)), for: .touchUpInside)
         }
     }

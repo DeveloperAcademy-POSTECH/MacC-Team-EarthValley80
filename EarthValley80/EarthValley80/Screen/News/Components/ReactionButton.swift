@@ -12,6 +12,8 @@ final class ReactionButton: UIButton {
     private enum Size {
         static let imageSize: CGFloat = 91.0
         static let emotionImageSize: CGFloat = 80.0
+        static let smallerEmotionImageSize: CGFloat = 39.0
+        static let smallerEmojiSpacing: CGFloat = 26.0
     }
 
     @frozen
@@ -79,6 +81,8 @@ final class ReactionButton: UIButton {
             switch self {
             case .emotion:
                 return Size.emotionImageSize
+            case .after:
+                return Size.smallerEmotionImageSize
             default:
                 return Size.imageSize
             }
@@ -91,7 +95,7 @@ final class ReactionButton: UIButton {
             case .after(let emotion):
                 return emotion.title
             default:
-                return ""
+                return " "
             }
         }
     }
@@ -99,6 +103,14 @@ final class ReactionButton: UIButton {
     // MARK: - property
 
     private let reactionButtonImageView: UIImageView = UIImageView()
+    private let alphaBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .evyWhite.withAlphaComponent(0.14)
+        view.layer.cornerRadius = Size.imageSize / 2
+        view.isHidden = true
+        view.isUserInteractionEnabled = false
+        return view
+    }()
     private let reactionLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.regular, ofSize: 14)
@@ -106,6 +118,10 @@ final class ReactionButton: UIButton {
         label.textAlignment = .center
         return label
     }()
+
+    private var imageViewInsetConstraints: [ConstraintType: NSLayoutConstraint]?
+    private var imageViewHeightConstraint: [Frame: NSLayoutConstraint]?
+    private var imageViewWidthConstraint: [Frame: NSLayoutConstraint]?
     var emotion: Emotion?
 
     // MARK: - init
@@ -124,20 +140,38 @@ final class ReactionButton: UIButton {
     // MARK: - func
 
     private func setupLayout(type: ButtonType) {
+        self.addSubview(self.alphaBackgroundView)
+        self.alphaBackgroundView.constraint(top: self.topAnchor,
+                                            leading: self.leadingAnchor,
+                                            trailing: self.trailingAnchor,
+                                            padding: UIEdgeInsets.zero)
+        self.alphaBackgroundView.constraint(.heightAnchor, constant: type.imageSize)
+        self.alphaBackgroundView.constraint(.widthAnchor, constant: type.imageSize)
+
         self.addSubview(self.reactionButtonImageView)
-        self.reactionButtonImageView.constraint(top: self.topAnchor,
-                                                leading: self.leadingAnchor,
-                                                trailing: self.trailingAnchor,
-                                                padding: UIEdgeInsets.zero)
-        self.reactionButtonImageView.constraint(.heightAnchor, constant: type.imageSize)
-        self.reactionButtonImageView.constraint(.widthAnchor, constant: type.imageSize)
+        self.imageViewInsetConstraints = self.reactionButtonImageView.constraint(top: self.topAnchor,
+                                                                                 centerX: self.centerXAnchor,
+                                                                                 padding: UIEdgeInsets.zero)
+        self.imageViewHeightConstraint = self.reactionButtonImageView.constraint(.heightAnchor,
+                                                                                 constant: type.imageSize)
+        self.imageViewWidthConstraint = self.reactionButtonImageView.constraint(.widthAnchor,
+                                                                                constant: type.imageSize)
 
         self.addSubview(self.reactionLabel)
-        self.reactionLabel.constraint(top: self.reactionButtonImageView.bottomAnchor,
+        self.reactionLabel.constraint(top: self.alphaBackgroundView.bottomAnchor,
                                       leading: self.leadingAnchor,
                                       bottom: self.bottomAnchor,
                                       trailing: self.trailingAnchor,
                                       padding: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0))
+    }
+
+    private func updateEmotionType(with type: ButtonType) {
+        switch type {
+        case .emotion(let emotion):
+            self.emotion = emotion
+        default:
+            break
+        }
     }
 
     func updateConfiguration(to type: ButtonType) {
@@ -145,10 +179,19 @@ final class ReactionButton: UIButton {
         self.reactionButtonImageView.backgroundColor = type.color
         self.reactionLabel.text = type.title
 
+        self.updateEmotionType(with: type)
+        self.updateAlphaBackgroundIsHidden(to: type)
+    }
+
+    func updateAlphaBackgroundIsHidden(to type: ButtonType) {
         switch type {
-        case .emotion(let emotion):
-            self.emotion = emotion
-        default: break
+        case .after:
+            self.imageViewInsetConstraints?[.top]?.constant = Size.smallerEmojiSpacing
+            self.imageViewHeightConstraint?[.heightAnchor]?.constant = type.imageSize
+            self.imageViewWidthConstraint?[.widthAnchor]?.constant = type.imageSize
+            self.alphaBackgroundView.isHidden = false
+        default:
+            self.alphaBackgroundView.isHidden = true
         }
     }
 }
