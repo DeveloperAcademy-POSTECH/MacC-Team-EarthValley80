@@ -22,13 +22,14 @@
 		3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */; };
 		38F0297929177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */; };
 		B50E79D9291BE368009D8410 /* NewsFlowCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */; };
-		B50E7A52292645D5009D8410 /* Happiness-Sans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B50E7A4F292645D5009D8410 /* Happiness-Sans-Regular.otf */; };
-		B50E7A53292645D5009D8410 /* Happiness-Sans-Title.otf in Resources */ = {isa = PBXBuildFile; fileRef = B50E7A50292645D5009D8410 /* Happiness-Sans-Title.otf */; };
-		B50E7A54292645D5009D8410 /* Happiness-Sans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B50E7A51292645D5009D8410 /* Happiness-Sans-Bold.otf */; };
 		B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A462925C072009D8410 /* ReactionViewController.swift */; };
 		B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */; };
 		B50E7A4C29260899009D8410 /* Constant+Adjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A4B29260899009D8410 /* Constant+Adjusted.swift */; };
 		B50E7A4E29260C19009D8410 /* ReactionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A4D29260C19009D8410 /* ReactionButton.swift */; };
+		B50E7A52292645D5009D8410 /* Happiness-Sans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B50E7A4F292645D5009D8410 /* Happiness-Sans-Regular.otf */; };
+		B50E7A53292645D5009D8410 /* Happiness-Sans-Title.otf in Resources */ = {isa = PBXBuildFile; fileRef = B50E7A50292645D5009D8410 /* Happiness-Sans-Title.otf */; };
+		B50E7A54292645D5009D8410 /* Happiness-Sans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B50E7A51292645D5009D8410 /* Happiness-Sans-Bold.otf */; };
+		B50E7A5629264E59009D8410 /* ReactionEmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A5529264E59009D8410 /* ReactionEmojiView.swift */; };
 		B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD72914E86900821C8B /* UserDefaultStorage.swift */; };
 		B5205BDA2914E8B200821C8B /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */; };
 		B532C42C290AAA0F001F672B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532C42B290AAA0F001F672B /* NextButton.swift */; };
@@ -117,6 +118,7 @@
 		B50E7A4F292645D5009D8410 /* Happiness-Sans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Happiness-Sans-Regular.otf"; sourceTree = "<group>"; };
 		B50E7A50292645D5009D8410 /* Happiness-Sans-Title.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Happiness-Sans-Title.otf"; sourceTree = "<group>"; };
 		B50E7A51292645D5009D8410 /* Happiness-Sans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Happiness-Sans-Bold.otf"; sourceTree = "<group>"; };
+		B50E7A5529264E59009D8410 /* ReactionEmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionEmojiView.swift; sourceTree = "<group>"; };
 		B5205BD72914E86900821C8B /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
 		B532C42B290AAA0F001F672B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */,
 				B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */,
 				B50E7A4D29260C19009D8410 /* ReactionButton.swift */,
+				B50E7A5529264E59009D8410 /* ReactionEmojiView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -698,6 +701,7 @@
 				381AB422290AB6AD00620635 /* News.swift in Sources */,
 				B5FAC8DC2907652800537F58 /* ReadingNewsViewController.swift in Sources */,
 				B5FAC8E5290786B800537F58 /* UILabel+Extension.swift in Sources */,
+				B50E7A5629264E59009D8410 /* ReactionEmojiView.swift in Sources */,
 				B5BE346428FD986600D09BEE /* YomojomoNewsViewController.swift in Sources */,
 				B5FAC8E2290781C200537F58 /* NewsContentTableViewCell.swift in Sources */,
 				B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */,

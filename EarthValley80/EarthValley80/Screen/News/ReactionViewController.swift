@@ -28,6 +28,7 @@ final class ReactionViewController: UIViewController {
         label.textColor = .evyWhite
         return label
     }()
+    private lazy var reactionEmojiView: ReactionEmojiView = ReactionEmojiView()
 
     // MARK: - life cycle
 
@@ -51,17 +52,20 @@ final class ReactionViewController: UIViewController {
                                       padding: UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0))
 
         self.view.addSubview(self.reactionButton)
-        self.reactionButton.constraint(top: self.headlineLabel.bottomAnchor,
-                                       centerX: self.view.centerXAnchor,
-                                       padding: UIEdgeInsets(top: 55, left: 0, bottom: 0, right: 0))
+        self.reactionButton.constraint(centerX: self.view.centerXAnchor,
+                                       centerY: self.view.centerYAnchor)
 
         self.view.addSubview(self.descriptionLabel)
         self.descriptionLabel.constraint(top: self.reactionButton.bottomAnchor,
                                          centerX: self.view.centerXAnchor,
                                          padding: UIEdgeInsets(top: 76, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.reactionEmojiView)
+        self.reactionEmojiView.constraint(to: self.view)
     }
 
     private func configureUI() {
+        // TODO: - 컬러셋 정해지면 변경
         self.view.backgroundColor = .black.withAlphaComponent(0.94)
     }
 }
