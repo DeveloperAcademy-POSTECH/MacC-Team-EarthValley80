@@ -20,6 +20,7 @@ final class ReactionViewController: UIViewController {
         label.textColor = .evyWhite
         return label
     }()
+    private let reactionButton: ReactionButton = ReactionButton()
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.regular, ofSize: 16)
@@ -49,10 +50,15 @@ final class ReactionViewController: UIViewController {
                                       centerX: self.view.centerXAnchor,
                                       padding: UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0))
 
+        self.view.addSubview(self.reactionButton)
+        self.reactionButton.constraint(top: self.headlineLabel.bottomAnchor,
+                                       centerX: self.view.centerXAnchor,
+                                       padding: UIEdgeInsets(top: 55, left: 0, bottom: 0, right: 0))
+
         self.view.addSubview(self.descriptionLabel)
-        self.descriptionLabel.constraint(top: self.headlineLabel.bottomAnchor,
+        self.descriptionLabel.constraint(top: self.reactionButton.bottomAnchor,
                                          centerX: self.view.centerXAnchor,
-                                         padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+                                         padding: UIEdgeInsets(top: 76, left: 0, bottom: 0, right: 0))
     }
 
     private func configureUI() {

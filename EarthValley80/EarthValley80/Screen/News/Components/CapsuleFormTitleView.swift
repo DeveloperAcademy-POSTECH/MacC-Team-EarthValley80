@@ -13,7 +13,7 @@ final class CapsuleFormTitleView: UIView {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .font(.bold, ofSize: 18)
+        label.font = .font(.title, ofSize: 18)
         label.textColor = .evyWhite
         return label
     }()
