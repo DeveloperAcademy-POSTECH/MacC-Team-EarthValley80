@@ -37,6 +37,21 @@ final class ReactionButton: UIButton {
                 return .orange
             }
         }
+
+        var title: String {
+            switch self {
+            case .fun:
+                return StringLiteral.funEmotionCaption
+            case .sad:
+                return StringLiteral.sadEmotionCaption
+            case .scary:
+                return StringLiteral.scaryEmotionCaption
+            case .angry:
+                return StringLiteral.angryEmotionCaption
+            case .surprise:
+                return StringLiteral.surpriseEmotionCaption
+            }
+        }
     }
 
     @frozen
@@ -68,20 +83,27 @@ final class ReactionButton: UIButton {
                 return Size.imageSize
             }
         }
+
+        var title: String {
+            switch self {
+            case .emotion(let emotion):
+                return emotion.title
+            case .after(let emotion):
+                return emotion.title
+            default:
+                return ""
+            }
+        }
     }
 
     // MARK: - property
 
-    private let reactionButtonImageView: UIImageView = {
-        let imageView = UIImageView()
-        // TODO: - 이미지 에셋으로 변경해야 합니다.
-        imageView.backgroundColor = .brown
-        return imageView
-    }()
+    private let reactionButtonImageView: UIImageView = UIImageView()
     private let reactionLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.regular, ofSize: 14)
         label.textColor = .evyWhite
+        label.textAlignment = .center
         return label
     }()
 
@@ -106,8 +128,8 @@ final class ReactionButton: UIButton {
                                                 leading: self.leadingAnchor,
                                                 trailing: self.trailingAnchor,
                                                 padding: UIEdgeInsets.zero)
-        self.constraint(.heightAnchor, constant: type.imageSize)
-        self.constraint(.widthAnchor, constant: type.imageSize)
+        self.reactionButtonImageView.constraint(.heightAnchor, constant: type.imageSize)
+        self.reactionButtonImageView.constraint(.widthAnchor, constant: type.imageSize)
 
         self.addSubview(self.reactionLabel)
         self.reactionLabel.constraint(top: self.reactionButtonImageView.bottomAnchor,
@@ -118,6 +140,8 @@ final class ReactionButton: UIButton {
     }
 
     private func configureUI(type: ButtonType) {
-        self.backgroundColor = type.color
+        // TODO: - color가 아니고 이미지로 변경해야 함
+        self.reactionButtonImageView.backgroundColor = type.color
+        self.reactionLabel.text = type.title
     }
 }

@@ -26,6 +26,11 @@ enum StringLiteral {
     static let answerCellHowCaptionTitle = "어떻게"
     static let answerCellWhyCaptionTitle = "왜"
     static let summarizeNewsCaptionTitle = "요약하기"
+    static let funEmotionCaption = "재밌어요"
+    static let sadEmotionCaption = "슬퍼요"
+    static let scaryEmotionCaption = "무서워요"
+    static let angryEmotionCaption = "화나요"
+    static let surpriseEmotionCaption = "놀라워요"
     
     // MARK: - title
     
