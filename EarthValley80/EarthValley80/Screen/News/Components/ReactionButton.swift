@@ -11,6 +11,63 @@ final class ReactionButton: UIButton {
 
     private enum Size {
         static let imageSize: CGFloat = 91.0
+        static let emotionImageSize: CGFloat = 80.0
+    }
+
+    @frozen
+    enum Emotion {
+        case fun
+        case sad
+        case scary
+        case angry
+        case surprise
+
+        // TODO: - 후에 이모지 Image로 변경
+        var color: UIColor {
+            switch self {
+            case .fun:
+                return .yellow
+            case .sad:
+                return .blue
+            case .scary:
+                return .green
+            case .angry:
+                return .red
+            case .surprise:
+                return .orange
+            }
+        }
+    }
+
+    @frozen
+    enum ButtonType {
+        case before
+        case pressed
+        case after(Emotion)
+        case emotion(Emotion)
+
+        // TODO: - 후에 이모지 Image로 변경
+        var color: UIColor? {
+            switch self {
+            case .before:
+                return .brown
+            case .pressed:
+                return .cyan
+            case .after(let emotion):
+                return emotion.color
+            case .emotion(let emotion):
+                return emotion.color
+            }
+        }
+
+        var imageSize: CGFloat {
+            switch self {
+            case .emotion:
+                return Size.emotionImageSize
+            default:
+                return Size.imageSize
+            }
+        }
     }
 
     // MARK: - property
@@ -30,9 +87,10 @@ final class ReactionButton: UIButton {
 
     // MARK: - init
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setupLayout()
+    init(type: ButtonType) {
+        super.init(frame: .zero)
+        self.setupLayout(type: type)
+        self.configureUI(type: type)
     }
 
     @available(*, unavailable)
@@ -42,14 +100,14 @@ final class ReactionButton: UIButton {
 
     // MARK: - func
 
-    private func setupLayout() {
+    private func setupLayout(type: ButtonType) {
         self.addSubview(self.reactionButtonImageView)
         self.reactionButtonImageView.constraint(top: self.topAnchor,
                                                 leading: self.leadingAnchor,
                                                 trailing: self.trailingAnchor,
                                                 padding: UIEdgeInsets.zero)
-        self.constraint(.heightAnchor, constant: Size.imageSize)
-        self.constraint(.widthAnchor, constant: Size.imageSize)
+        self.constraint(.heightAnchor, constant: type.imageSize)
+        self.constraint(.widthAnchor, constant: type.imageSize)
 
         self.addSubview(self.reactionLabel)
         self.reactionLabel.constraint(top: self.reactionButtonImageView.bottomAnchor,
@@ -57,5 +115,9 @@ final class ReactionButton: UIButton {
                                       bottom: self.bottomAnchor,
                                       trailing: self.trailingAnchor,
                                       padding: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0))
+    }
+
+    private func configureUI(type: ButtonType) {
+        self.backgroundColor = type.color
     }
 }

@@ -20,7 +20,7 @@ final class ReactionViewController: UIViewController {
         label.textColor = .evyWhite
         return label
     }()
-    private let reactionButton: ReactionButton = ReactionButton()
+    private let reactionButton: ReactionButton = ReactionButton(type: .before)
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.regular, ofSize: 16)

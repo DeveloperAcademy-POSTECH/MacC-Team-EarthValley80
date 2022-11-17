@@ -18,12 +18,12 @@ final class ReactionEmojiView: UIView {
 
     // MARK: - property
 
-    private let reactionButton: ReactionButton = ReactionButton()
-    private let funReactionButton: ReactionButton = ReactionButton()
-    private let sadReactionButton: ReactionButton = ReactionButton()
-    private let scaryReactionButton: ReactionButton = ReactionButton()
-    private let angryReactionButton: ReactionButton = ReactionButton()
-    private let supriseReactionButton: ReactionButton = ReactionButton()
+    private let reactionButton: ReactionButton = ReactionButton(type: .pressed)
+    private let funReactionButton: ReactionButton = ReactionButton(type: .emotion(.fun))
+    private let sadReactionButton: ReactionButton = ReactionButton(type: .emotion(.sad))
+    private let scaryReactionButton: ReactionButton = ReactionButton(type: .emotion(.scary))
+    private let angryReactionButton: ReactionButton = ReactionButton(type: .emotion(.angry))
+    private let surpriseReactionButton: ReactionButton = ReactionButton(type: .emotion(.surprise))
 
     // MARK: - init
 
@@ -65,8 +65,8 @@ final class ReactionEmojiView: UIView {
                                           trailing: self.scaryReactionButton.leadingAnchor,
                                           padding: UIEdgeInsets(top: Size.topSpacingBetweenSecondToThirdNode, left: 0, bottom: 0, right: Size.horizontalSpacingBetweenMiddleToSecondSideNode))
 
-        self.addSubview(self.supriseReactionButton)
-        self.supriseReactionButton.constraint(top: self.angryReactionButton.bottomAnchor,
+        self.addSubview(self.surpriseReactionButton)
+        self.surpriseReactionButton.constraint(top: self.angryReactionButton.bottomAnchor,
                                               leading: self.scaryReactionButton.trailingAnchor,
                                               padding: UIEdgeInsets(top: Size.topSpacingBetweenSecondToThirdNode, left: Size.horizontalSpacingBetweenMiddleToSecondSideNode, bottom: 0, right: 0))
 
