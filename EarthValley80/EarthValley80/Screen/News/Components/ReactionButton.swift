@@ -106,13 +106,14 @@ final class ReactionButton: UIButton {
         label.textAlignment = .center
         return label
     }()
+    var emotion: Emotion?
 
     // MARK: - init
 
     init(type: ButtonType) {
         super.init(frame: .zero)
         self.setupLayout(type: type)
-        self.configureUI(type: type)
+        self.updateConfiguration(to: type)
     }
 
     @available(*, unavailable)
@@ -139,9 +140,15 @@ final class ReactionButton: UIButton {
                                       padding: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0))
     }
 
-    private func configureUI(type: ButtonType) {
+    func updateConfiguration(to type: ButtonType) {
         // TODO: - color가 아니고 이미지로 변경해야 함
         self.reactionButtonImageView.backgroundColor = type.color
         self.reactionLabel.text = type.title
+
+        switch type {
+        case .emotion(let emotion):
+            self.emotion = emotion
+        default: break
+        }
     }
 }

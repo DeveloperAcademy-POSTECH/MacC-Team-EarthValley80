@@ -9,6 +9,8 @@ import UIKit
 
 final class ReactionEmojiView: UIView {
 
+    typealias SelectedEmotionData = ((SelectedType, ReactionButton.Emotion?) -> ())
+
     private enum Size {
         static let topSpacingBetweenFirstToSecondNode: CGFloat = 45.0
         static let topSpacingBetweenSecondToThirdNode: CGFloat = 15.0
@@ -16,7 +18,11 @@ final class ReactionEmojiView: UIView {
         static let horizontalSpacingBetweenMiddleToSecondSideNode: CGFloat = 79.0
     }
 
-    var dismissEmojiView: (() -> ())?
+    enum SelectedType {
+        case emoji, dismiss
+    }
+
+    var dismissEmojiView: SelectedEmotionData?
 
     // MARK: - property
 
@@ -82,17 +88,17 @@ final class ReactionEmojiView: UIView {
 
     private func setupButtonAction() {
         let dismissAction = UIAction { [weak self] _ in
-            self?.dismissEmojiView?()
+            self?.dismissEmojiView?(.dismiss, nil)
         }
-        dismissButton.addAction(dismissAction, for: .touchUpInside)
+        self.dismissButton.addAction(dismissAction, for: .touchUpInside)
 
         [self.funReactionButton,
          self.sadReactionButton,
          self.scaryReactionButton,
          self.angryReactionButton,
-         self.surpriseReactionButton].enumerated().forEach { (index, item) in
+         self.surpriseReactionButton].enumerated().forEach { index, item in
             item.tag = index
-            item.addTarget(self, action: #selector(didTappedEmotion(_:)), for: .touchUpInside)
+            item.addTarget(self, action: #selector(self.didTappedEmotion(_:)), for: .touchUpInside)
         }
     }
 
@@ -100,6 +106,9 @@ final class ReactionEmojiView: UIView {
 
     @objc
     private func didTappedEmotion(_ sender: UIButton) {
-        print(sender)
+        guard let button = sender as? ReactionButton else { return }
+        let emotion = button.emotion
+
+        self.dismissEmojiView?(.emoji, emotion)
     }
 }

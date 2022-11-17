@@ -37,8 +37,13 @@ final class ReactionViewController: UIViewController {
     }()
     private lazy var reactionEmojiView: ReactionEmojiView = {
         let view = ReactionEmojiView()
-        view.dismissEmojiView = { [weak self] in
+        view.dismissEmojiView = { [weak self] type, emotion in
             self?.handleReactionEmojiViewIsHidden()
+
+            if type == .emoji {
+                guard let emotion = emotion else { return }
+                self?.reactionButton.updateConfiguration(to: .after(emotion))
+            }
         }
         return view
     }()
