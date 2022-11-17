@@ -35,7 +35,13 @@ final class ReactionViewController: UIViewController {
         button.addAction(action, for: .touchUpInside)
         return button
     }()
-    private lazy var reactionEmojiView: ReactionEmojiView = ReactionEmojiView()
+    private lazy var reactionEmojiView: ReactionEmojiView = {
+        let view = ReactionEmojiView()
+        view.dismissEmojiView = { [weak self] in
+            self?.handleReactionEmojiViewIsHidden()
+        }
+        return view
+    }()
 
     // MARK: - life cycle
 

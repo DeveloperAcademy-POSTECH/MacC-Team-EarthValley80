@@ -16,9 +16,11 @@ final class ReactionEmojiView: UIView {
         static let horizontalSpacingBetweenMiddleToSecondSideNode: CGFloat = 79.0
     }
 
+    var dismissEmojiView: (() -> ())?
+
     // MARK: - property
 
-    private let reactionButton: ReactionButton = ReactionButton(type: .pressed)
+    private let dismissButton: ReactionButton = ReactionButton(type: .pressed)
     private let funReactionButton: ReactionButton = ReactionButton(type: .emotion(.fun))
     private let sadReactionButton: ReactionButton = ReactionButton(type: .emotion(.sad))
     private let scaryReactionButton: ReactionButton = ReactionButton(type: .emotion(.scary))
@@ -31,6 +33,7 @@ final class ReactionEmojiView: UIView {
         super.init(frame: frame)
         self.setupLayout()
         self.configureUI()
+        self.setupButtonAction()
     }
 
     @available(*, unavailable)
@@ -41,12 +44,12 @@ final class ReactionEmojiView: UIView {
     // MARK: - func
 
     private func setupLayout() {
-        self.addSubview(self.reactionButton)
-        self.reactionButton.constraint(centerX: self.centerXAnchor,
+        self.addSubview(self.dismissButton)
+        self.dismissButton.constraint(centerX: self.centerXAnchor,
                                        centerY: self.centerYAnchor)
 
         self.addSubview(self.scaryReactionButton)
-        self.scaryReactionButton.constraint(bottom: self.reactionButton.topAnchor,
+        self.scaryReactionButton.constraint(bottom: self.dismissButton.topAnchor,
                                             centerX: self.centerXAnchor,
                                             padding: UIEdgeInsets(top: 0, left: 0, bottom: 55, right: 0))
 
@@ -75,5 +78,28 @@ final class ReactionEmojiView: UIView {
     private func configureUI() {
         // TODO: - 컬러셋 정해지면 변경
         self.backgroundColor = .black.withAlphaComponent(0.94)
+    }
+
+    private func setupButtonAction() {
+        let dismissAction = UIAction { [weak self] _ in
+            self?.dismissEmojiView?()
+        }
+        dismissButton.addAction(dismissAction, for: .touchUpInside)
+
+        [self.funReactionButton,
+         self.sadReactionButton,
+         self.scaryReactionButton,
+         self.angryReactionButton,
+         self.surpriseReactionButton].enumerated().forEach { (index, item) in
+            item.tag = index
+            item.addTarget(self, action: #selector(didTappedEmotion(_:)), for: .touchUpInside)
+        }
+    }
+
+    // MARK: - selector
+
+    @objc
+    private func didTappedEmotion(_ sender: UIButton) {
+        print(sender)
     }
 }
