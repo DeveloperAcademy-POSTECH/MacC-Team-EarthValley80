@@ -35,7 +35,7 @@ final class GotoSomewhereButton: UIButton {
         if #available(iOS 15.0, *) {
             var buttonConfig = UIButton.Configuration.filled()
             var buttonTitleAttribute = AttributedString()
-            buttonTitleAttribute.font = .font(.medium, ofSize: 16)
+            buttonTitleAttribute.font = .font(.bold, ofSize: 16)
             buttonConfig.attributedTitle = buttonTitleAttribute
             buttonConfig.titleAlignment = .leading
             buttonConfig.baseBackgroundColor = .evyBlack1

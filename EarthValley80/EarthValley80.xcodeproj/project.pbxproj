@@ -22,6 +22,9 @@
 		3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */; };
 		38F0297929177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */; };
 		B50E79D9291BE368009D8410 /* NewsFlowCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */; };
+		B50E7A52292645D5009D8410 /* Happiness-Sans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B50E7A4F292645D5009D8410 /* Happiness-Sans-Regular.otf */; };
+		B50E7A53292645D5009D8410 /* Happiness-Sans-Title.otf in Resources */ = {isa = PBXBuildFile; fileRef = B50E7A50292645D5009D8410 /* Happiness-Sans-Title.otf */; };
+		B50E7A54292645D5009D8410 /* Happiness-Sans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B50E7A51292645D5009D8410 /* Happiness-Sans-Bold.otf */; };
 		B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A462925C072009D8410 /* ReactionViewController.swift */; };
 		B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */; };
 		B50E7A4C29260899009D8410 /* Constant+Adjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A4B29260899009D8410 /* Constant+Adjusted.swift */; };
@@ -111,6 +114,9 @@
 		B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleFormTitleView.swift; sourceTree = "<group>"; };
 		B50E7A4B29260899009D8410 /* Constant+Adjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+Adjusted.swift"; sourceTree = "<group>"; };
 		B50E7A4D29260C19009D8410 /* ReactionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionButton.swift; sourceTree = "<group>"; };
+		B50E7A4F292645D5009D8410 /* Happiness-Sans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Happiness-Sans-Regular.otf"; sourceTree = "<group>"; };
+		B50E7A50292645D5009D8410 /* Happiness-Sans-Title.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Happiness-Sans-Title.otf"; sourceTree = "<group>"; };
+		B50E7A51292645D5009D8410 /* Happiness-Sans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Happiness-Sans-Bold.otf"; sourceTree = "<group>"; };
 		B5205BD72914E86900821C8B /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
 		B532C42B290AAA0F001F672B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -266,6 +272,16 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		B50E7A482925D15E009D8410 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				B50E7A51292645D5009D8410 /* Happiness-Sans-Bold.otf */,
+				B50E7A4F292645D5009D8410 /* Happiness-Sans-Regular.otf */,
+				B50E7A50292645D5009D8410 /* Happiness-Sans-Title.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		B55BCECD28FC4C5F00AF7E45 = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +392,7 @@
 		B5BE345728FD96E400D09BEE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				B50E7A482925D15E009D8410 /* Font */,
 				3859DC5B2911978B00EDFB0B /* Lottie */,
 				B55BCEE228FC4C6000AF7E45 /* Assets.xcassets */,
 				B5BE345928FD970300D09BEE /* Storyboard */,
@@ -608,10 +625,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B55BCEE628FC4C6000AF7E45 /* LaunchScreen.storyboard in Resources */,
+				B50E7A54292645D5009D8410 /* Happiness-Sans-Bold.otf in Resources */,
 				B5BE346628FD996D00D09BEE /* NewsFeed.storyboard in Resources */,
 				B5BE345C28FD981C00D09BEE /* MyNews.storyboard in Resources */,
+				B50E7A53292645D5009D8410 /* Happiness-Sans-Title.otf in Resources */,
 				381AB44A2911726B00620635 /* mp4TempFile.json in Resources */,
 				B55BCEE328FC4C6000AF7E45 /* Assets.xcassets in Resources */,
+				B50E7A52292645D5009D8410 /* Happiness-Sans-Regular.otf in Resources */,
 				B5BE346028FD984C00D09BEE /* News.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
