@@ -17,18 +17,13 @@ final class CapsuleFormTitleView: UIView {
         label.textColor = .evyWhite
         return label
     }()
-    
-    private var title: String {
-        willSet {
-            self.titleLabel.text = newValue
-        }
-    }
 
     // MARK: - init
 
     init(title: String) {
-        self.title = title
         super.init(frame: .zero)
+        self.titleLabel.text = title
+
         self.setupLayout()
         self.configureUI()
     }
@@ -42,8 +37,9 @@ final class CapsuleFormTitleView: UIView {
 
     private func setupLayout() {
         self.addSubview(self.titleLabel)
-        self.titleLabel.constraint(centerX: self.centerXAnchor,
-                                   centerY: self.centerYAnchor)
+        self.titleLabel.constraint(to: self,
+                                   insets: UIEdgeInsets(top: 7, left: 31, bottom: -7, right: -30))
+        self.constraint(.heightAnchor, constant: 32)
     }
 
     private func configureUI() {

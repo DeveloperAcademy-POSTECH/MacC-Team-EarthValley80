@@ -11,7 +11,8 @@ final class ReactionViewController: UIViewController {
 
     // MARK: - property
 
-    private let titleLabel: UILabel = {
+    private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.reactionTitle)
+    private let headlineLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.bold, ofSize: 34)
         // TODO: - 더미로 넣어둔 텍스트
@@ -38,13 +39,18 @@ final class ReactionViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
-        self.view.addSubview(self.titleLabel)
-        self.titleLabel.constraint(top: self.view.topAnchor,
-                                   centerX: self.view.centerXAnchor,
-                                   padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        self.view.addSubview(self.titleView)
+        self.titleView.constraint(top: self.view.topAnchor,
+                                  centerX: self.view.centerXAnchor,
+                                  padding: UIEdgeInsets(top: 210.adjustedHeight, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.headlineLabel)
+        self.headlineLabel.constraint(top: self.titleView.bottomAnchor,
+                                      centerX: self.view.centerXAnchor,
+                                      padding: UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0))
 
         self.view.addSubview(self.descriptionLabel)
-        self.descriptionLabel.constraint(top: self.titleLabel.topAnchor,
+        self.descriptionLabel.constraint(top: self.headlineLabel.bottomAnchor,
                                          centerX: self.view.centerXAnchor,
                                          padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
     }

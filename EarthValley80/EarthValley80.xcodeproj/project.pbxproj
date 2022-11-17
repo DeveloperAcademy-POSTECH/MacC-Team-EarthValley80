@@ -24,6 +24,7 @@
 		B50E79D9291BE368009D8410 /* NewsFlowCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */; };
 		B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A462925C072009D8410 /* ReactionViewController.swift */; };
 		B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */; };
+		B50E7A4C29260899009D8410 /* Constant+Adjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A4B29260899009D8410 /* Constant+Adjusted.swift */; };
 		B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD72914E86900821C8B /* UserDefaultStorage.swift */; };
 		B5205BDA2914E8B200821C8B /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */; };
 		B532C42C290AAA0F001F672B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532C42B290AAA0F001F672B /* NextButton.swift */; };
@@ -107,6 +108,7 @@
 		B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFlowCompleteView.swift; sourceTree = "<group>"; };
 		B50E7A462925C072009D8410 /* ReactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionViewController.swift; sourceTree = "<group>"; };
 		B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleFormTitleView.swift; sourceTree = "<group>"; };
+		B50E7A4B29260899009D8410 /* Constant+Adjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+Adjusted.swift"; sourceTree = "<group>"; };
 		B5205BD72914E86900821C8B /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
 		B532C42B290AAA0F001F672B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 			children = (
 				B5BE347828FD9DDE00D09BEE /* UIView+Constraints.swift */,
 				B5BE347A28FD9E5500D09BEE /* UIViewController+Alert.swift */,
+				B50E7A4B29260899009D8410 /* Constant+Adjusted.swift */,
 				B5205BD72914E86900821C8B /* UserDefaultStorage.swift */,
 				B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */,
 			);
@@ -658,6 +661,7 @@
 				B5BE345E28FD982700D09BEE /* MyNewsDrawerViewController.swift in Sources */,
 				381AB41D290A9EFE00620635 /* MainTitleView.swift in Sources */,
 				B5BE347628FD9CF800D09BEE /* UIButton+Extension.swift in Sources */,
+				B50E7A4C29260899009D8410 /* Constant+Adjusted.swift in Sources */,
 				B5FAC8F32908E11900537F58 /* UITextView+Extension.swift in Sources */,
 				38F0297929177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift in Sources */,
 				B5FAC8E9290792C500537F58 /* QuestionView.swift in Sources */,
