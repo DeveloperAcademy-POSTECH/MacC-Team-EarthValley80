@@ -16,9 +16,6 @@ enum ImageLiteral {
     static var icChevronLeft: UIImage { .load(systemName: "chevron.left") }
     static var icXmark: UIImage { .load(systemName: "xmark") }
     static var icoNews: UIImage { .load(name: "ico_news")}
-    
-    // MARK: - image
-
 }
 
 extension UIImage {

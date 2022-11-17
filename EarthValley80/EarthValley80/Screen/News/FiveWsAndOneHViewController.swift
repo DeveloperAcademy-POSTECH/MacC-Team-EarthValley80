@@ -66,7 +66,7 @@ final class FiveWsAndOneHViewController: UIViewController {
         ]
         return view
     }()
-    private let backgroundView = UIImageView(image: ImageLiteral.cardSicL3)
+    private let backgroundView = UIImageView(image: ImageLiteral.icArrowLeft)
     private let backButton = BackButton()
     private let titleHeaderView = NewsTitleView(status: .compact)
     

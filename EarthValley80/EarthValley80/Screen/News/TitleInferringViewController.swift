@@ -71,7 +71,7 @@ final class TitleInferringViewController: UIViewController {
         view.questions = [StringLiteral.inferringNewsTitle]
         return view
     }()
-    private let backgroundView = UIImageView(image: ImageLiteral.cardSicL3)
+    private let backgroundView = UIImageView(image: ImageLiteral.icArrowLeft)
     private let titleView = NewsTitleView(status: .expanded)
     private let backButton = BackButton()
     

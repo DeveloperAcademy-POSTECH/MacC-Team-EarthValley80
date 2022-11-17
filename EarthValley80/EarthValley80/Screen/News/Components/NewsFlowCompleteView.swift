@@ -12,8 +12,8 @@ import Lottie
 final class NewsFlowCompleteView: UIView {
     
     // MARK: - property
-    
-    private let congratImageView: UIImageView = UIImageView(image: ImageLiteral.imgCongrat)
+
+    private let congratImageView: UIImageView = UIImageView(image: ImageLiteral.icArrowLeft)
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = StringLiteral.completeTitleDescription
@@ -28,7 +28,7 @@ final class NewsFlowCompleteView: UIView {
     }()
     private let checkButton: GotoSomewhereButton = {
         let button = GotoSomewhereButton()
-        button.changeButtonContents(buttonImage: ImageLiteral.icoCheck,
+        button.changeButtonContents(buttonImage: ImageLiteral.icArrowLeft,
                                     buttonTitle: StringLiteral.newsCompleteCheckButtonText)
         return button
     }()

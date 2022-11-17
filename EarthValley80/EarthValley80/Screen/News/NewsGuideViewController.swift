@@ -11,21 +11,42 @@ final class NewsGuideViewController: UIViewController {
     
     // MARK: - property
 
-    
+    private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.guidingTitle)
+
+    // MARK: - init
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nil, bundle: nil)
+        self.setupUserDefaultValue()
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     // MARK: - life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupLayout()
+        self.configureUI()
+        self.setupTapGesture()
     }
     
     // MARK: - func
 
+    private func setupUserDefaultValue() {
+        UserDefaultHandler.setIsSeenGuide(to: true)
+    }
+
     private func setupLayout() {
 
     }
-    
-    private func setupUserDefaultValue() {
-        UserDefaultHandler.setIsSeenGuide(to: true)
+
+    private func configureUI() {
+        // TODO: - 컬러셋 정해지면 변경
+        self.view.backgroundColor = .black.withAlphaComponent(0.94)
     }
     
     private func setupTapGesture() {
