@@ -41,7 +41,10 @@ final class NewsGuideViewController: UIViewController {
     }
 
     private func setupLayout() {
-
+        self.view.addSubview(self.titleView)
+        self.titleView.constraint(top: self.view.topAnchor,
+                                  centerX: self.view.centerXAnchor,
+                                  padding: UIEdgeInsets(top: 432.adjustedHeight, left: 0, bottom: 0, right: 0))
     }
 
     private func configureUI() {
