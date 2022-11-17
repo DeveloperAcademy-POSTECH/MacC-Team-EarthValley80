@@ -20,13 +20,20 @@ final class ReactionViewController: UIViewController {
         label.textColor = .evyWhite
         return label
     }()
-    private let reactionButton: ReactionButton = ReactionButton(type: .before)
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.regular, ofSize: 16)
         label.text = StringLiteral.reactionDescription
         label.textColor = .evyWhite
         return label
+    }()
+    private lazy var reactionButton: ReactionButton = {
+        let button = ReactionButton(type: .before)
+        let action = UIAction { [weak self] _ in
+            self?.handleReactionEmojiViewIsHidden()
+        }
+        button.addAction(action, for: .touchUpInside)
+        return button
     }()
     private lazy var reactionEmojiView: ReactionEmojiView = ReactionEmojiView()
 
@@ -59,13 +66,21 @@ final class ReactionViewController: UIViewController {
         self.descriptionLabel.constraint(top: self.reactionButton.bottomAnchor,
                                          centerX: self.view.centerXAnchor,
                                          padding: UIEdgeInsets(top: 76, left: 0, bottom: 0, right: 0))
-
-        self.view.addSubview(self.reactionEmojiView)
-        self.reactionEmojiView.constraint(to: self.view)
     }
 
     private func configureUI() {
         // TODO: - 컬러셋 정해지면 변경
         self.view.backgroundColor = .black.withAlphaComponent(0.94)
+    }
+
+    private func handleReactionEmojiViewIsHidden() {
+        let hasAlreadyEmojiView = self.view.subviews.contains(self.reactionEmojiView)
+
+        if hasAlreadyEmojiView {
+            self.reactionEmojiView.isHidden.toggle()
+        } else {
+            self.view.addSubview(self.reactionEmojiView)
+            self.reactionEmojiView.constraint(to: self.view)
+        }
     }
 }
