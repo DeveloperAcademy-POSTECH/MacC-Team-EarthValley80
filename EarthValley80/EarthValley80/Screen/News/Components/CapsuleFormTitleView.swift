@@ -48,4 +48,8 @@ final class CapsuleFormTitleView: UIView {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 12.0
     }
+
+    func updateTitle(to title: String) {
+        self.titleLabel.text = title
+    }
 }

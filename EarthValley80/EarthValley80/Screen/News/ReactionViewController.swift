@@ -44,6 +44,7 @@ final class ReactionViewController: UIViewController {
                 guard let emotion = emotion else { return }
                 self?.reactionButton.updateConfiguration(to: .after(emotion))
                 self?.changeDescriptionLabelToButton()
+                self?.titleView.updateTitle(to: StringLiteral.selectedReactionTitle)
             }
         }
         return view
