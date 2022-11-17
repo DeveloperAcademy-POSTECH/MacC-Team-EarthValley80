@@ -22,6 +22,9 @@
 		3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */; };
 		38F0297929177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */; };
 		B50E79D9291BE368009D8410 /* NewsFlowCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */; };
+		B50E7A52292645D5009D8410 /* Happiness-Sans-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B50E7A4F292645D5009D8410 /* Happiness-Sans-Regular.otf */; };
+		B50E7A53292645D5009D8410 /* Happiness-Sans-Title.otf in Resources */ = {isa = PBXBuildFile; fileRef = B50E7A50292645D5009D8410 /* Happiness-Sans-Title.otf */; };
+		B50E7A54292645D5009D8410 /* Happiness-Sans-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B50E7A51292645D5009D8410 /* Happiness-Sans-Bold.otf */; };
 		B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD72914E86900821C8B /* UserDefaultStorage.swift */; };
 		B5205BDA2914E8B200821C8B /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */; };
 		B532C42C290AAA0F001F672B /* NextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532C42B290AAA0F001F672B /* NextButton.swift */; };
@@ -103,6 +106,9 @@
 		3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoalAttainmentLottieCollectionViewCell.swift; sourceTree = "<group>"; };
 		B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFlowCompleteView.swift; sourceTree = "<group>"; };
+		B50E7A4F292645D5009D8410 /* Happiness-Sans-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Happiness-Sans-Regular.otf"; sourceTree = "<group>"; };
+		B50E7A50292645D5009D8410 /* Happiness-Sans-Title.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Happiness-Sans-Title.otf"; sourceTree = "<group>"; };
+		B50E7A51292645D5009D8410 /* Happiness-Sans-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Happiness-Sans-Bold.otf"; sourceTree = "<group>"; };
 		B5205BD72914E86900821C8B /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
 		B532C42B290AAA0F001F672B /* NextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButton.swift; sourceTree = "<group>"; };
@@ -261,6 +267,9 @@
 		B50E7A482925D15E009D8410 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				B50E7A51292645D5009D8410 /* Happiness-Sans-Bold.otf */,
+				B50E7A4F292645D5009D8410 /* Happiness-Sans-Regular.otf */,
+				B50E7A50292645D5009D8410 /* Happiness-Sans-Title.otf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -604,10 +613,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				B55BCEE628FC4C6000AF7E45 /* LaunchScreen.storyboard in Resources */,
+				B50E7A54292645D5009D8410 /* Happiness-Sans-Bold.otf in Resources */,
 				B5BE346628FD996D00D09BEE /* NewsFeed.storyboard in Resources */,
 				B5BE345C28FD981C00D09BEE /* MyNews.storyboard in Resources */,
+				B50E7A53292645D5009D8410 /* Happiness-Sans-Title.otf in Resources */,
 				381AB44A2911726B00620635 /* mp4TempFile.json in Resources */,
 				B55BCEE328FC4C6000AF7E45 /* Assets.xcassets in Resources */,
+				B50E7A52292645D5009D8410 /* Happiness-Sans-Regular.otf in Resources */,
 				B5BE346028FD984C00D09BEE /* News.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
