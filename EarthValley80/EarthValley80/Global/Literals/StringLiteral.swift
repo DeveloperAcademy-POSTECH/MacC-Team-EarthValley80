@@ -44,6 +44,7 @@ enum StringLiteral {
     static let myNewsDrawerTitleDescription = "내가 쓴 뉴스을 이곳에서 볼 수 있어요"
     static let greetingComments = "안녕!\n기사를 읽고 요약해보세요!"
     static let completeTitleDescription = "이 기사에 대한 요약을 모두\n완성했어요!"
+    static let reactionDescription = "위 버튼을 눌러 리액션을 남겨보세요"
 
     // MARK: - placeholder
     
