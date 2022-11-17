@@ -8,10 +8,9 @@
 import UIKit
 
 enum FontName: String {
-    case regular = "AppleSDGothicNeo-Regular"
-    case medium = "AppleSDGothicNeo-Medium"
-    case semibold = "AppleSDGothicNeo-SemiBold"
-    case bold = "AppleSDGothicNeo-Bold"
+    case regular = "Happiness-Sans-Regular"
+    case bold = "Happiness-Sans-Bold"
+    case title = "Happiness-Sans-Title"
 }
 
 extension UIFont {

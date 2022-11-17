@@ -92,6 +92,6 @@ final class NextButton: UIButton {
         self.setTitleColor(color, for: .normal)
         
         self.setTitle(type.title, for: .normal)
-        self.titleLabel?.font = .font(.medium, ofSize: 12)
+        self.titleLabel?.font = .font(.bold, ofSize: 12)
     }
 }

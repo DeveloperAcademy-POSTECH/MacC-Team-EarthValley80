@@ -120,14 +120,14 @@ final class GuidingView: UIView {
     
     private let mainGuideTextLabel: UILabel = {
         let label = UILabel()
-        label.font = .font(.medium, ofSize: 16)
+        label.font = .font(.bold, ofSize: 16)
         label.textColor = .evyWhite
         label.numberOfLines = 0
         return label
     }()
     private lazy var subGuideTextLabel: UILabel = {
         let label = UILabel()
-        label.font = .font(.medium, ofSize: 16)
+        label.font = .font(.bold, ofSize: 16)
         label.textColor = .evyWhite
         label.numberOfLines = 0
         return label
@@ -170,7 +170,7 @@ final class GuidingView: UIView {
     private func setupMainComponentConfiguration(guidingType: GuideType) {
         self.mainGuideTextLabel.text = guidingType.mainText
         self.mainGuideTextLabel.applyColor(to: guidingType.captionText, with: .evyWhite.withAlphaComponent(0.3))
-        self.mainGuideTextLabel.applyFont(to: guidingType.captionText, with: .font(.medium, ofSize: 12))
+        self.mainGuideTextLabel.applyFont(to: guidingType.captionText, with: .font(.bold, ofSize: 12))
         self.mainGuideTextLabel.setLineSpacing(kernValue: -0.3, lineSpacing: 10.0)
         self.mainGuideTextLabel.textAlignment = guidingType.textAlignment
         
@@ -192,7 +192,7 @@ final class GuidingView: UIView {
         
         if guidingType == .touchGuide {
             self.subGuideTextLabel.applyColor(to: guidingType.captionText, with: .evyWhite.withAlphaComponent(0.3))
-            self.subGuideTextLabel.applyFont(to: guidingType.captionText, with: .font(.medium, ofSize: 12))
+            self.subGuideTextLabel.applyFont(to: guidingType.captionText, with: .font(.bold, ofSize: 12))
         } else {
             self.subGuideTextLabel.textColor = .evyWhite.withAlphaComponent(0.2)
             self.subGuideTextLabel.applyColor(to: "단어", with: .evyWhite)
