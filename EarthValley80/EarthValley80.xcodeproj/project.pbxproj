@@ -258,6 +258,13 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		B50E7A482925D15E009D8410 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		B55BCECD28FC4C5F00AF7E45 = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +374,7 @@
 		B5BE345728FD96E400D09BEE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				B50E7A482925D15E009D8410 /* Font */,
 				3859DC5B2911978B00EDFB0B /* Lottie */,
 				B55BCEE228FC4C6000AF7E45 /* Assets.xcassets */,
 				B5BE345928FD970300D09BEE /* Storyboard */,
