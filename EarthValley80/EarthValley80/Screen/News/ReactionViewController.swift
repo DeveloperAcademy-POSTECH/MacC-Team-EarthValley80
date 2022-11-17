@@ -43,6 +43,7 @@ final class ReactionViewController: UIViewController {
             if type == .emoji {
                 guard let emotion = emotion else { return }
                 self?.reactionButton.updateConfiguration(to: .after(emotion))
+                self?.changeDescriptionLabelToButton()
             }
         }
         return view
@@ -92,6 +93,15 @@ final class ReactionViewController: UIViewController {
         } else {
             self.view.addSubview(self.reactionEmojiView)
             self.reactionEmojiView.constraint(to: self.view)
+        }
+    }
+
+    private func changeDescriptionLabelToButton() {
+        let hasDescriptionLabel = self.view.subviews.contains(self.descriptionLabel)
+        guard hasDescriptionLabel else { return }
+
+        if hasDescriptionLabel {
+            self.descriptionLabel.removeFromSuperview()
         }
     }
 }
