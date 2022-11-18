@@ -12,11 +12,9 @@ final class NewsTitleView: UIView {
     private enum Size {
         static let horizontalPadding: CGFloat = 50.0
         static let minimumHorizontalPadding: CGFloat = 56.0
-        static let originalFontSize: CGFloat = 54.0
-        static let minimumFontSize: CGFloat = 40.0
-        static let questionViewPadding: CGFloat = 16.0
-        static let originalBottomSpacing: CGFloat = 50.0
-        static let scrolledBottomSpacing: CGFloat = 40.0
+        static let originalFontSize: CGFloat = 40.0
+        static let minimumFontSize: CGFloat = 28.0
+        static let originalBottomSpacing: CGFloat = 62.0
         static let minimumBottomSpacing: CGFloat = 24.0
         static let questionViewFrameWidth: CGFloat = UIScreen.main.bounds.size.width * 0.48
     }
@@ -55,19 +53,17 @@ final class NewsTitleView: UIView {
         
         var bottomSpacing: CGFloat {
             switch self {
-            case .expanded:
-                return Size.originalBottomSpacing
-            case .scrolled:
-                return Size.scrolledBottomSpacing
             case .compact:
                 return Size.minimumBottomSpacing
+            default:
+                return Size.originalBottomSpacing
             }
         }
         
         var labelWidth: CGFloat {
             switch self {
             case .compact:
-                return UIScreen.main.bounds.size.width - Size.questionViewFrameWidth - (self.horizontalPadding * 2)
+                return UIScreen.main.bounds.size.width - (self.horizontalPadding * 2)
             default:
                 return UIScreen.main.bounds.size.width - 20 - (self.horizontalPadding * 2)
             }
