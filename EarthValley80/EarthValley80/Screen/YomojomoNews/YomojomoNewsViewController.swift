@@ -18,6 +18,17 @@ final class YomojomoNewsViewController: UIViewController {
 
     // MARK: - property
 
+    private let scrollView: UIScrollView = {
+        let scrollview = UIScrollView()
+        scrollview.translatesAutoresizingMaskIntoConstraints = false
+        scrollview.backgroundColor = .blue
+        return scrollview
+    }()
+    private let yomojomoNewsContentView: UIView = {
+        let contentview = UIView()
+        contentview.backgroundColor = .red
+        return contentview
+    }()
     private let yomojomoTitleView: MainTitleView = {
         let titleView = MainTitleView()
         titleView.changeLabelText(date: Date().dateFormatted("EEEE, MM d"),
@@ -25,7 +36,29 @@ final class YomojomoNewsViewController: UIViewController {
                                   description: StringLiteral.yomojomoNewsTitleDescription)
         return titleView
     }()
-    private lazy var collectionView: UICollectionView = {
+    private lazy var yomojomoNewsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 180.0
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        // TODO: - cell register
+        return collectionView
+    }()
+    private let thisWeekNewsContentView: UIView = {
+        let contentview = UIView()
+        contentview.backgroundColor = .evyGray2
+        return contentview
+    }()
+    private let thisWeekTitleView: MainTitleView = {
+        let titleView = MainTitleView()
+        titleView.changeLabelText(date: Date().dateFormatted("EEEE, MM d"),
+                                  title: "이번주 뉴스",
+                                  description: "마음에 드는 제목의 뉴스를 선택하여 읽어보세요!")
+        return titleView
+    }()
+    private lazy var thisWeekNewsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .vertical
@@ -51,7 +84,6 @@ final class YomojomoNewsViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
-        self.view.addSubview(self.yomojomoTitleView)
         self.yomojomoTitleView.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
                                      leading: self.view.leadingAnchor,
                                      trailing: self.view.trailingAnchor,
