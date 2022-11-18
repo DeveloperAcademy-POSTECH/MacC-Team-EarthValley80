@@ -24,7 +24,7 @@ private extension UIColor {
 final class NewsContentTableViewCell: UITableViewCell {
     
     private enum Size {
-        static let horizontalPadding: CGFloat = 90.0
+        static let horizontalPadding: CGFloat = 50.0
         static let minimumHorizontalPadding: CGFloat = 50.0
         static let originalFontSize: CGFloat = 34.0
         static let minimumFontSize: CGFloat = 20.0
@@ -33,8 +33,7 @@ final class NewsContentTableViewCell: UITableViewCell {
     }
     
     enum Direction {
-        case upper
-        case lower
+        case upper, lower
     }
     
     enum Status {

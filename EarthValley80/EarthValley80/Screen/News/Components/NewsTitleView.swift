@@ -10,7 +10,7 @@ import UIKit
 final class NewsTitleView: UIView {
     
     private enum Size {
-        static let horizontalPadding: CGFloat = 96.0
+        static let horizontalPadding: CGFloat = 50.0
         static let minimumHorizontalPadding: CGFloat = 56.0
         static let originalFontSize: CGFloat = 54.0
         static let minimumFontSize: CGFloat = 40.0
