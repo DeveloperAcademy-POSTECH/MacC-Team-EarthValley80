@@ -13,6 +13,7 @@ enum StringLiteral {
     
     static let readingNewsCaptionTitle = "뉴스 읽기"
     static let summarizeNewsCaptionTitle = "요약하기"
+    static let searchMainSentenceCaptionTitle = "중심문장 찾기"
     static let funEmotionCaption = "재밌어요"
     static let sadEmotionCaption = "슬퍼요"
     static let scaryEmotionCaption = "무서워요"

@@ -33,16 +33,23 @@ final class MainSentenceViewController: UIViewController {
         
         return tableView
     }()
-    private let mainSentenceView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .evyWhite
-        return view
-    }()
     private let backgroundView: UIImageView = {
         let imageView = UIImageView()
         // TODO: - 나중에 에셋으로 변경할 예정
         imageView.backgroundColor = .evyBlack2
         return imageView
+    }()
+    private let captionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .font(.bold, ofSize: 15)
+        label.text = StringLiteral.searchMainSentenceCaptionTitle
+        label.textColor = .evyWhite
+        return label
+    }()
+    private let mainSentenceView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .evyWhite
+        return view
     }()
     private let backButton = BackButton()
     private let titleHeaderView: NewsTitleView = {
@@ -74,6 +81,11 @@ final class MainSentenceViewController: UIViewController {
         self.backButton.constraint(top: self.view.topAnchor,
                                    leading: self.view.leadingAnchor,
                                    padding: UIEdgeInsets(top: 26, left: 10, bottom: 0, right: 0))
+
+        self.view.addSubview(self.captionLabel)
+        self.captionLabel.constraint(top: self.view.topAnchor,
+                                     centerX: self.view.centerXAnchor,
+                                     padding: UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0))
         
         self.view.addSubview(self.titleHeaderView)
         self.titleHeaderView.constraint(top: self.backButton.bottomAnchor,
