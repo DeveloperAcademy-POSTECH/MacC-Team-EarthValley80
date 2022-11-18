@@ -45,6 +45,7 @@ enum StringLiteral {
     static let reactionTitle = "짝짝짝 다 읽었군요! 이 기사, 어땠나요?"
     static let selectedReactionTitle = "이 기사에 대한 중심문장을 찾으러 가볼까요?"
     static let guidingTitle = "화면을 터치하면 뉴스를 읽을 수 있어요"
+    static let summaryTitle = "기사를 요약하거나 생각을 자유롭게 풀어보세요"
 
     // MARK: - title description
 
