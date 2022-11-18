@@ -48,7 +48,7 @@ final class SummaryViewController: UIViewController {
 
         return button
     }()
-
+    private let summaryTextView: SummaryTextView = SummaryTextView()
 
     // MARK: - life cycle
 
@@ -80,6 +80,13 @@ final class SummaryViewController: UIViewController {
         self.myMainSentenceButton.constraint(top: self.view.topAnchor,
                                              trailing: self.view.trailingAnchor,
                                              padding: UIEdgeInsets(top: 46, left: 0, bottom: 0, right: 60))
+
+        self.view.addSubview(self.summaryTextView)
+        self.summaryTextView.constraint(top: self.myMainSentenceButton.bottomAnchor,
+                                        leading: self.view.leadingAnchor,
+                                        bottom: self.view.bottomAnchor,
+                                        trailing: self.view.trailingAnchor,
+                                        padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
     }
 
     private func configureUI() {
