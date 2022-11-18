@@ -12,19 +12,6 @@ enum StringLiteral {
     // MARK: - caption
     
     static let readingNewsCaptionTitle = "뉴스 읽기"
-    static let inferringNewsCaptionTitle = "유추하기"
-    static let answerWhoCaptionTitle = "대답하기 | 누가"
-    static let answerWhenCaptionTitle = "대답하기 | 언제"
-    static let answerWhereCaptionTitle = "대답하기 | 어디서"
-    static let answerWhatCaptionTitle = "대답하기 | 무엇을"
-    static let answerHowCaptionTitle = "대답하기 | 어떻게"
-    static let answerWhyCaptionTitle = "대답하기 | 왜"
-    static let answerCellWhoCaptionTitle = "누가"
-    static let answerCellWhenCaptionTitle = "언제"
-    static let answerCellWhereCaptionTitle = "어디서"
-    static let answerCellWhatCaptionTitle = "무엇을"
-    static let answerCellHowCaptionTitle = "어떻게"
-    static let answerCellWhyCaptionTitle = "왜"
     static let summarizeNewsCaptionTitle = "요약하기"
     static let funEmotionCaption = "재밌어요"
     static let sadEmotionCaption = "슬퍼요"
@@ -34,9 +21,6 @@ enum StringLiteral {
     
     // MARK: - title
     
-    static let inferringNewsTitle = "이 기사는 어떤 내용의 기사일까요?"
-    static let keywordNewsTitle = "와우! 키워드를 모두 완성시켰군요"
-    static let summarizeNewsTitle = "아래 키워드를 보며 이 기사를 요약해볼까요?"
     static let yomojomoNewsTitle = "한 주의 요모조모 뉴스"
     static let myNewsDrawerTitle = "나의 뉴스 서랍"
     static let popUpNewsTitle = "기사제목"
@@ -57,13 +41,6 @@ enum StringLiteral {
 
     // MARK: - placeholder
     
-    static let inferringPlaceholder = "제목을 보고 떠오르는 것을 자유롭게 적어보세요"
-    static let answerWhoPlaceholder = "짧고 간단하게 대답해보세요!"
-    static let answerWhenPlaceholder = "5가지 질문이 남아있어요"
-    static let answerWherePlaceholder = "4가지 질문이 남아있어요"
-    static let answerWhatPlaceholder = "3가지 질문이 남아있어요"
-    static let answerHowPlaceholder = "2가지 질문이 남아있어요"
-    static let answerWhyPlaceholder = "마지막 질문이에요"
     static let summarizePlaceholder = "내용을 입력하세요"
     
     // MARK: - button
