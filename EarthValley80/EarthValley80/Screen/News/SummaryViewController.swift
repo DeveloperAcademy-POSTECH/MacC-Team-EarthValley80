@@ -48,7 +48,11 @@ final class SummaryViewController: UIViewController {
 
         return button
     }()
-    private let summaryTextView: SummaryTextView = SummaryTextView()
+    private let summaryTextView: SummaryTextView = {
+        let textView = SummaryTextView()
+        textView.textMode = .beforeWriting
+        return textView
+    }()
 
     // MARK: - life cycle
 
@@ -56,6 +60,7 @@ final class SummaryViewController: UIViewController {
         super.viewDidLoad()
         self.setupLayout()
         self.configureUI()
+        self.hideKeyboardWhenTappedAround()
     }
 
     // MARK: - func
@@ -92,5 +97,14 @@ final class SummaryViewController: UIViewController {
     private func configureUI() {
         // TODO: - 컬러셋 정해지면 변경
         self.view.backgroundColor = .black.withAlphaComponent(0.94)
+    }
+
+    // MARK: - selector
+
+    @objc
+    override func endEditingView() {
+        if !myMainSentenceButton.isTouchInside {
+            view.endEditing(true)
+        }
     }
 }

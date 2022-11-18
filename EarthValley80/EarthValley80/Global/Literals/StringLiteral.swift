@@ -64,7 +64,7 @@ enum StringLiteral {
     static let answerWhatPlaceholder = "3가지 질문이 남아있어요"
     static let answerHowPlaceholder = "2가지 질문이 남아있어요"
     static let answerWhyPlaceholder = "마지막 질문이에요"
-    static let summarizePlaceholder = "키워드의 단어와 단어 사이를 연결하면 쉬워요"
+    static let summarizePlaceholder = "내용을 입력하세요"
     
     // MARK: - button
     

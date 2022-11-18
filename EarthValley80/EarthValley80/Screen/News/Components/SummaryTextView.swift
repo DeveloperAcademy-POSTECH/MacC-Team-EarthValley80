@@ -23,7 +23,7 @@ final class SummaryTextView: UIView {
         var placeholder: String? {
             switch self {
             case .beforeWriting:
-                return "리뷰를 남겨주세요"
+                return StringLiteral.summarizePlaceholder
             default:
                 return nil
             }
@@ -58,6 +58,14 @@ final class SummaryTextView: UIView {
         textView.delegate = self
         return textView
     }()
+    var textMode: TextMode? {
+        willSet {
+            guard let newValue = newValue,
+                  newValue != .complete else { return }
+
+            self.updateTextViewConfiguration(with: newValue)
+        }
+    }
 
     // MARK: - init
 
@@ -86,8 +94,23 @@ final class SummaryTextView: UIView {
                                         insets: UIEdgeInsets(top: Size.textViewSpacing, left: 0, bottom: -Size.textViewSpacing, right: 0))
 
     }
+
+    private func updateTextViewConfiguration(with state: TextMode) {
+        self.contentTextView.text = state.placeholder
+        self.contentTextView.textColor = state.textColor
+    }
 }
 
 extension SummaryTextView: UITextViewDelegate {
-    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        let isBeforeWriting = self.textMode == .beforeWriting
+        if isBeforeWriting {
+            self.textMode = .write
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        let isEmpty = textView.text.isEmpty
+        self.textMode = isEmpty ? .beforeWriting : .complete
+    }
 }
