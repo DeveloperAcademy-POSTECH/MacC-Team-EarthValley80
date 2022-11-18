@@ -64,7 +64,6 @@
 		B5FAC8E9290792C500537F58 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8E8290792C500537F58 /* QuestionView.swift */; };
 		B5FAC8EB2907BA6000537F58 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8EA2907BA6000537F58 /* UIFont+Extension.swift */; };
 		B5FAC8EF2907D2A300537F58 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8EE2907D2A300537F58 /* BackButton.swift */; };
-		B5FAC8F12907D8C000537F58 /* BlurredLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8F02907D8C000537F58 /* BlurredLabel.swift */; };
 		B5FAC8F32908E11900537F58 /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8F22908E11900537F58 /* UITextView+Extension.swift */; };
 		B5FAC8F529093CB500537F58 /* NewsGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8F429093CB500537F58 /* NewsGuideViewController.swift */; };
 		B5FAC8F92909FD0300537F58 /* FiveWsAndOneHViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8F82909FD0300537F58 /* FiveWsAndOneHViewController.swift */; };
@@ -155,7 +154,6 @@
 		B5FAC8E8290792C500537F58 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		B5FAC8EA2907BA6000537F58 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		B5FAC8EE2907D2A300537F58 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
-		B5FAC8F02907D8C000537F58 /* BlurredLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredLabel.swift; sourceTree = "<group>"; };
 		B5FAC8F22908E11900537F58 /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		B5FAC8F429093CB500537F58 /* NewsGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGuideViewController.swift; sourceTree = "<group>"; };
 		B5FAC8F82909FD0300537F58 /* FiveWsAndOneHViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveWsAndOneHViewController.swift; sourceTree = "<group>"; };
@@ -463,7 +461,6 @@
 				B5FAC8DE2907786F00537F58 /* NewsTitleView.swift */,
 				B5FAC8E8290792C500537F58 /* QuestionView.swift */,
 				B5FAC8EE2907D2A300537F58 /* BackButton.swift */,
-				B5FAC8F02907D8C000537F58 /* BlurredLabel.swift */,
 				B5FAC8FA290A19F800537F58 /* QuestionTitleStackView.swift */,
 				B532C42B290AAA0F001F672B /* NextButton.swift */,
 				B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */,
@@ -704,7 +701,6 @@
 				B5FAC8F529093CB500537F58 /* NewsGuideViewController.swift in Sources */,
 				381AB429290AE18D00620635 /* EmptySpaceCollectionViewCell.swift in Sources */,
 				B5BE347228FD9C9A00D09BEE /* UIViewController+Extension.swift in Sources */,
-				B5FAC8F12907D8C000537F58 /* BlurredLabel.swift in Sources */,
 				B5BE346E28FD9BB100D09BEE /* UITableView+Extension.swift in Sources */,
 				B5BE347B28FD9E5500D09BEE /* UIViewController+Alert.swift in Sources */,
 				3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */,
