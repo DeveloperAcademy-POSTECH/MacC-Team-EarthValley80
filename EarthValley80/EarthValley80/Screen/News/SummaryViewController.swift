@@ -9,6 +9,10 @@ import UIKit
 
 final class SummaryViewController: UIViewController {
 
+    private enum Size {
+        static let buttonSize: CGFloat = 69.0
+    }
+
     // MARK: - property
 
     private let captionLabel: UILabel = {
@@ -20,6 +24,30 @@ final class SummaryViewController: UIViewController {
     }()
     private let backButton = BackButton()
     private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.summaryTitle)
+    private let myMainSentenceButton: UIButton = {
+        let button = UIButton()
+
+        // TODO: - 나중에 Asset 이미지 변경
+        let imageView = UIImageView(image: UIImage(systemName: "pencil.circle"))
+        button.addSubview(imageView)
+        imageView.constraint(top: button.topAnchor, centerX: button.centerXAnchor)
+        imageView.constraint(.heightAnchor, constant: Size.buttonSize)
+        imageView.constraint(.widthAnchor, constant: Size.buttonSize)
+        imageView.makeShadow(color: .evyBlack1, opacity: 0.3, offset: CGSize.zero, radius: 7)
+
+        let titleLabel = UILabel()
+        button.addSubview(titleLabel)
+        titleLabel.constraint(top: imageView.bottomAnchor,
+                              leading: button.leadingAnchor,
+                              bottom: button.bottomAnchor,
+                              trailing: button.trailingAnchor,
+                              padding: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0))
+        titleLabel.text = StringLiteral.myMainSentenceButtonText
+        titleLabel.font = .font(.bold, ofSize: 10)
+        titleLabel.textColor = .evyWhite
+
+        return button
+    }()
 
 
     // MARK: - life cycle
@@ -47,6 +75,11 @@ final class SummaryViewController: UIViewController {
         self.titleView.constraint(top: self.captionLabel.bottomAnchor,
                                   centerX: self.view.centerXAnchor,
                                   padding: UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.myMainSentenceButton)
+        self.myMainSentenceButton.constraint(top: self.view.topAnchor,
+                                             trailing: self.view.trailingAnchor,
+                                             padding: UIEdgeInsets(top: 46, left: 0, bottom: 0, right: 60))
     }
 
     private func configureUI() {

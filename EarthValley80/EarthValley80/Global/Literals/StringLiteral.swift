@@ -73,6 +73,7 @@ enum StringLiteral {
     static let completeButtonText = "완성했어요!"
     static let backButtonText = "홈으로"
     static let newsCompleteCheckButtonText = "내 피드에서 확인하기"
+    static let myMainSentenceButtonText = "내가 찾은 중심문장"
 
     // MARK: - lottie
 
