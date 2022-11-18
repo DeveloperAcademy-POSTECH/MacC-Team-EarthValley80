@@ -46,17 +46,13 @@ final class MainSentenceViewController: UIViewController {
         label.textColor = .evyWhite
         return label
     }()
-    private let mainSentenceView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .evyWhite
-        return view
-    }()
-    private let backButton = BackButton()
     private let titleHeaderView: NewsTitleView = {
         let view = NewsTitleView()
         view.status = .compact
         return view
     }()
+    private let mainSentenceView = MainSentenceView()
+    private let backButton = BackButton()
     
     // MARK: - life cycle
 
@@ -72,10 +68,9 @@ final class MainSentenceViewController: UIViewController {
         self.backgroundView.constraint(to: self.view)
         
         self.view.addSubview(self.mainSentenceView)
-        self.mainSentenceView.constraint(top: self.view.topAnchor,
-                                         bottom: self.view.bottomAnchor,
+        self.mainSentenceView.constraint(bottom: self.view.bottomAnchor,
                                          trailing: self.view.trailingAnchor,
-                                         padding: UIEdgeInsets(top: Size.verticalPadding, left: 0, bottom: Size.verticalPadding, right: 16))
+                                         padding: UIEdgeInsets(top: 0, left: 0, bottom: Size.verticalPadding, right: 30))
         
         self.view.addSubview(self.backButton)
         self.backButton.constraint(top: self.view.topAnchor,
