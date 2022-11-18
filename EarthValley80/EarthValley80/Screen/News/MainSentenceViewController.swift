@@ -51,6 +51,7 @@ final class MainSentenceViewController: UIViewController {
         view.status = .compact
         return view
     }()
+    private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.mainSentenceTitle)
     private let mainSentenceView = MainSentenceView()
     private let backButton = BackButton()
     
@@ -71,6 +72,11 @@ final class MainSentenceViewController: UIViewController {
         self.mainSentenceView.constraint(bottom: self.view.bottomAnchor,
                                          trailing: self.view.trailingAnchor,
                                          padding: UIEdgeInsets(top: 0, left: 0, bottom: Size.verticalPadding, right: 30))
+
+        self.view.addSubview(self.titleView)
+        self.titleView.constraint(bottom: self.mainSentenceView.topAnchor,
+                                  centerX: self.mainSentenceView.centerXAnchor,
+                                  padding: UIEdgeInsets(top: 0, left: 0, bottom: 38, right: 0))
         
         self.view.addSubview(self.backButton)
         self.backButton.constraint(top: self.view.topAnchor,
