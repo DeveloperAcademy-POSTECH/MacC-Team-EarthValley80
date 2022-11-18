@@ -61,8 +61,7 @@ final class ReadingNewsViewController: UIViewController {
     private let titleHeaderView = NewsTitleView(status: .expanded)
     
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
-    private var headerFrameConstraints: [Frame: NSLayoutConstraint]?
-    
+
     // MARK: - life cycle
 
     override func viewDidLoad() {
@@ -97,7 +96,7 @@ final class ReadingNewsViewController: UIViewController {
                                         leading: self.view.leadingAnchor,
                                         trailing: self.view.trailingAnchor,
                                         padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0))
-        self.headerFrameConstraints = self.titleHeaderView.constraint(.heightAnchor, constant: self.titleHeaderView.heightOfLabel)
+        self.titleHeaderView.constraint(.heightAnchor, constant: self.titleHeaderView.heightOfLabel)
         
         self.view.addSubview(self.newsTableView)
         self.newsTableView.constraint(top: self.titleHeaderView.bottomAnchor,
@@ -178,6 +177,5 @@ extension ReadingNewsViewController: UITableViewDelegate {
         let isScrolled = offsetY > 0
         
         self.titleHeaderView.updateTitleStatus(to: isScrolled ? .scrolled : .expanded)
-        self.headerFrameConstraints?[.heightAnchor]?.constant = self.titleHeaderView.heightOfLabel
     }
 }

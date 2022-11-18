@@ -26,10 +26,10 @@ final class NewsTitleView: UIView {
         
         var fontSize: CGFloat {
             switch self {
-            case .expanded:
-                return Size.originalFontSize
-            default:
+            case .compact:
                 return Size.minimumFontSize
+            default:
+                return Size.originalFontSize
             }
         }
         
