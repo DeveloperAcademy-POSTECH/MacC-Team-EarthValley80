@@ -10,13 +10,16 @@ import UIKit
 final class NewsTitleView: UIView {
     
     private enum Size {
-        static let horizontalPadding: CGFloat = 50.0
-        static let minimumHorizontalPadding: CGFloat = 56.0
+        static let leadingSpacing: CGFloat = 50.0
+        static let minimumLeadingSpacing: CGFloat = 36.0
+        static let trailingSpacing: CGFloat = 60.0
+        static let minimumTrailingSpacing: CGFloat = 60.0
         static let originalFontSize: CGFloat = 40.0
         static let minimumFontSize: CGFloat = 28.0
         static let originalBottomSpacing: CGFloat = 62.0
         static let minimumBottomSpacing: CGFloat = 24.0
-        static let questionViewFrameWidth: CGFloat = UIScreen.main.bounds.size.width * 0.48
+        static let width: CGFloat = 573.adjustedWidth
+        static let titleViewSpacing: CGFloat = 30.0
     }
     
     enum Status {
@@ -42,12 +45,21 @@ final class NewsTitleView: UIView {
             }
         }
         
-        var horizontalPadding: CGFloat {
+        var leadingSpacing: CGFloat {
             switch self {
             case .compact:
-                return Size.minimumHorizontalPadding
+                return Size.minimumLeadingSpacing
             default:
-                return Size.horizontalPadding
+                return Size.leadingSpacing
+            }
+        }
+
+        var trailingSpacing: CGFloat {
+            switch self {
+            case .compact:
+                return Size.minimumTrailingSpacing
+            default:
+                return Size.trailingSpacing
             }
         }
         
@@ -61,11 +73,12 @@ final class NewsTitleView: UIView {
         }
         
         var labelWidth: CGFloat {
+            let screenWidth: CGFloat = UIScreen.main.bounds.size.width
             switch self {
             case .compact:
-                return UIScreen.main.bounds.size.width - (self.horizontalPadding * 2)
+                return screenWidth - (self.leadingSpacing + self.trailingSpacing + Size.width + Size.titleViewSpacing)
             default:
-                return UIScreen.main.bounds.size.width - 20 - (self.horizontalPadding * 2)
+                return screenWidth - (self.leadingSpacing + self.trailingSpacing)
             }
         }
     }
@@ -126,7 +139,7 @@ final class NewsTitleView: UIView {
                                                           leading: self.leadingAnchor,
                                                           bottom: self.bottomAnchor,
                                                           trailing: self.trailingAnchor,
-                                                          padding: UIEdgeInsets(top: 0, left: self.status.horizontalPadding, bottom: self.status.bottomSpacing, right: self.status.horizontalPadding))
+                                                          padding: UIEdgeInsets(top: 0, left: self.status.leadingSpacing, bottom: self.status.bottomSpacing, right: self.status.trailingSpacing))
         
         self.labelConstraint?[.bottom]?.isActive = self.status == .compact
     }
@@ -134,8 +147,8 @@ final class NewsTitleView: UIView {
     private func updateLayout(with status: Status) {
         self.labelConstraint?[.bottom]?.isActive = status == .compact
         
-        self.labelConstraint?[.leading]?.constant = status.horizontalPadding
-        self.labelConstraint?[.trailing]?.constant = -status.horizontalPadding
+        self.labelConstraint?[.leading]?.constant = status.leadingSpacing
+        self.labelConstraint?[.trailing]?.constant = -status.trailingSpacing
         self.labelConstraint?[.bottom]?.constant = -status.bottomSpacing
     }
     
