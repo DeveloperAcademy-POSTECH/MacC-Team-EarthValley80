@@ -1,5 +1,5 @@
 //
-//  FiveWsAndOneHViewController.swift
+//  MainSentenceViewController.swift
 //  EarthValley80
 //
 //  Created by SHIN YOON AH on 2022/10/27.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FiveWsAndOneHViewController: UIViewController {
+final class MainSentenceViewController: UIViewController {
     
     private enum Size {
         static let verticalPadding: CGFloat = 16.0
@@ -60,7 +60,7 @@ final class FiveWsAndOneHViewController: UIViewController {
 }
 
 // MARK: - UITableViewDataSource
-extension FiveWsAndOneHViewController: UITableViewDataSource {
+extension MainSentenceViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
