@@ -41,6 +41,7 @@
 		B55BCEF128FC4C6100AF7E45 /* EarthValley80Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BCEF028FC4C6100AF7E45 /* EarthValley80Tests.swift */; };
 		B55BCEFB28FC4C6100AF7E45 /* EarthValley80UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BCEFA28FC4C6100AF7E45 /* EarthValley80UITests.swift */; };
 		B55BCEFD28FC4C6100AF7E45 /* EarthValley80UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BCEFC28FC4C6100AF7E45 /* EarthValley80UITestsLaunchTests.swift */; };
+		B589F370292718BC008468A8 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F36F292718BC008468A8 /* SummaryViewController.swift */; };
 		B5BE345C28FD981C00D09BEE /* MyNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE345B28FD981C00D09BEE /* MyNews.storyboard */; };
 		B5BE345E28FD982700D09BEE /* MyNewsDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */; };
 		B5BE346028FD984C00D09BEE /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE345F28FD984C00D09BEE /* News.storyboard */; };
@@ -131,6 +132,7 @@
 		B55BCEF628FC4C6100AF7E45 /* EarthValley80UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EarthValley80UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55BCEFA28FC4C6100AF7E45 /* EarthValley80UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthValley80UITests.swift; sourceTree = "<group>"; };
 		B55BCEFC28FC4C6100AF7E45 /* EarthValley80UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthValley80UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B589F36F292718BC008468A8 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		B5BE345B28FD981C00D09BEE /* MyNews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyNews.storyboard; sourceTree = "<group>"; };
 		B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerViewController.swift; sourceTree = "<group>"; };
 		B5BE345F28FD984C00D09BEE /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				B5FAC8F429093CB500537F58 /* NewsGuideViewController.swift */,
 				B5FAC8F82909FD0300537F58 /* FiveWsAndOneHViewController.swift */,
 				B50E7A462925C072009D8410 /* ReactionViewController.swift */,
+				B589F36F292718BC008468A8 /* SummaryViewController.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				CD3A48D9290A6687002D7C15 /* SideTabbarView.swift in Sources */,
 				CD3A48DB290A66EF002D7C15 /* SideTabbarViewController.swift in Sources */,
 				B532C42C290AAA0F001F672B /* NextButton.swift in Sources */,
+				B589F370292718BC008468A8 /* SummaryViewController.swift in Sources */,
 				B5BE347428FD9CD200D09BEE /* UIView+Extension.swift in Sources */,
 				B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */,
 				B5BE347028FD9C2C00D09BEE /* UICollectionView+Extension.swift in Sources */,
