@@ -19,10 +19,9 @@ final class ReadingNewsViewController: UIViewController {
     
     private let captionLabel: UILabel = {
         let label = UILabel()
-        label.font = .font(.bold, ofSize: 12)
-        label.lineBreakStrategy = .hangulWordPriority
+        label.font = .font(.bold, ofSize: 15)
         label.text = StringLiteral.readingNewsCaptionTitle
-        label.textColor = .white.withAlphaComponent(0.5)
+        label.textColor = .evyWhite
         return label
     }()
     private lazy var newsTableView: UITableView = {
@@ -88,14 +87,14 @@ final class ReadingNewsViewController: UIViewController {
         
         self.view.addSubview(self.captionLabel)
         self.captionLabel.constraint(top: self.view.topAnchor,
-                                     leading: self.view.leadingAnchor,
-                                     padding: UIEdgeInsets(top: 76, left: 96, bottom: 0, right: 0))
+                                     centerX: self.view.centerXAnchor,
+                                     padding: UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0))
         
         self.view.addSubview(self.titleHeaderView)
         self.titleHeaderView.constraint(top: self.captionLabel.bottomAnchor,
                                         leading: self.view.leadingAnchor,
                                         trailing: self.view.trailingAnchor,
-                                        padding: UIEdgeInsets(top: 15, left: 0, bottom: 0, right: 0))
+                                        padding: UIEdgeInsets(top: 66, left: 0, bottom: 0, right: 0))
         self.titleHeaderView.constraint(.heightAnchor, constant: self.titleHeaderView.heightOfLabel)
         
         self.view.addSubview(self.newsTableView)

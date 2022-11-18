@@ -11,7 +11,7 @@ enum StringLiteral {
     
     // MARK: - caption
     
-    static let readingNewsCaptionTitle = "기사읽기"
+    static let readingNewsCaptionTitle = "뉴스 읽기"
     static let inferringNewsCaptionTitle = "유추하기"
     static let answerWhoCaptionTitle = "대답하기 | 누가"
     static let answerWhenCaptionTitle = "대답하기 | 언제"
