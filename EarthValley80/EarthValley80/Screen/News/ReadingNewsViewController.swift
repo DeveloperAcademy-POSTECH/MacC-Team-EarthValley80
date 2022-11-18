@@ -58,7 +58,11 @@ final class ReadingNewsViewController: UIViewController {
         return imageView
     }()
     private let backButton = BackButton()
-    private let titleHeaderView = NewsTitleView(status: .expanded)
+    private let titleHeaderView: NewsTitleView = {
+        let view = NewsTitleView()
+        view.status = .expanded
+        return view
+    }()
     
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
 

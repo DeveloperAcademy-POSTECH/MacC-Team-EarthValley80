@@ -14,8 +14,6 @@ final class MainSentenceViewController: UIViewController {
         static let questionViewFrameWidth: CGFloat = UIScreen.main.bounds.size.width * 0.48
     }
     
-    var dismissQuestionView: (() -> ())?
-    
     // MARK: - property
     
     private lazy var newsTableView: UITableView = {
@@ -35,27 +33,61 @@ final class MainSentenceViewController: UIViewController {
         
         return tableView
     }()
-    private let backgroundView = UIImageView(image: ImageLiteral.icArrowLeft)
+    private let mainSentenceView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .evyWhite
+        return view
+    }()
+    private let backgroundView: UIImageView = {
+        let imageView = UIImageView()
+        // TODO: - 나중에 에셋으로 변경할 예정
+        imageView.backgroundColor = .evyBlack2
+        return imageView
+    }()
     private let backButton = BackButton()
-    private let titleHeaderView = NewsTitleView(status: .compact)
+    private let titleHeaderView: NewsTitleView = {
+        let view = NewsTitleView()
+        view.status = .compact
+        return view
+    }()
     
     // MARK: - life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayout()
-        self.configureUI()
     }
     
     // MARK: - func
     
     private func setupLayout() {
+        self.view.addSubview(self.backgroundView)
+        self.backgroundView.constraint(to: self.view)
         
-    }
-    
-    private func configureUI() {
-        // TODO: - background gradient Color가 나오면 적용
-        self.view.backgroundColor = .black
+        self.view.addSubview(self.mainSentenceView)
+        self.mainSentenceView.constraint(top: self.view.topAnchor,
+                                         bottom: self.view.bottomAnchor,
+                                         trailing: self.view.trailingAnchor,
+                                         padding: UIEdgeInsets(top: Size.verticalPadding, left: 0, bottom: Size.verticalPadding, right: 16))
+        
+        self.view.addSubview(self.backButton)
+        self.backButton.constraint(top: self.view.topAnchor,
+                                   leading: self.view.leadingAnchor,
+                                   padding: UIEdgeInsets(top: 26, left: 10, bottom: 0, right: 0))
+        
+        self.view.addSubview(self.titleHeaderView)
+        self.titleHeaderView.constraint(top: self.backButton.bottomAnchor,
+                                        leading: self.view.leadingAnchor,
+                                        trailing: self.mainSentenceView.leadingAnchor,
+                                        padding: UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 10))
+        self.titleHeaderView.constraint(.heightAnchor, constant: self.titleHeaderView.heightOfLabel)
+        
+        self.view.addSubview(self.newsTableView)
+        self.newsTableView.constraint(top: self.titleHeaderView.bottomAnchor,
+                                      leading: self.view.leadingAnchor,
+                                      bottom: self.view.bottomAnchor,
+                                      trailing: self.mainSentenceView.leadingAnchor,
+                                      padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10))
     }
 }
 
