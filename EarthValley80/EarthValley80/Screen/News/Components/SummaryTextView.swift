@@ -34,7 +34,7 @@ final class SummaryTextView: UIView {
             case .beforeWriting:
                 return .tertiaryLabel
             default:
-                return .black
+                return .evyBlack2
             }
         }
     }
@@ -52,7 +52,7 @@ final class SummaryTextView: UIView {
         textView.textContainer.lineBreakMode = .byCharWrapping
         textView.setTypingAttributes(lineSpacing: 10.0)
         textView.font = .font(.regular, ofSize: 34)
-        textView.tintColor = .evyBlack1
+        textView.tintColor = .evyBlack2
         textView.backgroundColor = .clear
         textView.textContainerInset = UIEdgeInsets(top: Size.containerTopInset, left: 40, bottom: 0, right: 72)
         textView.delegate = self
