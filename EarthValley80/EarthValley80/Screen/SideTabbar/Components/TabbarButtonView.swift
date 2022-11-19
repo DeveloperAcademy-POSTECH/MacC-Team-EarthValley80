@@ -8,13 +8,23 @@
 import SwiftUI
 
 struct TabBarButton: View {
+    @Binding var selectedTab: String
     var image: String
     var title: String
-    @Binding var selectedTab: String
+    private let notifier = EventMessenger.shared
     
     var body: some View {
         Button(action: {
-            withAnimation(.easeInOut){ selectedTab = title }
+            withAnimation(.easeInOut){
+                selectedTab = title
+                if title == "요모조모 뉴스" {
+                    notifier.sideMenuNumber.send(1)
+                } else if title == "중심문장찾기" {
+                    notifier.sideMenuNumber.send(2)
+                } else if title == "뉴스 서랍" {
+                    notifier.sideMenuNumber.send(3)
+                }
+            }
         }, label: {
             if #available(iOS 15.0, *) {
                 HStack {
@@ -27,7 +37,6 @@ struct TabBarButton: View {
                         .font(.custom("AppleSDGothicNeo-Medium", size: 16))
                         .fontWeight(.medium)
                         .foregroundColor(selectedTab == title ? .white : .gray)
-                    
                     Spacer()
                 }
                 .frame(width: 214, height: 35 + self.getSafeAreaBottom)
