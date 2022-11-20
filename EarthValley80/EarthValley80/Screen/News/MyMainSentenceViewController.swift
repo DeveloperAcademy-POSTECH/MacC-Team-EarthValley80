@@ -27,6 +27,7 @@ final class MyMainSentenceViewController: UIViewController {
 
         return button
     }()
+    private let mainSentenceView = MainSentenceView(type: .summary)
 
     // MARK: - life cycle
     
@@ -44,6 +45,10 @@ final class MyMainSentenceViewController: UIViewController {
         self.closeButton.constraint(top: self.view.topAnchor,
                                              trailing: self.view.trailingAnchor,
                                              padding: UIEdgeInsets(top: 46, left: 0, bottom: 0, right: 60))
+
+        self.view.addSubview(self.mainSentenceView)
+        self.mainSentenceView.constraint(centerX: self.view.centerXAnchor,
+                                         centerY: self.view.centerYAnchor)
     }
 
     private func configureUI() {

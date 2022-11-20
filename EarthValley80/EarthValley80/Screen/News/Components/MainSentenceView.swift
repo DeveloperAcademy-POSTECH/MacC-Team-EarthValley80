@@ -10,9 +10,43 @@ import UIKit
 final class MainSentenceView: UIView {
 
     private enum Size {
-        static let height: CGFloat = 634.adjustedHeight
-        static let width: CGFloat = 573.adjustedWidth
+        static let mainSentenceHeight: CGFloat = 634.adjustedHeight
+        static let mainSentenceWidth: CGFloat = 573.adjustedWidth
+        static let summaryHeight: CGFloat = 620.adjustedHeight
+        static let summaryWidth: CGFloat = 545.adjustedWidth
         static let verticalSpacing: CGFloat = 10.0
+    }
+
+    @frozen
+    enum ViewType {
+        case mainSentence, summary
+
+        var size: CGSize {
+            switch self {
+            case .mainSentence:
+                return CGSize(width: Size.mainSentenceWidth, height: Size.mainSentenceHeight)
+            case .summary:
+                return CGSize(width: Size.summaryWidth, height: Size.summaryHeight)
+            }
+        }
+
+        var cornerRadius: CGFloat {
+            switch self {
+            case .mainSentence:
+                return 30.0
+            case .summary:
+                return 13.0
+            }
+        }
+
+        var upperTitle: String? {
+            switch self {
+            case .mainSentence:
+                return nil
+            case .summary:
+                return StringLiteral.myMainSentenceTitle
+            }
+        }
     }
 
     // MARK: - property
@@ -36,10 +70,10 @@ final class MainSentenceView: UIView {
 
     // MARK: - init
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.setupLayout()
-        self.configureUI()
+    init(type: ViewType) {
+        super.init(frame: .zero)
+        self.setupLayout(type: type)
+        self.configureUI(type: type)
     }
 
     @available(*, unavailable)
@@ -49,18 +83,18 @@ final class MainSentenceView: UIView {
 
     // MARK: - func
 
-    private func setupLayout() {
-        self.constraint(.heightAnchor, constant: Size.height)
-        self.constraint(.widthAnchor, constant: Size.width)
+    private func setupLayout(type: ViewType) {
+        self.constraint(.heightAnchor, constant: type.size.height)
+        self.constraint(.widthAnchor, constant: type.size.width)
 
         self.addSubview(self.sentenceTableView)
         self.sentenceTableView.constraint(to: self,
                                           insets: UIEdgeInsets(top: Size.verticalSpacing, left: 0, bottom: -Size.verticalSpacing, right: 0))
     }
 
-    private func configureUI() {
+    private func configureUI(type: ViewType) {
         self.backgroundColor = .white
-        self.layer.cornerRadius = 30
+        self.layer.cornerRadius = type.cornerRadius
         self.layer.masksToBounds = true
     }
 }
