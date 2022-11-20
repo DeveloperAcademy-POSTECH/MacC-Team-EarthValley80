@@ -24,6 +24,7 @@ final class MainSentenceView: UIView {
         tableView.indicatorStyle = .white
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 0)
         tableView.register(cell: MainSentenceTableViewCell.self)
 
         if #available(iOS 15.0, *) {

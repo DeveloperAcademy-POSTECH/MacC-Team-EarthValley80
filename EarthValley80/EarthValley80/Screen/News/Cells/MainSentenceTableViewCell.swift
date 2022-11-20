@@ -46,6 +46,7 @@ final class MainSentenceTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupLayout()
+        self.configureUI()
     }
 
     @available(*, unavailable)
@@ -71,6 +72,10 @@ final class MainSentenceTableViewCell: UITableViewCell {
         self.contentBackgroundView.addSubview(self.contentLabel)
         self.contentLabel.constraint(to: self.contentBackgroundView,
                                      insets: UIEdgeInsets(top: Size.contentVerticalInset, left: Size.contentHorizontalInset, bottom: -Size.contentVerticalInset, right: -Size.contentHorizontalInset))
+    }
+
+    private func configureUI() {
+        self.selectionStyle = .none
     }
 
     func setupCellData(index: Int, content: String) {
