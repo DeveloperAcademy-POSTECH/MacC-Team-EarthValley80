@@ -67,9 +67,7 @@
 		CD3A48DB290A66EF002D7C15 /* SideTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */; };
 		CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4AC940291DEF1A003D02E4 /* SideTabbarLottieView.swift */; };
 		CD938A8F2926FDEE0026641B /* SideTabbarEventMessenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD938A8E2926FDEE0026641B /* SideTabbarEventMessenger.swift */; };
-		CD938AB5292A2DFC0026641B /* yomoProfileLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = CD938AB4292A2DFC0026641B /* yomoProfileLottie.json */; };
-		CD938AB6292A2DFC0026641B /* yomoProfileLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = CD938AB4292A2DFC0026641B /* yomoProfileLottie.json */; };
-		CD938AB7292A2DFC0026641B /* yomoProfileLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = CD938AB4292A2DFC0026641B /* yomoProfileLottie.json */; };
+		CD938AB9292A32050026641B /* yomoProfileLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = CD938AB8292A32050026641B /* yomoProfileLottie.json */; };
 		CDE23AA2290ABC5000EEB824 /* InsideTabbarItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */; };
 		CDE23AA4290ABCAE00EEB824 /* TabbarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */; };
 		CDE23AA7290ABE2200EEB824 /* SwiftUI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA6290ABE2200EEB824 /* SwiftUI+Extension.swift */; };
@@ -156,7 +154,7 @@
 		CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarViewController.swift; sourceTree = "<group>"; };
 		CD4AC940291DEF1A003D02E4 /* SideTabbarLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarLottieView.swift; sourceTree = "<group>"; };
 		CD938A8E2926FDEE0026641B /* SideTabbarEventMessenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarEventMessenger.swift; sourceTree = "<group>"; };
-		CD938AB4292A2DFC0026641B /* yomoProfileLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = yomoProfileLottie.json; path = ../../../../../../asset/yomoProfileLottie.json; sourceTree = "<group>"; };
+		CD938AB8292A32050026641B /* yomoProfileLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yomoProfileLottie.json; sourceTree = "<group>"; };
 		CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTabbarItemsView.swift; sourceTree = "<group>"; };
 		CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarButtonView.swift; sourceTree = "<group>"; };
 		CDE23AA6290ABE2200EEB824 /* SwiftUI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Extension.swift"; sourceTree = "<group>"; };
@@ -260,7 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				381AB4492911726B00620635 /* mp4TempFile.json */,
-				CD938AB4292A2DFC0026641B /* yomoProfileLottie.json */,
+				CD938AB8292A32050026641B /* yomoProfileLottie.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -608,7 +606,7 @@
 				B5BE345C28FD981C00D09BEE /* MyNews.storyboard in Resources */,
 				381AB44A2911726B00620635 /* mp4TempFile.json in Resources */,
 				B55BCEE328FC4C6000AF7E45 /* Assets.xcassets in Resources */,
-				CD938AB5292A2DFC0026641B /* yomoProfileLottie.json in Resources */,
+				CD938AB9292A32050026641B /* yomoProfileLottie.json in Resources */,
 				B5BE346028FD984C00D09BEE /* News.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,7 +615,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD938AB6292A2DFC0026641B /* yomoProfileLottie.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +622,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD938AB7292A2DFC0026641B /* yomoProfileLottie.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
