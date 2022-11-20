@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YomojomoNewsCollectionViewCell: UICollectionViewCell {
+final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
 
     private enum Size {
 
