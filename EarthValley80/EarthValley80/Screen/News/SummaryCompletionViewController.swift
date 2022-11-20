@@ -18,6 +18,13 @@ final class SummaryCompletionViewController: UIViewController {
         imageView.backgroundColor = .cyan
         return imageView
     }()
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .font(.regular, ofSize: 16)
+        label.textColor = .evyWhite
+        label.text = StringLiteral.summaryCompletionDescription
+        return label
+    }()
 
     // MARK: - life cycle
 
@@ -41,6 +48,11 @@ final class SummaryCompletionViewController: UIViewController {
                                            padding: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0))
         self.celebrateImageView.constraint(.widthAnchor, constant: 416.adjustedWidth)
         self.celebrateImageView.constraint(.heightAnchor, constant: 290.adjustedHeight)
+
+        self.view.addSubview(self.descriptionLabel)
+        self.descriptionLabel.constraint(top: self.celebrateImageView.bottomAnchor,
+                                         centerX: self.view.centerXAnchor,
+                                         padding: UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0))
     }
 
     private func configureUI() {
