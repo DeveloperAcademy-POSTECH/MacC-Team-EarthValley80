@@ -9,7 +9,7 @@ import Combine
 import SwiftUI
 import UIKit
 
-class ChangeViewController: UIViewController {
+final class ChangeViewController: UIViewController {
     // MARK: - property
     let embeddedYomoJomoNewsViewController = YomojomoNewsViewController()
     let embeddedMyNewsDrawerViewController = MyNewsDrawerViewController()
