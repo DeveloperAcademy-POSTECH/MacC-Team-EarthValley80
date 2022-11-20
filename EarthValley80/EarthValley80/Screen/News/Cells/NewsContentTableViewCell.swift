@@ -12,10 +12,6 @@ private extension UIColor {
         return .white.withAlphaComponent(0.2)
     }
     
-    static var compactTextColor: UIColor {
-        return .white.withAlphaComponent(0.8)
-    }
-    
     static var highlightTextColor: UIColor {
         return .white
     }
@@ -26,45 +22,11 @@ final class NewsContentTableViewCell: UITableViewCell {
     private enum Size {
         static let horizontalPadding: CGFloat = 50.0
         static let originalFontSize: CGFloat = 34.0
-        static let minimumFontSize: CGFloat = 20.0
         static let originalLineHeightMultiple: CGFloat = 1.16
-        static let minimumLineHeightMultiple: CGFloat = 1.5
     }
     
     enum Direction {
         case upper, lower
-    }
-    
-    enum Status {
-        case expanded
-        case compact
-        
-        var fontSize: CGFloat {
-            switch self {
-            case .expanded:
-                return Size.originalFontSize
-            case .compact:
-                return Size.minimumFontSize
-            }
-        }
-        
-        var lineHeightMultiple: CGFloat {
-            switch self {
-            case .expanded:
-                return Size.originalLineHeightMultiple
-            case .compact:
-                return Size.minimumLineHeightMultiple
-            }
-        }
-        
-        var defaultTextColor: UIColor {
-            switch self {
-            case .expanded:
-                return .expandedTextColor
-            case .compact:
-                return .compactTextColor
-            }
-        }
     }
     
     // MARK: - property
@@ -72,6 +34,8 @@ final class NewsContentTableViewCell: UITableViewCell {
     private let contentLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.textColor = .expandedTextColor
+        label.font = .font(.regular, ofSize: Size.originalFontSize)
         
         // TODO: - 더미 데이터, 나중에 지우겠습니다.
         label.text = """
@@ -83,31 +47,20 @@ final class NewsContentTableViewCell: UITableViewCell {
 
         누가 재판에 이겼느냐는 우리의 관심사가 아닙니다. 타다 재판의 이면에 웅크리고 있는 생각들에 주목해야 합니다. 혁신과 기득권의 대립, 새로운 것과 기존에 있던 것 사이의 충돌, 현재와 미래, 진화와 도태 같은 이슈들이죠.
         """
-        
+        label.setLineSpacing(kernValue: -2.0,
+                             lineHeightMultiple: Size.originalLineHeightMultiple)
+
         return label
     }()
     
-    var status: Status? {
-        willSet {
-            guard let newValue = newValue else { return }
-            
-            self.contentLabel.textColor = newValue.defaultTextColor
-            self.contentLabel.font = .font(.regular, ofSize: newValue.fontSize)
-            self.contentLabel.setLineSpacing(kernValue: -2.0,
-                                             lineHeightMultiple: newValue.lineHeightMultiple)
-            self.setupLayout(status: newValue)
-            self.updateReadingIndex(status: newValue)
-        }
-    }
-    
     private var sentences: [String] = []
     private var readingIndex: Int = -1
-    private var contentConstraints: [ConstraintType: NSLayoutConstraint]?
 
     // MARK: - init
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.setupLayout()
         self.configureUI()
         self.appendSentences()
     }
@@ -119,19 +72,13 @@ final class NewsContentTableViewCell: UITableViewCell {
     
     // MARK: - func
     
-    private func setupLayout(status: Status) {
-        if self.contentView.subviews.contains(self.contentLabel) {
-            self.contentConstraints?[.leading]?.constant = Size.horizontalPadding
-            self.contentConstraints?[.trailing]?.constant = -Size.horizontalPadding
-            return
-        }
-        
+    private func setupLayout() {
         self.contentView.addSubview(self.contentLabel)
-        self.contentConstraints = self.contentLabel.constraint(top: self.contentView.topAnchor,
-                                                               leading: self.contentView.leadingAnchor,
-                                                               bottom: self.contentView.bottomAnchor,
-                                                               trailing: self.contentView.trailingAnchor,
-                                                               padding: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 0, right: Size.horizontalPadding))
+        self.contentLabel.constraint(top: self.contentView.topAnchor,
+                                     leading: self.contentView.leadingAnchor,
+                                     bottom: self.contentView.bottomAnchor,
+                                     trailing: self.contentView.trailingAnchor,
+                                     padding: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 0, right: Size.horizontalPadding))
     }
     
     private func configureUI() {
@@ -159,13 +106,7 @@ final class NewsContentTableViewCell: UITableViewCell {
         }
         
         self.contentLabel.setLineSpacing(kernValue: -2.0,
-                                         lineHeightMultiple: self.status?.lineHeightMultiple ?? 0.0)
-    }
-    
-    private func updateReadingIndex(status: Status) {
-        guard status == .compact else { return }
-        
-        self.readingIndex = -1
+                                         lineHeightMultiple: Size.originalLineHeightMultiple)
     }
     
     func shiftHighlight(to direction: Direction) {
