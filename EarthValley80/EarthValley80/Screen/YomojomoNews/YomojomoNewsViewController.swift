@@ -21,12 +21,10 @@ final class YomojomoNewsViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scrollview = UIScrollView()
         scrollview.translatesAutoresizingMaskIntoConstraints = false
-        scrollview.backgroundColor = .blue
         return scrollview
     }()
     private let yomojomoNewsContentView: UIView = {
         let contentview = UIView()
-        contentview.backgroundColor = .red
         return contentview
     }()
     private let yomojomoTitleView: MainTitleView = {
@@ -74,6 +72,8 @@ final class YomojomoNewsViewController: UIViewController {
         let label = UILabel()
         label.text = "아래로 슬라이드 해보세요"
         label.font = .font(.regular, ofSize: 12)
+        label.textColor = .evyGray1
+        label.textAlignment = .center
         return label
     }()
 

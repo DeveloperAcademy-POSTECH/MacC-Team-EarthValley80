@@ -17,7 +17,6 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
 
     private let cellBackground: UIView =  {
         let backgroundview = UIView()
-        backgroundview.backgroundColor = .systemPink
         return backgroundview
     }()
     private let categoryBackgroundImageView: UIImageView = {
@@ -40,16 +39,19 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .font(.bold, ofSize: 16)
+        label.textColor = .evyWhite
         label.layer.masksToBounds = true
-        label.layer.cornerRadius = 10
-        label.backgroundColor = .evyWhite
-        label.layer.opacity = 0.6
+        label.layer.cornerRadius = 13
+        // TODO: - 카테고리 색상별로 색을 바꿔주어야 합니다.
+        label.backgroundColor = .systemOrange
         return label
     }()
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "이건뉴스 기사 제목이지롱 어때 이건 바로 테스트야!"
+        label.adjustsFontSizeToFitWidth = true
+        label.font = .font(.bold, ofSize: 28)
+        label.lineBreakStrategy = .hangulWordPriority
         return label
     }()
 
@@ -94,7 +96,6 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
         self.cellBackground.addSubview(self.newsTitleLabel)
         self.newsTitleLabel.constraint(top: self.newsCategoryLabel.bottomAnchor,
                                        leading: self.newsCategoryLabel.leadingAnchor,
-                                       bottom: self.cellBackground.bottomAnchor,
                                        trailing: self.cellBackground.trailingAnchor,
                                        padding: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0))
     }
