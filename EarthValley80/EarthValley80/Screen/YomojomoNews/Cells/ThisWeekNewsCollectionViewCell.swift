@@ -1,5 +1,5 @@
 //
-//  YomojomoNewsTitleCollectionViewCell.swift
+//  ThisWeekNewsCollectionViewCell.swift
 //  EarthValley80
 //
 //  Created by LeeJiSoo on 2022/10/27.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class YomojomoNewsTitleCollectionViewCell: UICollectionViewCell {
+final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
 
     private enum Size {
         static let standardOfTitle: Int = 30
