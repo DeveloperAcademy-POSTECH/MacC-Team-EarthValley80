@@ -14,6 +14,10 @@ final class YomojomoNewsViewController: UIViewController {
         static let cellInterval: CGFloat = 12
         static let column: CGFloat = 5
         static let cellHeight: CGFloat = 180.0
+        static let slideGuideFontSize: CGFloat = 12.0
+        static let contentviewHeight = UIScreen.main.bounds.size.height - 70
+        static let yomojomoNewsCollectionviewAndTitleInterval = UIScreen.main.bounds.height / 9
+        static let yomojomoCollectionviewHeight = UIScreen.main.bounds.height - 400.0
     }
 
     // MARK: - property
@@ -70,8 +74,8 @@ final class YomojomoNewsViewController: UIViewController {
     }()
     private let slideGuideLabel: UILabel = {
         let label = UILabel()
-        label.text = "아래로 슬라이드 해보세요"
-        label.font = .font(.regular, ofSize: 12)
+        label.text = StringLiteral.slideGuideText
+        label.font = .font(.regular, ofSize: Size.slideGuideFontSize)
         label.textColor = .evyGray1
         label.textAlignment = .center
         return label
@@ -103,7 +107,7 @@ final class YomojomoNewsViewController: UIViewController {
                                                 trailing: self.scrollView.contentLayoutGuide.trailingAnchor,
                                                 padding: UIEdgeInsets.zero)
         self.yomojomoNewsContentView.constraint(.widthAnchor, constant: scrollView.frame.width)
-        self.yomojomoNewsContentView.constraint(.heightAnchor, constant: UIScreen.main.bounds.size.height - 80)
+        self.yomojomoNewsContentView.constraint(.heightAnchor, constant: Size.contentviewHeight)
 
         self.yomojomoNewsContentView.addSubview(self.yomojomoTitleView)
         self.yomojomoTitleView.constraint(top: self.yomojomoNewsContentView.topAnchor,
@@ -115,8 +119,8 @@ final class YomojomoNewsViewController: UIViewController {
         self.yomojomoNewsCollectionView.constraint(top: self.yomojomoTitleView.bottomAnchor,
                                                    leading: self.yomojomoNewsContentView.leadingAnchor,
                                                    trailing: self.yomojomoNewsContentView.trailingAnchor,
-                                                   padding: UIEdgeInsets(top: UIScreen.main.bounds.height / 8.34 , left: 0, bottom: 0, right: 0))
-        self.yomojomoNewsCollectionView.constraint(.heightAnchor, constant: UIScreen.main.bounds.height - 413)
+                                                   padding: UIEdgeInsets(top: Size.yomojomoNewsCollectionviewAndTitleInterval , left: 0, bottom: 0, right: 0))
+        self.yomojomoNewsCollectionView.constraint(.heightAnchor, constant: Size.yomojomoCollectionviewHeight)
 
         self.yomojomoNewsContentView.addSubview(self.slideGuideLabel)
         self.slideGuideLabel.constraint(bottom: self.yomojomoNewsContentView.bottomAnchor,
@@ -132,7 +136,7 @@ final class YomojomoNewsViewController: UIViewController {
                                                 trailing: self.scrollView.trailingAnchor,
                                                 padding: UIEdgeInsets.zero)
         self.thisWeekNewsContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        self.thisWeekNewsContentView.constraint(.heightAnchor, constant: UIScreen.main.bounds.size.height - 100)
+        self.thisWeekNewsContentView.constraint(.heightAnchor, constant: Size.contentviewHeight)
 
 
         self.thisWeekNewsContentView.addSubview(self.thisWeekTitleView)
@@ -190,8 +194,7 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
         // MARK: - width 및 column 설정
 
         if collectionView == self.yomojomoNewsCollectionView {
-            return CGSize(width: 300, height: UIScreen.main.bounds.size.height - 413)
-//            return CGSize(width: 300, height: 378)
+            return CGSize(width: 300, height: Size.yomojomoCollectionviewHeight)
         } else if collectionView == self.thisWeekNewsCollectionView {
             var width: CGFloat
             if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {

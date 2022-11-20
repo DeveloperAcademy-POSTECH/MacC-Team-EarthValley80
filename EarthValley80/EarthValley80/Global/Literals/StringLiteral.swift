@@ -75,6 +75,7 @@ enum StringLiteral {
     static let vocabularyGuideText = "모르는 단어가 있다면\n꾹- 눌러 단어장에 추가할 수 있어요"
     static let vocabularyGuidesubText = "어려운 단어가 있나요?"
     static let completeGuideText = "완벽해요\n그럼 기사를 읽으러 가볼까요?"
+    static let slideGuideText = "아래로 슬라이드 해보세요"
 
     // MARK: - lottie
 
