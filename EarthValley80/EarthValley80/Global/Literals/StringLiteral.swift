@@ -37,6 +37,7 @@ enum StringLiteral {
     static let popUpNewsTitle = "기사제목"
     static let popUpMyPredictionTitle = "나의 유추"
     static let popUpMySummaryTitle = "나의 요약"
+    static let thisWeekNewsTitle = "이번주 뉴스"
 
     // MARK: - title description
 
@@ -44,6 +45,7 @@ enum StringLiteral {
     static let myNewsDrawerTitleDescription = "내가 쓴 뉴스을 이곳에서 볼 수 있어요"
     static let greetingComments = "안녕!\n기사를 읽고 요약해보세요!"
     static let completeTitleDescription = "이 기사에 대한 요약을 모두\n완성했어요!"
+    static let thisWeekNewsTitleDescription = "마음에 드는 제목의 뉴스를 선택하여 읽어보세요!"
 
     // MARK: - placeholder
     

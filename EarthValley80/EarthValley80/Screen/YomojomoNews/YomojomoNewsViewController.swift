@@ -18,6 +18,7 @@ final class YomojomoNewsViewController: UIViewController {
         static let contentviewHeight = UIScreen.main.bounds.size.height - 70
         static let yomojomoNewsCollectionviewAndTitleInterval = UIScreen.main.bounds.height / 9
         static let yomojomoCollectionviewHeight = UIScreen.main.bounds.height - 400.0
+        static let yomojomoCollectionviewWidth: CGFloat = 300.0
     }
 
     // MARK: - property
@@ -56,8 +57,8 @@ final class YomojomoNewsViewController: UIViewController {
     private let thisWeekTitleView: MainTitleView = {
         let titleView = MainTitleView()
         titleView.changeLabelText(date: Date().dateFormatted("EEEE, MM d"),
-                                  title: "이번주 뉴스",
-                                  description: "마음에 드는 제목의 뉴스를 선택하여 읽어보세요!")
+                                  title: StringLiteral.thisWeekNewsTitle,
+                                  description: StringLiteral.thisWeekNewsTitleDescription)
         return titleView
     }()
     private lazy var thisWeekNewsCollectionView: UICollectionView = {
@@ -194,7 +195,7 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
         // MARK: - width 및 column 설정
 
         if collectionView == self.yomojomoNewsCollectionView {
-            return CGSize(width: 300, height: Size.yomojomoCollectionviewHeight)
+            return CGSize(width: Size.yomojomoCollectionviewWidth, height: Size.yomojomoCollectionviewHeight)
         } else if collectionView == self.thisWeekNewsCollectionView {
             var width: CGFloat
             if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
