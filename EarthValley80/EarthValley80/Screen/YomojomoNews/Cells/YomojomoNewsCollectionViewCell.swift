@@ -74,9 +74,9 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
         self.cellBackground.addSubview(self.categoryBackgroundImageView)
         self.categoryBackgroundImageView.constraint(top: self.cellBackground.topAnchor,
                                                     trailing: self.cellBackground.trailingAnchor,
-                                                    padding: UIEdgeInsets(top: 100, left: 0, bottom: 0, right: 0))
-        self.categoryBackgroundImageView.constraint(.widthAnchor, constant: 200)
-        self.categoryBackgroundImageView.constraint(.heightAnchor, constant: 200)
+                                                    padding: UIEdgeInsets(top: 113, left: 0, bottom: 0, right: 0))
+        self.categoryBackgroundImageView.constraint(.widthAnchor, constant: 155)
+        self.categoryBackgroundImageView.constraint(.heightAnchor, constant: 155)
 
         self.cellBackground.addSubview(self.newsImageView)
         self.newsImageView.constraint(top: self.cellBackground.topAnchor,

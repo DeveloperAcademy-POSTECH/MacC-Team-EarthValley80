@@ -103,20 +103,27 @@ final class YomojomoNewsViewController: UIViewController {
                                                 trailing: self.scrollView.contentLayoutGuide.trailingAnchor,
                                                 padding: UIEdgeInsets.zero)
         self.yomojomoNewsContentView.constraint(.widthAnchor, constant: scrollView.frame.width)
-        self.yomojomoNewsContentView.constraint(.heightAnchor, constant: UIScreen.main.bounds.size.height - 100)
+        self.yomojomoNewsContentView.constraint(.heightAnchor, constant: UIScreen.main.bounds.size.height - 80)
 
         self.yomojomoNewsContentView.addSubview(self.yomojomoTitleView)
         self.yomojomoTitleView.constraint(top: self.yomojomoNewsContentView.topAnchor,
                                           leading: self.yomojomoNewsContentView.leadingAnchor,
                                           trailing: self.yomojomoNewsContentView.trailingAnchor,
-                                          padding: UIEdgeInsets(top: 80, left: 0, bottom: 0, right: 0))
+                                          padding: UIEdgeInsets(top: 65, left: 0, bottom: 0, right: 0))
 
         self.yomojomoNewsContentView.addSubview(self.yomojomoNewsCollectionView)
         self.yomojomoNewsCollectionView.constraint(top: self.yomojomoTitleView.bottomAnchor,
                                                    leading: self.yomojomoNewsContentView.leadingAnchor,
-                                                   bottom: self.yomojomoNewsContentView.bottomAnchor,
                                                    trailing: self.yomojomoNewsContentView.trailingAnchor,
-                                                   padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
+                                                   padding: UIEdgeInsets(top: UIScreen.main.bounds.height / 8.34 , left: 0, bottom: 0, right: 0))
+        self.yomojomoNewsCollectionView.constraint(.heightAnchor, constant: UIScreen.main.bounds.height - 413)
+
+        self.yomojomoNewsContentView.addSubview(self.slideGuideLabel)
+        self.slideGuideLabel.constraint(bottom: self.yomojomoNewsContentView.bottomAnchor,
+                                        centerX: self.yomojomoNewsContentView.centerXAnchor,
+                                        padding: UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0))
+        self.slideGuideLabel.constraint(.widthAnchor, constant: 200)
+
 
         self.scrollView.addSubview(self.thisWeekNewsContentView)
         self.thisWeekNewsContentView.constraint(top: self.yomojomoNewsContentView.bottomAnchor,
@@ -139,7 +146,7 @@ final class YomojomoNewsViewController: UIViewController {
                                                    leading: self.thisWeekNewsContentView.leadingAnchor,
                                                    bottom: self.thisWeekNewsContentView.bottomAnchor,
                                                    trailing: self.thisWeekNewsContentView.trailingAnchor,
-                                                   padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
+                                                   padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
     }
 }
 
@@ -158,7 +165,8 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
 
         if collectionView == yomojomoNewsCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsCollectionViewCell.className, for: indexPath) as! YomojomoNewsCollectionViewCell
-            cell.setData(newsData[indexPath.row])
+            cell.setData(with: newsData[indexPath.row])
+            cell.calculateLabelWidth(newsData[indexPath.row])
             return cell
         } else if collectionView == thisWeekNewsCollectionView {
             if newsData[indexPath.row].title == nil {
@@ -182,7 +190,8 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
         // MARK: - width 및 column 설정
 
         if collectionView == self.yomojomoNewsCollectionView {
-            return CGSize(width: 300, height: 378)
+            return CGSize(width: 300, height: UIScreen.main.bounds.size.height - 413)
+//            return CGSize(width: 300, height: 378)
         } else if collectionView == self.thisWeekNewsCollectionView {
             var width: CGFloat
             if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
