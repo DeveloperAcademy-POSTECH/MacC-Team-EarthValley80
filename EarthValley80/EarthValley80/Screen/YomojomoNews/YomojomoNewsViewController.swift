@@ -84,17 +84,49 @@ final class YomojomoNewsViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
-        self.yomojomoTitleView.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
-                                     leading: self.view.leadingAnchor,
-                                     trailing: self.view.trailingAnchor,
-                                     padding: UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0))
+        self.view.addSubview(scrollView)
+        self.scrollView.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
+                                   leading: self.view.safeAreaLayoutGuide.leadingAnchor,
+                                   bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
+                                   trailing: self.view.safeAreaLayoutGuide.trailingAnchor,
+                                   padding: UIEdgeInsets.zero)
 
-        self.view.addSubview(self.collectionView)
-        self.collectionView.constraint(top: self.yomojomoTitleView.bottomAnchor,
-                                  leading: self.yomojomoTitleView.leadingAnchor,
-                                  bottom: self.view.bottomAnchor,
-                                  trailing: self.view.trailingAnchor,
-                                  padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
+        self.scrollView.addSubview(yomojomoNewsContentView)
+        self.yomojomoNewsContentView.constraint(top: self.scrollView.contentLayoutGuide.topAnchor,
+                                                leading: self.scrollView.contentLayoutGuide.leadingAnchor,
+                                                trailing: self.scrollView.contentLayoutGuide.trailingAnchor,
+                                                padding: UIEdgeInsets.zero)
+        self.yomojomoNewsContentView.constraint(.widthAnchor, constant: scrollView.frame.width)
+        self.yomojomoNewsContentView.constraint(.heightAnchor, constant: UIScreen.main.bounds.size.height - 100)
+
+        self.yomojomoNewsContentView.addSubview(self.yomojomoTitleView)
+        self.yomojomoTitleView.constraint(top: self.yomojomoNewsContentView.topAnchor,
+                                          leading: self.yomojomoNewsContentView.leadingAnchor,
+                                          trailing: self.yomojomoNewsContentView.trailingAnchor,
+                                          padding: UIEdgeInsets(top: 80, left: 0, bottom: 0, right: 0))
+
+        self.yomojomoNewsContentView.addSubview(self.thisWeekNewsCollectionView)
+        self.thisWeekNewsCollectionView.constraint(top: self.yomojomoTitleView.bottomAnchor,
+                                                   leading: self.yomojomoNewsContentView.leadingAnchor,
+                                                   bottom: self.yomojomoNewsContentView.bottomAnchor,
+                                                   trailing: self.yomojomoNewsContentView.trailingAnchor,
+                                                   padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
+
+        self.scrollView.addSubview(self.thisWeekNewsContentView)
+        self.thisWeekNewsContentView.constraint(top: self.yomojomoNewsContentView.bottomAnchor,
+                                                leading: self.scrollView.leadingAnchor,
+                                                bottom: self.scrollView.bottomAnchor,
+                                                trailing: self.scrollView.trailingAnchor,
+                                                padding: UIEdgeInsets.zero)
+        self.thisWeekNewsContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        self.thisWeekNewsContentView.constraint(.heightAnchor, constant: UIScreen.main.bounds.size.height - 100)
+
+
+        self.thisWeekNewsContentView.addSubview(self.thisWeekTitleView)
+        self.thisWeekTitleView.constraint(top: self.thisWeekNewsContentView.topAnchor,
+                                          leading: self.thisWeekNewsContentView.leadingAnchor,
+                                          trailing: self.thisWeekNewsContentView.trailingAnchor,
+                                          padding: UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0))
     }
 }
 
@@ -115,7 +147,6 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
             return cell
         }
     }
-
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
