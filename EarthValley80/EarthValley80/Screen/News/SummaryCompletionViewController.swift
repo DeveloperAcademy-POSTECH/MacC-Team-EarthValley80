@@ -12,6 +12,12 @@ final class SummaryCompletionViewController: UIViewController {
     // MARK: - property
 
     private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.summaryCompletionTitle)
+    private let celebrateImageView: UIImageView = {
+        let imageView = UIImageView()
+        // TODO: - 후에 이미지 에셋으로 변경할 예정입니다.
+        imageView.backgroundColor = .cyan
+        return imageView
+    }()
 
     // MARK: - life cycle
 
@@ -28,6 +34,13 @@ final class SummaryCompletionViewController: UIViewController {
         self.titleView.constraint(top: self.view.topAnchor,
                                   centerX: self.view.centerXAnchor,
                                   padding: UIEdgeInsets(top: 210.adjustedHeight, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.celebrateImageView)
+        self.celebrateImageView.constraint(top: self.titleView.topAnchor,
+                                           centerX: self.view.centerXAnchor,
+                                           padding: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0))
+        self.celebrateImageView.constraint(.widthAnchor, constant: 416.adjustedWidth)
+        self.celebrateImageView.constraint(.heightAnchor, constant: 290.adjustedHeight)
     }
 
     private func configureUI() {
