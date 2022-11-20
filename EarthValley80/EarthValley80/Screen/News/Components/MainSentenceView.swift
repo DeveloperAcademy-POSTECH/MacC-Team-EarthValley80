@@ -20,7 +20,6 @@ final class MainSentenceView: UIView {
     private lazy var sentenceTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
-        tableView.backgroundColor = .red
         tableView.separatorColor = .clear
         tableView.indicatorStyle = .white
         tableView.rowHeight = UITableView.automaticDimension
@@ -68,11 +67,16 @@ final class MainSentenceView: UIView {
 // MARK: - UITableViewDataSource
 extension MainSentenceView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withType: MainSentenceTableViewCell.self, for: indexPath)
+        let cell: MainSentenceTableViewCell = tableView.dequeueReusableCell(withType: MainSentenceTableViewCell.self, for: indexPath)
+        let paragraphIndex = indexPath.row + 1
+
+        // TODO: - 나중에 배열을 생성해서 중심문장을 받을 생각입니다.
+        cell.setupCellData(index: paragraphIndex, content: "페이스북의 모회사(회사의 경영을 지배하는 회사)인 메타가 직원 1만1000명을 해고한다고 밝혔다.")
+
         return cell
     }
 }
