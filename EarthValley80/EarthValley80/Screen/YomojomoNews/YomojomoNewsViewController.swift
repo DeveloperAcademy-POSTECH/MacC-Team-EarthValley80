@@ -70,6 +70,12 @@ final class YomojomoNewsViewController: UIViewController {
         collectionView.register(EmptySpaceCollectionViewCell.self, forCellWithReuseIdentifier: EmptySpaceCollectionViewCell.className)
         return collectionView
     }()
+    private let slideGuideLabel: UILabel = {
+        let label = UILabel()
+        label.text = "아래로 슬라이드 해보세요"
+        label.font = .font(.regular, ofSize: 12)
+        return label
+    }()
 
     private let newsModel = NewsSortingManager()
     private lazy var newsData = self.newsModel.arrangeNewsData(yomojomoViewDummyData)
@@ -105,8 +111,8 @@ final class YomojomoNewsViewController: UIViewController {
                                           trailing: self.yomojomoNewsContentView.trailingAnchor,
                                           padding: UIEdgeInsets(top: 80, left: 0, bottom: 0, right: 0))
 
-        self.yomojomoNewsContentView.addSubview(self.thisWeekNewsCollectionView)
-        self.thisWeekNewsCollectionView.constraint(top: self.yomojomoTitleView.bottomAnchor,
+        self.yomojomoNewsContentView.addSubview(self.yomojomoNewsCollectionView)
+        self.yomojomoNewsCollectionView.constraint(top: self.yomojomoTitleView.bottomAnchor,
                                                    leading: self.yomojomoNewsContentView.leadingAnchor,
                                                    bottom: self.yomojomoNewsContentView.bottomAnchor,
                                                    trailing: self.yomojomoNewsContentView.trailingAnchor,
@@ -127,13 +133,25 @@ final class YomojomoNewsViewController: UIViewController {
                                           leading: self.thisWeekNewsContentView.leadingAnchor,
                                           trailing: self.thisWeekNewsContentView.trailingAnchor,
                                           padding: UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0))
+
+        self.thisWeekNewsContentView.addSubview(self.thisWeekNewsCollectionView)
+        self.thisWeekNewsCollectionView.constraint(top: self.thisWeekTitleView.bottomAnchor,
+                                                   leading: self.thisWeekNewsContentView.leadingAnchor,
+                                                   bottom: self.thisWeekNewsContentView.bottomAnchor,
+                                                   trailing: self.thisWeekNewsContentView.trailingAnchor,
+                                                   padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
     }
 }
 
 // MARK: - UICollectionViewDataSource
 extension YomojomoNewsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.newsData.count
+        if collectionView == self.yomojomoNewsCollectionView {
+            return self.newsData.count
+        } else if collectionView == self.thisWeekNewsCollectionView {
+            return self.newsData.count
+        }
+        return 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -141,7 +159,6 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
         if collectionView == yomojomoNewsCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsCollectionViewCell.className, for: indexPath) as! YomojomoNewsCollectionViewCell
             cell.setData(newsData[indexPath.row])
-            cell.calculateLabelWidth(newsData[indexPath.row])
             return cell
         } else if collectionView == thisWeekNewsCollectionView {
             if newsData[indexPath.row].title == nil {
@@ -164,14 +181,19 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
 
         // MARK: - width 및 column 설정
 
-        var width: CGFloat
-        if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
-            width = ((collectionView.frame.width - (Size.cellInterval * 4)) / Size.column) * 2 + Size.cellInterval
-        } else {
-            width = (collectionView.frame.width - (Size.cellInterval * 4)) / Size.column - 0.00000001
+        if collectionView == self.yomojomoNewsCollectionView {
+            return CGSize(width: 300, height: 378)
+        } else if collectionView == self.thisWeekNewsCollectionView {
+            var width: CGFloat
+            if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
+                width = ((collectionView.frame.width - (Size.cellInterval * 4)) / Size.column) * 2 + Size.cellInterval
+            } else {
+                width = (collectionView.frame.width - (Size.cellInterval * 4)) / Size.column - 0.00000001
+            }
+            return CGSize(width: width, height: Size.cellHeight)
         }
 
-        return CGSize(width: width, height: Size.cellHeight)
+        return CGSize()
     }
 }
 
@@ -180,10 +202,10 @@ extension YomojomoNewsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "News", bundle: nil)
         guard let newsViewController = storyboard.instantiateViewController(withIdentifier: TitleInferringViewController.className) as? TitleInferringViewController else { return }
-        
+
         newsViewController.modalTransitionStyle = .crossDissolve
         newsViewController.modalPresentationStyle = .fullScreen
-        
+
         self.present(newsViewController, animated: true)
     }
 }
