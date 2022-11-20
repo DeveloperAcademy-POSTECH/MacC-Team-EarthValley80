@@ -17,7 +17,7 @@ final class SummaryTextView: UIView {
 
     enum TextMode {
         case beforeWriting
-        case write
+        case writing
         case complete
 
         var placeholder: String? {
@@ -139,7 +139,7 @@ extension SummaryTextView: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         let isBeforeWriting = self.textMode == .beforeWriting
         if isBeforeWriting {
-            self.textMode = .write
+            self.textMode = .writing
         }
     }
 
