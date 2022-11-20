@@ -137,15 +137,24 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if newsData[indexPath.row].title == nil {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
-            return cell
-        } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className, for: indexPath) as? YomojomoNewsTitleCollectionViewCell else { return UICollectionViewCell() }
+
+        if collectionView == yomojomoNewsCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsCollectionViewCell.className, for: indexPath) as! YomojomoNewsCollectionViewCell
             cell.setData(newsData[indexPath.row])
             cell.calculateLabelWidth(newsData[indexPath.row])
             return cell
+        } else if collectionView == thisWeekNewsCollectionView {
+            if newsData[indexPath.row].title == nil {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
+                return cell
+            } else {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThisWeekNewsCollectionViewCell.className, for: indexPath) as? ThisWeekNewsCollectionViewCell else { return UICollectionViewCell() }
+                cell.setData(newsData[indexPath.row])
+                cell.calculateLabelWidth(newsData[indexPath.row])
+                return cell
+            }
         }
+        return UICollectionViewCell()
     }
 }
 

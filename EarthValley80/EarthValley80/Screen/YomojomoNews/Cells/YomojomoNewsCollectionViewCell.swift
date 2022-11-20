@@ -99,4 +99,7 @@ class YomojomoNewsCollectionViewCell: UICollectionViewCell {
                                        padding: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0))
     }
 
+    func setData(_ title: News) {
+        newsTitleLabel.text = title.title
+    }
 }
