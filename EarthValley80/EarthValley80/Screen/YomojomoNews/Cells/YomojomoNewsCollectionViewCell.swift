@@ -99,7 +99,16 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
                                        padding: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0))
     }
 
-    func setData(_ title: News) {
-        newsTitleLabel.text = title.title
+    func setData(with news: News) {
+        newsTitleLabel.text = news.title
+        newsCategoryLabel.text = news.category
+    }
+
+    func calculateLabelWidth(_ newsData: News) {
+        let label = UILabel()
+        label.font = .font(.bold, ofSize: 16)
+        label.text = newsData.category
+        label.sizeToFit()
+        self.newsCategoryLabel.constraint(.widthAnchor, constant: label.frame.width + 24)
     }
 }
