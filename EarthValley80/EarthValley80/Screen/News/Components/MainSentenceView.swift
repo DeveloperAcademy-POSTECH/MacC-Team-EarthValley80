@@ -12,6 +12,7 @@ final class MainSentenceView: UIView {
     private enum Size {
         static let height: CGFloat = 634.adjustedHeight
         static let width: CGFloat = 573.adjustedWidth
+        static let verticalSpacing: CGFloat = 10.0
     }
 
     // MARK: - property
@@ -24,8 +25,7 @@ final class MainSentenceView: UIView {
         tableView.indicatorStyle = .white
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
-        tableView.contentInset = UIEdgeInsets(top: 40, left: 0, bottom: 50, right: 0)
-        tableView.register(cell: NewsContentTableViewCell.self)
+        tableView.register(cell: MainSentenceTableViewCell.self)
 
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
@@ -54,7 +54,8 @@ final class MainSentenceView: UIView {
         self.constraint(.widthAnchor, constant: Size.width)
 
         self.addSubview(self.sentenceTableView)
-        self.sentenceTableView.constraint(to: self)
+        self.sentenceTableView.constraint(to: self,
+                                          insets: UIEdgeInsets(top: Size.verticalSpacing, left: 0, bottom: -Size.verticalSpacing, right: 0))
     }
 
     private func configureUI() {
@@ -67,10 +68,11 @@ final class MainSentenceView: UIView {
 // MARK: - UITableViewDataSource
 extension MainSentenceView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withType: MainSentenceTableViewCell.self, for: indexPath)
+        return cell
     }
 }
