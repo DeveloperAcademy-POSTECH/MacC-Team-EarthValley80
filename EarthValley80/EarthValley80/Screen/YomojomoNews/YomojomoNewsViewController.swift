@@ -40,10 +40,10 @@ final class YomojomoNewsViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
-        layout.minimumInteritemSpacing = 180.0
+        layout.minimumLineSpacing = 113
         collectionView.delegate = self
         collectionView.dataSource = self
-        // TODO: - cell register
+        collectionView.register(YomojomoNewsCollectionViewCell.self, forCellWithReuseIdentifier: YomojomoNewsCollectionViewCell.className)
         return collectionView
     }()
     private let thisWeekNewsContentView: UIView = {
@@ -66,7 +66,7 @@ final class YomojomoNewsViewController: UIViewController {
         layout.minimumInteritemSpacing = Size.cellInterval
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(YomojomoNewsTitleCollectionViewCell.self, forCellWithReuseIdentifier: YomojomoNewsTitleCollectionViewCell.className)
+        collectionView.register(ThisWeekNewsCollectionViewCell.self, forCellWithReuseIdentifier: ThisWeekNewsCollectionViewCell.className)
         collectionView.register(EmptySpaceCollectionViewCell.self, forCellWithReuseIdentifier: EmptySpaceCollectionViewCell.className)
         return collectionView
     }()
