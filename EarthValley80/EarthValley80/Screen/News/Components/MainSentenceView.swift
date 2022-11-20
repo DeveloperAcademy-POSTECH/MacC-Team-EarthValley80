@@ -67,6 +67,13 @@ final class MainSentenceView: UIView {
 
         return tableView
     }()
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .font(.bold, ofSize: 40)
+        // TODO: - 컬러셋이 정해지면 제대로 넣어두겠습니다.
+        label.textColor = .evyCategoryCul
+        return label
+    }()
 
     // MARK: - init
 
@@ -87,15 +94,39 @@ final class MainSentenceView: UIView {
         self.constraint(.heightAnchor, constant: type.size.height)
         self.constraint(.widthAnchor, constant: type.size.width)
 
+        let isSummaryType = type.upperTitle != nil
+        isSummaryType ? setupSummaryView() : setupMainSentenceView()
+    }
+
+    private func setupMainSentenceView() {
         self.addSubview(self.sentenceTableView)
         self.sentenceTableView.constraint(to: self,
                                           insets: UIEdgeInsets(top: Size.verticalSpacing, left: 0, bottom: -Size.verticalSpacing, right: 0))
+    }
+
+    private func setupSummaryView() {
+        self.addSubview(self.titleLabel)
+        self.titleLabel.constraint(top: self.topAnchor,
+                                   leading: self.leadingAnchor,
+                                   padding: UIEdgeInsets(top: 40, left: 33, bottom: 0, right: 0))
+
+        self.addSubview(self.sentenceTableView)
+        self.sentenceTableView.constraint(top: self.titleLabel.bottomAnchor,
+                                          leading: self.leadingAnchor,
+                                          bottom: self.bottomAnchor,
+                                          trailing: self.trailingAnchor,
+                                          padding: UIEdgeInsets(top: 40, left: 0, bottom: Size.verticalSpacing, right: 0))
     }
 
     private func configureUI(type: ViewType) {
         self.backgroundColor = .white
         self.layer.cornerRadius = type.cornerRadius
         self.layer.masksToBounds = true
+
+        if let title = type.upperTitle {
+            self.titleLabel.text = title
+            self.titleLabel.setLineSpacing(kernValue: -1.0)
+        }
     }
 }
 
