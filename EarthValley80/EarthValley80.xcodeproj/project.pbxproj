@@ -261,13 +261,6 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
-		38D46A1F2925BFF000BC79FB /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
 		B55BCECD28FC4C5F00AF7E45 = {
 			isa = PBXGroup;
 			children = (
@@ -368,7 +361,6 @@
 		B5BE345628FD96CA00D09BEE /* YomojomoNews */ = {
 			isa = PBXGroup;
 			children = (
-				38D46A1F2925BFF000BC79FB /* Components */,
 				381AB423290AB8EE00620635 /* Cells */,
 				B5BE346328FD986600D09BEE /* YomojomoNewsViewController.swift */,
 			);
