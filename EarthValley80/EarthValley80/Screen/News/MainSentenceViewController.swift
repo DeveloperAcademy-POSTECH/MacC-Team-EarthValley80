@@ -128,13 +128,13 @@ extension MainSentenceViewController: UITableViewDataSource {
 extension MainSentenceViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? MainContentParagraphTableViewCell else { return }
-
         cell.setupParagraphStyle(to: .highlighted)
+
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? MainContentParagraphTableViewCell else { return }
-
         cell.setupParagraphStyle(to: .original)
     }
 }
