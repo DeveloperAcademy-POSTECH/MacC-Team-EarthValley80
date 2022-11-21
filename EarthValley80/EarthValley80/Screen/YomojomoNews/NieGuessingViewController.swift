@@ -35,11 +35,34 @@ class NieGuessingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        setupLayout()
+    }
 
     // MARK: - func
 
     private func configureUI() {
         self.view.backgroundColor = .black.withAlphaComponent(0.69)
     }
+
+    private func setupLayout() {
+        self.view.addSubview(self.titleView)
+        self.titleView.constraint(top: self.view.topAnchor,
+                                  centerX: self.view.centerXAnchor,
+                                  padding: UIEdgeInsets(top: 210.adjustedHeight, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.newsTitleView)
+        self.newsTitleView.constraint(top: self.titleView.bottomAnchor,
+                                      centerX: self.view.centerXAnchor,
+                                      padding: UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.newsImageView)
+        self.newsImageView.constraint(top: self.newsTitleView.bottomAnchor,
+                                      centerX: self.view.centerXAnchor,
+                                      padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
+        self.newsImageView.constraint(.widthAnchor, constant: 340.adjustedWidth)
+        self.newsImageView.constraint(.heightAnchor, constant: 272.adjustedHeight)
+
+    }
+
     }
 }
