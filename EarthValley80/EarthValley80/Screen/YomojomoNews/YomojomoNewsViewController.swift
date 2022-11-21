@@ -26,6 +26,7 @@ final class YomojomoNewsViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scrollview = UIScrollView()
         scrollview.translatesAutoresizingMaskIntoConstraints = false
+        scrollview.showsVerticalScrollIndicator = false
         return scrollview
     }()
     private let yomojomoNewsContentView: UIView = {
@@ -44,6 +45,7 @@ final class YomojomoNewsViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 113
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(YomojomoNewsCollectionViewCell.self, forCellWithReuseIdentifier: YomojomoNewsCollectionViewCell.className)
@@ -67,6 +69,7 @@ final class YomojomoNewsViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = Size.cellInterval
         layout.minimumInteritemSpacing = Size.cellInterval
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(ThisWeekNewsCollectionViewCell.self, forCellWithReuseIdentifier: ThisWeekNewsCollectionViewCell.className)
