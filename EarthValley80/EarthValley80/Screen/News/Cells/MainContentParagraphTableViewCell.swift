@@ -67,6 +67,12 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
 
     // MARK: - property
 
+    override var isSelected: Bool {
+        willSet {
+            self.setSelectedCell(newValue)
+        }
+    }
+
     private let captionLabel: UILabel = {
         let label = UILabel()
         label.textColor = ParagraphType.original.textColor
@@ -115,17 +121,22 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         self.selectionStyle = .none
     }
 
+    private func setSelectedCell(_ selected: Bool) {
+        let paragraphType: ParagraphType = selected ? .highlighted : .original
+        self.setupParagraphStyle(to: paragraphType)
+    }
+
+    private func setupParagraphStyle(to paragraphType: ParagraphType) {
+        self.captionLabel.font = TextStyle.caption(paragraphType).font
+        self.contentLabel.font = TextStyle.content(paragraphType).font
+        self.captionLabel.textColor = paragraphType.textColor
+        self.contentLabel.textColor = paragraphType.textColor
+    }
+
     func setupContentParagraphData(paragraphIndex: Int, content: String) {
         self.captionLabel.text = paragraphIndex.description
         self.contentLabel.text = content
         self.contentLabel.setLineSpacing(kernValue: -2.0,
                                          lineHeightMultiple: Size.minimumLineHeightMultiple)
-    }
-
-    func setupParagraphStyle(to paragraphType: ParagraphType) {
-        self.captionLabel.font = TextStyle.caption(paragraphType).font
-        self.contentLabel.font = TextStyle.content(paragraphType).font
-        self.captionLabel.textColor = paragraphType.textColor
-        self.contentLabel.textColor = paragraphType.textColor
     }
 }

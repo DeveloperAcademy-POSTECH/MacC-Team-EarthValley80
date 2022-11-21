@@ -116,9 +116,14 @@ extension MainSentenceViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MainContentParagraphTableViewCell.className) as? MainContentParagraphTableViewCell else { return UITableViewCell() }
         let paragraphIndex = indexPath.row + 1
+        let isFirstParagraph = indexPath.row == 0
 
         // TODO: - content 내용 나누는 부분은 후에 적용할 예정
         cell.setupContentParagraphData(paragraphIndex: paragraphIndex, content: "          ‘타다’는 승합차를 유료로 타려는 이용자와 운전자를 연결해주는 차량공유 앱 서비스입니다. 승합차는 일반 택시보다 크고 마을버스보다 작은 차종을 말합니다. 대개 11~15인승입니다. 2018년 10월 ‘타다’라는 글자를 새긴 차가 처음 시장에 등장했습니다.")
+
+        if isFirstParagraph {
+            cell.isSelected = true
+        }
 
         return cell
     }
@@ -128,13 +133,13 @@ extension MainSentenceViewController: UITableViewDataSource {
 extension MainSentenceViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? MainContentParagraphTableViewCell else { return }
-        cell.setupParagraphStyle(to: .highlighted)
+        cell.isSelected = true
 
         tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? MainContentParagraphTableViewCell else { return }
-        cell.setupParagraphStyle(to: .original)
+        cell.isSelected = false
     }
 }
