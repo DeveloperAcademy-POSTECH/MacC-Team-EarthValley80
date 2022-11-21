@@ -9,7 +9,7 @@ import UIKit
 
 private extension UIColor {
     static var expandedTextColor: UIColor {
-        return .white.withAlphaComponent(0.2)
+        return .white.withAlphaComponent(0.14)
     }
     
     static var highlightTextColor: UIColor {

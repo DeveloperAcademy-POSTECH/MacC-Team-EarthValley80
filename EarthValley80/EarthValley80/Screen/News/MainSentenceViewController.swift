@@ -25,7 +25,7 @@ final class MainSentenceViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 128, right: 0)
-        tableView.register(cell: NewsContentTableViewCell.self)
+        tableView.register(cell: MainContentParagraphTableViewCell.self)
         
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
@@ -54,6 +54,8 @@ final class MainSentenceViewController: UIViewController {
     private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.mainSentenceTitle)
     private let mainSentenceView = MainSentenceView(type: .mainSentence)
     private let backButton = BackButton()
+
+    private var sentences: [String] = []
     
     // MARK: - life cycle
 
@@ -111,7 +113,11 @@ extension MainSentenceViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsContentTableViewCell.className) as? NewsContentTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainContentParagraphTableViewCell.className) as? MainContentParagraphTableViewCell else { return UITableViewCell() }
+        let paragraphIndex = indexPath.row + 1
+
+        cell.setupContentParagraphData(paragraphIndex: paragraphIndex, content: "          ‘타다’는 승합차를 유료로 타려는 이용자와 운전자를 연결해주는 차량공유 앱 서비스입니다. 승합차는 일반 택시보다 크고 마을버스보다 작은 차종을 말합니다. 대개 11~15인승입니다. 2018년 10월 ‘타다’라는 글자를 새긴 차가 처음 시장에 등장했습니다.")
+
         return cell
     }
 }
