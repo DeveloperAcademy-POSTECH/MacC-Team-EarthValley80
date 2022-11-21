@@ -45,6 +45,7 @@ class NieGuessingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTimer()
         configureUI()
         setupLayout()
     }
