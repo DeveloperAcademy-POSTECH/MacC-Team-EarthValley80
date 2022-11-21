@@ -129,12 +129,12 @@ extension MainSentenceViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? MainContentParagraphTableViewCell else { return }
 
-        cell.highlightTheParagraph()
+        cell.setupParagraphStyle(to: .highlighted)
     }
 
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? MainContentParagraphTableViewCell else { return }
 
-        cell.removeTheHighlight()
+        cell.setupParagraphStyle(to: .original)
     }
 }

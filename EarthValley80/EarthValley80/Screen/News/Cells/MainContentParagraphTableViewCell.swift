@@ -8,7 +8,7 @@
 import UIKit
 
 private extension UIColor {
-    static var compactTextColor: UIColor {
+    static var originalTextColor: UIColor {
         return .white.withAlphaComponent(0.14)
     }
 
@@ -21,23 +21,63 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
 
     private enum Size {
         static let horizontalPadding: CGFloat = 50.0
-        static let minimumFontSize: CGFloat = 20.0
+        static let contentFontSize: CGFloat = 20.0
+        static let captionFontSize: CGFloat = 8.0
         static let minimumLineHeightMultiple: CGFloat = 1.5
+    }
+
+    @frozen
+    private enum TextStyle {
+        case caption(ParagraphType)
+        case content(ParagraphType)
+
+        var font: UIFont {
+            switch self {
+            case .caption(let type):
+                return .font(type.fontName, ofSize: Size.captionFontSize)
+            case .content(let type):
+                return .font(type.fontName, ofSize: Size.contentFontSize)
+            }
+        }
+    }
+
+    @frozen
+    enum ParagraphType {
+        case highlighted
+        case original
+
+        var textColor: UIColor {
+            switch self {
+            case .highlighted:
+                return .highlightTextColor
+            case .original:
+                return .originalTextColor
+            }
+        }
+
+        var fontName: FontName {
+            switch self {
+            case .highlighted:
+                return .bold
+            case .original:
+                return .regular
+            }
+        }
     }
 
     // MARK: - property
 
     private let captionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .compactTextColor
-        label.font = .font(.regular, ofSize: 8)
+        label.textColor = ParagraphType.original.textColor
+        label.font = TextStyle.caption(.original).font
         return label
     }()
     private let contentLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .compactTextColor
-        label.font = .font(.regular, ofSize: Size.minimumFontSize)
+        label.textColor = ParagraphType.original.textColor
+        label.font = TextStyle.content(.original).font
         return label
     }()
 
@@ -82,17 +122,10 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
                                          lineHeightMultiple: Size.minimumLineHeightMultiple)
     }
 
-    func highlightTheParagraph() {
-        self.captionLabel.font = .font(.bold, ofSize: 8)
-        self.contentLabel.font = .font(.bold, ofSize: 20)
-        self.captionLabel.textColor = .highlightTextColor
-        self.contentLabel.textColor = .highlightTextColor
-    }
-
-    func removeTheHighlight() {
-        self.captionLabel.font = .font(.regular, ofSize: 8)
-        self.contentLabel.font = .font(.regular, ofSize: 20)
-        self.captionLabel.textColor = .compactTextColor
-        self.contentLabel.textColor = .compactTextColor
+    func setupParagraphStyle(to paragraphType: ParagraphType) {
+        self.captionLabel.font = TextStyle.caption(paragraphType).font
+        self.contentLabel.font = TextStyle.content(paragraphType).font
+        self.captionLabel.textColor = paragraphType.textColor
+        self.contentLabel.textColor = paragraphType.textColor
     }
 }
