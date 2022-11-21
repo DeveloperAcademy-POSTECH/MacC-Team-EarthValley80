@@ -79,4 +79,5 @@ enum StringLiteral {
     // MARK: - lottie
 
     static let tempLottieFile = "mp4TempFile"
+    static let yomoProfileLottieFile = "yomoProfileLottie"
 }

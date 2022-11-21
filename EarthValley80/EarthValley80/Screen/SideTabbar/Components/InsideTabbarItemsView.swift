@@ -20,7 +20,7 @@ struct InsideTabBarItems: View {
                 .padding(EdgeInsets(top: 60, leading: 72, bottom: 58, trailing: 67))
                 .background(Color.white)
             ZStack {
-                SideTabbarLottieView(filename: "yomoProfileLottie")
+                SideTabbarLottieView(filename: StringLiteral.yomoProfileLottieFile)
                     .frame(width: 200, height: 250)
                 Text("어서와, 나는 요모야!")
                     .font(.system(size: 10))
