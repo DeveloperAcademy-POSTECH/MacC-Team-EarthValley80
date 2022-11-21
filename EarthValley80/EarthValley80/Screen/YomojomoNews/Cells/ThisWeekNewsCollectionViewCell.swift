@@ -41,12 +41,14 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
     
     // MARK: - property
 
-    private let newsBackgroundView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = Size.newsCardCornerRadius
-        return imageView
+    private let newsCardBackgroundView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = Size.newsCardCornerRadius
+        view.layer.borderColor = UIColor.evyGray3.cgColor
+        view.layer.borderWidth = 1.0
+        view.backgroundColor = .evyWhite
+        view.makeShadow(color: .evyBlack1, opacity: 0.08, offset: CGSize(width: 2, height: 8), radius: 18)
+        return view
     }()
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
@@ -81,19 +83,19 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
     // MARK: - func
 
     func setupLayout() {
-        self.contentView.addSubview(self.newsBackgroundView)
-        self.newsBackgroundView.constraint(to: self)
+        self.contentView.addSubview(self.newsCardBackgroundView)
+        self.newsCardBackgroundView.constraint(to: self)
 
         self.addSubview(self.newsCategoryLabel)
-        self.newsCategoryLabel.constraint(top: self.newsBackgroundView.topAnchor,
-                                     leading: self.newsBackgroundView.leadingAnchor,
+        self.newsCategoryLabel.constraint(top: self.newsCardBackgroundView.topAnchor,
+                                     leading: self.newsCardBackgroundView.leadingAnchor,
                                      padding: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0))
         self.newsCategoryLabel.constraint(.heightAnchor, constant: Size.categoryLabelHeigth)
 
         self.addSubview(self.newsTitleLabel)
         self.newsTitleLabel.constraint(top: self.newsCategoryLabel.bottomAnchor,
-                                  leading: self.newsBackgroundView.leadingAnchor,
-                                  trailing: self.newsBackgroundView.trailingAnchor,
+                                  leading: self.newsCardBackgroundView.leadingAnchor,
+                                  trailing: self.newsCardBackgroundView.trailingAnchor,
                                   padding: UIEdgeInsets(top: 14, left: 20, bottom: 0, right: 20))
     }
 
