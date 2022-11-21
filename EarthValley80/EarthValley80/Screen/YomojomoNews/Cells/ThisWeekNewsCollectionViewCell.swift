@@ -25,20 +25,7 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
         case culture = "문화"
         case society = "시사"
 
-        var imageNameHead: String {
-            switch self {
-            case .economy:
-                return "card_ecnmy_"
-            case .science:
-                return "card_sic_"
-            case .culture:
-                return "card_cul_"
-            case .history:
-                return "card_histy_"
-            }
-        }
-
-        var categoryFontColor: UIColor {
+        var categoryBackgroundColor: UIColor {
             switch self {
             case .economy:
                 return .evyCategoryEcnmy
@@ -113,10 +100,6 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
     func setData(_ newsData: News) {
         self.newsTitleLabel.text = newsData.title
         self.newsCategoryLabel.text = newsData.category
-
-        let isLargeTitle = newsData.title?.count ?? 0 > Size.standardOfTitle
-        let imageType = isLargeTitle ? "L" : "S"
-        self.setGradationImage(category: newsData.category ?? "", type: imageType)
     }
 
     func calculateLabelWidth(_ newsData: News) {
@@ -126,14 +109,5 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
         label.sizeToFit()
 
         self.newsCategoryLabel.constraint(.widthAnchor, constant: label.frame.width + Size.categoryLabelPadding)
-        self.newsCategoryLabel.textColor = CardUI(rawValue: newsData.category ?? "")?.categoryFontColor
-    }
-
-    private func setGradationImage(category: String, type: String) {
-        var cardImageName = ""
-        guard let cardImageNameHead = CardUI(rawValue: category)?.imageNameHead else { return }
-        let randomNumber = type == "L" ? String(Int.random(in: 1...3)) : String(Int.random(in: 1...5))
-        cardImageName = cardImageNameHead + type + randomNumber
-        self.newsBackgroundView.image = UIImage(named: cardImageName)
     }
 }
