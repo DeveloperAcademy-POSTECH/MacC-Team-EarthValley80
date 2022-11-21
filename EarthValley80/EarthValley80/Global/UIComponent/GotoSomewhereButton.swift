@@ -101,15 +101,6 @@ final class GotoSomewhereButton: UIButton {
         self.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
     }
 
-    private func setButtonShadow(with buttonTitle: String) {
-        let shadowWidth = self.calculateButtonWidth(with: buttonTitle) + 20
-        self.layer.shadowOpacity = 0.4
-        self.layer.shadowRadius = 20
-        self.layer.shadowOffset = CGSize(width: 4, height: 10)
-        self.layer.shadowColor = UIColor.evyBlack1.cgColor
-        self.layer.shadowPath = UIBezierPath(ovalIn: CGRect(origin: .zero, size: CGSize(width: shadowWidth, height: Size.buttonHeigth))).cgPath
-    }
-
     private func calculateButtonWidth(with buttonTitle: String) -> CGFloat {
         let label = UILabel()
         label.text = buttonTitle
@@ -121,7 +112,7 @@ final class GotoSomewhereButton: UIButton {
     func changeButtonContents(buttonImage: UIImage, buttonTitle: String) {
         self.setImage(buttonImage, for: .normal)
         self.setTitle(buttonTitle, for: .normal)
-        self.setButtonShadow(with: buttonTitle)
+        self.makeButtonShadow(color: .evyBlack1, opacity: 0.4, offset: CGSize(width: 4, height: 10), radius: 20, buttonTitle: buttonTitle, buttonHeight: Size.buttonHeigth)
         if #available(iOS 15.0, *) {
             self.configuration?.baseForegroundColor = ButtonColor(rawValue: buttonTitle)?.fontColor
             self.configuration?.baseBackgroundColor = ButtonColor(rawValue: buttonTitle)?.backgroundColor
@@ -138,5 +129,22 @@ private extension UIColor {
         return UIColor(hex: "#FFFFFF", alpha: 0.14)
     }
 }
+
+
+class tempViewController: UIViewController {
+
+    private let tempview = GotoSomewhereButton()
+    private let tempview2 = GotoSomewhereButton()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .evyWhite
+        tempview.changeButtonContents(buttonImage: UIImage(systemName: "arrow.right")!, buttonTitle: StringLiteral.shareArticleButtonText)
+        tempview2.changeButtonContents(buttonImage: UIImage(systemName: "square.and.arrow.up")!, buttonTitle: StringLiteral.finishReadButtonText)
+
+        self.view.addSubview(tempview)
+        self.view.addSubview(tempview2)
+        tempview.constraint(top: self.view.topAnchor, leading: self.view.leadingAnchor, padding: UIEdgeInsets(top: 100, left: 100, bottom: 0, right: 0))
+        tempview2.constraint(top: self.tempview.bottomAnchor, leading: self.tempview.leadingAnchor, padding: UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0))
     }
 }
