@@ -44,6 +44,7 @@ enum StringLiteral {
     static let popUpMySummaryTitle = "나의 요약"
     static let reactionTitle = "짝짝짝 다 읽었군요! 이 기사, 어땠나요?"
     static let selectedReactionTitle = "이 기사에 대한 중심문장을 찾으러 가볼까요?"
+    static let nieGuessingTitle = "사진과 기사에서 미루어 보았을때, 이 기사가 어떤 기사인지 5초간 생각해 보아요."
 
     // MARK: - title description
 

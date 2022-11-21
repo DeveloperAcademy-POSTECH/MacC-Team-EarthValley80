@@ -9,9 +9,13 @@ import UIKit
 
 class NieGuessingViewController: UIViewController {
 
+    private enum Time {
+        static var newsGuessingTime: Int = 5
+    }
+
     // MARK: - property
 
-    private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: "사진과 기사에서 미루어 보았을때, 이 기사가 어떤 기사인지 5초간 생각해 보아요.")
+    private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.nieGuessingTitle)
     private let newsTitleView: UILabel = {
         let label = UILabel()
         // TODO: - 더미데이터 입니다. 나중에 지우겠습니다.
@@ -31,14 +35,13 @@ class NieGuessingViewController: UIViewController {
     }()
     private lazy var timerLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(newsGuessingTime)"
+        label.text = "\(Time.newsGuessingTime)"
         label.textColor = .evyWhite
         label.textAlignment = .center
         label.font = .font(.regular, ofSize: 24)
         return label
     }()
 
-    private var newsGuessingTime = 5
     private var timer: Timer?
 
     // MARK: - life cycle
@@ -96,14 +99,14 @@ class NieGuessingViewController: UIViewController {
 
     @objc
     private func updateTimer() {
-        if self.newsGuessingTime != 0 {
-            self.newsGuessingTime -= 1
+        if Time.newsGuessingTime != 0 {
+            Time.newsGuessingTime -= 1
         } else {
             if let timer = self.timer {
                 timer.invalidate()
                 self.timer = nil
             }
         }
-        self.timerLabel.text = self.timeFormatted(self.newsGuessingTime)
+        self.timerLabel.text = self.timeFormatted(Time.newsGuessingTime)
     }
 }
