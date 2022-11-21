@@ -22,8 +22,8 @@ final class ChangeViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        view.addSubview(embeddedYomoJomoNewsViewController.view)
-        view.addSubview(embeddedMyNewsDrawerViewController.view)
+        view.addSubview(self.embeddedYomoJomoNewsViewController.view)
+        view.addSubview(self.embeddedMyNewsDrawerViewController.view)
         
         notifier
             .sideMenuNumber
@@ -71,7 +71,7 @@ final class SideTabbarViewController: UIViewController {
         self.sideTabbar.didMove(toParent: self)
         self.sideTabbar.view.constraint(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor)
         
-        addChild(changeVC)
+        addChild(self.changeVC)
         self.view.addSubview(self.changeVC.view)
         self.changeVC.didMove(toParent: self)
         self.changeVC.view.constraint(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 254, bottom: 20, right: 50))

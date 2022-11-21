@@ -18,11 +18,11 @@ struct TabBarButton: View {
             withAnimation(.easeInOut){
                 selectedTab = title
                 if title == "요모조모 뉴스" {
-                    notifier.sideMenuNumber.send(1)
+                    self.notifier.sideMenuNumber.send(1)
                 } else if title == "중심문장찾기" {
-                    notifier.sideMenuNumber.send(2)
+                    self.notifier.sideMenuNumber.send(2)
                 } else if title == "뉴스 서랍" {
-                    notifier.sideMenuNumber.send(3)
+                    self.notifier.sideMenuNumber.send(3)
                 }
             }
         }, label: {
