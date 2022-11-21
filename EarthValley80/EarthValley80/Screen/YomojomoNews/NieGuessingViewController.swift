@@ -30,6 +30,9 @@ class NieGuessingViewController: UIViewController {
         return imageView
     }()
 
+    private var newsGuessingTime = 5
+    private var timer: Timer?
+
     // MARK: - life cycle
 
     override func viewDidLoad() {
@@ -64,5 +67,29 @@ class NieGuessingViewController: UIViewController {
 
     }
 
+    private func setupTimer() {
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self,
+                                          selector: #selector(self.updateTimer),
+                                          userInfo: nil,
+                                          repeats: true)
+    }
+
+    private func timeFormatted(_ second: Int) -> String {
+        let seconds: Int = second % 60
+        return String(seconds)
+    }
+
+    // MARK: - selector
+
+    @objc
+    private func updateTimer() {
+        if self.newsGuessingTime != 0 {
+            self.newsGuessingTime -= 1
+        } else {
+            if let timer = self.timer {
+                timer.invalidate()
+                self.timer = nil
+            }
+        }
     }
 }
