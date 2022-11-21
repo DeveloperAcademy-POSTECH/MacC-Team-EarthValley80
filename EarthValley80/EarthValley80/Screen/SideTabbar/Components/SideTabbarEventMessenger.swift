@@ -7,7 +7,7 @@
 
 import Combine
 
-class EventMessenger: ObservableObject {
+final class EventMessenger: ObservableObject {
     // MARK: - property
     static let shared = EventMessenger()
     let sideMenuNumber: CurrentValueSubject<Int, Never> = .init(1)
