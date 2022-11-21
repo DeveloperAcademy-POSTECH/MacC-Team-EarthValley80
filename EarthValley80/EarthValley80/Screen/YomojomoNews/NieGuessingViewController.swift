@@ -91,11 +91,6 @@ class NieGuessingViewController: UIViewController {
                                           repeats: true)
     }
 
-    private func timeFormatted(_ second: Int) -> String {
-        let seconds: Int = second % 60
-        return String(seconds)
-    }
-
     // MARK: - selector
 
     @objc
@@ -108,6 +103,6 @@ class NieGuessingViewController: UIViewController {
                 self.timer = nil
             }
         }
-        self.timerLabel.text = self.timeFormatted(Time.newsGuessingTime)
+        self.timerLabel.text = "\(Time.newsGuessingTime % 60)"
     }
 }
