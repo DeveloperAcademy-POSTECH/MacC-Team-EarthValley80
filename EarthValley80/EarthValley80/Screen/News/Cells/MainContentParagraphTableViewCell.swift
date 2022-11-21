@@ -69,7 +69,7 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
 
     override var isSelected: Bool {
         willSet {
-            self.setSelectedCell(newValue)
+            self.setSelected(newValue, animated: false)
         }
     }
 
@@ -102,6 +102,12 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
 
     // MARK: - func
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        let paragraphType: ParagraphType = selected ? .highlighted : .original
+        self.setupParagraphStyle(to: paragraphType)
+    }
+
     private func setupLayout() {
         self.contentView.addSubview(self.contentLabel)
         self.contentLabel.constraint(top: self.contentView.topAnchor,
@@ -119,11 +125,6 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
     private func configureUI() {
         self.backgroundColor = .clear
         self.selectionStyle = .none
-    }
-
-    private func setSelectedCell(_ selected: Bool) {
-        let paragraphType: ParagraphType = selected ? .highlighted : .original
-        self.setupParagraphStyle(to: paragraphType)
     }
 
     private func setupParagraphStyle(to paragraphType: ParagraphType) {
