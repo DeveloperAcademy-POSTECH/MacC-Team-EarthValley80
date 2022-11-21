@@ -63,6 +63,15 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
                 return .regular
             }
         }
+
+        var isUserInteractionEnabled: Bool {
+            switch self {
+            case .highlighted:
+                return true
+            case .original:
+                return false
+            }
+        }
     }
 
     // MARK: - property
@@ -86,6 +95,8 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         label.font = TextStyle.content(.original).font
         return label
     }()
+
+    private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
 
     // MARK: - init
 
@@ -125,6 +136,8 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
     private func configureUI() {
         self.backgroundColor = .clear
         self.selectionStyle = .none
+
+        self.contentLabel.addGestureRecognizer(tapGestureRecognizer)
     }
 
     private func setupParagraphStyle(to paragraphType: ParagraphType) {
@@ -132,6 +145,7 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         self.contentLabel.font = TextStyle.content(paragraphType).font
         self.captionLabel.textColor = paragraphType.textColor
         self.contentLabel.textColor = paragraphType.textColor
+        self.contentLabel.isUserInteractionEnabled = paragraphType.isUserInteractionEnabled
     }
 
     func setupContentParagraphData(paragraphIndex: Int, content: String) {
@@ -139,5 +153,12 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         self.contentLabel.text = content
         self.contentLabel.setLineSpacing(kernValue: -2.0,
                                          lineHeightMultiple: Size.minimumLineHeightMultiple)
+    }
+
+    // MARK: - selector
+
+    @objc
+    private func didTappedView(_ gestureRecognizer: UITapGestureRecognizer) {
+        print("탭탭")
     }
 }
