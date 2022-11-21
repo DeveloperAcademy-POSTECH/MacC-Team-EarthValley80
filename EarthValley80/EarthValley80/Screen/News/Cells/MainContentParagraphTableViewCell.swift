@@ -81,4 +81,18 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         self.contentLabel.setLineSpacing(kernValue: -2.0,
                                          lineHeightMultiple: Size.minimumLineHeightMultiple)
     }
+
+    func highlightTheParagraph() {
+        self.captionLabel.font = .font(.bold, ofSize: 8)
+        self.contentLabel.font = .font(.bold, ofSize: 20)
+        self.captionLabel.textColor = .highlightTextColor
+        self.contentLabel.textColor = .highlightTextColor
+    }
+
+    func removeTheHighlight() {
+        self.captionLabel.font = .font(.regular, ofSize: 8)
+        self.contentLabel.font = .font(.regular, ofSize: 20)
+        self.captionLabel.textColor = .compactTextColor
+        self.contentLabel.textColor = .compactTextColor
+    }
 }
