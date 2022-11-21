@@ -33,5 +33,13 @@ class NieGuessingViewController: UIViewController {
     // MARK: - life cycle
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+
+    // MARK: - func
+
+    private func configureUI() {
+        self.view.backgroundColor = .black.withAlphaComponent(0.69)
+    }
     }
 }
