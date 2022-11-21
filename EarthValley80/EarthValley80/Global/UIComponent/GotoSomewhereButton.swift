@@ -13,11 +13,12 @@ final class GotoSomewhereButton: UIButton {
         static let buttonFontSize: CGFloat = 16.0
         static let buttonHeigth: CGFloat = 50.0
         static let buttonCornerRadius: CGFloat = 25.0
-        static let buttonImageSize: UIImage.SymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 34)
-        static let buttonLeadingPadding: CGFloat = 10
+        static let buttonImageSize: UIImage.SymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 14)
+        static let buttonLeadingPadding: CGFloat = 27.63
         static let buttonTrailingPadding: CGFloat = 28
-        static let buttonTopAndBottomPadding: CGFloat = 8
+        static let buttonTopAndBottomPadding: CGFloat = 17
         static let buttonStrokeWidth: CGFloat = 1
+        static let buttonImageAndTitleInterval: CGFloat = 9.07
     }
 
     private enum ButtonColor: String {
@@ -75,6 +76,7 @@ final class GotoSomewhereButton: UIButton {
                                                                  trailing: Size.buttonTrailingPadding)
             buttonConfig.background.strokeWidth = Size.buttonStrokeWidth
             buttonConfig.background.strokeColor = .evyWhite
+            buttonConfig.imagePadding = 9.07
             configuration = buttonConfig
         } else {
             self.invalidateIntrinsicContentSize()
@@ -82,10 +84,11 @@ final class GotoSomewhereButton: UIButton {
             self.titleLabel?.setLineSpacing(kernValue: -0.32, lineHeightMultiple: 0.83)
             self.imageView?.contentMode = .scaleAspectFit
             self.constraint(.heightAnchor, constant: Size.buttonHeigth)
+            self.titleEdgeInsets = UIEdgeInsets(top: 0, left: Size.buttonImageAndTitleInterval, bottom: 0, right: 0)
             self.contentEdgeInsets = UIEdgeInsets(top: Size.buttonTopAndBottomPadding,
-                                                  left: Size.buttonLeadingPadding,
+                                                  left: 0,
                                                   bottom: Size.buttonTopAndBottomPadding,
-                                                  right: Size.buttonTrailingPadding)
+                                                  right: Size.buttonImageAndTitleInterval)
             self.layer.cornerRadius = Size.buttonCornerRadius
             self.layer.borderWidth = Size.buttonStrokeWidth
             self.layer.borderColor = UIColor.evyWhite.cgColor
@@ -125,6 +128,7 @@ final class GotoSomewhereButton: UIButton {
         } else {
             self.setTitleColor(ButtonColor(rawValue: buttonTitle)?.fontColor, for: .normal)
             self.backgroundColor = ButtonColor(rawValue: buttonTitle)?.backgroundColor
+            self.constraint(.widthAnchor, constant: calculateButtonWidth(with: buttonTitle))
         }
     }
 }
@@ -132,5 +136,7 @@ final class GotoSomewhereButton: UIButton {
 private extension UIColor {
     static var transparentWhite: UIColor {
         return UIColor(hex: "#FFFFFF", alpha: 0.14)
+    }
+}
     }
 }
