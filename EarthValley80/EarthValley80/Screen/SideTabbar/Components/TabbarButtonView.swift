@@ -17,11 +17,11 @@ struct TabBarButton: View {
         Button(action: {
             withAnimation(.easeInOut){
                 selectedTab = title
-                if title == "요모조모 뉴스" {
+                if title == StringLiteral.sideTapButton1 {
                     self.notifier.sideMenuNumber.send(1)
-                } else if title == "중심문장찾기" {
+                } else if title == StringLiteral.sideTapButton2 {
                     self.notifier.sideMenuNumber.send(2)
-                } else if title == "뉴스 서랍" {
+                } else if title == StringLiteral.sideTapButton3 {
                     self.notifier.sideMenuNumber.send(3)
                 }
             }

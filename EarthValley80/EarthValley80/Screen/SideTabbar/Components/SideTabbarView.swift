@@ -14,7 +14,7 @@ struct SideTabbarView: View {
 }
 
 struct SideTabbar: View {
-    @State var selectedTab = "요모조모 뉴스"
+    @State var selectedTab = StringLiteral.sideTapButton1
     
     var body: some View {
         ZStack(alignment: .leading, content: {

@@ -65,6 +65,9 @@ enum StringLiteral {
     static let backButtonText = "홈으로"
     static let newsCompleteCheckButtonText = "내 피드에서 확인하기"
     static let goToYomoRoomText = "요모의 방 가기 "
+    static let sideTapButton1 = "요모조모 뉴스"
+    static let sideTapButton2 = "골라봐요 중심문장"
+    static let sideTapButton3 = "내가 읽은 뉴스"
     
     // MARK: - guide
     

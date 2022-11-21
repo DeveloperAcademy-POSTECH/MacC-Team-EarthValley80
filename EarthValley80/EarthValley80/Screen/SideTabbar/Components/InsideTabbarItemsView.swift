@@ -35,11 +35,11 @@ struct InsideTabBarItems: View {
             }
             .padding(.bottom)
             VStack(spacing: 0) {
-                TabBarButton(selectedTab: $selectedTab, image: "newspaper.fill", title: "요모조모 뉴스")
+                TabBarButton(selectedTab: $selectedTab, image: "newspaper.fill", title: StringLiteral.sideTapButton1)
                 Divider().frame(width: 165, height: 1)
-                TabBarButton(selectedTab: $selectedTab, image: "lasso.and.sparkles", title: "중심문장찾기")
+                TabBarButton(selectedTab: $selectedTab, image: "lasso.and.sparkles", title: StringLiteral.sideTapButton2)
                 Divider().frame(width: 165, height: 1)
-                TabBarButton(selectedTab: $selectedTab, image: "doc.text.magnifyingglass", title: "뉴스 서랍")
+                TabBarButton(selectedTab: $selectedTab, image: "doc.text.magnifyingglass", title: StringLiteral.sideTapButton3)
                 Divider().frame(width: 165, height: 1)
             }
             Spacer()
