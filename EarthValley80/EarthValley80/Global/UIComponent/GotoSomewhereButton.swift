@@ -109,7 +109,7 @@ final class GotoSomewhereButton: UIButton {
         return label.frame.width + Size.buttonLeadingPadding + Size.buttonTrailingPadding + 34
     }
 
-    func changeButtonContents(buttonImage: UIImage, buttonTitle: String) {
+    func setupButtonContents(buttonImage: UIImage, buttonTitle: String) {
         self.setImage(buttonImage, for: .normal)
         self.setTitle(buttonTitle, for: .normal)
         self.makeButtonShadow(color: .evyBlack1, opacity: 0.4, offset: CGSize(width: 4, height: 10), radius: 20, buttonTitle: buttonTitle, buttonHeight: Size.buttonHeigth)

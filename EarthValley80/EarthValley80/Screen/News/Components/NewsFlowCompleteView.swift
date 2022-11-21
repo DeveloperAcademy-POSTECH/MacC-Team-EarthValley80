@@ -28,7 +28,7 @@ final class NewsFlowCompleteView: UIView {
     }()
     private let checkButton: GotoSomewhereButton = {
         let button = GotoSomewhereButton()
-        button.changeButtonContents(buttonImage: ImageLiteral.icoCheck,
+        button.setupButtonContents(buttonImage: ImageLiteral.icoCheck,
                                     buttonTitle: StringLiteral.newsCompleteCheckButtonText)
         return button
     }()

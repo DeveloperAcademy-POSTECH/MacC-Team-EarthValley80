@@ -82,6 +82,6 @@ final class GotoYomojomoNewsEmptyView: UIView {
                          buttonTitle: String) {
         self.greetingLabel.text = greetingComments
         self.lottieName = lottieImageTitle
-        self.gotoButton.changeButtonContents(buttonImage: buttonImage, buttonTitle: buttonTitle)
+        self.gotoButton.setupButtonContents(buttonImage: buttonImage, buttonTitle: buttonTitle)
     }
 }
