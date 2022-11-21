@@ -102,6 +102,7 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
     func setData(_ newsData: News) {
         self.newsTitleLabel.text = newsData.title
         self.newsCategoryLabel.text = newsData.category
+        self.newsCategoryLabel.backgroundColor = CardUI(rawValue: newsData.category ?? "")?.categoryBackgroundColor
     }
 
     func calculateLabelWidth(_ newsData: News) {
