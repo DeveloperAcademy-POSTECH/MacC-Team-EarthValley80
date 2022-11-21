@@ -62,7 +62,7 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
                                      leading: self.contentView.leadingAnchor,
                                      bottom: self.contentView.bottomAnchor,
                                      trailing: self.contentView.trailingAnchor,
-                                     padding: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 0, right: Size.horizontalPadding))
+                                     padding: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 42, right: Size.horizontalPadding))
 
         self.contentView.addSubview(self.captionLabel)
         self.captionLabel.constraint(top: self.contentView.topAnchor,
