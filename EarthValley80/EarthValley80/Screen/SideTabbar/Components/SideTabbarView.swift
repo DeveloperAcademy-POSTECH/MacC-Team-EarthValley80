@@ -41,7 +41,7 @@ struct SideTabbarView_Previews: PreviewProvider {
         } else {
             SideTabbarView()
         }
-#else
-#endif
+    #else
+    #endif
     }
 }
