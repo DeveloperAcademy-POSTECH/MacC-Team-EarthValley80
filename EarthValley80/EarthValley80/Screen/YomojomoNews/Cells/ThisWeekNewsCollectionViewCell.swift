@@ -14,8 +14,8 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
         static let categoryLabelHeigth: CGFloat = 20.0
         static let categoryCornerRadius: CGFloat = 10.0
         static let newsCardCornerRadius: CGFloat = 30.0
-        static let titleFontSize: CGFloat = 20.0
-        static let categoryLabelFontSize: CGFloat = 12.0
+        static let titleFontSize: CGFloat = 18.0
+        static let categoryLabelFontSize: CGFloat = 10.0
         static let categoryLabelPadding: CGFloat = 18.0
     }
 
@@ -53,17 +53,17 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .font(.bold, ofSize: Size.titleFontSize)
-        label.textColor = .evyWhite
+        label.font = .font(.regular, ofSize: Size.titleFontSize)
+        label.textColor = .evyBlack1
         return label
     }()
     private let newsCategoryLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
+        label.font = .font(.regular, ofSize: Size.categoryLabelFontSize)
+        label.textColor = .evyWhite
         label.layer.masksToBounds = true
         label.layer.cornerRadius = Size.categoryCornerRadius
-        label.backgroundColor = .evyWhite
         label.layer.opacity = 0.6
         return label
     }()
