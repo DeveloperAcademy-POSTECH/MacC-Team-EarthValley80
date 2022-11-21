@@ -1,5 +1,5 @@
 //
-//  SidsTabbarEventMessenger.swift
+//  SideTabbarEventMessenger.swift
 //  EarthValley80
 //
 //  Created by seojeon22 on 2022/11/18.
