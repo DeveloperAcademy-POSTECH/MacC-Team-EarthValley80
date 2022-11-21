@@ -29,6 +29,14 @@ class NieGuessingViewController: UIViewController {
         imageView.clipsToBounds = true
         return imageView
     }()
+    private lazy var timerLabel: UILabel = {
+        let label = UILabel()
+        label.text = "\(newsGuessingTime)"
+        label.textColor = .evyWhite
+        label.textAlignment = .center
+        label.font = .font(.regular, ofSize: 24)
+        return label
+    }()
 
     private var newsGuessingTime = 5
     private var timer: Timer?
@@ -65,6 +73,10 @@ class NieGuessingViewController: UIViewController {
         self.newsImageView.constraint(.widthAnchor, constant: 340.adjustedWidth)
         self.newsImageView.constraint(.heightAnchor, constant: 272.adjustedHeight)
 
+        self.view.addSubview(self.timerLabel)
+        self.timerLabel.constraint(top: self.newsImageView.bottomAnchor,
+                                   centerX: self.view.centerXAnchor,
+                                   padding: UIEdgeInsets(top: 80, left: 0, bottom: 0, right: 0))
     }
 
     private func setupTimer() {
@@ -91,5 +103,6 @@ class NieGuessingViewController: UIViewController {
                 self.timer = nil
             }
         }
+        self.timerLabel.text = self.timeFormatted(self.newsGuessingTime)
     }
 }
