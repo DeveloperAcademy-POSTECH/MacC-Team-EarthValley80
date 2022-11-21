@@ -22,8 +22,8 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
     private enum CardUI: String {
         case economy = "경제"
         case science = "과학"
-        case culture = "교양"
-        case history = "역사"
+        case culture = "문화"
+        case society = "시사"
 
         var imageNameHead: String {
             switch self {
@@ -46,8 +46,8 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
                 return .evyCategorySic
             case .culture:
                 return .evyCategoryCul
-            case .history:
-                return .evyCategoryHisty
+            case .society:
+                return .evyCategorySoci
             }
         }
     }

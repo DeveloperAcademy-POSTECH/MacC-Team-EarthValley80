@@ -40,7 +40,7 @@ extension UIColor {
         return UIColor(hex: "#AAD9D3")
     }
 
-    static var evyCategoryHisty: UIColor {
+    static var evyCategorySoci: UIColor {
         return UIColor(hex: "#FCD49B")
     }
 
