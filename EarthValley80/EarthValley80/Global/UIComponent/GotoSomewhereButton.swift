@@ -129,22 +129,3 @@ private extension UIColor {
         return UIColor(hex: "#FFFFFF", alpha: 0.14)
     }
 }
-
-
-class tempViewController: UIViewController {
-
-    private let tempview = GotoSomewhereButton()
-    private let tempview2 = GotoSomewhereButton()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .evyWhite
-        tempview.changeButtonContents(buttonImage: UIImage(systemName: "arrow.right")!, buttonTitle: StringLiteral.shareArticleButtonText)
-        tempview2.changeButtonContents(buttonImage: UIImage(systemName: "square.and.arrow.up")!, buttonTitle: StringLiteral.finishReadButtonText)
-
-        self.view.addSubview(tempview)
-        self.view.addSubview(tempview2)
-        tempview.constraint(top: self.view.topAnchor, leading: self.view.leadingAnchor, padding: UIEdgeInsets(top: 100, left: 100, bottom: 0, right: 0))
-        tempview2.constraint(top: self.tempview.bottomAnchor, leading: self.tempview.leadingAnchor, padding: UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0))
-    }
-}
