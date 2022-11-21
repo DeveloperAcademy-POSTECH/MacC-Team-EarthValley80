@@ -22,11 +22,11 @@ struct InsideTabBarItems: View {
             ZStack {
                 SideTabbarLottieView(filename: StringLiteral.yomoProfileLottieFile)
                     .frame(width: 200, height: 250)
-                Text("어서와, 나는 요모야!")
+                Text(StringLiteral.yomoProfileTitle)
                     .font(.system(size: 10))
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 120, trailing: 0))
                 HStack(spacing: 0) {
-                    Text("요모의 방 가기 ")
+                    Text(StringLiteral.goToYomoRoomText)
                         .font(.system(size: 10))
                     Image(systemName: "arrowtriangle.right.fill")
                         .font(.system(size: 10))

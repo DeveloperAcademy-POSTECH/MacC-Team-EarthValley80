@@ -37,6 +37,7 @@ enum StringLiteral {
     static let popUpNewsTitle = "기사제목"
     static let popUpMyPredictionTitle = "나의 유추"
     static let popUpMySummaryTitle = "나의 요약"
+    static let yomoProfileTitle = "어서와, 나는 요모야!"
 
     // MARK: - title description
 
@@ -63,6 +64,7 @@ enum StringLiteral {
     static let completeButtonText = "완성했어요!"
     static let backButtonText = "홈으로"
     static let newsCompleteCheckButtonText = "내 피드에서 확인하기"
+    static let goToYomoRoomText = "요모의 방 가기 "
     
     // MARK: - guide
     
@@ -80,4 +82,5 @@ enum StringLiteral {
 
     static let tempLottieFile = "mp4TempFile"
     static let yomoProfileLottieFile = "yomoProfileLottie"
+    
 }
