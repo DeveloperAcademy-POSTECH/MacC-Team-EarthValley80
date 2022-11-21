@@ -29,7 +29,7 @@ final class GotoSomewhereButton: UIButton {
         var backgroundColor: UIColor {
             switch self {
             case .shareArticleButtonText:
-                return .evyWhite2
+                return .transparentWhite
             default:
                 return .evyWhite
             }
@@ -126,5 +126,11 @@ final class GotoSomewhereButton: UIButton {
             self.setTitleColor(ButtonColor(rawValue: buttonTitle)?.fontColor, for: .normal)
             self.backgroundColor = ButtonColor(rawValue: buttonTitle)?.backgroundColor
         }
+    }
+}
+
+private extension UIColor {
+    static var transparentWhite: UIColor {
+        return UIColor(hex: "#FFFFFF", alpha: 0.14)
     }
 }
