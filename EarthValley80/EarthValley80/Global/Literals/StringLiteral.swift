@@ -26,6 +26,11 @@ enum StringLiteral {
     static let answerCellHowCaptionTitle = "어떻게"
     static let answerCellWhyCaptionTitle = "왜"
     static let summarizeNewsCaptionTitle = "요약하기"
+    static let funEmotionCaption = "재밌어요"
+    static let sadEmotionCaption = "슬퍼요"
+    static let scaryEmotionCaption = "무서워요"
+    static let angryEmotionCaption = "화나요"
+    static let surpriseEmotionCaption = "놀라워요"
     
     // MARK: - title
     
@@ -37,6 +42,8 @@ enum StringLiteral {
     static let popUpNewsTitle = "기사제목"
     static let popUpMyPredictionTitle = "나의 유추"
     static let popUpMySummaryTitle = "나의 요약"
+    static let reactionTitle = "짝짝짝 다 읽었군요! 이 기사, 어땠나요?"
+    static let selectedReactionTitle = "이 기사에 대한 중심문장을 찾으러 가볼까요?"
 
     // MARK: - title description
 
@@ -44,6 +51,7 @@ enum StringLiteral {
     static let myNewsDrawerTitleDescription = "내가 쓴 뉴스을 이곳에서 볼 수 있어요"
     static let greetingComments = "안녕!\n기사를 읽고 요약해보세요!"
     static let completeTitleDescription = "이 기사에 대한 요약을 모두\n완성했어요!"
+    static let reactionDescription = "위 버튼을 눌러 리액션을 남겨보세요"
 
     // MARK: - placeholder
     
