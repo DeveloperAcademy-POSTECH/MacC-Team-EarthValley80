@@ -21,15 +21,13 @@ final class GotoSomewhereButton: UIButton {
         static let buttonImageAndTitleInterval: CGFloat = 9.07
     }
 
-    private enum ButtonColor: String {
-        case finishReadButtonText = "다읽었어요!"
-        case findCentralSentenceButtonText = "중심문장 찾으러 가기"
-        case shareArticleButtonText = "기사 공유하기"
-        case goToNewsDrawerButtonText = "뉴스서랍가기"
+    enum ButtonType: String {
+        case transparentWhite
+        case white
 
         var backgroundColor: UIColor {
             switch self {
-            case .shareArticleButtonText:
+            case .transparentWhite:
                 return .transparentWhite
             default:
                 return .evyWhite
@@ -38,11 +36,17 @@ final class GotoSomewhereButton: UIButton {
 
         var fontColor: UIColor {
             switch self {
-            case .shareArticleButtonText:
+            case .transparentWhite:
                 return .evyWhite
             default:
                 return .evyBlack1
             }
+        }
+    }
+
+    var type: ButtonType = .transparentWhite {
+        didSet {
+            self.setCustomAttribute(type: self.type)
         }
     }
 
@@ -52,6 +56,12 @@ final class GotoSomewhereButton: UIButton {
         super.init(frame: frame)
         self.configureUI()
         self.moveImageLeftToRight()
+    }
+
+    convenience init(type: ButtonType, buttonType: UIButton.ButtonType = .system) {
+        self.init(type: buttonType)
+        self.type = type
+        self.setCustomAttribute(type: type)
     }
 
     @available(*, unavailable)
@@ -81,7 +91,6 @@ final class GotoSomewhereButton: UIButton {
         } else {
             self.invalidateIntrinsicContentSize()
             self.titleLabel?.textAlignment = .center
-            self.titleLabel?.setLineSpacing(kernValue: -0.32, lineHeightMultiple: 0.83)
             self.imageView?.contentMode = .scaleAspectFit
             self.constraint(.heightAnchor, constant: Size.buttonHeigth)
             self.titleEdgeInsets = UIEdgeInsets(top: 0, left: Size.buttonImageAndTitleInterval, bottom: 0, right: 0)
@@ -106,21 +115,26 @@ final class GotoSomewhereButton: UIButton {
         label.text = buttonTitle
         label.font = .font(.bold, ofSize: Size.buttonFontSize)
         label.sizeToFit()
-        return label.frame.width + Size.buttonLeadingPadding + Size.buttonTrailingPadding + 34
+        return label.frame.width + Size.buttonLeadingPadding + Size.buttonTrailingPadding + 47
+    }
+
+    private func setCustomAttribute(type: ButtonType) {
+        if #available(iOS 15.0, *) {
+            self.configuration?.baseForegroundColor = type.fontColor
+            self.configuration?.baseBackgroundColor = type.backgroundColor
+        } else {
+            self.setTitleColor(type.fontColor, for: .normal)
+            self.backgroundColor = type.backgroundColor
+            self.tintColor = type.fontColor
+        }
     }
 
     func setupButtonContents(buttonImage: UIImage, buttonTitle: String) {
         self.setImage(buttonImage, for: .normal)
         self.setTitle(buttonTitle, for: .normal)
+        self.titleLabel?.setLineSpacing(kernValue: -0.32, lineHeightMultiple: 0.83)
         self.makeButtonShadow(color: .evyBlack1, opacity: 0.4, offset: CGSize(width: 4, height: 10), radius: 20, buttonTitle: buttonTitle, buttonHeight: Size.buttonHeigth)
-        if #available(iOS 15.0, *) {
-            self.configuration?.baseForegroundColor = ButtonColor(rawValue: buttonTitle)?.fontColor
-            self.configuration?.baseBackgroundColor = ButtonColor(rawValue: buttonTitle)?.backgroundColor
-        } else {
-            self.setTitleColor(ButtonColor(rawValue: buttonTitle)?.fontColor, for: .normal)
-            self.backgroundColor = ButtonColor(rawValue: buttonTitle)?.backgroundColor
-            self.constraint(.widthAnchor, constant: calculateButtonWidth(with: buttonTitle))
-        }
+        self.constraint(.widthAnchor, constant: calculateButtonWidth(with: buttonTitle))
     }
 }
 
