@@ -10,8 +10,8 @@ import UIKit
 
 final class ContainerViewController: UIViewController {
     // MARK: - property
-    let embeddedYomoJomoNewsViewController = YomojomoNewsViewController()
-    let embeddedMyNewsDrawerViewController = MyNewsDrawerViewController()
+    private let embeddedYomoJomoNewsViewController = YomojomoNewsViewController()
+    private let embeddedMyNewsDrawerViewController = MyNewsDrawerViewController()
     private lazy var notifier = EventManager.shared
     private var cancellables = Set<AnyCancellable>()
     
