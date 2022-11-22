@@ -109,7 +109,7 @@ final class ReadingNewsViewController: UIViewController {
         button.addAction(action, for: .touchUpInside)
         return button
     }()
-    private let backgroundView = UIImageView(image: ImageLiteral.cardSicL3)
+    private let backgroundView = UIImageView(image: ImageLiteral.icArrowLeft)
     private let questionView = QuestionView(step: .reading)
     private let backButton = BackButton()
     private let titleHeaderView = NewsTitleView(status: .expanded)
