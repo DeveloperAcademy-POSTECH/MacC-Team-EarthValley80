@@ -7,6 +7,10 @@
 
 import UIKit
 
+extension NSNotification.Name {
+    static let presentReadingNews = NSNotification.Name("presentReadingNews")
+}
+
 final class YomojomoNewsViewController: UIViewController {
 
     private enum Size {
@@ -218,6 +222,6 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDelegate
 extension YomojomoNewsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        NotificationCenter.default.post(name: NSNotification.Name("PresentView"), object: nil)
+        NotificationCenter.default.post(name: .presentReadingNews, object: nil)
     }
 }
