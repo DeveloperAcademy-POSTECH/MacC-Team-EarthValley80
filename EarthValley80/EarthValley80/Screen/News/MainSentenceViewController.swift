@@ -52,7 +52,7 @@ final class MainSentenceViewController: UIViewController {
         return view
     }()
     private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.mainSentenceTitle)
-    private let mainSentenceView = MainSentenceView()
+    private let mainSentenceView = MainSentenceView(type: .mainSentence)
     private let backButton = BackButton()
     
     // MARK: - life cycle

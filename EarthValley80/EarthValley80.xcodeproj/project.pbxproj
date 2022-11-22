@@ -42,6 +42,7 @@
 		B589F3722927232A008468A8 /* SummaryTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F3712927232A008468A8 /* SummaryTextView.swift */; };
 		B589F37429278068008468A8 /* MainSentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F37329278068008468A8 /* MainSentenceView.swift */; };
 		B589F378292A2C35008468A8 /* MainSentenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F377292A2C35008468A8 /* MainSentenceTableViewCell.swift */; };
+		B589F37A292A5CB9008468A8 /* MyMainSentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F379292A5CB9008468A8 /* MyMainSentenceViewController.swift */; };
 		B5BE345C28FD981C00D09BEE /* MyNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE345B28FD981C00D09BEE /* MyNews.storyboard */; };
 		B5BE345E28FD982700D09BEE /* MyNewsDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */; };
 		B5BE346028FD984C00D09BEE /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE345F28FD984C00D09BEE /* News.storyboard */; };
@@ -131,6 +132,7 @@
 		B589F3712927232A008468A8 /* SummaryTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTextView.swift; sourceTree = "<group>"; };
 		B589F37329278068008468A8 /* MainSentenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSentenceView.swift; sourceTree = "<group>"; };
 		B589F377292A2C35008468A8 /* MainSentenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSentenceTableViewCell.swift; sourceTree = "<group>"; };
+		B589F379292A5CB9008468A8 /* MyMainSentenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMainSentenceViewController.swift; sourceTree = "<group>"; };
 		B5BE345B28FD981C00D09BEE /* MyNews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyNews.storyboard; sourceTree = "<group>"; };
 		B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerViewController.swift; sourceTree = "<group>"; };
 		B5BE345F28FD984C00D09BEE /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				B5FAC8F82909FD0300537F58 /* MainSentenceViewController.swift */,
 				B50E7A462925C072009D8410 /* ReactionViewController.swift */,
 				B589F36F292718BC008468A8 /* SummaryViewController.swift */,
+				B589F379292A5CB9008468A8 /* MyMainSentenceViewController.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				CD3A48DB290A66EF002D7C15 /* SideTabbarViewController.swift in Sources */,
 				B589F370292718BC008468A8 /* SummaryViewController.swift in Sources */,
 				B5BE347428FD9CD200D09BEE /* UIView+Extension.swift in Sources */,
+				B589F37A292A5CB9008468A8 /* MyMainSentenceViewController.swift in Sources */,
 				B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */,
 				B5BE347028FD9C2C00D09BEE /* UICollectionView+Extension.swift in Sources */,
 				B589F37429278068008468A8 /* MainSentenceView.swift in Sources */,

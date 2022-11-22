@@ -60,6 +60,7 @@ final class SummaryViewController: UIViewController {
         super.viewDidLoad()
         self.setupLayout()
         self.configureUI()
+        self.setupButtonAction()
         self.hideKeyboardWhenTappedAround()
     }
 
@@ -97,6 +98,19 @@ final class SummaryViewController: UIViewController {
     private func configureUI() {
         // TODO: - 컬러셋 정해지면 변경
         self.view.backgroundColor = .black.withAlphaComponent(0.94)
+    }
+
+    private func setupButtonAction() {
+        let presentMyMainSentenceAction = UIAction { [weak self] _ in
+            let myMainSentenceViewController = MyMainSentenceViewController()
+
+            myMainSentenceViewController.modalTransitionStyle = .crossDissolve
+            myMainSentenceViewController.modalPresentationStyle = .overCurrentContext
+
+            self?.present(myMainSentenceViewController, animated: true)
+        }
+
+        self.myMainSentenceButton.addAction(presentMyMainSentenceAction, for: .touchUpInside)
     }
 
     // MARK: - selector
