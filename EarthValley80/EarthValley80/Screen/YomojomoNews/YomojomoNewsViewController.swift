@@ -107,7 +107,7 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
 extension YomojomoNewsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "News", bundle: nil)
-        guard let newsViewController = storyboard.instantiateViewController(withIdentifier: TitleInferringViewController.className) as? TitleInferringViewController else { return }
+        guard let newsViewController = storyboard.instantiateViewController(withIdentifier: ReadingNewsViewController.className) as? ReadingNewsViewController else { return }
         
         newsViewController.modalTransitionStyle = .crossDissolve
         newsViewController.modalPresentationStyle = .fullScreen

@@ -24,8 +24,7 @@ private extension UIColor {
 final class NewsContentTableViewCell: UITableViewCell {
     
     private enum Size {
-        static let horizontalPadding: CGFloat = 90.0
-        static let minimumHorizontalPadding: CGFloat = 50.0
+        static let horizontalPadding: CGFloat = 50.0
         static let originalFontSize: CGFloat = 34.0
         static let minimumFontSize: CGFloat = 20.0
         static let originalLineHeightMultiple: CGFloat = 1.16
@@ -33,8 +32,7 @@ final class NewsContentTableViewCell: UITableViewCell {
     }
     
     enum Direction {
-        case upper
-        case lower
+        case upper, lower
     }
     
     enum Status {
@@ -47,15 +45,6 @@ final class NewsContentTableViewCell: UITableViewCell {
                 return Size.originalFontSize
             case .compact:
                 return Size.minimumFontSize
-            }
-        }
-        
-        var horizontalPadding: CGFloat {
-            switch self {
-            case .expanded:
-                return Size.horizontalPadding
-            case .compact:
-                return Size.minimumHorizontalPadding
             }
         }
         
@@ -103,7 +92,7 @@ final class NewsContentTableViewCell: UITableViewCell {
             guard let newValue = newValue else { return }
             
             self.contentLabel.textColor = newValue.defaultTextColor
-            self.contentLabel.font = .font(.bold, ofSize: newValue.fontSize)
+            self.contentLabel.font = .font(.regular, ofSize: newValue.fontSize)
             self.contentLabel.setLineSpacing(kernValue: -2.0,
                                              lineHeightMultiple: newValue.lineHeightMultiple)
             self.setupLayout(status: newValue)
@@ -132,8 +121,8 @@ final class NewsContentTableViewCell: UITableViewCell {
     
     private func setupLayout(status: Status) {
         if self.contentView.subviews.contains(self.contentLabel) {
-            self.contentConstraints?[.leading]?.constant = status.horizontalPadding
-            self.contentConstraints?[.trailing]?.constant = -status.horizontalPadding
+            self.contentConstraints?[.leading]?.constant = Size.horizontalPadding
+            self.contentConstraints?[.trailing]?.constant = -Size.horizontalPadding
             return
         }
         
@@ -142,7 +131,7 @@ final class NewsContentTableViewCell: UITableViewCell {
                                                                leading: self.contentView.leadingAnchor,
                                                                bottom: self.contentView.bottomAnchor,
                                                                trailing: self.contentView.trailingAnchor,
-                                                               padding: UIEdgeInsets(top: 0, left: status.horizontalPadding, bottom: 0, right: status.horizontalPadding))
+                                                               padding: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 0, right: Size.horizontalPadding))
     }
     
     private func configureUI() {
