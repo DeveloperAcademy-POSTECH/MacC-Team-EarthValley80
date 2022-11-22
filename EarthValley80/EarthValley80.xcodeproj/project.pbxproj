@@ -44,6 +44,7 @@
 		B589F378292A2C35008468A8 /* MainSentenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F377292A2C35008468A8 /* MainSentenceTableViewCell.swift */; };
 		B589F37A292A5CB9008468A8 /* MyMainSentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F379292A5CB9008468A8 /* MyMainSentenceViewController.swift */; };
 		B589F37C292A6BDE008468A8 /* SummaryCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F37B292A6BDE008468A8 /* SummaryCompletionViewController.swift */; };
+		B589F37E292AF1E7008468A8 /* MainContentParagraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F37D292AF1E7008468A8 /* MainContentParagraphTableViewCell.swift */; };
 		B5BE345C28FD981C00D09BEE /* MyNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE345B28FD981C00D09BEE /* MyNews.storyboard */; };
 		B5BE345E28FD982700D09BEE /* MyNewsDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */; };
 		B5BE346028FD984C00D09BEE /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE345F28FD984C00D09BEE /* News.storyboard */; };
@@ -135,6 +136,7 @@
 		B589F377292A2C35008468A8 /* MainSentenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSentenceTableViewCell.swift; sourceTree = "<group>"; };
 		B589F379292A5CB9008468A8 /* MyMainSentenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMainSentenceViewController.swift; sourceTree = "<group>"; };
 		B589F37B292A6BDE008468A8 /* SummaryCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCompletionViewController.swift; sourceTree = "<group>"; };
+		B589F37D292AF1E7008468A8 /* MainContentParagraphTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentParagraphTableViewCell.swift; sourceTree = "<group>"; };
 		B5BE345B28FD981C00D09BEE /* MyNews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyNews.storyboard; sourceTree = "<group>"; };
 		B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerViewController.swift; sourceTree = "<group>"; };
 		B5BE345F28FD984C00D09BEE /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 			children = (
 				B5FAC8E1290781C200537F58 /* NewsContentTableViewCell.swift */,
 				B589F377292A2C35008468A8 /* MainSentenceTableViewCell.swift */,
+				B589F37D292AF1E7008468A8 /* MainContentParagraphTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				B50E7A5629264E59009D8410 /* ReactionEmojiView.swift in Sources */,
 				B5BE346428FD986600D09BEE /* YomojomoNewsViewController.swift in Sources */,
 				B5FAC8E2290781C200537F58 /* NewsContentTableViewCell.swift in Sources */,
+				B589F37E292AF1E7008468A8 /* MainContentParagraphTableViewCell.swift in Sources */,
 				B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */,
 				CDE23AA4290ABCAE00EEB824 /* TabbarButtonView.swift in Sources */,
 				B5FAC8EF2907D2A300537F58 /* BackButton.swift in Sources */,

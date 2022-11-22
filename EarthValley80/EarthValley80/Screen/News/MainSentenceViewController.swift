@@ -19,13 +19,14 @@ final class MainSentenceViewController: UIViewController {
     private lazy var newsTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
         tableView.indicatorStyle = .white
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 128, right: 0)
-        tableView.register(cell: NewsContentTableViewCell.self)
+        tableView.register(cell: MainContentParagraphTableViewCell.self)
         
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
@@ -54,6 +55,9 @@ final class MainSentenceViewController: UIViewController {
     private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.mainSentenceTitle)
     private let mainSentenceView = MainSentenceView(type: .mainSentence)
     private let backButton = BackButton()
+
+    private var enteredViewFirstTime: Bool = true
+    private var sentences: [String] = []
     
     // MARK: - life cycle
 
@@ -107,12 +111,37 @@ final class MainSentenceViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension MainSentenceViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsContentTableViewCell.className) as? NewsContentTableViewCell else { return UITableViewCell() }
-        cell.status = .compact
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainContentParagraphTableViewCell.className) as? MainContentParagraphTableViewCell else { return UITableViewCell() }
+        let paragraphIndex = indexPath.row + 1
+        let enteredFirstTime = indexPath.row == 0 && self.enteredViewFirstTime
+
+        // TODO: - content 내용 나누는 부분은 후에 적용할 예정
+        cell.setupContentParagraphData(paragraphIndex: paragraphIndex, content: "          ‘타다’는 승합차를 유료로 타려는 이용자와 운전자를 연결해주는 차량공유 앱 서비스입니다. 승합차는 일반 택시보다 크고 마을버스보다 작은 차종을 말합니다. 대개 11~15인승입니다. 2018년 10월 ‘타다’라는 글자를 새긴 차가 처음 시장에 등장했습니다.")
+
+        if enteredFirstTime {
+            self.enteredViewFirstTime = false
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        }
+
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension MainSentenceViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? MainContentParagraphTableViewCell else { return }
+        cell.isSelected = true
+
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
+
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? MainContentParagraphTableViewCell else { return }
+        cell.isSelected = false
     }
 }
