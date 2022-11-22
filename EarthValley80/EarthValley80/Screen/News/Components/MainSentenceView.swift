@@ -81,7 +81,11 @@ final class MainSentenceView: UIView {
             self.sentences = Array(repeating: "", count: newValue)
         }
     }
-    private var sentences: [String]?
+    private var sentences: [String]? {
+        didSet {
+            self.sentenceTableView.reloadData()
+        }
+    }
 
     // MARK: - init
 
@@ -135,6 +139,10 @@ final class MainSentenceView: UIView {
             self.titleLabel.text = title
             self.titleLabel.setLineSpacing(kernValue: -1.0)
         }
+    }
+
+    func putMainSentence(at index: Int, sentence: String) {
+        self.sentences?[index] = sentence
     }
 }
 

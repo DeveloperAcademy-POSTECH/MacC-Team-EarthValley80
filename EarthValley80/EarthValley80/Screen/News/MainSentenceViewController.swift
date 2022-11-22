@@ -126,6 +126,9 @@ extension MainSentenceViewController: UITableViewDataSource {
 
         // TODO: - content 내용 나누는 부분은 후에 적용할 예정
         cell.setupContentParagraphData(paragraphIndex: paragraphIndex, content: "          ‘타다’는 승합차를 유료로 타려는 이용자와 운전자를 연결해주는 차량공유 앱 서비스입니다. 승합차는 일반 택시보다 크고 마을버스보다 작은 차종을 말합니다. 대개 11~15인승입니다. 2018년 10월 ‘타다’라는 글자를 새긴 차가 처음 시장에 등장했습니다.")
+        cell.didTappedMainSentence = { [weak self] sentence in
+            self?.mainSentenceView.putMainSentence(at: indexPath.row, sentence: sentence)
+        }
 
         if enteredFirstTime {
             self.enteredViewFirstTime = false
