@@ -53,11 +53,16 @@ final class MainSentenceViewController: UIViewController {
         return view
     }()
     private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.mainSentenceTitle)
-    private let mainSentenceView = MainSentenceView(type: .mainSentence)
     private let backButton = BackButton()
+    private lazy var mainSentenceView: MainSentenceView = {
+        let view = MainSentenceView(type: .mainSentence)
+        view.paragraphNumber = self.sentences.count
+        return view
+    }()
 
     private var enteredViewFirstTime: Bool = true
-    private var sentences: [String] = []
+    // TODO: - 일단 빈 스트링으로 생성, 후에 채우는 로직 넣기
+    private var sentences: [String] = ["", "", "", "", ""]
     
     // MARK: - life cycle
 
@@ -111,7 +116,7 @@ final class MainSentenceViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension MainSentenceViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.sentences.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

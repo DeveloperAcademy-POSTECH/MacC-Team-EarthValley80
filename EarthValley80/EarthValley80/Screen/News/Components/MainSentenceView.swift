@@ -75,6 +75,14 @@ final class MainSentenceView: UIView {
         return label
     }()
 
+    var paragraphNumber: Int? {
+        willSet {
+            guard let newValue = newValue else { return }
+            self.sentences = Array(repeating: "", count: newValue)
+        }
+    }
+    private var sentences: [String]?
+
     // MARK: - init
 
     init(type: ViewType) {
@@ -133,15 +141,18 @@ final class MainSentenceView: UIView {
 // MARK: - UITableViewDataSource
 extension MainSentenceView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        guard let sentences = self.sentences else { return 0 }
+        return sentences.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: MainSentenceTableViewCell = tableView.dequeueReusableCell(withType: MainSentenceTableViewCell.self, for: indexPath)
-        let paragraphIndex = indexPath.row + 1
-
-        // TODO: - 나중에 배열을 생성해서 중심문장을 받을 생각입니다.
-        cell.setupCellData(index: paragraphIndex, content: "페이스북의 모회사(회사의 경영을 지배하는 회사)인 메타가 직원 1만1000명을 해고한다고 밝혔다.")
+        
+        if let sentences = self.sentences {
+            let paragraphIndex = indexPath.row + 1
+            
+            cell.setupCellData(index: paragraphIndex, content: sentences[indexPath.row])
+        }
 
         return cell
     }

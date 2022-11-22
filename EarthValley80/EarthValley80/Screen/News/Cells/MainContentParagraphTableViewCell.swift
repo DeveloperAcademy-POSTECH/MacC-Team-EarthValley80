@@ -74,6 +74,8 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         }
     }
 
+    var didTappedMainSentence: ((String) -> ())?
+
     // MARK: - property
 
     override var isSelected: Bool {
@@ -209,11 +211,10 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
             let closedRange = sentence.key
 
             if closedRange.contains(selectedIndex) {
-                print(sentence.value)
+                self.didTappedMainSentence?(sentence.value)
                 break
             }
         }
-
 
 //        let subTextRect = self.contentLabel.boundingRectForCharacterRange(subText: "글자를 새긴 차")
 //        let rect = UIView(frame: subTextRect!)
