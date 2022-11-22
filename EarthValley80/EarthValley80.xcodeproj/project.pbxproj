@@ -68,6 +68,7 @@
 		CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4AC940291DEF1A003D02E4 /* SideTabbarLottieView.swift */; };
 		CD938A8F2926FDEE0026641B /* SideTabbarEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD938A8E2926FDEE0026641B /* SideTabbarEventManager.swift */; };
 		CD938AB9292A32050026641B /* yomoProfileLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = CD938AB8292A32050026641B /* yomoProfileLottie.json */; };
+		CD938AC0292C8FB10026641B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD938ABF292C8FB10026641B /* ContainerViewController.swift */; };
 		CDE23AA2290ABC5000EEB824 /* InsideTabbarItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */; };
 		CDE23AA4290ABCAE00EEB824 /* TabbarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */; };
 		CDE23AA7290ABE2200EEB824 /* SwiftUI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA6290ABE2200EEB824 /* SwiftUI+Extension.swift */; };
@@ -155,6 +156,7 @@
 		CD4AC940291DEF1A003D02E4 /* SideTabbarLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarLottieView.swift; sourceTree = "<group>"; };
 		CD938A8E2926FDEE0026641B /* SideTabbarEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarEventManager.swift; sourceTree = "<group>"; };
 		CD938AB8292A32050026641B /* yomoProfileLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yomoProfileLottie.json; sourceTree = "<group>"; };
+		CD938ABF292C8FB10026641B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTabbarItemsView.swift; sourceTree = "<group>"; };
 		CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarButtonView.swift; sourceTree = "<group>"; };
 		CDE23AA6290ABE2200EEB824 /* SwiftUI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Extension.swift"; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				CD938ABE292C8C620026641B /* Manager */,
 				CD4AC94429220A5A003D02E4 /* Components */,
 				CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */,
+				CD938ABF292C8FB10026641B /* ContainerViewController.swift */,
 			);
 			path = SideTabbar;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				CD938A8F2926FDEE0026641B /* SideTabbarEventManager.swift in Sources */,
 				B5FAC8EB2907BA6000537F58 /* UIFont+Extension.swift in Sources */,
 				3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */,
+				CD938AC0292C8FB10026641B /* ContainerViewController.swift in Sources */,
 				B5FAC8ED2907D18800537F58 /* TitleInferringViewController.swift in Sources */,
 				CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */,
 				381AB422290AB6AD00620635 /* News.swift in Sources */,
