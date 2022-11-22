@@ -52,6 +52,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 // MARK: - View Navigation Helpers
 extension SceneDelegate {
     func navigateToNewsFeedViewController() {
+        // TODO: - 1번째 탭으로 이동
+        self.window?.rootViewController = SideTabbarViewController()
+    }
+
+    func navigateToMyNewsDrawerViewController() {
+        // TODO: - 2번째 탭으로 이동
         self.window?.rootViewController = SideTabbarViewController()
     }
 }
