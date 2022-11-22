@@ -7,11 +7,11 @@
 
 import UIKit
 
-class NieGuessingViewController: UIViewController {
 
     private enum Time {
         static var newsGuessingTime: Int = 5
     }
+final class NieGuessingViewController: UIViewController {
 
     // MARK: - property
 
@@ -48,9 +48,9 @@ class NieGuessingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTimer()
-        configureUI()
-        setupLayout()
+        self.setupTimer()
+        self.configureUI()
+        self.setupLayout()
     }
 
     // MARK: - func
