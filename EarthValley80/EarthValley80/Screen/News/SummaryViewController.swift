@@ -48,10 +48,24 @@ final class SummaryViewController: UIViewController {
 
         return button
     }()
-    private let summaryTextView: SummaryTextView = {
+    private lazy var summaryTextView: SummaryTextView = {
         let textView = SummaryTextView()
         textView.textMode = .beforeWriting
+        textView.textViewDidEditing = { [weak self] hasText in
+            self?.nextButton.isHidden = !hasText
+        }
         return textView
+    }()
+    private lazy var nextButton: GotoSomewhereButton = {
+        let button = GotoSomewhereButton(type: .white)
+        let action = UIAction { [weak self] _ in
+            self?.presentSummaryCompletionViewController()
+        }
+        button.addAction(action, for: .touchUpInside)
+        // TODO: - 이 부분 텍스트를 디자인에서 정해주지 않았어요
+        button.setupButtonContents(buttonImage: ImageLiteral.icArrowRight, buttonTitle: StringLiteral.completeButtonText)
+        button.isHidden = true
+        return button
     }()
 
     // MARK: - life cycle
@@ -93,6 +107,11 @@ final class SummaryViewController: UIViewController {
                                         bottom: self.view.bottomAnchor,
                                         trailing: self.view.trailingAnchor,
                                         padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.nextButton)
+        self.nextButton.constraint(bottom: self.view.bottomAnchor,
+                                   trailing: self.view.trailingAnchor,
+                                   padding: UIEdgeInsets(top: 0, left: 0, bottom: 37, right: 56))
     }
 
     private func configureUI() {
@@ -111,6 +130,13 @@ final class SummaryViewController: UIViewController {
         }
 
         self.myMainSentenceButton.addAction(presentMyMainSentenceAction, for: .touchUpInside)
+    }
+
+    private func presentSummaryCompletionViewController() {
+        let completionViewController = SummaryCompletionViewController()
+        completionViewController.modalTransitionStyle = .crossDissolve
+        completionViewController.modalPresentationStyle = .fullScreen
+        self.present(completionViewController, animated: true)
     }
 
     // MARK: - selector

@@ -39,6 +39,8 @@ final class SummaryTextView: UIView {
         }
     }
 
+    var textViewDidEditing: ((Bool) -> ())?
+
     // MARK: - property
 
     private let backgroundView: UIView = {
@@ -146,5 +148,9 @@ extension SummaryTextView: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         let isEmpty = textView.text.isEmpty
         self.textMode = isEmpty ? .beforeWriting : .complete
+    }
+
+    func textViewDidChange(_ textView: UITextView) {
+        self.textViewDidEditing?(textView.hasText)
     }
 }
