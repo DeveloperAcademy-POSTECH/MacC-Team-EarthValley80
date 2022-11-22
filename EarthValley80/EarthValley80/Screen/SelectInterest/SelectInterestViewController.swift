@@ -14,8 +14,8 @@ class SelectInterestViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let scrollview = UIScrollView()
         scrollview.backgroundColor = .evyWhite
-        scrollview.showsVerticalScrollIndicator = true
-        scrollview.showsHorizontalScrollIndicator = true
+        scrollview.showsVerticalScrollIndicator = false
+        scrollview.showsHorizontalScrollIndicator = false
         scrollview.contentSize = CGSize(width: UIScreen.main.bounds.width * 1.3, height: UIScreen.main.bounds.height * 1.3)
         return scrollview
     }()
