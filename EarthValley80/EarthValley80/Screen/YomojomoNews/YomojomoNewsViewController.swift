@@ -157,45 +157,46 @@ final class YomojomoNewsViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension YomojomoNewsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.yomojomoNewsCollectionView {
+        switch collectionView {
+        case self.yomojomoNewsCollectionView:
             return self.newsData.count
-        } else if collectionView == self.thisWeekNewsCollectionView {
+        case self.thisWeekNewsCollectionView:
             return self.newsData.count
+        default:
+            return 0
         }
-        return 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let hasTitle = newsData[indexPath.row].title != nil
 
-        if collectionView == yomojomoNewsCollectionView {
+        switch (collectionView, hasTitle) {
+        case (self.yomojomoNewsCollectionView, _):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsCollectionViewCell.className, for: indexPath) as! YomojomoNewsCollectionViewCell
             cell.setData(with: newsData[indexPath.row])
             cell.calculateLabelWidth(newsData[indexPath.row])
             return cell
-        } else if collectionView == thisWeekNewsCollectionView {
-            if newsData[indexPath.row].title == nil {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
-                return cell
-            } else {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThisWeekNewsCollectionViewCell.className, for: indexPath) as? ThisWeekNewsCollectionViewCell else { return UICollectionViewCell() }
-                cell.setData(newsData[indexPath.row])
-                cell.calculateLabelWidth(newsData[indexPath.row])
-                return cell
-            }
+        case (self.thisWeekNewsCollectionView, true):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThisWeekNewsCollectionViewCell.className, for: indexPath) as? ThisWeekNewsCollectionViewCell else { return UICollectionViewCell() }
+            cell.setData(newsData[indexPath.row])
+            cell.calculateLabelWidth(newsData[indexPath.row])
+            return cell
+        case (self.thisWeekNewsCollectionView, false):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
+            return cell
+        default:
+            return UICollectionViewCell()
         }
-        return UICollectionViewCell()
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        // MARK: - width 및 column 설정
-
-        if collectionView == self.yomojomoNewsCollectionView {
+        switch collectionView {
+        case self.yomojomoNewsCollectionView:
             return CGSize(width: Size.yomojomoCollectionviewWidth, height: Size.yomojomoCollectionviewHeight)
-        } else if collectionView == self.thisWeekNewsCollectionView {
+        case self.thisWeekNewsCollectionView:
             var width: CGFloat
             if self.newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
                 width = ((collectionView.frame.width - (Size.cellInterval * 4)) / Size.column) * 2 + Size.cellInterval
@@ -203,9 +204,9 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
                 width = (collectionView.frame.width - (Size.cellInterval * 4)) / Size.column - 0.00000001
             }
             return CGSize(width: width, height: Size.cellHeight)
+        default:
+            return CGSize()
         }
-
-        return CGSize()
     }
 }
 
