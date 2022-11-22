@@ -27,13 +27,6 @@ enum ImageLiteral {
     static var imgClap: UIImage { .load(name: "img_clap") }
     static var imgCongrat: UIImage { .load(name: "img_congrat") }
     
-    // MARK: - SwiftUI
-    static var imgYomoJomoLogo: Image = Image("yomojomoLogo")
-    static var imgGoToYomoRoomArrow: Image = Image(systemName: "arrowtriangle.right.fill")
-    static var imgSideMenu1: String = "newspaper.fill"
-    static var imgSideMenu2: String = "lasso.and.sparkles"
-    static var imgSideMenu3: String = "doc.text.magnifyingglass"
-    
     // MARK: - button
     
     static var btnHome: UIImage { .load(name: "btn_home") }
@@ -41,6 +34,16 @@ enum ImageLiteral {
     // MARK: - background
     
     static var cardSicL3: UIImage { .load(name: "card_sic_L3") }
+}
+
+extension ImageLiteral {
+    
+    // MARK: - SwiftUI
+    static var imgYomoJomoLogo: Image = Image("yomojomoLogo")
+    static var imgGoToYomoRoomArrow: Image = Image(systemName: "arrowtriangle.right.fill")
+    static var imgSideMenu1: String = "newspaper.fill"
+    static var imgSideMenu2: String = "lasso.and.sparkles"
+    static var imgSideMenu3: String = "doc.text.magnifyingglass"
 }
 
 extension UIImage {
