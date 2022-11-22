@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		380DC75D292A30DB00BA93E6 /* YomojomoNewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380DC75C292A30DB00BA93E6 /* YomojomoNewsCollectionViewCell.swift */; };
+		380DC763292BE34900BA93E6 /* NieGuessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380DC762292BE34900BA93E6 /* NieGuessingViewController.swift */; };
 		381AB419290A9AE500620635 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB418290A9AE500620635 /* Date+Extension.swift */; };
 		381AB41D290A9EFE00620635 /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB41C290A9EFE00620635 /* MainTitleView.swift */; };
 		381AB422290AB6AD00620635 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB421290AB6AD00620635 /* News.swift */; };
@@ -101,6 +102,7 @@
 
 /* Begin PBXFileReference section */
 		380DC75C292A30DB00BA93E6 /* YomojomoNewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YomojomoNewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		380DC762292BE34900BA93E6 /* NieGuessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NieGuessingViewController.swift; sourceTree = "<group>"; };
 		381AB418290A9AE500620635 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		381AB41C290A9EFE00620635 /* MainTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
 		381AB421290AB6AD00620635 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 			children = (
 				381AB423290AB8EE00620635 /* Cells */,
 				B5BE346328FD986600D09BEE /* YomojomoNewsViewController.swift */,
+				380DC762292BE34900BA93E6 /* NieGuessingViewController.swift */,
 			);
 			path = YomojomoNews;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				B5BE345E28FD982700D09BEE /* MyNewsDrawerViewController.swift in Sources */,
 				381AB41D290A9EFE00620635 /* MainTitleView.swift in Sources */,
 				B5BE347628FD9CF800D09BEE /* UIButton+Extension.swift in Sources */,
+				380DC763292BE34900BA93E6 /* NieGuessingViewController.swift in Sources */,
 				B50E7A4C29260899009D8410 /* Constant+Adjusted.swift in Sources */,
 				B5FAC8F32908E11900537F58 /* UITextView+Extension.swift in Sources */,
 				38F0297929177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift in Sources */,
