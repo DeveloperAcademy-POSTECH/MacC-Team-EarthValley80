@@ -63,9 +63,7 @@
 		B5FAC8E5290786B800537F58 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8E4290786B800537F58 /* UILabel+Extension.swift */; };
 		B5FAC8E9290792C500537F58 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8E8290792C500537F58 /* QuestionView.swift */; };
 		B5FAC8EB2907BA6000537F58 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8EA2907BA6000537F58 /* UIFont+Extension.swift */; };
-		B5FAC8ED2907D18800537F58 /* TitleInferringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8EC2907D18800537F58 /* TitleInferringViewController.swift */; };
 		B5FAC8EF2907D2A300537F58 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8EE2907D2A300537F58 /* BackButton.swift */; };
-		B5FAC8F12907D8C000537F58 /* BlurredLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8F02907D8C000537F58 /* BlurredLabel.swift */; };
 		B5FAC8F32908E11900537F58 /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8F22908E11900537F58 /* UITextView+Extension.swift */; };
 		B5FAC8F529093CB500537F58 /* NewsGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8F429093CB500537F58 /* NewsGuideViewController.swift */; };
 		B5FAC8F92909FD0300537F58 /* FiveWsAndOneHViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8F82909FD0300537F58 /* FiveWsAndOneHViewController.swift */; };
@@ -155,9 +153,7 @@
 		B5FAC8E4290786B800537F58 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		B5FAC8E8290792C500537F58 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		B5FAC8EA2907BA6000537F58 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
-		B5FAC8EC2907D18800537F58 /* TitleInferringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleInferringViewController.swift; sourceTree = "<group>"; };
 		B5FAC8EE2907D2A300537F58 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
-		B5FAC8F02907D8C000537F58 /* BlurredLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredLabel.swift; sourceTree = "<group>"; };
 		B5FAC8F22908E11900537F58 /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		B5FAC8F429093CB500537F58 /* NewsGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsGuideViewController.swift; sourceTree = "<group>"; };
 		B5FAC8F82909FD0300537F58 /* FiveWsAndOneHViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveWsAndOneHViewController.swift; sourceTree = "<group>"; };
@@ -372,7 +368,6 @@
 				B5FAC8E0290781AD00537F58 /* Cells */,
 				B5FAC8DD2907785D00537F58 /* Components */,
 				B5FAC8DB2907652800537F58 /* ReadingNewsViewController.swift */,
-				B5FAC8EC2907D18800537F58 /* TitleInferringViewController.swift */,
 				B5FAC8F429093CB500537F58 /* NewsGuideViewController.swift */,
 				B5FAC8F82909FD0300537F58 /* FiveWsAndOneHViewController.swift */,
 				B50E7A462925C072009D8410 /* ReactionViewController.swift */,
@@ -466,7 +461,6 @@
 				B5FAC8DE2907786F00537F58 /* NewsTitleView.swift */,
 				B5FAC8E8290792C500537F58 /* QuestionView.swift */,
 				B5FAC8EE2907D2A300537F58 /* BackButton.swift */,
-				B5FAC8F02907D8C000537F58 /* BlurredLabel.swift */,
 				B5FAC8FA290A19F800537F58 /* QuestionTitleStackView.swift */,
 				B532C42B290AAA0F001F672B /* NextButton.swift */,
 				B50E79D8291BE368009D8410 /* NewsFlowCompleteView.swift */,
@@ -692,7 +686,6 @@
 				B5FAC8EB2907BA6000537F58 /* UIFont+Extension.swift in Sources */,
 				B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */,
 				3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */,
-				B5FAC8ED2907D18800537F58 /* TitleInferringViewController.swift in Sources */,
 				CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */,
 				381AB422290AB6AD00620635 /* News.swift in Sources */,
 				B5FAC8DC2907652800537F58 /* ReadingNewsViewController.swift in Sources */,
@@ -708,7 +701,6 @@
 				B5FAC8F529093CB500537F58 /* NewsGuideViewController.swift in Sources */,
 				381AB429290AE18D00620635 /* EmptySpaceCollectionViewCell.swift in Sources */,
 				B5BE347228FD9C9A00D09BEE /* UIViewController+Extension.swift in Sources */,
-				B5FAC8F12907D8C000537F58 /* BlurredLabel.swift in Sources */,
 				B5BE346E28FD9BB100D09BEE /* UITableView+Extension.swift in Sources */,
 				B5BE347B28FD9E5500D09BEE /* UIViewController+Alert.swift in Sources */,
 				3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */,
