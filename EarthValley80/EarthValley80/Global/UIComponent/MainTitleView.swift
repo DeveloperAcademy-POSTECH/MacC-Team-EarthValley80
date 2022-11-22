@@ -60,13 +60,13 @@ final class MainTitleView: UIView {
         self.addSubview(self.yomojomoTitleLabel)
         self.yomojomoTitleLabel.constraint(top: self.dateLabel.bottomAnchor,
                                            leading: self.dateLabel.leadingAnchor,
-                                           padding: UIEdgeInsets(top: 23, left: 0, bottom: 0, right: 0))
+                                           padding: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0))
 
         self.addSubview(self.titleDescriptionLabel)
         self.titleDescriptionLabel.constraint(top: self.yomojomoTitleLabel.bottomAnchor,
                                               leading: self.dateLabel.leadingAnchor,
                                               bottom: self.bottomAnchor,
-                                              padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0))
+                                              padding: UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0))
     }
 
     func changeLabelText(date: String, title: String, description: String) {
