@@ -21,6 +21,12 @@ final class SideTabbarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayout()
+        self.setupNotificationCenter()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
     // MARK: - func
@@ -34,5 +40,20 @@ final class SideTabbarViewController: UIViewController {
         self.view.addSubview(self.containerViewController.view)
         self.containerViewController.didMove(toParent: self)
         self.containerViewController.view.constraint(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 254, bottom: 20, right: 50))
+    }
+
+    private func setupNotificationCenter() {
+        NotificationCenter.default.addObserver(self, selector: #selector(presentReadingNewsViewController), name: NSNotification.Name(rawValue: "PresentView"), object: nil)
+    }
+
+    @objc
+    private func presentReadingNewsViewController() {
+        let storyboard = UIStoryboard(name: "News", bundle: nil)
+        guard let newsViewController = storyboard.instantiateViewController(withIdentifier: ReadingNewsViewController.className) as? ReadingNewsViewController else { return }
+
+        newsViewController.modalTransitionStyle = .crossDissolve
+        newsViewController.modalPresentationStyle = .fullScreen
+
+        self.present(newsViewController, animated: true)
     }
 }

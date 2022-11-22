@@ -48,6 +48,11 @@ final class YomojomoNewsViewController: UIViewController {
         self.setupLayout()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
     // MARK: - func
 
     private func setupLayout() {
@@ -106,12 +111,6 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDelegate
 extension YomojomoNewsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "News", bundle: nil)
-        guard let newsViewController = storyboard.instantiateViewController(withIdentifier: ReadingNewsViewController.className) as? ReadingNewsViewController else { return }
-        
-        newsViewController.modalTransitionStyle = .crossDissolve
-        newsViewController.modalPresentationStyle = .fullScreen
-        
-        self.present(newsViewController, animated: true)
+        NotificationCenter.default.post(name: NSNotification.Name("PresentView"), object: nil)
     }
 }
