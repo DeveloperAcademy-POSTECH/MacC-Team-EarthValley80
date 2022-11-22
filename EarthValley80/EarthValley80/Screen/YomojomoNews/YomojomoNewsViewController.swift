@@ -45,7 +45,7 @@ final class YomojomoNewsViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(YomojomoNewsCollectionViewCell.self, forCellWithReuseIdentifier: YomojomoNewsCollectionViewCell.className)
+        collectionView.register(cell: YomojomoNewsCollectionViewCell.self)
         return collectionView
     }()
     private let thisWeekNewsContentView: UIView = {
@@ -69,8 +69,8 @@ final class YomojomoNewsViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(ThisWeekNewsCollectionViewCell.self, forCellWithReuseIdentifier: ThisWeekNewsCollectionViewCell.className)
-        collectionView.register(EmptySpaceCollectionViewCell.self, forCellWithReuseIdentifier: EmptySpaceCollectionViewCell.className)
+        collectionView.register(cell: ThisWeekNewsCollectionViewCell.self)
+        collectionView.register(cell: EmptySpaceCollectionViewCell.self)
         return collectionView
     }()
     private let slideGuideLabel: UILabel = {
