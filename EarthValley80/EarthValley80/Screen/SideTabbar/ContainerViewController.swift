@@ -22,7 +22,7 @@ final class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         self.setupLayout()
-        self.notifierSetup()
+        self.setupNotifier()
     }
     
     //MARK: - func
@@ -31,7 +31,7 @@ final class ContainerViewController: UIViewController {
         self.view.addSubview(self.embeddedMyNewsDrawerViewController.view)
     }
     
-    private func notifierSetup() {
+    private func setupNotifier() {
         notifier
             .sideMenuNumber
             .sink { [weak self] currentIndex in
