@@ -21,8 +21,7 @@ final class ContainerViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        view.addSubview(self.embeddedYomoJomoNewsViewController.view)
-        view.addSubview(self.embeddedMyNewsDrawerViewController.view)
+        self.setupLayout()
         
         notifier
             .sideMenuNumber
@@ -41,5 +40,11 @@ final class ContainerViewController: UIViewController {
                 }
             }
             .store(in: &cancellables)
+    }
+    
+    //MARK: - func
+    private func setupLayout() {
+        self.view.addSubview(self.embeddedYomoJomoNewsViewController.view)
+        self.view.addSubview(self.embeddedMyNewsDrawerViewController.view)
     }
 }
