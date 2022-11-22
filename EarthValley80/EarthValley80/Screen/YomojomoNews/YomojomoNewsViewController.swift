@@ -197,7 +197,7 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: Size.yomojomoCollectionviewWidth, height: Size.yomojomoCollectionviewHeight)
         } else if collectionView == self.thisWeekNewsCollectionView {
             var width: CGFloat
-            if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
+            if self.newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
                 width = ((collectionView.frame.width - (Size.cellInterval * 4)) / Size.column) * 2 + Size.cellInterval
             } else {
                 width = (collectionView.frame.width - (Size.cellInterval * 4)) / Size.column - 0.00000001
