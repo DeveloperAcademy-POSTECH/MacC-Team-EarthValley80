@@ -27,6 +27,7 @@ enum StringLiteral {
     static let popUpNewsTitle = "기사제목"
     static let popUpMyPredictionTitle = "나의 유추"
     static let popUpMySummaryTitle = "나의 요약"
+    static let yomoProfileTitle = "어서와, 나는 요모야!"
     static let reactionTitle = "짝짝짝 다 읽었군요! 이 기사, 어땠나요?"
     static let selectedReactionTitle = "이 기사에 대한 중심문장을 찾으러 가볼까요?"
     static let guidingTitle = "화면을 터치하면 뉴스를 읽을 수 있어요"
@@ -60,8 +61,14 @@ enum StringLiteral {
     static let findCentralSentenceButtonText = "중심문장 찾으러 가기"
     static let shareArticleButtonText = "기사 공유하기"
     static let goToNewsDrawerButtonText = "뉴스서랍가기"
+    static let goToYomoRoomText = "요모의 방 가기 "
+    static let sideTapButton1 = "요모조모 뉴스"
+    static let sideTapButton2 = "골라봐요 중심문장"
+    static let sideTapButton3 = "내가 읽은 뉴스"
 
     // MARK: - lottie
 
     static let tempLottieFile = "mp4TempFile"
+    static let yomoProfileLottieFile = "yomoProfileLottie"
+    
 }
