@@ -56,7 +56,7 @@ final class ReactionViewController: UIViewController {
     private lazy var nextButton: GotoSomewhereButton = {
         let button = GotoSomewhereButton(type: .white)
         let action = UIAction { [weak self] _ in
-
+            self?.presentMainSentenceViewController()
         }
         button.addAction(action, for: .touchUpInside)
         button.setupButtonContents(buttonImage: ImageLiteral.icArrowRight, buttonTitle: StringLiteral.findCentralSentenceButtonText)
@@ -66,7 +66,7 @@ final class ReactionViewController: UIViewController {
     private lazy var shareButton: GotoSomewhereButton = {
         let button = GotoSomewhereButton(type: .transparentWhite)
         let action = UIAction { [weak self] _ in
-
+            // TODO: - 공유하는 기능 추가
         }
         button.addAction(action, for: .touchUpInside)
         button.setupButtonContents(buttonImage: ImageLiteral.icSquareAndArrowUp, buttonTitle: StringLiteral.shareArticleButtonText)
@@ -168,5 +168,12 @@ final class ReactionViewController: UIViewController {
             self.shareButton.isHidden = false
             self.closeButton.isHidden = false
         }
+    }
+
+    private func presentMainSentenceViewController() {
+        let mainSentenceViewController = MainSentenceViewController()
+        mainSentenceViewController.modalTransitionStyle = .crossDissolve
+        mainSentenceViewController.modalPresentationStyle = .fullScreen
+        self.present(mainSentenceViewController, animated: true)
     }
 }
