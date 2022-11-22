@@ -28,6 +28,7 @@ enum ImageLiteral {
 
     static var btnAfterReaction: UIImage { .load(name: "btn_afterReaction")}
     static var btnBeforeReaction: UIImage { .load(name: "btn_beforeReaction")}
+    static var btnMyMainSentence: UIImage { .load(name: "btn_myMainSentence")}
 }
 
 extension ImageLiteral {

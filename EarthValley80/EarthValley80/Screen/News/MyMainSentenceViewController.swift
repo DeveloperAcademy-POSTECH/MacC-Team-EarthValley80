@@ -19,7 +19,8 @@ final class MyMainSentenceViewController: UIViewController {
         let button = UIButton()
 
         // TODO: - 나중에 Asset 이미지 변경
-        let imageView = UIImageView(image: UIImage(systemName: "pencil.circle.fill"))
+        let imageView = UIImageView(image: UIImage(systemName: "xmark.circle"))
+        imageView.tintColor = .evyWhite
         button.addSubview(imageView)
         imageView.constraint(top: button.topAnchor, centerX: button.centerXAnchor)
         imageView.constraint(.heightAnchor, constant: Size.buttonSize)
