@@ -33,6 +33,7 @@ enum StringLiteral {
     static let summaryTitle = "기사를 요약하거나 생각을 자유롭게 풀어보세요"
     static let mainSentenceTitle = "왼쪽 문단에서 가장 중요한 문장을 터치해주세요"
     static let myMainSentenceTitle = "내가 찾은 중심문장"
+    static let summaryCompletionTitle = "중심문장을 찾고 요약을 완성했어요!"
 
     // MARK: - title description
 
@@ -41,6 +42,7 @@ enum StringLiteral {
     static let greetingComments = "안녕!\n기사를 읽고 요약해보세요!"
     static let completeTitleDescription = "이 기사에 대한 요약을 모두\n완성했어요!"
     static let reactionDescription = "위 버튼을 눌러 리액션을 남겨보세요"
+    static let summaryCompletionDescription = "뉴스서랍으로 이동하면 나의 요약을 확인할 수 있어요"
 
     // MARK: - placeholder
     
