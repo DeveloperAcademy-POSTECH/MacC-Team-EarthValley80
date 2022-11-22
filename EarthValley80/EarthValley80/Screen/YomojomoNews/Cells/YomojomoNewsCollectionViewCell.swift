@@ -20,10 +20,7 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
 
     // MARK: - property
 
-    private let cellBackground: UIView =  {
-        let backgroundview = UIView()
-        return backgroundview
-    }()
+    private let cellBackground = UIView()
     private let categoryBackgroundImageView: UIImageView = {
         // TODO: - 기사에 맞는 카테고리 이미지로 변경해야합니다.
         let imageview = UIImageView()

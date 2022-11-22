@@ -29,10 +29,7 @@ final class YomojomoNewsViewController: UIViewController {
         scrollview.showsVerticalScrollIndicator = false
         return scrollview
     }()
-    private let yomojomoNewsContentView: UIView = {
-        let contentview = UIView()
-        return contentview
-    }()
+    private let yomojomoNewsContentView = UIView()
     private let yomojomoTitleView: MainTitleView = {
         let titleView = MainTitleView()
         titleView.changeLabelText(date: Date().dateFormatted("EEEE, MM d"),
