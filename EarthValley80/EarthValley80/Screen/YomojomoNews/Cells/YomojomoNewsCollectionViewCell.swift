@@ -87,7 +87,7 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
         self.cellBackground.addSubview(self.newsImageView)
         self.newsImageView.constraint(top: self.cellBackground.topAnchor,
                                       leading: self.cellBackground.leadingAnchor,
-                                      padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+                                      padding: UIEdgeInsets.zero)
         self.newsImageView.constraint(.widthAnchor, constant: Size.newsTitleImageSize)
         self.newsImageView.constraint(.heightAnchor, constant: Size.newsTitleImageSize)
 
