@@ -49,6 +49,26 @@ final class ReactionViewController: UIViewController {
         }
         return view
     }()
+    private lazy var nextButton: GotoSomewhereButton = {
+        let button = GotoSomewhereButton(type: .white)
+        let action = UIAction { [weak self] _ in
+
+        }
+        button.addAction(action, for: .touchUpInside)
+        button.setupButtonContents(buttonImage: ImageLiteral.icArrowRight, buttonTitle: StringLiteral.findCentralSentenceButtonText)
+        button.isHidden = true
+        return button
+    }()
+    private lazy var shareButton: GotoSomewhereButton = {
+        let button = GotoSomewhereButton(type: .transparentWhite)
+        let action = UIAction { [weak self] _ in
+
+        }
+        button.addAction(action, for: .touchUpInside)
+        button.setupButtonContents(buttonImage: ImageLiteral.icSquareAndArrowUp, buttonTitle: StringLiteral.shareArticleButtonText)
+        button.isHidden = true
+        return button
+    }()
 
     // MARK: - life cycle
 
@@ -79,6 +99,16 @@ final class ReactionViewController: UIViewController {
         self.descriptionLabel.constraint(top: self.reactionButton.bottomAnchor,
                                          centerX: self.view.centerXAnchor,
                                          padding: UIEdgeInsets(top: 76, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.nextButton)
+        self.nextButton.constraint(top: self.reactionButton.bottomAnchor,
+                                   centerX: self.view.centerXAnchor,
+                                   padding: UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.shareButton)
+        self.shareButton.constraint(top: self.nextButton.bottomAnchor,
+                                    centerX: self.view.centerXAnchor,
+                                    padding: UIEdgeInsets(top: 14, left: 0, bottom: 0, right: 0))
     }
 
     private func configureUI() {
@@ -103,6 +133,8 @@ final class ReactionViewController: UIViewController {
 
         if hasDescriptionLabel {
             self.descriptionLabel.removeFromSuperview()
+            self.nextButton.isHidden = false
+            self.shareButton.isHidden = false
         }
     }
 }
