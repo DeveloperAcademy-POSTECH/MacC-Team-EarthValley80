@@ -63,7 +63,18 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
                 return .regular
             }
         }
+
+        var isUserInteractionEnabled: Bool {
+            switch self {
+            case .highlighted:
+                return true
+            case .original:
+                return false
+            }
+        }
     }
+
+    var didTappedMainSentence: ((String) -> ())?
 
     // MARK: - property
 
@@ -86,6 +97,10 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         label.font = TextStyle.content(.original).font
         return label
     }()
+
+    private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
+
+    private var sentences: [ClosedRange<Int>: String] = [:]
 
     // MARK: - init
 
@@ -125,6 +140,8 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
     private func configureUI() {
         self.backgroundColor = .clear
         self.selectionStyle = .none
+
+        self.contentLabel.addGestureRecognizer(tapGestureRecognizer)
     }
 
     private func setupParagraphStyle(to paragraphType: ParagraphType) {
@@ -132,6 +149,46 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         self.contentLabel.font = TextStyle.content(paragraphType).font
         self.captionLabel.textColor = paragraphType.textColor
         self.contentLabel.textColor = paragraphType.textColor
+        self.contentLabel.isUserInteractionEnabled = paragraphType.isUserInteractionEnabled
+    }
+
+    private func appendSentences() {
+        guard let content = self.contentLabel.text else { return }
+
+        let _ = content.components(separatedBy: [".", "!", "?"])
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+            .compactMap { sentence in
+                guard let completionSentence = self.applyPunctuationMark(in: sentence) else { return }
+                let closedRange = self.findRangeOfSentence(completionSentence)
+                self.sentences[closedRange] = completionSentence
+            }
+    }
+
+    private func applyPunctuationMark(in sentence: String) -> String? {
+        let separatorCharacters: [String] = [".", "?", "!"]
+        let sentencesWithCharacter = separatorCharacters.map({ "\(sentence)\($0)" })
+
+        for sentence in sentencesWithCharacter {
+            if let hasSentence = self.contentLabel.text?.contains(sentence),
+               hasSentence {
+                return sentence
+            }
+        }
+
+        return nil
+    }
+
+    private func findRangeOfSentence(_ sentence: String) -> ClosedRange<Int> {
+        guard let content = self.contentLabel.text else { return 0...0 }
+        let range = content.range(of: sentence)
+
+        guard
+            let lowerBound = range?.lowerBound.utf16Offset(in: content),
+            let upperBound = range?.upperBound.utf16Offset(in: content)
+        else { return 0...0 }
+
+        return lowerBound...upperBound
     }
 
     func setupContentParagraphData(paragraphIndex: Int, content: String) {
@@ -139,5 +196,24 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         self.contentLabel.text = content
         self.contentLabel.setLineSpacing(kernValue: -2.0,
                                          lineHeightMultiple: Size.minimumLineHeightMultiple)
+        self.appendSentences()
+    }
+
+    // MARK: - selector
+
+    @objc
+    private func didTappedView(_ gestureRecognizer: UITapGestureRecognizer) {
+        guard gestureRecognizer.state == UIGestureRecognizer.State.recognized else { return }
+        let gesturePoint = gestureRecognizer.location(in: gestureRecognizer.view)
+        guard let selectedIndex = self.contentLabel.textIndex(at: gesturePoint) else { return }
+
+        for sentence in self.sentences {
+            let closedRange = sentence.key
+
+            if closedRange.contains(selectedIndex) {
+                self.didTappedMainSentence?(sentence.value)
+                break
+            }
+        }
     }
 }
