@@ -18,7 +18,7 @@ final class SideTabbarViewController: UIViewController {
     }()
     private lazy var sideTabbar = UIHostingController(rootView: sideTabbarView)
     private var cancellables = Set<AnyCancellable>()
-    private let changeVC = ContainerViewController()
+    private let containerViewController = ContainerViewController()
     
     // MARK: - life cycle
     override func viewDidLoad() {
@@ -33,9 +33,9 @@ final class SideTabbarViewController: UIViewController {
         self.sideTabbar.didMove(toParent: self)
         self.sideTabbar.view.constraint(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor)
         
-        addChild(self.changeVC)
-        self.view.addSubview(self.changeVC.view)
-        self.changeVC.didMove(toParent: self)
-        self.changeVC.view.constraint(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 254, bottom: 20, right: 50))
+        addChild(self.containerViewController)
+        self.view.addSubview(self.containerViewController.view)
+        self.containerViewController.didMove(toParent: self)
+        self.containerViewController.view.constraint(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 254, bottom: 20, right: 50))
     }
 }
