@@ -143,6 +143,7 @@ final class MainSentenceView: UIView {
 
     func putMainSentence(at index: Int, sentence: String) {
         self.sentences?[index] = sentence
+        self.sentenceTableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
     }
 }
 
