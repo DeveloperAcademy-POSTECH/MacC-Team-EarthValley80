@@ -127,7 +127,6 @@ final class YomojomoNewsViewController: UIViewController {
         self.slideGuideLabel.constraint(bottom: self.yomojomoNewsContentView.bottomAnchor,
                                         centerX: self.yomojomoNewsContentView.centerXAnchor,
                                         padding: UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0))
-        self.slideGuideLabel.constraint(.widthAnchor, constant: 200)
 
 
         self.scrollView.addSubview(self.thisWeekNewsContentView)
