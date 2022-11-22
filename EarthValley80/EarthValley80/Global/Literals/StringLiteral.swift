@@ -32,6 +32,8 @@ enum StringLiteral {
     static let guidingTitle = "화면을 터치하면 뉴스를 읽을 수 있어요"
     static let summaryTitle = "기사를 요약하거나 생각을 자유롭게 풀어보세요"
     static let mainSentenceTitle = "왼쪽 문단에서 가장 중요한 문장을 터치해주세요"
+    static let greetingTitle = "요모조모에 온 것을 환영합니다."
+    static let selectGuideTitle = "마음에 드는 단어\n5개를 선택하세요"
 
     // MARK: - title description
 
