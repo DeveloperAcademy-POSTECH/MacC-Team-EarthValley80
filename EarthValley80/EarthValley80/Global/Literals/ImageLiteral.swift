@@ -5,6 +5,7 @@
 //  Created by SHIN YOON AH on 2022/10/17.
 //
 
+import SwiftUI
 import UIKit
 
 enum ImageLiteral {
@@ -25,6 +26,13 @@ enum ImageLiteral {
     static var imgCoach2: UIImage { .load(name: "img_coach2") }
     static var imgClap: UIImage { .load(name: "img_clap") }
     static var imgCongrat: UIImage { .load(name: "img_congrat") }
+    
+    // MARK: - SwiftUI
+    static var imgYomoJomoLogo: Image = Image("yomojomoLogo")
+    static var imgGoToYomoRoomArrow: Image = Image(systemName: "arrowtriangle.right.fill")
+    static var imgSideMenu1: String = "newspaper.fill"
+    static var imgSideMenu2: String = "lasso.and.sparkles"
+    static var imgSideMenu3: String = "doc.text.magnifyingglass"
     
     // MARK: - button
     

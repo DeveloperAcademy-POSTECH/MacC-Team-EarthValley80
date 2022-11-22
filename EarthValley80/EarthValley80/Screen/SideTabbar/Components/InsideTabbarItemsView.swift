@@ -13,7 +13,7 @@ struct InsideTabBarItems: View {
     
     var body: some View {
         VStack {
-            Image("yomojomoLogo")
+            ImageLiteral.imgYomoJomoLogo
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 94, height: 36)
@@ -28,18 +28,18 @@ struct InsideTabBarItems: View {
                 HStack(spacing: 0) {
                     Text(StringLiteral.goToYomoRoomText)
                         .font(.system(size: 10))
-                    Image(systemName: "arrowtriangle.right.fill")
+                    ImageLiteral.imgGoToYomoRoomArrow
                         .font(.system(size: 10))
                 }
                 .padding(EdgeInsets(top: 120, leading: 100, bottom: 0, trailing: 0))
             }
             .padding(.bottom)
             VStack(spacing: 0) {
-                TabBarButton(selectedTab: $selectedTab, image: "newspaper.fill", title: StringLiteral.sideTapButton1)
+                TabBarButton(selectedTab: $selectedTab, image: ImageLiteral.imgSideMenu1, title: StringLiteral.sideTapButton1)
                 Divider().frame(width: 165, height: 1)
-                TabBarButton(selectedTab: $selectedTab, image: "lasso.and.sparkles", title: StringLiteral.sideTapButton2)
+                TabBarButton(selectedTab: $selectedTab, image: ImageLiteral.imgSideMenu2, title: StringLiteral.sideTapButton2)
                 Divider().frame(width: 165, height: 1)
-                TabBarButton(selectedTab: $selectedTab, image: "doc.text.magnifyingglass", title: StringLiteral.sideTapButton3)
+                TabBarButton(selectedTab: $selectedTab, image: ImageLiteral.imgSideMenu3, title: StringLiteral.sideTapButton3)
                 Divider().frame(width: 165, height: 1)
             }
             Spacer()
