@@ -62,4 +62,30 @@ extension UILabel {
         
         self.attributedText = attributedString
     }
+
+    func textIndex(at point: CGPoint) -> Int? {
+        guard let attributedText = attributedText else { return nil }
+        let layoutManager = NSLayoutManager()
+        let textContainer = NSTextContainer(size: self.bounds.size)
+        let textStorage = NSTextStorage(attributedString: attributedText)
+
+        textContainer.lineFragmentPadding = 0.0
+        layoutManager.addTextContainer(textContainer)
+        textStorage.addLayoutManager(layoutManager)
+
+        let range = layoutManager.glyphRange(for: textContainer)
+        let textBounds = layoutManager.boundingRect(forGlyphRange: range,
+                                                    in: textContainer)
+        let paddingWidth = (self.bounds.size.width - textBounds.size.width) / 2
+        var textOffset = CGPoint.zero
+
+        if paddingWidth > 0 {
+            textOffset.x = paddingWidth
+        }
+
+        let newPoint = CGPoint(x: point.x - textOffset.x,
+                               y: point.y - textOffset.y)
+
+        return layoutManager.glyphIndex(for: newPoint, in: textContainer)
+    }
 }

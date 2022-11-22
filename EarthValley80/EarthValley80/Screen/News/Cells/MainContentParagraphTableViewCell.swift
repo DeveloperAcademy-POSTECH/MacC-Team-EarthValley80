@@ -158,10 +158,10 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         let _ = content.components(separatedBy: [".", "!", "?"])
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }
-            .compactMap { self.applyPunctuationMark(in: $0) }
-            .map { sentence in
-                let closedRange = self.findRangeOfSentence(sentence)
-                self.sentences[closedRange] = sentence
+            .compactMap { sentence in
+                guard let completionSentence = self.applyPunctuationMark(in: sentence) else { return }
+                let closedRange = self.findRangeOfSentence(completionSentence)
+                self.sentences[closedRange] = completionSentence
             }
     }
 
@@ -215,81 +215,5 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
                 break
             }
         }
-
-//        let subTextRect = self.contentLabel.boundingRectForCharacterRange(subText: "글자를 새긴 차")
-//        let rect = UIView(frame: subTextRect!)
-//        rect.backgroundColor = .red
-//        self.contentView.addSubview(rect)
-    }
-}
-
-extension UILabel {
-    func textIndex(at point: CGPoint) -> Int? {
-        guard let attributedText = attributedText else { return nil }
-
-        let layoutManager = NSLayoutManager()
-        let textContainer = NSTextContainer(size: self.bounds.size)
-        let textStorage = NSTextStorage(attributedString: attributedText)
-
-        textStorage.addLayoutManager(layoutManager)
-        textContainer.lineFragmentPadding = 0.0
-        layoutManager.addTextContainer(textContainer)
-
-        var textOffset = CGPoint.zero
-        // 정확한 자체(glyph)의 범위를 구하고 그 범위의 CGRect 값을 구합니다.
-        let range = layoutManager.glyphRange(for: textContainer)
-        let textBounds = layoutManager.boundingRect(
-            forGlyphRange: range,
-            in: textContainer
-        )
-
-        // textOffset.x가 패딩을 제외한 부분부터 시작하도록 합니다.
-        let paddingWidth = (self.bounds.size.width - textBounds.size.width) / 2
-        if paddingWidth > 0 {
-            textOffset.x = paddingWidth
-        }
-
-        // 눌려진 정확한 포인트를 구합니다.
-        let newPoint = CGPoint(
-            x: point.x - textOffset.x,
-            y: point.y - textOffset.y
-        )
-
-        // textContainer내에서 newPoint 위치의 glyph index를 반환합니다
-        return layoutManager.glyphIndex(for: newPoint, in: textContainer)
-    }
-
-    func boundingRectForCharacterRange(subText: String) -> CGRect? {
-        guard let attributedText = attributedText else { return nil }
-        guard let text = self.text else { return nil }
-
-        // 전체 텍스트(text)에서 subText만큼의 range를 구합니다.
-        guard let subRange = text.range(of: subText) else { return nil }
-        let range = NSRange(subRange, in: text)
-
-        // attributedText를 기반으로 한 NSTextStorage를 선언하고 NSLayoutManager를 추가합니다.
-        let layoutManager = NSLayoutManager()
-        let textStorage = NSTextStorage(attributedString: attributedText)
-        textStorage.addLayoutManager(layoutManager)
-
-        // instrinsicContentSize를 기반으로 NSTextContainer를 선언하고
-        let textContainer = NSTextContainer(size: intrinsicContentSize)
-        // 정확한 CGRect를 구해야하므로 padding 값은 0을 줍니다.
-        textContainer.lineFragmentPadding = 0.0
-        // layoutManager에 추가합니다.
-        layoutManager.addTextContainer(textContainer)
-
-        var glyphRange = NSRange()
-        // 주어진 범위(rage)에 대한 실질적인 glyphRange를 구합니다.
-        layoutManager.characterRange(
-            forGlyphRange: range,
-            actualGlyphRange: &glyphRange
-        )
-
-        // textContainer 내의 지정된 glyphRange에 대한 CGRect 값을 반환합니다.
-        return layoutManager.boundingRect(
-            forGlyphRange: glyphRange,
-            in: textContainer
-        )
     }
 }
