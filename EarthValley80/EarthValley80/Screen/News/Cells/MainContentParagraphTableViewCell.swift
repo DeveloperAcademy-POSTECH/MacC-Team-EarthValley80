@@ -204,7 +204,15 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         guard gestureRecognizer.state == UIGestureRecognizer.State.recognized else { return }
         let gesturePoint = gestureRecognizer.location(in: gestureRecognizer.view)
         guard let selectedIndex = self.contentLabel.textIndex(at: gesturePoint) else { return }
-        print(selectedIndex)
+
+        for sentence in self.sentences {
+            let closedRange = sentence.key
+
+            if closedRange.contains(selectedIndex) {
+                print(sentence.value)
+                break
+            }
+        }
 
 
 //        let subTextRect = self.contentLabel.boundingRectForCharacterRange(subText: "글자를 새긴 차")
@@ -215,8 +223,6 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
 }
 
 extension UILabel {
-    /// 입력된 포지션에 따라 라벨의 문자열의 인덱스 반환
-    /// - Parameter point: 인덱스 값을 알고 싶은 CGPoint
     func textIndex(at point: CGPoint) -> Int? {
         guard let attributedText = attributedText else { return nil }
 
