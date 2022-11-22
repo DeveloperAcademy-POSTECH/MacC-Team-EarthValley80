@@ -22,7 +22,16 @@ final class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         self.setupLayout()
-        
+        self.notifierSetup()
+    }
+    
+    //MARK: - func
+    private func setupLayout() {
+        self.view.addSubview(self.embeddedYomoJomoNewsViewController.view)
+        self.view.addSubview(self.embeddedMyNewsDrawerViewController.view)
+    }
+    
+    private func notifierSetup() {
         notifier
             .sideMenuNumber
             .sink { [weak self] currentIndex in
@@ -40,11 +49,5 @@ final class ContainerViewController: UIViewController {
                 }
             }
             .store(in: &cancellables)
-    }
-    
-    //MARK: - func
-    private func setupLayout() {
-        self.view.addSubview(self.embeddedYomoJomoNewsViewController.view)
-        self.view.addSubview(self.embeddedMyNewsDrawerViewController.view)
     }
 }
