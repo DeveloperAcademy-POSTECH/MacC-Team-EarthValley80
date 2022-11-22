@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InsideTabBarItems: View {
     @Binding var selectedTab: String
-    private let notifier = EventMessenger.shared
+    private let notifier = EventManager.shared
     
     var body: some View {
         VStack {

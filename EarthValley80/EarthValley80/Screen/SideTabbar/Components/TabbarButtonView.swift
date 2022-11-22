@@ -11,7 +11,7 @@ struct TabBarButton: View {
     @Binding var selectedTab: String
     var image: String
     var title: String
-    private let notifier = EventMessenger.shared
+    private let notifier = EventManager.shared
     
     var body: some View {
         Button(action: {

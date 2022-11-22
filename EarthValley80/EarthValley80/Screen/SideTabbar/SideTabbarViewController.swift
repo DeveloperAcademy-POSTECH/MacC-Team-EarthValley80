@@ -13,7 +13,7 @@ final class ChangeViewController: UIViewController {
     // MARK: - property
     let embeddedYomoJomoNewsViewController = YomojomoNewsViewController()
     let embeddedMyNewsDrawerViewController = MyNewsDrawerViewController()
-    private lazy var notifier = EventMessenger.shared
+    private lazy var notifier = EventManager.shared
     private var cancellables = Set<AnyCancellable>()
     
     // MARK: - life cycle
@@ -47,7 +47,7 @@ final class ChangeViewController: UIViewController {
 
 final class SideTabbarViewController: UIViewController {
     // MARK: - property
-    private lazy var notifier = EventMessenger.shared
+    private lazy var notifier = EventManager.shared
     lazy var sideTabbarView: SideTabbarView = {
         let notifierValue = SideTabbarView()
         return notifierValue
