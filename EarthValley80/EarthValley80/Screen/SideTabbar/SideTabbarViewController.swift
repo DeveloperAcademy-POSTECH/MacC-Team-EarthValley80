@@ -17,8 +17,6 @@ final class SideTabbarViewController: UIViewController {
         return notifierValue
     }()
     private lazy var sideTabbar = UIHostingController(rootView: sideTabbarView)
-    private let embeddedYomoJomoNewsViewController = YomojomoNewsViewController()
-    private let embeddedMyNewsDrawerViewController = MyNewsDrawerViewController()
     private var cancellables = Set<AnyCancellable>()
     private let changeVC = ContainerViewController()
     
