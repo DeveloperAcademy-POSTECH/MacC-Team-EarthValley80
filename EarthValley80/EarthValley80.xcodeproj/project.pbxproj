@@ -20,6 +20,7 @@
 		3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */; };
 		3851FC032912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */; };
 		3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */; };
+		38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */; };
 		38F0297929177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */; };
 		B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A462925C072009D8410 /* ReactionViewController.swift */; };
 		B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */; };
@@ -104,6 +105,7 @@
 		3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPopupViewController.swift; sourceTree = "<group>"; };
 		3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
 		3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestViewController.swift; sourceTree = "<group>"; };
 		38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoalAttainmentLottieCollectionViewCell.swift; sourceTree = "<group>"; };
 		B50E7A462925C072009D8410 /* ReactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionViewController.swift; sourceTree = "<group>"; };
 		B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleFormTitleView.swift; sourceTree = "<group>"; };
@@ -264,6 +266,14 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		38EDAA46292D2206007EFFA4 /* SelectInterest */ = {
+			isa = PBXGroup;
+			children = (
+				38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */,
+			);
+			path = SelectInterest;
+			sourceTree = "<group>";
+		};
 		B50E7A482925D15E009D8410 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +334,7 @@
 		B5BE345228FD96B900D09BEE /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				38EDAA46292D2206007EFFA4 /* SelectInterest */,
 				CD3A48D7290A6654002D7C15 /* SideTabbar */,
 				B5BE345628FD96CA00D09BEE /* YomojomoNews */,
 				B5BE345528FD96C700D09BEE /* News */,
@@ -652,6 +663,7 @@
 				B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */,
 				B5BE347028FD9C2C00D09BEE /* UICollectionView+Extension.swift in Sources */,
 				B589F37429278068008468A8 /* MainSentenceView.swift in Sources */,
+				38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */,
 				381AB436290FC96900620635 /* GotoYomojomoNewsEmptyView.swift in Sources */,
 				B50E7A4E29260C19009D8410 /* ReactionButton.swift in Sources */,
 				B5BE348028FDA2A200D09BEE /* StringLiteral.swift in Sources */,
