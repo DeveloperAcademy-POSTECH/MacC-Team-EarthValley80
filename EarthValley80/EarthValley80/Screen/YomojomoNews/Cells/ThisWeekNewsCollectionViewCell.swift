@@ -14,31 +14,18 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
         static let categoryLabelHeigth: CGFloat = 20.0
         static let categoryCornerRadius: CGFloat = 10.0
         static let newsCardCornerRadius: CGFloat = 30.0
-        static let titleFontSize: CGFloat = 20.0
-        static let categoryLabelFontSize: CGFloat = 12.0
+        static let titleFontSize: CGFloat = 18.0
+        static let categoryLabelFontSize: CGFloat = 10.0
         static let categoryLabelPadding: CGFloat = 18.0
     }
 
     private enum CardUI: String {
         case economy = "경제"
         case science = "과학"
-        case culture = "교양"
-        case history = "역사"
+        case culture = "문화"
+        case society = "시사"
 
-        var imageNameHead: String {
-            switch self {
-            case .economy:
-                return "card_ecnmy_"
-            case .science:
-                return "card_sic_"
-            case .culture:
-                return "card_cul_"
-            case .history:
-                return "card_histy_"
-            }
-        }
-
-        var categoryFontColor: UIColor {
+        var categoryBackgroundColor: UIColor {
             switch self {
             case .economy:
                 return .evyCategoryEcnmy
@@ -46,35 +33,37 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
                 return .evyCategorySic
             case .culture:
                 return .evyCategoryCul
-            case .history:
-                return .evyCategoryHisty
+            case .society:
+                return .evyCategorySoci
             }
         }
     }
     
     // MARK: - property
 
-    private let newsBackgroundView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = Size.newsCardCornerRadius
-        return imageView
+    private let newsCardBackgroundView: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = Size.newsCardCornerRadius
+        view.layer.borderColor = UIColor.evyGray3.cgColor
+        view.layer.borderWidth = 1.0
+        view.backgroundColor = .evyWhite
+        view.makeShadow(color: .evyBlack1, opacity: 0.08, offset: CGSize(width: 2, height: 8), radius: 18)
+        return view
     }()
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .font(.bold, ofSize: Size.titleFontSize)
-        label.textColor = .evyWhite
+        label.font = .font(.regular, ofSize: Size.titleFontSize)
+        label.textColor = .evyBlack1
         return label
     }()
     private let newsCategoryLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .font(.bold, ofSize: Size.categoryLabelFontSize)
+        label.font = .font(.regular, ofSize: Size.categoryLabelFontSize)
+        label.textColor = .evyWhite
         label.layer.masksToBounds = true
         label.layer.cornerRadius = Size.categoryCornerRadius
-        label.backgroundColor = .evyWhite
         label.layer.opacity = 0.6
         return label
     }()
@@ -94,29 +83,26 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
     // MARK: - func
 
     func setupLayout() {
-        self.contentView.addSubview(self.newsBackgroundView)
-        self.newsBackgroundView.constraint(to: self)
+        self.contentView.addSubview(self.newsCardBackgroundView)
+        self.newsCardBackgroundView.constraint(to: self)
 
         self.addSubview(self.newsCategoryLabel)
-        self.newsCategoryLabel.constraint(top: self.newsBackgroundView.topAnchor,
-                                     leading: self.newsBackgroundView.leadingAnchor,
+        self.newsCategoryLabel.constraint(top: self.newsCardBackgroundView.topAnchor,
+                                     leading: self.newsCardBackgroundView.leadingAnchor,
                                      padding: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0))
         self.newsCategoryLabel.constraint(.heightAnchor, constant: Size.categoryLabelHeigth)
 
         self.addSubview(self.newsTitleLabel)
         self.newsTitleLabel.constraint(top: self.newsCategoryLabel.bottomAnchor,
-                                  leading: self.newsBackgroundView.leadingAnchor,
-                                  trailing: self.newsBackgroundView.trailingAnchor,
+                                  leading: self.newsCardBackgroundView.leadingAnchor,
+                                  trailing: self.newsCardBackgroundView.trailingAnchor,
                                   padding: UIEdgeInsets(top: 14, left: 20, bottom: 0, right: 20))
     }
 
     func setData(_ newsData: News) {
         self.newsTitleLabel.text = newsData.title
         self.newsCategoryLabel.text = newsData.category
-
-        let isLargeTitle = newsData.title?.count ?? 0 > Size.standardOfTitle
-        let imageType = isLargeTitle ? "L" : "S"
-        self.setGradationImage(category: newsData.category ?? "", type: imageType)
+        self.newsCategoryLabel.backgroundColor = CardUI(rawValue: newsData.category ?? "")?.categoryBackgroundColor
     }
 
     func calculateLabelWidth(_ newsData: News) {
@@ -126,14 +112,5 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
         label.sizeToFit()
 
         self.newsCategoryLabel.constraint(.widthAnchor, constant: label.frame.width + Size.categoryLabelPadding)
-        self.newsCategoryLabel.textColor = CardUI(rawValue: newsData.category ?? "")?.categoryFontColor
-    }
-
-    private func setGradationImage(category: String, type: String) {
-        var cardImageName = ""
-        guard let cardImageNameHead = CardUI(rawValue: category)?.imageNameHead else { return }
-        let randomNumber = type == "L" ? String(Int.random(in: 1...3)) : String(Int.random(in: 1...5))
-        cardImageName = cardImageNameHead + type + randomNumber
-        self.newsBackgroundView.image = UIImage(named: cardImageName)
     }
 }
