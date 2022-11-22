@@ -42,8 +42,9 @@ final class ReadingNewsViewController: UIViewController {
         
         return tableView
     }()
-    private lazy var nextButton: NextButton = {
-        let button = NextButton(configType: .disabled, color: .evyWhite)
+    // TODO: - 브라운이 만들어 둔 버튼으로 변경
+    private lazy var nextButton: UIButton = {
+        let button = UIButton()
         let action = UIAction { [weak self] _ in
             // TODO: - 리액션 뷰로 이동 구현
         }
@@ -57,7 +58,11 @@ final class ReadingNewsViewController: UIViewController {
         return imageView
     }()
     private let backButton = BackButton()
-    private let titleHeaderView = NewsTitleView(status: .expanded)
+    private let titleHeaderView: NewsTitleView = {
+        let view = NewsTitleView()
+        view.status = .expanded
+        return view
+    }()
     
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
 
@@ -107,7 +112,6 @@ final class ReadingNewsViewController: UIViewController {
         self.nextButton.constraint(bottom: self.view.bottomAnchor,
                                    trailing: self.view.trailingAnchor,
                                    padding: UIEdgeInsets(top: 0, left: 0, bottom: 37, right: 56))
-        self.nextButton.widthAnchorConstraint = self.nextButton.widthAnchor.constraint(equalToConstant: Size.disabledButtonWidth)
     }
     
     private func configureUI() {
@@ -117,11 +121,6 @@ final class ReadingNewsViewController: UIViewController {
     private func updateView(with scrollPosition: UITableView.ScrollPosition,
                             indexPath: IndexPath = IndexPath(row: 0, section: 0)) {
         self.newsTableView.scrollToRow(at: indexPath, at: scrollPosition, animated: true)
-        
-        if scrollPosition == .middle {
-            self.nextButton.configType = .next
-            self.nextButton.widthAnchorConstraint?.constant = Size.enabledButtonWidth
-        }
     }
     
     private func presentGuideViewController() {
