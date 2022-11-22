@@ -92,14 +92,13 @@ final class NieGuessingViewController: UIViewController {
 
     @objc
     private func updateTimer() {
-        if Time.newsGuessingTime != 0 {
-            Time.newsGuessingTime -= 1
-        } else {
-            if let timer = self.timer {
-                timer.invalidate()
-                self.timer = nil
-            }
+        guard self.newsGuessingTime != 0 else {
+             self.timer?.invalidate()
+             self.timer = nil
+             return
         }
-        self.timerLabel.text = "\(Time.newsGuessingTime % 60)"
+
+        self.newsGuessingTime -= 1
+        self.timerLabel.text = self.newsGuessingTime.description
     }
 }
