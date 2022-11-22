@@ -62,7 +62,7 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
     // MARK: - init
 
     override init(frame: CGRect) {
-        super .init(frame: frame)
+        super.init(frame: frame)
         self.setupLayout()
     }
 
