@@ -7,10 +7,6 @@
 
 import UIKit
 
-
-    private enum Time {
-        static var newsGuessingTime: Int = 5
-    }
 final class NieGuessingViewController: UIViewController {
 
     // MARK: - property
@@ -35,7 +31,7 @@ final class NieGuessingViewController: UIViewController {
     }()
     private lazy var timerLabel: UILabel = {
         let label = UILabel()
-        label.text = "\(Time.newsGuessingTime)"
+        label.text = "\(newsGuessingTime)"
         label.textColor = .evyWhite
         label.textAlignment = .center
         label.font = .font(.regular, ofSize: 24)
@@ -43,6 +39,7 @@ final class NieGuessingViewController: UIViewController {
     }()
 
     private var timer: Timer?
+    private var newsGuessingTime = 5
 
     // MARK: - life cycle
 
