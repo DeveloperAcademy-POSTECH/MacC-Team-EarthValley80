@@ -43,8 +43,8 @@ final class MyMainSentenceViewController: UIViewController {
     private func setupLayout() {
         self.view.addSubview(self.closeButton)
         self.closeButton.constraint(top: self.view.topAnchor,
-                                             trailing: self.view.trailingAnchor,
-                                             padding: UIEdgeInsets(top: 46, left: 0, bottom: 0, right: 65))
+                                    trailing: self.view.trailingAnchor,
+                                    padding: UIEdgeInsets(top: 46, left: 0, bottom: 0, right: 65))
         self.closeButton.constraint(.heightAnchor, constant: Size.buttonSize)
         self.closeButton.constraint(.widthAnchor, constant: Size.buttonSize)
 
