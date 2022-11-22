@@ -45,6 +45,7 @@ enum StringLiteral {
     static let reactionTitle = "짝짝짝 다 읽었군요! 이 기사, 어땠나요?"
     static let selectedReactionTitle = "이 기사에 대한 중심문장을 찾으러 가볼까요?"
     static let guidingTitle = "화면을 터치하면 뉴스를 읽을 수 있어요"
+    static let summaryTitle = "기사를 요약하거나 생각을 자유롭게 풀어보세요"
 
     // MARK: - title description
 
@@ -63,7 +64,7 @@ enum StringLiteral {
     static let answerWhatPlaceholder = "3가지 질문이 남아있어요"
     static let answerHowPlaceholder = "2가지 질문이 남아있어요"
     static let answerWhyPlaceholder = "마지막 질문이에요"
-    static let summarizePlaceholder = "키워드의 단어와 단어 사이를 연결하면 쉬워요"
+    static let summarizePlaceholder = "내용을 입력하세요"
     
     // MARK: - button
     
@@ -72,6 +73,7 @@ enum StringLiteral {
     static let completeButtonText = "완성했어요!"
     static let backButtonText = "홈으로"
     static let newsCompleteCheckButtonText = "내 피드에서 확인하기"
+    static let myMainSentenceButtonText = "내가 찾은 중심문장"
 
     // MARK: - lottie
 
