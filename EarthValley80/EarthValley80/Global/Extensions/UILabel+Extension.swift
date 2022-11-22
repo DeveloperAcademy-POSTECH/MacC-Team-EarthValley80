@@ -64,7 +64,7 @@ extension UILabel {
     }
 
     func textIndex(at point: CGPoint) -> Int? {
-        guard let attributedText = attributedText else { return nil }
+        guard let attributedText = self.attributedText else { return nil }
         let layoutManager = NSLayoutManager()
         let textContainer = NSTextContainer(size: self.bounds.size)
         let textStorage = NSTextStorage(attributedString: attributedText)
