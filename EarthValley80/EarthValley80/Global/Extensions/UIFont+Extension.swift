@@ -5,6 +5,7 @@
 //  Created by SHIN YOON AH on 2022/10/25.
 //
 
+import SwiftUI
 import UIKit
 
 enum FontName: String {
@@ -16,5 +17,11 @@ enum FontName: String {
 extension UIFont {
     static func font(_ style: FontName, ofSize size: CGFloat) -> UIFont {
         return UIFont(name: style.rawValue, size: size)!
+    }
+}
+
+extension Font {
+    static func happinessFont(_ style: FontName, ofSize size: CGFloat) -> Font {
+        return .custom(style.rawValue, size: size)
     }
 }
