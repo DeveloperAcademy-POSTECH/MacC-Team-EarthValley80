@@ -12,10 +12,7 @@ import UIKit
 final class SideTabbarViewController: UIViewController {
     // MARK: - property
     private lazy var notifier = EventManager.shared
-    lazy var sideTabbarView: SideTabbarView = {
-        let notifierValue = SideTabbarView()
-        return notifierValue
-    }()
+    lazy var sideTabbarView = SideTabbarView()
     private lazy var sideTabbar = UIHostingController(rootView: sideTabbarView)
     private var cancellables = Set<AnyCancellable>()
     private let containerViewController = ContainerViewController()
