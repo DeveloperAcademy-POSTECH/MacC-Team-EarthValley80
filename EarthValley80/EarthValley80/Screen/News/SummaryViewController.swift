@@ -102,7 +102,7 @@ final class SummaryViewController: UIViewController {
     // MARK: - selector
 
     @objc
-    override func endEditingView() {
+    override func dismissKeyboard() {
         if !myMainSentenceButton.isTouchInside {
             view.endEditing(true)
         }
