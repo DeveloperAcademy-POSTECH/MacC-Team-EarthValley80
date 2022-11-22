@@ -18,11 +18,22 @@ enum ImageLiteral {
     static var icXmark: UIImage { .load(systemName: "xmark") }
     static var icSquareAndArrowUp: UIImage { .load(systemName: "square.and.arrow.up") }
     static var icoNews: UIImage { .load(name: "ico_news")}
+    static var icoAngry: UIImage { .load(name: "ico_angry")}
+    static var icoSurprised: UIImage { .load(name: "ico_excited")}
+    static var icoFun: UIImage { .load(name: "ico_fun")}
+    static var icoSad: UIImage { .load(name: "ico_sad")}
+    static var icoScary: UIImage { .load(name: "ico_scary")}
+
+    // MARK: - button
+
+    static var btnAfterReaction: UIImage { .load(name: "btn_afterReaction")}
+    static var btnBeforeReaction: UIImage { .load(name: "btn_beforeReaction")}
 }
 
 extension ImageLiteral {
     
     // MARK: - SwiftUI
+    
     static var imgYomoJomoLogo: Image = Image("yomojomoLogo")
     static var imgGoToYomoRoomArrow: Image = Image(systemName: "arrowtriangle.right.fill")
     static var imgSideMenu1: String = "newspaper.fill"
