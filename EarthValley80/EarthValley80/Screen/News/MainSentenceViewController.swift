@@ -54,11 +54,7 @@ final class MainSentenceViewController: UIViewController {
     }()
     private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.mainSentenceTitle)
     private let backButton = BackButton()
-    private lazy var mainSentenceView: MainSentenceView = {
-        let view = MainSentenceView(type: .mainSentence)
-        view.paragraphNumber = self.sentences.count
-        return view
-    }()
+    private let mainSentenceView = MainSentenceView(type: .mainSentence)
     private lazy var nextButton: GotoSomewhereButton = {
         let button = GotoSomewhereButton(type: .white)
         let action = UIAction { [weak self] _ in
@@ -72,8 +68,11 @@ final class MainSentenceViewController: UIViewController {
     }()
 
     private var enteredViewFirstTime: Bool = true
-    // TODO: - 일단 빈 스트링으로 생성, 후에 채우는 로직 넣기
-    private var sentences: [String] = []
+    private var paragraphs: [String] = [] {
+        willSet {
+            self.mainSentenceView.paragraphNumber = newValue.count
+        }
+    }
     
     private let newsManager = NewsManager.shared
     
@@ -141,14 +140,14 @@ final class MainSentenceViewController: UIViewController {
     private func appendSentences() {
         let _ = self.newsManager.newsContent.components(separatedBy: CharacterSet.newlines)
                                             .filter { $0 != "" }
-                                            .compactMap { self.sentences.append($0) }
+                                            .compactMap { self.paragraphs.append($0) }
     }
 }
 
 // MARK: - UITableViewDataSource
 extension MainSentenceViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sentences.count
+        return self.paragraphs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -156,7 +155,7 @@ extension MainSentenceViewController: UITableViewDataSource {
         let paragraphIndex = indexPath.row + 1
         let enteredFirstTime = indexPath.row == 0 && self.enteredViewFirstTime
 
-        cell.setupContentParagraphData(paragraphIndex: paragraphIndex, content: self.sentences[indexPath.row])
+        cell.setupContentParagraphData(paragraphIndex: paragraphIndex, content: self.paragraphs[indexPath.row])
         cell.didTappedMainSentence = { [weak self] sentence in
             guard let mainSentenceView = self?.mainSentenceView else { return }
             mainSentenceView.putMainSentence(at: indexPath.row, sentence: sentence)
