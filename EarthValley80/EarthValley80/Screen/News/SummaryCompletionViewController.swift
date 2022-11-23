@@ -25,6 +25,17 @@ final class SummaryCompletionViewController: UIViewController {
         label.text = StringLiteral.summaryCompletionDescription
         return label
     }()
+    private lazy var nextButton: GotoSomewhereButton = {
+        let button = GotoSomewhereButton(type: .white)
+        let action = UIAction { _ in
+            guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+            sceneDelegate.navigateToMyNewsDrawerViewController()
+        }
+        button.addAction(action, for: .touchUpInside)
+        // TODO: - 이 부분 텍스트를 디자인에서 정해주지 않았어요
+        button.setupButtonContents(buttonImage: ImageLiteral.icArrowRight, buttonTitle: StringLiteral.goToNewsDrawerButtonText)
+        return button
+    }()
 
     // MARK: - life cycle
 
@@ -53,6 +64,11 @@ final class SummaryCompletionViewController: UIViewController {
         self.descriptionLabel.constraint(top: self.celebrateImageView.bottomAnchor,
                                          centerX: self.view.centerXAnchor,
                                          padding: UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.nextButton)
+        self.nextButton.constraint(top: self.descriptionLabel.bottomAnchor,
+                                   centerX: self.view.centerXAnchor,
+                                   padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
     }
 
     private func configureUI() {
