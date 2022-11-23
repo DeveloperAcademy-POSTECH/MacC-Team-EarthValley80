@@ -26,8 +26,9 @@ final class SummaryCompletionViewController: UIViewController {
     }()
     private lazy var nextButton: GotoSomewhereButton = {
         let button = GotoSomewhereButton(type: .white)
-        let action = UIAction { _ in
+        let action = UIAction { [weak self] _ in
             guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+            self?.resetNewsData()
             sceneDelegate.navigateToMyNewsDrawerViewController()
         }
         button.addAction(action, for: .touchUpInside)
@@ -35,6 +36,8 @@ final class SummaryCompletionViewController: UIViewController {
         button.setupButtonContents(buttonImage: ImageLiteral.icArrowRight, buttonTitle: StringLiteral.goToNewsDrawerButtonText)
         return button
     }()
+
+    private let newsManager = NewsManager.shared
 
     // MARK: - life cycle
 
@@ -73,5 +76,9 @@ final class SummaryCompletionViewController: UIViewController {
     private func configureUI() {
         // TODO: - 컬러셋 정해지면 변경
         self.view.backgroundColor = .black.withAlphaComponent(0.94)
+    }
+
+    private func resetNewsData() {
+        self.newsManager.resetAll()
     }
 }
