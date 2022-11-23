@@ -24,6 +24,26 @@ enum ImageLiteral {
     static var icoSad: UIImage { .load(name: "ico_sad")}
     static var icoScary: UIImage { .load(name: "ico_scary")}
 
+    // MARK: - category
+
+    static var society: UIImage { .load(name: "society")}
+    static var world: UIImage { .load(name: "world")}
+    static var history: UIImage { .load(name: "history")}
+    static var robot: UIImage { .load(name: "robot")}
+    static var environment: UIImage { .load(name: "environment")}
+    static var health: UIImage { .load(name: "health")}
+    static var animal: UIImage { .load(name: "animal")}
+    static var space: UIImage { .load(name: "space")}
+    static var science: UIImage { .load(name: "science")}
+    static var company: UIImage { .load(name: "company")}
+    static var money: UIImage { .load(name: "money")}
+    static var economyIT: UIImage { .load(name: "it")}
+    static var economy: UIImage { .load(name: "economy")}
+    static var art: UIImage { .load(name: "art")}
+    static var broadcast: UIImage { .load(name: "broadcast")}
+    static var exercise: UIImage { .load(name: "exercise")}
+    static var culture: UIImage { .load(name: "culture")}
+
     // MARK: - button
 
     static var btnAfterReaction: UIImage { .load(name: "btn_afterReaction")}
