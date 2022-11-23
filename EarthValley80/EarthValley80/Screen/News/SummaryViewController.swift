@@ -134,7 +134,7 @@ final class SummaryViewController: UIViewController {
     private func presentSummaryCompletionViewController() {
         let completionViewController = SummaryCompletionViewController()
         completionViewController.modalTransitionStyle = .crossDissolve
-        completionViewController.modalPresentationStyle = .fullScreen
+        completionViewController.modalPresentationStyle = .overCurrentContext
         self.present(completionViewController, animated: true)
     }
 

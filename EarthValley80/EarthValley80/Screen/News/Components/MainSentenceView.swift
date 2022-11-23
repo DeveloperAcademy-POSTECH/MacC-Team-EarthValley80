@@ -51,7 +51,7 @@ final class MainSentenceView: UIView {
 
     // MARK: - property
 
-    private lazy var sentenceTableView: UITableView = {
+    private(set) lazy var sentenceTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.separatorColor = .clear

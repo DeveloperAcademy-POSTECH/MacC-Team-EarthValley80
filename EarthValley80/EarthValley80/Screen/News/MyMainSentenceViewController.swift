@@ -30,6 +30,8 @@ final class MyMainSentenceViewController: UIViewController {
     }()
     private let mainSentenceView = MainSentenceView(type: .summary)
 
+    private let newsManager = NewsManager.shared
+
     // MARK: - life cycle
     
     override func viewDidLoad() {
@@ -37,6 +39,7 @@ final class MyMainSentenceViewController: UIViewController {
         self.setupLayout()
         self.configureUI()
         self.setupButtonAction()
+        self.setupMainSentences()
     }
 
     // MARK: - func
@@ -65,5 +68,13 @@ final class MyMainSentenceViewController: UIViewController {
         }
 
         self.closeButton.addAction(dismissAction, for: .touchUpInside)
+    }
+
+    private func setupMainSentences() {
+        self.mainSentenceView.paragraphNumber = self.newsManager.mainSentences.count
+        self.newsManager.mainSentences.enumerated().forEach { index, sentence in
+            self.mainSentenceView.putMainSentence(at: index, sentence: sentence)
+        }
+        self.mainSentenceView.sentenceTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 }
