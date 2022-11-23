@@ -73,13 +73,16 @@ final class MainSentenceViewController: UIViewController {
 
     private var enteredViewFirstTime: Bool = true
     // TODO: - 일단 빈 스트링으로 생성, 후에 채우는 로직 넣기
-    private var sentences: [String] = ["", "", "", "", ""]
+    private var sentences: [String] = []
+    
+    private let newsManager = NewsManager.shared
     
     // MARK: - life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayout()
+        self.appendSentences()
     }
     
     // MARK: - func
@@ -134,6 +137,12 @@ final class MainSentenceViewController: UIViewController {
         summaryViewController.modalPresentationStyle = .fullScreen
         self.present(summaryViewController, animated: true)
     }
+
+    private func appendSentences() {
+        let _ = self.newsManager.newsContent.components(separatedBy: CharacterSet.newlines)
+                                            .filter { $0 != "" }
+                                            .compactMap { self.sentences.append($0) }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -147,8 +156,7 @@ extension MainSentenceViewController: UITableViewDataSource {
         let paragraphIndex = indexPath.row + 1
         let enteredFirstTime = indexPath.row == 0 && self.enteredViewFirstTime
 
-        // TODO: - content 내용 나누는 부분은 후에 적용할 예정
-        cell.setupContentParagraphData(paragraphIndex: paragraphIndex, content: "          ‘타다’는 승합차를 유료로 타려는 이용자와 운전자를 연결해주는 차량공유 앱 서비스입니다. 승합차는 일반 택시보다 크고 마을버스보다 작은 차종을 말합니다. 대개 11~15인승입니다. 2018년 10월 ‘타다’라는 글자를 새긴 차가 처음 시장에 등장했습니다.")
+        cell.setupContentParagraphData(paragraphIndex: paragraphIndex, content: self.sentences[indexPath.row])
         cell.didTappedMainSentence = { [weak self] sentence in
             guard let mainSentenceView = self?.mainSentenceView else { return }
             mainSentenceView.putMainSentence(at: indexPath.row, sentence: sentence)
