@@ -58,6 +58,7 @@ final class MainSentenceViewController: UIViewController {
     private lazy var nextButton: GotoSomewhereButton = {
         let button = GotoSomewhereButton(type: .white)
         let action = UIAction { [weak self] _ in
+            self?.newsManager.setupMainSentences(self?.mainSentenceView.sentences ?? [])
             self?.presentSummaryViewController()
         }
         button.addAction(action, for: .touchUpInside)

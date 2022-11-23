@@ -15,6 +15,7 @@ final class NewsManager {
 
     private(set) var newsTitle: String = ""
     private(set) var newsContent: String = ""
+    private(set) var mainSentences: [String] = []
 
     // MARK: - init
 
@@ -25,10 +26,15 @@ final class NewsManager {
     func resetAll() {
         self.newsTitle = ""
         self.newsContent = ""
+        self.mainSentences.removeAll()
     }
 
     func setupNews(title: String, content: String) {
         self.newsTitle = title
         self.newsContent = content
+    }
+
+    func setupMainSentences(_ sentences: [String]) {
+        self.mainSentences = sentences
     }
 }
