@@ -10,7 +10,7 @@ import UIKit
 final class SummaryViewController: UIViewController {
 
     private enum Size {
-        static let buttonSize: CGFloat = 69.0
+        static let buttonSize: CGFloat = 86.0
     }
 
     // MARK: - property
@@ -27,8 +27,7 @@ final class SummaryViewController: UIViewController {
     private let myMainSentenceButton: UIButton = {
         let button = UIButton()
 
-        // TODO: - 나중에 Asset 이미지 변경
-        let imageView = UIImageView(image: UIImage(systemName: "pencil.circle"))
+        let imageView = UIImageView(image: ImageLiteral.btnMyMainSentence)
         button.addSubview(imageView)
         imageView.constraint(top: button.topAnchor, centerX: button.centerXAnchor)
         imageView.constraint(.heightAnchor, constant: Size.buttonSize)
@@ -41,7 +40,7 @@ final class SummaryViewController: UIViewController {
                               leading: button.leadingAnchor,
                               bottom: button.bottomAnchor,
                               trailing: button.trailingAnchor,
-                              padding: UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0))
+                              padding: UIEdgeInsets.zero)
         titleLabel.text = StringLiteral.myMainSentenceButtonText
         titleLabel.font = .font(.bold, ofSize: 10)
         titleLabel.textColor = .evyWhite
