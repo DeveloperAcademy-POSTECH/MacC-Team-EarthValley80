@@ -31,12 +31,10 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
         return imageview
     }()
     private let newsImageView: UIImageView = {
-        // TODO: - 기사에 맞는 뉴스 대표이미지로 변경해야합니다.
         let imageview = UIImageView()
-        imageview.contentMode = .scaleToFill
+        imageview.contentMode = .scaleAspectFill
         imageview.clipsToBounds = true
         imageview.layer.cornerRadius = 12.0
-        imageview.backgroundColor = .blue
         return imageview
     }()
     private let newsCategoryLabel: UILabel = {
@@ -107,6 +105,7 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
     func setData(with news: News) {
         newsTitleLabel.text = news.title
         newsCategoryLabel.text = news.category
+        newsImageView.image = news.image
     }
 
     func calculateLabelWidth(_ newsData: News) {
