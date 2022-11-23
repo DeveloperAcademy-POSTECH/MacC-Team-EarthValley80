@@ -81,7 +81,7 @@ final class MainSentenceView: UIView {
             self.sentences = Array(repeating: "", count: newValue)
         }
     }
-    private var sentences: [String]? {
+    var sentences: [String]? {
         didSet {
             self.sentenceTableView.reloadData()
         }

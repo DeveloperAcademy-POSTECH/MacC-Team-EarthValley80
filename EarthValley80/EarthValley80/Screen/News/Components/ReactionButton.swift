@@ -24,19 +24,18 @@ final class ReactionButton: UIButton {
         case angry
         case surprise
 
-        // TODO: - 후에 이모지 Image로 변경
-        var color: UIColor {
+        var image: UIImage {
             switch self {
             case .fun:
-                return .yellow
+                return ImageLiteral.icoFun
             case .sad:
-                return .blue
+                return ImageLiteral.icoSad
             case .scary:
-                return .green
+                return ImageLiteral.icoScary
             case .angry:
-                return .red
+                return ImageLiteral.icoAngry
             case .surprise:
-                return .orange
+                return ImageLiteral.icoSurprised
             }
         }
 
@@ -63,17 +62,16 @@ final class ReactionButton: UIButton {
         case after(Emotion)
         case emotion(Emotion)
 
-        // TODO: - 후에 이모지 Image로 변경
-        var color: UIColor? {
+        var image: UIImage? {
             switch self {
             case .before:
-                return .brown
+                return ImageLiteral.btnBeforeReaction
             case .pressed:
-                return .cyan
+                return ImageLiteral.btnAfterReaction
             case .after(let emotion):
-                return emotion.color
+                return emotion.image
             case .emotion(let emotion):
-                return emotion.color
+                return emotion.image
             }
         }
 
@@ -175,8 +173,7 @@ final class ReactionButton: UIButton {
     }
 
     func updateConfiguration(to type: ButtonType) {
-        // TODO: - color가 아니고 이미지로 변경해야 함
-        self.reactionButtonImageView.backgroundColor = type.color
+        self.reactionButtonImageView.image = type.image
         self.reactionLabel.text = type.title
 
         self.updateEmotionType(with: type)

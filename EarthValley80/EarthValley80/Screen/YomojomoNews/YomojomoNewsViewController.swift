@@ -7,6 +7,10 @@
 
 import UIKit
 
+extension NSNotification.Name {
+    static let presentReadingNews = NSNotification.Name("presentReadingNews")
+}
+
 final class YomojomoNewsViewController: UIViewController {
 
     private enum Size {
@@ -90,6 +94,11 @@ final class YomojomoNewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayout()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - func
@@ -213,12 +222,6 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDelegate
 extension YomojomoNewsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "News", bundle: nil)
-        guard let newsViewController = storyboard.instantiateViewController(withIdentifier: ReadingNewsViewController.className) as? ReadingNewsViewController else { return }
-        
-        newsViewController.modalTransitionStyle = .crossDissolve
-        newsViewController.modalPresentationStyle = .fullScreen
-
-        self.present(newsViewController, animated: true)
+        NotificationCenter.default.post(name: .presentReadingNews, object: nil)
     }
 }

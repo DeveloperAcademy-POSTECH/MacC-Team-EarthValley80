@@ -59,6 +59,17 @@ final class MainSentenceViewController: UIViewController {
         view.paragraphNumber = self.sentences.count
         return view
     }()
+    private lazy var nextButton: GotoSomewhereButton = {
+        let button = GotoSomewhereButton(type: .white)
+        let action = UIAction { [weak self] _ in
+            self?.presentSummaryViewController()
+        }
+        button.addAction(action, for: .touchUpInside)
+        // TODO: - 이 부분 텍스트를 디자인에서 정해주지 않았어요
+        button.setupButtonContents(buttonImage: ImageLiteral.icArrowRight, buttonTitle: StringLiteral.nextButtonText)
+        button.isHidden = true
+        return button
+    }()
 
     private var enteredViewFirstTime: Bool = true
     // TODO: - 일단 빈 스트링으로 생성, 후에 채우는 로직 넣기
@@ -110,6 +121,18 @@ final class MainSentenceViewController: UIViewController {
                                       bottom: self.view.bottomAnchor,
                                       trailing: self.mainSentenceView.leadingAnchor,
                                       padding: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10))
+
+        self.view.addSubview(self.nextButton)
+        self.nextButton.constraint(bottom: self.view.bottomAnchor,
+                                   trailing: self.view.trailingAnchor,
+                                   padding: UIEdgeInsets(top: 0, left: 0, bottom: 37, right: 56))
+    }
+
+    private func presentSummaryViewController() {
+        let summaryViewController = SummaryViewController()
+        summaryViewController.modalTransitionStyle = .crossDissolve
+        summaryViewController.modalPresentationStyle = .fullScreen
+        self.present(summaryViewController, animated: true)
     }
 }
 
@@ -127,7 +150,13 @@ extension MainSentenceViewController: UITableViewDataSource {
         // TODO: - content 내용 나누는 부분은 후에 적용할 예정
         cell.setupContentParagraphData(paragraphIndex: paragraphIndex, content: "          ‘타다’는 승합차를 유료로 타려는 이용자와 운전자를 연결해주는 차량공유 앱 서비스입니다. 승합차는 일반 택시보다 크고 마을버스보다 작은 차종을 말합니다. 대개 11~15인승입니다. 2018년 10월 ‘타다’라는 글자를 새긴 차가 처음 시장에 등장했습니다.")
         cell.didTappedMainSentence = { [weak self] sentence in
-            self?.mainSentenceView.putMainSentence(at: indexPath.row, sentence: sentence)
+            guard let mainSentenceView = self?.mainSentenceView else { return }
+            mainSentenceView.putMainSentence(at: indexPath.row, sentence: sentence)
+
+            if let sentence = mainSentenceView.sentences,
+               !sentence.contains("") {
+                self?.nextButton.isHidden = false
+            }
         }
 
         if enteredFirstTime {
