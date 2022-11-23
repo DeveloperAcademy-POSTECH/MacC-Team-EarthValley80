@@ -16,11 +16,10 @@ final class ReactionViewController: UIViewController {
     // MARK: - property
 
     private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.reactionTitle)
-    private let headlineLabel: UILabel = {
+    private lazy var headlineLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.bold, ofSize: 34)
-        // TODO: - 더미로 넣어둔 텍스트
-        label.text = "세상에 다람쥐가 없다고 무슨 문제야?"
+        label.text = self.newsManager.newsTitle
         label.textColor = .evyWhite
         return label
     }()
@@ -93,6 +92,8 @@ final class ReactionViewController: UIViewController {
 
         return button
     }()
+
+    private let newsManager = NewsManager.shared
 
     // MARK: - life cycle
 
