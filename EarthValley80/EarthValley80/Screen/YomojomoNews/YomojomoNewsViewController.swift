@@ -88,6 +88,7 @@ final class YomojomoNewsViewController: UIViewController {
 
     private let newsModel = NewsSortingManager()
     private lazy var newsData = self.newsModel.arrangeNewsData(yomojomoViewDummyData)
+    private lazy var newsData2 = self.newsModel.arrangeNewsData(yomojomoViewDummyData2)
 
     // MARK: - life cycle
 
@@ -170,14 +171,14 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
         case self.yomojomoNewsCollectionView:
             return self.newsData.count
         case self.thisWeekNewsCollectionView:
-            return self.newsData.count
+            return self.newsData2.count
         default:
             return 0
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let hasTitle = newsData[indexPath.row].title != nil
+        let hasTitle = newsData2[indexPath.row].title != nil
 
         switch (collectionView, hasTitle) {
         case (self.yomojomoNewsCollectionView, _):
@@ -187,8 +188,9 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
             return cell
         case (self.thisWeekNewsCollectionView, true):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThisWeekNewsCollectionViewCell.className, for: indexPath) as? ThisWeekNewsCollectionViewCell else { return UICollectionViewCell() }
-            cell.setData(newsData[indexPath.row])
-            cell.calculateLabelWidth(newsData[indexPath.row])
+            // TODO: - 더미데이터 삭제해야합니다.
+            cell.setData(newsData2[indexPath.row])
+            cell.calculateLabelWidth(newsData2[indexPath.row])
             return cell
         case (self.thisWeekNewsCollectionView, false):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
@@ -207,7 +209,8 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: Size.yomojomoCollectionviewWidth, height: Size.yomojomoCollectionviewHeight)
         case self.thisWeekNewsCollectionView:
             var width: CGFloat
-            if self.newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
+            // TODO: - 더미데이터 삭제해야합니다.
+            if self.newsData2[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
                 width = ((collectionView.frame.width - (Size.cellInterval * 4)) / Size.column) * 2 + Size.cellInterval
             } else {
                 width = (collectionView.frame.width - (Size.cellInterval * 4)) / Size.column - 0.00000001
