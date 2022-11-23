@@ -87,6 +87,7 @@ final class YomojomoNewsViewController: UIViewController {
     }()
 
     private let newsModel = NewsSortingManager()
+    private let newsManager = NewsManager.shared
     private lazy var newsData = self.newsModel.arrangeNewsData(yomojomoViewDummyData)
 
     // MARK: - life cycle
@@ -222,6 +223,8 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDelegate
 extension YomojomoNewsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let index = indexPath.row
+        self.newsManager.setupNews(title: newsData[index].title ?? "", content: newsData[index].content ?? "")
         NotificationCenter.default.post(name: .presentReadingNews, object: nil)
     }
 }
