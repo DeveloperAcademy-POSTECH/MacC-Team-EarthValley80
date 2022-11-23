@@ -41,7 +41,7 @@ struct NewsSortingManager {
         }
 
         for _ in 0..<needShortCount {
-            shortNews.insert(News(title: nil, category: nil), at: 0)
+            shortNews.insert(News(title: nil, content: nil, category: nil, image: nil), at: 0)
         }
 
         for rowNum in 0..<longcount/2 {
@@ -131,12 +131,12 @@ struct NewsSortingManager {
 
         for number in lottieAttainmentStandard {
             if myNewsDataCount == 1 {
-                reversedData.insert(News(title: nil, category: nil), at: 0)
+                reversedData.insert(News(title: nil, content: nil, category: nil, image: nil), at: 0)
                 break
             } else if myNewsDataCount < number {
                 nilIndex = lottieAttainmentStandard.firstIndex(of: number) ?? 0
                 for index in 0..<nilIndex {
-                    reversedData.insert(News(title: nil, category: nil), at: locationOfNil[index])
+                    reversedData.insert(News(title: nil, content: nil, category: nil, image: nil), at: locationOfNil[index])
                 }
                 break
             }
