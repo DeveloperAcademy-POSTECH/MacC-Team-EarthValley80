@@ -33,19 +33,19 @@ extension UIColor {
     }
 
     static var evyCategoryEcnmy: UIColor {
-        return UIColor(hex: "#707FB9")
+        return UIColor(hex: "#ADBBF8")
     }
 
     static var evyCategorySic: UIColor {
-        return UIColor(hex: "#3C43B8", alpha: 0.8)
+        return UIColor(hex: "#AAD9D3")
     }
 
-    static var evyCategoryHisty: UIColor {
-        return UIColor(hex: "#D27B52")
+    static var evyCategorySoci: UIColor {
+        return UIColor(hex: "#FCD49B")
     }
 
     static var evyCategoryCul: UIColor {
-        return UIColor(hex: "#C32B2A")
+        return UIColor(hex: "#FFBBA9")
     }
 }
 

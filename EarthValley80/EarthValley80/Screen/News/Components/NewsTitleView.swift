@@ -41,7 +41,7 @@ final class NewsTitleView: UIView {
             case .expanded:
                 return .evyWhite
             default:
-                return .evyWhite.withAlphaComponent(0.4)
+                return .evyWhite.withAlphaComponent(0.14)
             }
         }
         

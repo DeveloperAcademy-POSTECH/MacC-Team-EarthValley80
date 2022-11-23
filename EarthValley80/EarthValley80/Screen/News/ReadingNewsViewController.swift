@@ -42,13 +42,13 @@ final class ReadingNewsViewController: UIViewController {
         
         return tableView
     }()
-    // TODO: - 브라운이 만들어 둔 버튼으로 변경
-    private lazy var nextButton: UIButton = {
-        let button = UIButton()
+    private lazy var nextButton: GotoSomewhereButton = {
+        let button = GotoSomewhereButton(type: .white)
         let action = UIAction { [weak self] _ in
-            // TODO: - 리액션 뷰로 이동 구현
+            self?.presentReactionViewController()
         }
         button.addAction(action, for: .touchUpInside)
+        button.setupButtonContents(buttonImage: ImageLiteral.icArrowRight, buttonTitle: StringLiteral.finishReadButtonText)
         return button
     }()
     private let backgroundView: UIImageView = {
@@ -131,6 +131,13 @@ final class ReadingNewsViewController: UIViewController {
         guideViewController.modalPresentationStyle = .overCurrentContext
         self.present(guideViewController, animated: true)
     }
+
+    private func presentReactionViewController() {
+        let reactionViewController = ReactionViewController()
+        reactionViewController.modalTransitionStyle = .crossDissolve
+        reactionViewController.modalPresentationStyle = .overCurrentContext
+        self.present(reactionViewController, animated: true)
+    }
     
     // MARK: - selector
     
@@ -162,7 +169,6 @@ extension ReadingNewsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsContentTableViewCell.className) as? NewsContentTableViewCell else { return UITableViewCell() }
-        cell.status = .expanded
         return cell
     }
 }

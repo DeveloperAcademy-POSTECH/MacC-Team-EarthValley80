@@ -54,4 +54,10 @@ extension SceneDelegate {
     func navigateToNewsFeedViewController() {
         self.window?.rootViewController = SideTabbarViewController()
     }
+
+    func navigateToMyNewsDrawerViewController() {
+        let notifier = EventManager.shared
+        notifier.sideMenuNumber.send(3)
+        self.window?.rootViewController = SideTabbarViewController()
+    }
 }
