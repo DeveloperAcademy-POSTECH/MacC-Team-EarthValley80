@@ -12,7 +12,7 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
     private enum Size {
         static let categoryLabelFontSize: CGFloat = 16.0
         static let newsTitleFontSize: CGFloat = 28.0
-        static let categoryImageSize: CGFloat = 155.0
+        static let categoryImageSize: CGFloat = 200
         static let newsTitleImageSize: CGFloat = 233.0
         static let categoryLabelHeight: CGFloat = 26.0
         static let categoryLabelPadding: CGFloat = 24.0
@@ -27,7 +27,7 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
         imageview.contentMode = .scaleToFill
         imageview.clipsToBounds = true
         imageview.layer.cornerRadius = 12.0
-        imageview.backgroundColor = .red
+//        imageview.backgroundColor = .red
         return imageview
     }()
     private let newsImageView: UIImageView = {
