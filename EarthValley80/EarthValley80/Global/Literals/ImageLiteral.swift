@@ -53,6 +53,14 @@ enum ImageLiteral {
     // MARK: - image
 
     static var imgCongrate: UIImage { .load(name: "img_congrate")}
+    static var imgEco1: UIImage { .load(name: "img_eco1")}
+    static var imgEco2: UIImage { .load(name: "img_eco2")}
+    static var imgMunhwa1: UIImage { .load(name: "img_munhwa1")}
+    static var imgMunhwa2: UIImage { .load(name: "img_munhwa2")}
+    static var imgSci1: UIImage { .load(name: "img_sci1")}
+    static var imgSci2: UIImage { .load(name: "img_sci2")}
+    static var imgSisa1: UIImage { .load(name: "img_sisa1")}
+    static var imgSisa2: UIImage { .load(name: "img_sisa2")}
 }
 
 extension ImageLiteral {
