@@ -13,9 +13,8 @@ final class SummaryCompletionViewController: UIViewController {
 
     private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.summaryCompletionTitle)
     private let celebrateImageView: UIImageView = {
-        let imageView = UIImageView()
-        // TODO: - 후에 이미지 에셋으로 변경할 예정입니다.
-        imageView.backgroundColor = .cyan
+        let imageView = UIImageView(image: ImageLiteral.imgCongrate)
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     private let descriptionLabel: UILabel = {
