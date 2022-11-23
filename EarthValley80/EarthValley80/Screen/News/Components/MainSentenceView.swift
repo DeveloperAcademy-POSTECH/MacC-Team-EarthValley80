@@ -51,7 +51,7 @@ final class MainSentenceView: UIView {
 
     // MARK: - property
 
-    private lazy var sentenceTableView: UITableView = {
+    private(set) lazy var sentenceTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
         tableView.separatorColor = .clear
@@ -141,11 +141,9 @@ final class MainSentenceView: UIView {
         }
     }
 
-    func putMainSentence(at index: Int,
-                         sentence: String,
-                         scrollPosition: UITableView.ScrollPosition = .top) {
+    func putMainSentence(at index: Int, sentence: String) {
         self.sentences?[index] = sentence
-        self.sentenceTableView.scrollToRow(at: IndexPath(row: index, section: 0), at: scrollPosition, animated: true)
+        self.sentenceTableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
     }
 }
 

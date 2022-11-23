@@ -73,7 +73,8 @@ final class MyMainSentenceViewController: UIViewController {
     private func setupMainSentences() {
         self.mainSentenceView.paragraphNumber = self.newsManager.mainSentences.count
         self.newsManager.mainSentences.enumerated().forEach { index, sentence in
-            self.mainSentenceView.putMainSentence(at: index, sentence: sentence, scrollPosition: .none)
+            self.mainSentenceView.putMainSentence(at: index, sentence: sentence)
         }
+        self.mainSentenceView.sentenceTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 }
