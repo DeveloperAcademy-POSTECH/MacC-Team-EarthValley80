@@ -18,6 +18,11 @@ enum ImageLiteral {
     static var icXmark: UIImage { .load(systemName: "xmark") }
     static var icSquareAndArrowUp: UIImage { .load(systemName: "square.and.arrow.up") }
     static var icoNews: UIImage { .load(name: "ico_news")}
+    static var icoAngry: UIImage { .load(name: "ico_angry")}
+    static var icoSurprised: UIImage { .load(name: "ico_excited")}
+    static var icoFun: UIImage { .load(name: "ico_fun")}
+    static var icoSad: UIImage { .load(name: "ico_sad")}
+    static var icoScary: UIImage { .load(name: "ico_scary")}
 
     // MARK: - category
 
@@ -38,11 +43,6 @@ enum ImageLiteral {
     static var broadcast: UIImage { .load(name: "broadcast")}
     static var exercise: UIImage { .load(name: "exercise")}
     static var culture: UIImage { .load(name: "culture")}
-    static var icoAngry: UIImage { .load(name: "ico_angry")}
-    static var icoSurprised: UIImage { .load(name: "ico_excited")}
-    static var icoFun: UIImage { .load(name: "ico_fun")}
-    static var icoSad: UIImage { .load(name: "ico_sad")}
-    static var icoScary: UIImage { .load(name: "ico_scary")}
 
     // MARK: - button
 
