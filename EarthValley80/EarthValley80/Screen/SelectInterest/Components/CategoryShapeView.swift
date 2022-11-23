@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryShapeView: UIView {
+final class CategoryShapeView: UIView {
 
     // MARK: - property
 
