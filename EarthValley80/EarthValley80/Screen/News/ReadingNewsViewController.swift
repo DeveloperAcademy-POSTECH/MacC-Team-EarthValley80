@@ -179,6 +179,10 @@ extension ReadingNewsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsContentTableViewCell.className) as? NewsContentTableViewCell else { return UITableViewCell() }
+        let paragraphIndex = indexPath.row + 1
+
+        cell.setupContentParagraphData(paragraphIndex: paragraphIndex, content: self.paragraphs[indexPath.row])
+        
         return cell
     }
 }

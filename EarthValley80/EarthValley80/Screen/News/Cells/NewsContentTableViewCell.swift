@@ -69,7 +69,7 @@ final class NewsContentTableViewCell: UITableViewCell {
                                      leading: self.contentView.leadingAnchor,
                                      bottom: self.contentView.bottomAnchor,
                                      trailing: self.contentView.trailingAnchor,
-                                     padding: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 0, right: Size.horizontalPadding))
+                                     padding: UIEdgeInsets(top: 0, left: Size.horizontalPadding, bottom: 60, right: Size.horizontalPadding))
     }
     
     private func configureUI() {
@@ -81,6 +81,13 @@ final class NewsContentTableViewCell: UITableViewCell {
         guard let content = self.contentLabel.text else { return }
         
         self.sentences = content.components(separatedBy: [".", "!", "?"]).map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
+    }
+
+    func setupContentParagraphData(paragraphIndex: Int, content: String) {
+//        self.captionLabel.text = paragraphIndex.description
+        self.contentLabel.text = content
+        self.contentLabel.setLineSpacing(kernValue: -2.0,
+                                         lineHeightMultiple: Size.originalLineHeightMultiple)
     }
     
     private func applyHighlight(to index: Int) {
