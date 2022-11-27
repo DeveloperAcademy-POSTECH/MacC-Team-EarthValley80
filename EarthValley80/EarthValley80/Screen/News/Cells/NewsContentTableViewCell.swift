@@ -111,6 +111,7 @@ final class NewsContentTableViewCell: UITableViewCell {
             if let hasSentence = self.contentLabel.text?.contains(sentence),
                hasSentence {
                 self.contentLabel.applyColor(to: sentence, with: .evyWhite)
+                self.contentLabel.applyFont(to: sentence, with: .font(.bold, ofSize: Size.originalFontSize))
                 break
             }
         }
