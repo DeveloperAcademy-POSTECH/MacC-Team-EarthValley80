@@ -30,7 +30,14 @@ final class NewsContentTableViewCell: UITableViewCell {
     }
     
     // MARK: - property
-    
+
+    private let captionLabel: UILabel = {
+        let label = UILabel()
+        label.font = .font(.regular, ofSize: 14)
+        // TODO: - 컬러셋이 나오면 제대로 적용하겠습니다.
+        label.textColor = .evyGray1
+        return label
+    }()
     private lazy var contentLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -64,6 +71,11 @@ final class NewsContentTableViewCell: UITableViewCell {
     // MARK: - func
     
     private func setupLayout() {
+        self.addSubview(self.captionLabel)
+        self.captionLabel.constraint(top: self.topAnchor,
+                                     leading: self.leadingAnchor,
+                                     padding: UIEdgeInsets(top: 15, left: Size.horizontalPadding, bottom: 0, right: 0))
+
         self.contentView.addSubview(self.contentLabel)
         self.contentLabel.constraint(top: self.contentView.topAnchor,
                                      leading: self.contentView.leadingAnchor,
@@ -84,7 +96,7 @@ final class NewsContentTableViewCell: UITableViewCell {
     }
 
     func setupContentParagraphData(paragraphIndex: Int, content: String) {
-//        self.captionLabel.text = paragraphIndex.description
+        self.captionLabel.text = paragraphIndex.description
         self.contentLabel.text = content
         self.contentLabel.setLineSpacing(kernValue: -2.0,
                                          lineHeightMultiple: Size.originalLineHeightMultiple)
