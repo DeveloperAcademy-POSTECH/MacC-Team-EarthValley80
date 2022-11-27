@@ -82,7 +82,7 @@ final class MainSentenceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayout()
-        self.appendSentences()
+        self.appendParagraphs()
     }
     
     // MARK: - func
@@ -138,7 +138,7 @@ final class MainSentenceViewController: UIViewController {
         self.present(summaryViewController, animated: true)
     }
 
-    private func appendSentences() {
+    private func appendParagraphs() {
         let _ = self.newsManager.newsContent.components(separatedBy: CharacterSet.newlines)
                                             .filter { $0 != "" }
                                             .compactMap { self.paragraphs.append($0) }

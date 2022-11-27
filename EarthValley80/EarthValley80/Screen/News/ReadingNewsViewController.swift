@@ -65,6 +65,9 @@ final class ReadingNewsViewController: UIViewController {
     }()
     
     private lazy var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
+    private let newsManager = NewsManager.shared
+
+    private var paragraphs: [String] = []
 
     // MARK: - life cycle
 
@@ -72,6 +75,7 @@ final class ReadingNewsViewController: UIViewController {
         super.viewDidLoad()
         self.setupLayout()
         self.configureUI()
+        self.appendParagraphs()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -122,6 +126,12 @@ final class ReadingNewsViewController: UIViewController {
                             indexPath: IndexPath = IndexPath(row: 0, section: 0)) {
         self.newsTableView.scrollToRow(at: indexPath, at: scrollPosition, animated: true)
     }
+
+    private func appendParagraphs() {
+        let _ = self.newsManager.newsContent.components(separatedBy: CharacterSet.newlines)
+                                            .filter { $0 != "" }
+                                            .compactMap { self.paragraphs.append($0) }
+    }
     
     private func presentGuideViewController() {
         guard !UserDefaultStorage.isSeenGuide else { return }
@@ -164,7 +174,7 @@ final class ReadingNewsViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension ReadingNewsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return self.paragraphs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
