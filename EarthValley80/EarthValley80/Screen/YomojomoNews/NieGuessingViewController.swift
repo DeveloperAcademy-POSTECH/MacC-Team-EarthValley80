@@ -88,14 +88,25 @@ final class NieGuessingViewController: UIViewController {
                                           repeats: true)
     }
 
+    private func presentReadingNewsViewController() {
+        let storyboard = UIStoryboard(name: "News", bundle: nil)
+        guard let newsViewController = storyboard.instantiateViewController(withIdentifier: ReadingNewsViewController.className) as? ReadingNewsViewController else { return }
+
+        newsViewController.modalTransitionStyle = .crossDissolve
+        newsViewController.modalPresentationStyle = .fullScreen
+
+        self.present(newsViewController, animated: true)
+    }
+
     // MARK: - selector
 
     @objc
     private func updateTimer() {
         guard self.newsGuessingTime != 0 else {
-             self.timer?.invalidate()
-             self.timer = nil
-             return
+            self.timer?.invalidate()
+            self.timer = nil
+            self.presentReadingNewsViewController()
+            return
         }
 
         self.newsGuessingTime -= 1
