@@ -43,7 +43,7 @@ final class SideTabbarViewController: UIViewController {
     }
 
     private func setupNotificationCenter() {
-        NotificationCenter.default.addObserver(self, selector: #selector(presentNIEGuessingViewController), name: .presentReadingNews, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.presentNIEGuessingViewController), name: .presentReadingNews, object: nil)
     }
 
     @objc
