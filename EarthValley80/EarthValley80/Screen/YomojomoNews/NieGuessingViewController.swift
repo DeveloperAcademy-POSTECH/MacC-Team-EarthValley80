@@ -12,20 +12,18 @@ final class NieGuessingViewController: UIViewController {
     // MARK: - property
 
     private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.nieGuessingTitle)
-    private let newsTitleView: UILabel = {
+    private lazy var newsTitleView: UILabel = {
         let label = UILabel()
-        // TODO: - 더미데이터 입니다. 나중에 지우겠습니다.
-        label.text = "세상에 다람쥐가 없다고 무슨 문제야?"
+        label.text = self.newsManager.newsTitle
         label.font = .font(.bold, ofSize: 34)
         label.textAlignment = .center
         label.textColor = .evyWhite
         return label
     }()
-    private let newsImageView: UIImageView = {
+    private lazy var newsImageView: UIImageView = {
         let imageView = UIImageView()
-        // TODO: - 임의로 색상을 넣어두었습니다. 나중에 지우겠습니다.
-        imageView.backgroundColor = .orange
-        imageView.contentMode = .scaleToFill
+        imageView.image = self.newsManager.newsImage
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -40,6 +38,8 @@ final class NieGuessingViewController: UIViewController {
 
     private var timer: Timer?
     private var newsGuessingTime = 5
+
+    private let newsManager = NewsManager.shared
 
     // MARK: - life cycle
 
@@ -88,14 +88,25 @@ final class NieGuessingViewController: UIViewController {
                                           repeats: true)
     }
 
+    private func presentReadingNewsViewController() {
+        let storyboard = UIStoryboard(name: "News", bundle: nil)
+        guard let newsViewController = storyboard.instantiateViewController(withIdentifier: ReadingNewsViewController.className) as? ReadingNewsViewController else { return }
+
+        newsViewController.modalTransitionStyle = .crossDissolve
+        newsViewController.modalPresentationStyle = .fullScreen
+
+        self.present(newsViewController, animated: true)
+    }
+
     // MARK: - selector
 
     @objc
     private func updateTimer() {
         guard self.newsGuessingTime != 0 else {
-             self.timer?.invalidate()
-             self.timer = nil
-             return
+            self.timer?.invalidate()
+            self.timer = nil
+            self.presentReadingNewsViewController()
+            return
         }
 
         self.newsGuessingTime -= 1
