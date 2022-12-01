@@ -25,13 +25,8 @@ struct InsideTabBarItems: View {
                 Text(StringLiteral.yomoProfileTitle)
                     .font(.system(size: 10))
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 120, trailing: 0))
-                HStack(spacing: 0) {
-                    Text(StringLiteral.goToYomoRoomText)
-                        .font(.system(size: 10))
-                    ImageLiteral.imgGoToYomoRoomArrow
-                        .font(.system(size: 10))
-                }
-                .padding(EdgeInsets(top: 120, leading: 100, bottom: 0, trailing: 0))
+                GotoYomoRoomButton()
+                    .padding(EdgeInsets(top: 100, leading: 90, bottom: 0, trailing: 0))
             }
             .padding(.bottom)
             VStack(spacing: 0) {
