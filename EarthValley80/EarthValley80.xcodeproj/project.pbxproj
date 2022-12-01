@@ -20,7 +20,6 @@
 		381AB44829116D0D00620635 /* GotoSomewhereButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB44729116D0D00620635 /* GotoSomewhereButton.swift */; };
 		381AB44A2911726B00620635 /* mp4TempFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 381AB4492911726B00620635 /* mp4TempFile.json */; };
 		3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */; };
-		3851FC032912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */; };
 		3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */; };
 		38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */; };
 		38EF7C5E292D463200347DE4 /* CategoryShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */; };
@@ -118,7 +117,6 @@
 		381AB44729116D0D00620635 /* GotoSomewhereButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoSomewhereButton.swift; sourceTree = "<group>"; };
 		381AB4492911726B00620635 /* mp4TempFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mp4TempFile.json; sourceTree = "<group>"; };
 		3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPopupViewController.swift; sourceTree = "<group>"; };
-		3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
 		3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestViewController.swift; sourceTree = "<group>"; };
 		38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShapeView.swift; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 		381AB434290FC8E000620635 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */,
 				38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */,
 			);
 			path = Cells;
@@ -745,7 +742,6 @@
 				B5FAC8DF2907786F00537F58 /* NewsTitleView.swift in Sources */,
 				B55BCEDA28FC4C6000AF7E45 /* AppDelegate.swift in Sources */,
 				B5BE347928FD9DDE00D09BEE /* UIView+Constraints.swift in Sources */,
-				3851FC032912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift in Sources */,
 				380DC75D292A30DB00BA93E6 /* YomojomoNewsCollectionViewCell.swift in Sources */,
 				381AB42F290FB5EE00620635 /* NewsSortingManager.swift in Sources */,
 				B5BE347E28FDA22F00D09BEE /* ImageLiteral.swift in Sources */,
