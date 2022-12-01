@@ -167,24 +167,24 @@ final class YomojomoNewsViewController: UIViewController {
             let view = self.contentViews[i]
             view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 306, height: Size.contentviewHeight)
             view.frame.origin.y = UIScreen.main.bounds.height * CGFloat(i)
-            scrollView.addSubview(view)
+            self.scrollView.addSubview(view)
         }
     }
 
     private func setPageControl() {
-        pageControl.numberOfPages = 2
+        self.pageControl.numberOfPages = 2
     }
 
     private func setPageControlSelectedPage(currentPage:Int) {
-        pageControl.currentPage = currentPage
+        self.pageControl.currentPage = currentPage
     }
 }
 
-// MARK: - UIScroll
+// MARK: - UIScrollViewDelegate
 extension YomojomoNewsViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let value = scrollView.contentOffset.y/scrollView.frame.size.height
-        setPageControlSelectedPage(currentPage: Int(round(value)))
+        let value = self.scrollView.contentOffset.y / self.scrollView.frame.size.height
+        self.setPageControlSelectedPage(currentPage: Int(round(value)))
     }
 }
 
