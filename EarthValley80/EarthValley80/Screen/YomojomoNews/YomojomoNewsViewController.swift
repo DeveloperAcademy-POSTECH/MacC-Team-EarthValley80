@@ -29,8 +29,13 @@ final class YomojomoNewsViewController: UIViewController {
 
     private let scrollView: UIScrollView = {
         let scrollview = UIScrollView()
-        scrollview.translatesAutoresizingMaskIntoConstraints = false
+        scrollview.contentSize = CGSize(width: UIScreen.main.bounds.width,
+                                        height: UIScreen.main.bounds.height * 2)
+        scrollview.showsHorizontalScrollIndicator = false
         scrollview.showsVerticalScrollIndicator = false
+        scrollview.isScrollEnabled = true
+        scrollview.isPagingEnabled = true
+        scrollview.bounces = false
         return scrollview
     }()
     private let yomojomoNewsContentView = UIView()
