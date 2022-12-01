@@ -377,7 +377,7 @@
 				CD3A48D7290A6654002D7C15 /* SideTabbar */,
 				B5BE345628FD96CA00D09BEE /* YomojomoNews */,
 				B5BE345528FD96C700D09BEE /* News */,
-				B5BE345428FD96C100D09BEE /* MyNews */,
+				B5BE345428FD96C100D09BEE /* MyNewsDrawer */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -397,7 +397,7 @@
 			path = Global;
 			sourceTree = "<group>";
 		};
-		B5BE345428FD96C100D09BEE /* MyNews */ = {
+		B5BE345428FD96C100D09BEE /* MyNewsDrawer */ = {
 			isa = PBXGroup;
 			children = (
 				3846FBFB2918101E003784F3 /* Components */,
@@ -405,7 +405,7 @@
 				381AB434290FC8E000620635 /* Cells */,
 				B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */,
 			);
-			path = MyNews;
+			path = MyNewsDrawer;
 			sourceTree = "<group>";
 		};
 		B5BE345528FD96C700D09BEE /* News */ = {
