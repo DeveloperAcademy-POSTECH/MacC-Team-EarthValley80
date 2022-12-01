@@ -16,8 +16,21 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yomojomoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="adE-ff-eaJ">
+                                <rect key="frame" x="517" y="374.5" width="160" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="FGa-31-c2Y"/>
+                                    <constraint firstAttribute="height" constant="84.569999999999993" id="TRy-B9-jhM"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="adE-ff-eaJ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="GGC-R8-w8M"/>
+                            <constraint firstItem="adE-ff-eaJ" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="KOa-9p-r9Z"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -26,6 +39,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="yomojomoLogo" width="160" height="85"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
