@@ -25,7 +25,6 @@ final class DeeplinkCoordinator {
 
 // MARK: - DeeplinkCoordinatorProtocol
 extension DeeplinkCoordinator: DeeplinkCoordinatorProtocol {
-
     @discardableResult
     func handleURL(_ url: URL, newsId: String? = nil) -> Bool {
         guard let handler = self.handlers.first(where: { $0.canOpenURL(url) }) else {

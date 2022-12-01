@@ -11,6 +11,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     // MARK: - property
 
+    lazy var deeplinkCoordinator: DeeplinkCoordinatorProtocol = {
+        return DeeplinkCoordinator(handlers: [
+            NewsDeeplinkHandler(rootViewController: self.rootViewController)
+        ])
+    }()
+
+    var rootViewController: UIViewController? {
+        return self.window?.rootViewController
+    }
+
     var window: UIWindow?
 
     // MARK: - func
@@ -26,7 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         guard let firstUrl = URLContexts.first?.url else { return }
 
-        print(firstUrl.absoluteString)
+//        self.deeplinkCoordinator.handleURL(firstUrl)
     }
     
     func sceneDidDisconnect(_ scene: UIScene) { }
