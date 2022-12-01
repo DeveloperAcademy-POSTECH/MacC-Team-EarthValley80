@@ -34,9 +34,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        guard let firstUrl = URLContexts.first?.url else { return }
+        if let url = URLContexts.first?.url {
+            let urlStr = url.absoluteString
+            let component = urlStr.components(separatedBy: "=")
 
-//        self.deeplinkCoordinator.handleURL(firstUrl)
+            if component.count > 1,
+               let url = URL(string: component.first ?? ""),
+               let newsId = component.last {
+                self.deeplinkCoordinator.handleURL(url, newsId: newsId)
+            }
+        }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) { }
