@@ -78,6 +78,8 @@
 		CD3A48D9290A6687002D7C15 /* SideTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A48D8290A6687002D7C15 /* SideTabbarView.swift */; };
 		CD3A48DB290A66EF002D7C15 /* SideTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */; };
 		CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4AC940291DEF1A003D02E4 /* SideTabbarLottieView.swift */; };
+		CD6CBB37293794B500342771 /* GotoYomoRoomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6CBB36293794B500342771 /* GotoYomoRoomButton.swift */; };
+		CD6CBB3C2937989900342771 /* YomoRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6CBB3B2937989900342771 /* YomoRoomView.swift */; };
 		CD938A8F2926FDEE0026641B /* SideTabbarEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD938A8E2926FDEE0026641B /* SideTabbarEventManager.swift */; };
 		CD938AB9292A32050026641B /* yomoProfileLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = CD938AB8292A32050026641B /* yomoProfileLottie.json */; };
 		CD938AC0292C8FB10026641B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD938ABF292C8FB10026641B /* ContainerViewController.swift */; };
@@ -178,6 +180,8 @@
 		CD3A48D8290A6687002D7C15 /* SideTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarView.swift; sourceTree = "<group>"; };
 		CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarViewController.swift; sourceTree = "<group>"; };
 		CD4AC940291DEF1A003D02E4 /* SideTabbarLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarLottieView.swift; sourceTree = "<group>"; };
+		CD6CBB36293794B500342771 /* GotoYomoRoomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoYomoRoomButton.swift; sourceTree = "<group>"; };
+		CD6CBB3B2937989900342771 /* YomoRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YomoRoomView.swift; sourceTree = "<group>"; };
 		CD938A8E2926FDEE0026641B /* SideTabbarEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarEventManager.swift; sourceTree = "<group>"; };
 		CD938AB8292A32050026641B /* yomoProfileLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yomoProfileLottie.json; sourceTree = "<group>"; };
 		CD938ABF292C8FB10026641B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				381AB41C290A9EFE00620635 /* MainTitleView.swift */,
 				381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */,
 				381AB44729116D0D00620635 /* GotoSomewhereButton.swift */,
+				CD6CBB36293794B500342771 /* GotoYomoRoomButton.swift */,
 			);
 			path = UIComponent;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 		B5BE345228FD96B900D09BEE /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				CD6CBB382937984500342771 /* YomoRoom */,
 				38EDAA46292D2206007EFFA4 /* SelectInterest */,
 				CD3A48D7290A6654002D7C15 /* SideTabbar */,
 				B5BE345628FD96CA00D09BEE /* YomojomoNews */,
@@ -554,6 +560,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		CD6CBB382937984500342771 /* YomoRoom */ = {
+			isa = PBXGroup;
+			children = (
+				CD6CBB3B2937989900342771 /* YomoRoomView.swift */,
+			);
+			path = YomoRoom;
+			sourceTree = "<group>";
+		};
 		CD938ABE292C8C620026641B /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,6 +737,7 @@
 				B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */,
 				B5BE347028FD9C2C00D09BEE /* UICollectionView+Extension.swift in Sources */,
 				B589F37429278068008468A8 /* MainSentenceView.swift in Sources */,
+				CD6CBB37293794B500342771 /* GotoYomoRoomButton.swift in Sources */,
 				38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */,
 				381AB436290FC96900620635 /* GotoYomojomoNewsEmptyView.swift in Sources */,
 				B50E7A4E29260C19009D8410 /* ReactionButton.swift in Sources */,
@@ -748,6 +763,7 @@
 				380DC763292BE34900BA93E6 /* NieGuessingViewController.swift in Sources */,
 				B50E7A4C29260899009D8410 /* Constant+Adjusted.swift in Sources */,
 				B5FAC8F32908E11900537F58 /* UITextView+Extension.swift in Sources */,
+				CD6CBB3C2937989900342771 /* YomoRoomView.swift in Sources */,
 				38F0297929177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift in Sources */,
 				B5BE346A28FD9AEC00D09BEE /* UIColor+Extension.swift in Sources */,
 				CD938A8F2926FDEE0026641B /* SideTabbarEventManager.swift in Sources */,
