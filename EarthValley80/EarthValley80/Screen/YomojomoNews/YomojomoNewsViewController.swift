@@ -38,6 +38,11 @@ final class YomojomoNewsViewController: UIViewController {
         scrollview.bounces = false
         return scrollview
     }()
+    private let pageControl: UIPageControl = {
+        let pagecontrol = UIPageControl()
+        pagecontrol.isHidden = true
+        return pagecontrol
+    }()
     private let yomojomoNewsContentView = UIView()
     private let yomojomoTitleView: MainTitleView = {
         let titleView = MainTitleView()
