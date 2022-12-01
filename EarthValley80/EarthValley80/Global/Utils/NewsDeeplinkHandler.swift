@@ -48,6 +48,10 @@ final class NewsDeeplinkHandler: DeeplinkHandlerProtocol {
         let readingNewsViewController = ReadingNewsViewController()
         readingNewsViewController.modalTransitionStyle = .crossDissolve
         readingNewsViewController.modalPresentationStyle = .fullScreen
-        self.rootViewController?.present(readingNewsViewController, animated: true)
+
+        DispatchQueue.main.async {
+            guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+            sceneDelegate.window?.rootViewController = readingNewsViewController
+        }
     }
 }
