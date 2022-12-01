@@ -7,12 +7,14 @@
 
 import UIKit
 
-protocol NewsDeeplinkHandlerProtocol {
+@objc
+protocol DeeplinkHandlerProtocol {
     func canOpenURL(_ url: URL) -> Bool
-    func openURL(_ url: URL, newsId: String)
+    @objc optional func openURL(_ url: URL)
+    @objc optional func openURL(_ url: URL, newsId: String)
 }
 
-final class NewsDeeplinkHandler: NewsDeeplinkHandlerProtocol {
+final class NewsDeeplinkHandler: DeeplinkHandlerProtocol {
 
     private weak var rootViewController: UIViewController?
 
