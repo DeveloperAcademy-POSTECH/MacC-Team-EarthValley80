@@ -35,7 +35,7 @@ final class MyNewsDrawerViewController: UIViewController {
         layout.minimumInteritemSpacing = Size.cellInterval
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(cell: ThisWeekNewsCollectionViewCell.self)
+        collectionView.register(cell: VerticalNewsCollectionViewCell.self)
         collectionView.register(cell: UserGoalAttainmentLottieCollectionViewCell.self)
         return collectionView
     }()
@@ -91,7 +91,7 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
             cell.setLottieLabel(index: labelIndex)
             return cell
         } else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThisWeekNewsCollectionViewCell.className, for: indexPath) as? ThisWeekNewsCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VerticalNewsCollectionViewCell.className, for: indexPath) as? VerticalNewsCollectionViewCell else { return UICollectionViewCell() }
             cell.setData(myNewsData[indexPath.row])
             cell.calculateLabelWidth(myNewsData[indexPath.row])
             return cell
