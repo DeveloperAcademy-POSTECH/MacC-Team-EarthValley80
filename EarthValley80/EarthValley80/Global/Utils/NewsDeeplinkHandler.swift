@@ -18,6 +18,8 @@ final class NewsDeeplinkHandler: DeeplinkHandlerProtocol {
 
     private weak var rootViewController: UIViewController?
 
+    private let newsManager = NewsManager.shared
+
     // MARK: - init
 
     init(rootViewController: UIViewController?) {
@@ -32,6 +34,12 @@ final class NewsDeeplinkHandler: DeeplinkHandlerProtocol {
 
     func openURL(_ url: URL, newsId: String) {
         guard self.canOpenURL(url) else { return }
+
+        // TODO: - 더미 기사 추가
+        let dummyData = yomojomoViewDummyData
+        self.newsManager.setupNews(title: dummyData.first?.title ?? "",
+                                   content: dummyData.first?.content ?? "",
+                                   image: dummyData.first?.image ?? UIImage())
 
         self.presentReadingNewsViewController(newsId: newsId)
     }
