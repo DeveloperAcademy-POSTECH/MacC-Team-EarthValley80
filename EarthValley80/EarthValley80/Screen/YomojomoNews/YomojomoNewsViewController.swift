@@ -91,6 +91,7 @@ final class YomojomoNewsViewController: UIViewController {
         return label
     }()
 
+    private lazy var contentViews: [UIView] = [self.yomojomoNewsContentView, self.thisWeekNewsContentView]
     private let newsModel = NewsSortingManager()
     private let newsManager = NewsManager.shared
     private lazy var newsData = self.newsModel.arrangeNewsData(yomojomoViewDummyData)
@@ -166,6 +167,15 @@ final class YomojomoNewsViewController: UIViewController {
                                                    bottom: self.thisWeekNewsContentView.bottomAnchor,
                                                    trailing: self.thisWeekNewsContentView.trailingAnchor,
                                                    padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
+    }
+
+    private func addContentViewsToScrollView() {
+        for i in 0..<2 {
+            let view = contentViews[i]
+            view.frame = UIScreen.main.bounds
+            view.frame.origin.y = UIScreen.main.bounds.height * CGFloat(i)
+            scrollView.addSubview(view)
+        }
     }
 }
 
