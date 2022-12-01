@@ -65,7 +65,7 @@ final class ReactionViewController: UIViewController {
     private lazy var shareButton: GotoSomewhereButton = {
         let button = GotoSomewhereButton(type: .transparentWhite)
         let action = UIAction { [weak self] _ in
-            // TODO: - 공유하는 기능 추가
+            self?.presentActivityViewController()
         }
         button.addAction(action, for: .touchUpInside)
         button.setupButtonContents(buttonImage: ImageLiteral.icSquareAndArrowUp, buttonTitle: StringLiteral.shareArticleButtonText)
@@ -176,5 +176,18 @@ final class ReactionViewController: UIViewController {
         mainSentenceViewController.modalTransitionStyle = .crossDissolve
         mainSentenceViewController.modalPresentationStyle = .fullScreen
         self.present(mainSentenceViewController, animated: true)
+    }
+
+    private func presentActivityViewController() {
+        let activityViewController = UIActivityViewController(activityItems: ["123213"],
+                                                              applicationActivities: nil)
+        activityViewController.isModalInPresentation = true
+        activityViewController.popoverPresentationController?.permittedArrowDirections = []
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX,
+                                                                                  y: self.view.bounds.midY,
+                                                                                  width: 0,
+                                                                                  height: 0)
+        self.present(activityViewController, animated: true)
     }
 }
