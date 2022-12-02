@@ -118,16 +118,16 @@ final class YomojomoNewsViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
-        self.view.addSubview(scrollView)
+        self.view.addSubview(self.scrollView)
         self.scrollView.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
                                    leading: self.view.safeAreaLayoutGuide.leadingAnchor,
                                    bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
                                    trailing: self.view.safeAreaLayoutGuide.trailingAnchor,
                                    padding: UIEdgeInsets.zero)
 
-        self.view.addSubview(pageControl)
-        self.pageControl.constraint(bottom: view.bottomAnchor,
-                                    centerX: view.centerXAnchor,
+        self.view.addSubview(self.pageControl)
+        self.pageControl.constraint(bottom: self.view.bottomAnchor,
+                                    centerX: self.view.centerXAnchor,
                                     padding: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
 
         self.yomojomoNewsContentView.addSubview(self.yomojomoTitleView)
