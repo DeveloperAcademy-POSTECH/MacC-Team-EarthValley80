@@ -153,11 +153,13 @@ final class ReadingNewsViewController: UIViewController {
     
     @objc
     private func didTappedView(_ gestureRecognizer: UITapGestureRecognizer) {
+        self.titleHeaderView.status = .scrolled
+
         if gestureRecognizer.state == UIGestureRecognizer.State.recognized {
             let indexPath: IndexPath = IndexPath(row: 0, section: 0)
             guard let contentCell = self.newsTableView.cellForRow(at: indexPath) as? NewsContentTableViewCell else { return }
-        
             let location = gestureRecognizer.location(in: gestureRecognizer.view)
+
             switch location.y {
             case 0...Size.halfOfScreenWidth:
                 contentCell.shiftHighlight(to: .upper)
