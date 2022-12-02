@@ -163,11 +163,12 @@ final class YomojomoNewsViewController: UIViewController {
     }
 
     private func addContentViewsToScrollView() {
-        for i in 0..<2 {
-            let view = self.contentViews[i]
-            view.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 306, height: Size.contentviewHeight)
-            view.frame.origin.y = UIScreen.main.bounds.height * CGFloat(i)
-            self.scrollView.addSubview(view)
+        self.contentViews.enumerated().forEach { index, item in
+            let contentView = item
+            contentView.frame = CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.size.width - 306,
+                                                                   height: Size.contentviewHeight))
+            contentView.frame.origin.y = UIScreen.main.bounds.height * CGFloat(index)
+            self.scrollView.addSubview(contentView)
         }
     }
 
