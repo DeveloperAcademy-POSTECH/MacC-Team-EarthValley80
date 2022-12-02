@@ -36,7 +36,7 @@ enum StringLiteral {
     static let mainSentenceTitle = "왼쪽 문단에서 가장 중요한 문장을 터치해주세요"
     static let myMainSentenceTitle = "내가 찾은 중심문장"
     static let summaryCompletionTitle = "중심문장을 찾고 요약을 완성했어요!"
-    static let nieGuessingTitle = "사진과 기사에서 미루어 보았을때, 이 기사가 어떤 기사인지 5초간 생각해 보아요."
+    static let nieGuessingTitle = "어떤 뉴스일까요?"
     static let greetingTitle = "요모조모에 온 것을 환영합니다."
     static let selectGuideTitle = "마음에 드는 단어\n5개를 선택하세요"
 
@@ -66,7 +66,7 @@ enum StringLiteral {
     static let findCentralSentenceButtonText = "중심문장 찾으러 가기"
     static let shareArticleButtonText = "기사 공유하기"
     static let goToNewsDrawerButtonText = "뉴스서랍가기"
-    static let goToYomoRoomText = "요모의 방 가기 "
+    static let goToYomoRoomText = "요모의 방 가기"
     static let sideTapButton1 = "요모조모 뉴스"
     static let sideTapButton2 = "골라봐요 중심문장"
     static let sideTapButton3 = "내가 읽은 뉴스"

@@ -43,17 +43,16 @@ final class SideTabbarViewController: UIViewController {
     }
 
     private func setupNotificationCenter() {
-        NotificationCenter.default.addObserver(self, selector: #selector(presentReadingNewsViewController), name: .presentReadingNews, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.presentNIEGuessingViewController), name: .presentReadingNews, object: nil)
     }
 
     @objc
-    private func presentReadingNewsViewController() {
-        let storyboard = UIStoryboard(name: "News", bundle: nil)
-        guard let newsViewController = storyboard.instantiateViewController(withIdentifier: ReadingNewsViewController.className) as? ReadingNewsViewController else { return }
+    private func presentNIEGuessingViewController() {
+        let nigGuessingViewController = NieGuessingViewController()
 
-        newsViewController.modalTransitionStyle = .crossDissolve
-        newsViewController.modalPresentationStyle = .fullScreen
+        nigGuessingViewController.modalTransitionStyle = .crossDissolve
+        nigGuessingViewController.modalPresentationStyle = .overCurrentContext
 
-        self.present(newsViewController, animated: true)
+        self.present(nigGuessingViewController, animated: true)
     }
 }

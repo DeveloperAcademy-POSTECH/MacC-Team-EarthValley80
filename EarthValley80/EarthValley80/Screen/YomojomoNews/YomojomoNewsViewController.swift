@@ -224,7 +224,9 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
 extension YomojomoNewsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let index = indexPath.row
-        self.newsManager.setupNews(title: newsData[index].title ?? "", content: newsData[index].content ?? "")
+        self.newsManager.setupNews(title: newsData[index].title ?? "",
+                                   content: newsData[index].content ?? "",
+                                   image: newsData[index].image ?? UIImage())
         NotificationCenter.default.post(name: .presentReadingNews, object: nil)
     }
 }
