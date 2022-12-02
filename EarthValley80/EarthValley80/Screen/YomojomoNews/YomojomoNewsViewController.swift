@@ -107,7 +107,7 @@ final class YomojomoNewsViewController: UIViewController {
         super.viewDidLoad()
         self.setupLayout()
         self.addContentViewsToScrollView()
-        self.setPageControl()
+        self.setupPageControl()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
