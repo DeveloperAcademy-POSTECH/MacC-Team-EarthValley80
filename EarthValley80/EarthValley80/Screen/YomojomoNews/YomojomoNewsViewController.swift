@@ -73,7 +73,7 @@ final class YomojomoNewsViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(cell: VerticalNewsCollectionViewCell.self)
+        collectionView.register(cell: ThisWeekNewsCollectionViewCell.self)
         collectionView.register(cell: EmptySpaceCollectionViewCell.self)
         return collectionView
     }()
@@ -187,7 +187,7 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
             cell.calculateLabelWidth(newsData[indexPath.row])
             return cell
         case (self.thisWeekNewsCollectionView, true):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VerticalNewsCollectionViewCell.className, for: indexPath) as? VerticalNewsCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThisWeekNewsCollectionViewCell.className, for: indexPath) as? ThisWeekNewsCollectionViewCell else { return UICollectionViewCell() }
             cell.setData(newsData[indexPath.row])
             cell.calculateLabelWidth(newsData[indexPath.row])
             return cell

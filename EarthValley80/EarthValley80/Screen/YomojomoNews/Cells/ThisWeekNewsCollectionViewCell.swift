@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class VerticalNewsCollectionViewCell: UICollectionViewCell {
+final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
 
     private enum Size {
         static let standardOfTitle: Int = 30

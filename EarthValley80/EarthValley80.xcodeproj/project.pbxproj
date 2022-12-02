@@ -12,7 +12,7 @@
 		381AB419290A9AE500620635 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB418290A9AE500620635 /* Date+Extension.swift */; };
 		381AB41D290A9EFE00620635 /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB41C290A9EFE00620635 /* MainTitleView.swift */; };
 		381AB422290AB6AD00620635 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB421290AB6AD00620635 /* News.swift */; };
-		381AB425290AB99900620635 /* VerticalNewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB424290AB99900620635 /* VerticalNewsCollectionViewCell.swift */; };
+		381AB425290AB99900620635 /* ThisWeekNewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB424290AB99900620635 /* ThisWeekNewsCollectionViewCell.swift */; };
 		381AB429290AE18D00620635 /* EmptySpaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */; };
 		381AB42F290FB5EE00620635 /* NewsSortingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB42E290FB5EE00620635 /* NewsSortingManager.swift */; };
 		381AB432290FBFFF00620635 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 381AB431290FBFFF00620635 /* Lottie */; };
@@ -108,7 +108,7 @@
 		381AB418290A9AE500620635 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		381AB41C290A9EFE00620635 /* MainTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
 		381AB421290AB6AD00620635 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
-		381AB424290AB99900620635 /* VerticalNewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalNewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		381AB424290AB99900620635 /* ThisWeekNewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThisWeekNewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		381AB42E290FB5EE00620635 /* NewsSortingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSortingManager.swift; sourceTree = "<group>"; };
 		381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoYomojomoNewsEmptyView.swift; sourceTree = "<group>"; };
@@ -213,7 +213,6 @@
 		381AB41B290A9DF200620635 /* UIComponent */ = {
 			isa = PBXGroup;
 			children = (
-				381AB424290AB99900620635 /* VerticalNewsCollectionViewCell.swift */,
 				381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */,
 				381AB41C290A9EFE00620635 /* MainTitleView.swift */,
 				381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */,
@@ -242,6 +241,7 @@
 		381AB423290AB8EE00620635 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				381AB424290AB99900620635 /* ThisWeekNewsCollectionViewCell.swift */,
 				380DC75C292A30DB00BA93E6 /* YomojomoNewsCollectionViewCell.swift */,
 			);
 			path = Cells;
@@ -757,7 +757,7 @@
 				B5FAC8EF2907D2A300537F58 /* BackButton.swift in Sources */,
 				38EF7C5E292D463200347DE4 /* CategoryShapeView.swift in Sources */,
 				B5BE346C28FD9B7900D09BEE /* NSObject+Extension.swift in Sources */,
-				381AB425290AB99900620635 /* VerticalNewsCollectionViewCell.swift in Sources */,
+				381AB425290AB99900620635 /* ThisWeekNewsCollectionViewCell.swift in Sources */,
 				B5FAC8F529093CB500537F58 /* NewsGuideViewController.swift in Sources */,
 				381AB429290AE18D00620635 /* EmptySpaceCollectionViewCell.swift in Sources */,
 				B5BE347228FD9C9A00D09BEE /* UIViewController+Extension.swift in Sources */,
