@@ -172,7 +172,7 @@ final class YomojomoNewsViewController: UIViewController {
         }
     }
 
-    private func setPageControl() {
+    private func setupPageControl() {
         self.pageControl.numberOfPages = 2
     }
 }
