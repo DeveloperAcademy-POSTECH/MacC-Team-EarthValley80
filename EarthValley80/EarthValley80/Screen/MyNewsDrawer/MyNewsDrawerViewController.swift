@@ -28,15 +28,16 @@ final class MyNewsDrawerViewController: UIViewController {
         return titleView
     }()
     private lazy var collectionView: UICollectionView = {
-        let layout = LeftAlignCollectionViewFlowLayout()
+        let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = Size.cellInterval
         layout.minimumInteritemSpacing = Size.cellInterval
+        collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(cell: VerticalNewsCollectionViewCell.self)
-        collectionView.register(cell: UserGoalAttainmentLottieCollectionViewCell.self)
+        collectionView.register(cell: EmptySpaceCollectionViewCell.self)
         return collectionView
     }()
 
@@ -97,6 +98,27 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
             return cell
         }
     }
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let hasTitle = newsData[indexPath.row].title != nil
+//
+//        switch (collectionView, hasTitle) {
+//        case (self.yomojomoNewsCollectionView, _):
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsCollectionViewCell.className, for: indexPath) as! YomojomoNewsCollectionViewCell
+//            cell.setData(with: newsData[indexPath.row])
+//            cell.calculateLabelWidth(newsData[indexPath.row])
+//            return cell
+//        case (self.thisWeekNewsCollectionView, true):
+//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VerticalNewsCollectionViewCell.className, for: indexPath) as? VerticalNewsCollectionViewCell else { return UICollectionViewCell() }
+//            cell.setData(newsData[indexPath.row])
+//            cell.calculateLabelWidth(newsData[indexPath.row])
+//            return cell
+//        case (self.thisWeekNewsCollectionView, false):
+//            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
+//            return cell
+//        default:
+//            return UICollectionViewCell()
+//        }
+//    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
