@@ -214,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				381AB424290AB99900620635 /* VerticalNewsCollectionViewCell.swift */,
+				381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */,
 				381AB41C290A9EFE00620635 /* MainTitleView.swift */,
 				381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */,
 				381AB44729116D0D00620635 /* GotoSomewhereButton.swift */,
@@ -241,7 +242,6 @@
 		381AB423290AB8EE00620635 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */,
 				380DC75C292A30DB00BA93E6 /* YomojomoNewsCollectionViewCell.swift */,
 			);
 			path = Cells;
