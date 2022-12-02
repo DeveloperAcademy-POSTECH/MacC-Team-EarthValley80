@@ -36,7 +36,7 @@ final class MyNewsDrawerViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(cell: VerticalNewsCollectionViewCell.self)
+        collectionView.register(cell: MyNewsDrawerCollectionViewCell.self)
         collectionView.register(cell: EmptySpaceCollectionViewCell.self)
         return collectionView
     }()
@@ -81,7 +81,7 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
 
         switch (collectionView, hasTitle) {
         case (self.collectionView, true):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VerticalNewsCollectionViewCell.className, for: indexPath) as? VerticalNewsCollectionViewCell else { return UICollectionViewCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }
             cell.setData(newsData[indexPath.row])
             cell.calculateLabelWidth(newsData[indexPath.row])
             return cell
