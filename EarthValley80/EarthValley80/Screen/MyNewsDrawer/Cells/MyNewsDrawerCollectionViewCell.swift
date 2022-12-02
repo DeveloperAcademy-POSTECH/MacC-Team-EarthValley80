@@ -67,6 +67,13 @@ class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
         label.layer.opacity = 0.6
         return label
     }()
+    private let emojiImageView: UIImageView = {
+        let imageview = UIImageView()
+        // TODO: - 저장된 emoji를 불러와야 합니다.
+        imageview.image = UIImage(named: "tempEmoji")
+        imageview.contentMode = .scaleAspectFit
+        return imageview
+    }()
 
     // MARK: - init
 
@@ -98,6 +105,12 @@ class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
                                   trailing: self.newsCardBackgroundView.trailingAnchor,
                                   padding: UIEdgeInsets(top: 14, left: 20, bottom: 0, right: 20))
 
+        self.addSubview(self.emojiImageView)
+        self.emojiImageView.constraint(bottom: self.newsCardBackgroundView.bottomAnchor,
+                                       trailing: self.newsCardBackgroundView.trailingAnchor,
+                                       padding: UIEdgeInsets(top: 0, left: 0, bottom: 16, right: 12))
+        self.emojiImageView.constraint(.widthAnchor, constant: 79.adjustedWidth)
+        self.emojiImageView.constraint(.heightAnchor, constant: 51.adjustedHeight)
     }
 
     func setData(_ newsData: News) {
