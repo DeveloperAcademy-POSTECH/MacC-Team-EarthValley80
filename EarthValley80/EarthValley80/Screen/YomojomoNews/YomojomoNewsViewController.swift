@@ -23,6 +23,7 @@ final class YomojomoNewsViewController: UIViewController {
         static let yomojomoNewsCollectionviewAndTitleInterval = UIScreen.main.bounds.height / 9
         static let yomojomoCollectionviewHeight = UIScreen.main.bounds.height - 400.0
         static let yomojomoCollectionviewWidth: CGFloat = 300.0
+        static let tabbarPadding: CGFloat = 306
     }
 
     // MARK: - property
@@ -165,7 +166,7 @@ final class YomojomoNewsViewController: UIViewController {
     private func addContentViewsToScrollView() {
         self.contentViews.enumerated().forEach { index, item in
             let contentView = item
-            contentView.frame = CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.size.width - 306,
+            contentView.frame = CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.size.width - Size.tabbarPadding,
                                                                    height: Size.contentviewHeight))
             contentView.frame.origin.y = UIScreen.main.bounds.height * CGFloat(index)
             self.scrollView.addSubview(contentView)
