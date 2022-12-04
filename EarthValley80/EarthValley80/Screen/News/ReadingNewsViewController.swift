@@ -68,6 +68,7 @@ final class ReadingNewsViewController: UIViewController {
     private let newsManager = NewsManager.shared
 
     private var paragraphs: [String] = []
+    private var numberOfSentences: [Int] = []
 
     // MARK: - life cycle
 
@@ -76,6 +77,7 @@ final class ReadingNewsViewController: UIViewController {
         self.setupLayout()
         self.configureUI()
         self.appendParagraphs()
+        self.appendNumberOfSentence()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -131,6 +133,15 @@ final class ReadingNewsViewController: UIViewController {
         let _ = self.newsManager.newsContent.components(separatedBy: CharacterSet.newlines)
                                             .filter { $0 != "" }
                                             .compactMap { self.paragraphs.append($0) }
+    }
+
+    private func appendNumberOfSentence() {
+        let _ = self.paragraphs.map {
+            $0.components(separatedBy: [".", "!", "?"])
+              .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+              .filter { !$0.isEmpty }
+            }
+            .compactMap { self.numberOfSentences.append($0.count) }
     }
     
     private func presentGuideViewController() {

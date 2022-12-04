@@ -156,13 +156,13 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         guard let content = self.contentLabel.text else { return }
 
         let _ = content.components(separatedBy: [".", "!", "?"])
-            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-            .filter { !$0.isEmpty }
-            .compactMap { sentence in
-                guard let completionSentence = self.applyPunctuationMark(in: sentence) else { return }
-                let closedRange = self.findRangeOfSentence(completionSentence)
-                self.sentences[closedRange] = completionSentence
-            }
+                       .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                       .filter { !$0.isEmpty }
+                       .compactMap { sentence in
+                           guard let completionSentence = self.applyPunctuationMark(in: sentence) else { return }
+                           let closedRange = self.findRangeOfSentence(completionSentence)
+                           self.sentences[closedRange] = completionSentence
+                       }
     }
 
     private func applyPunctuationMark(in sentence: String) -> String? {
