@@ -257,14 +257,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		381AB42D290FB5CB00620635 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				381AB42E290FB5EE00620635 /* NewsSortingManager.swift */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
 		381AB434290FC8E000620635 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +306,14 @@
 				38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		38EF7C5F2938570600347DE4 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				381AB42E290FB5EE00620635 /* NewsSortingManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		B50E7A482925D15E009D8410 /* Font */ = {
@@ -390,7 +390,6 @@
 			isa = PBXGroup;
 			children = (
 				CDE23AA5290ABDF400EEB824 /* SwiftUIExtensions */,
-				381AB42D290FB5CB00620635 /* Manager */,
 				381AB41B290A9DF200620635 /* UIComponent */,
 				B5BE347C28FDA21E00D09BEE /* Literals */,
 				B5BE347728FD9DCF00D09BEE /* Utils */,
@@ -432,6 +431,7 @@
 		B5BE345628FD96CA00D09BEE /* YomojomoNews */ = {
 			isa = PBXGroup;
 			children = (
+				38EF7C5F2938570600347DE4 /* Manager */,
 				381AB423290AB8EE00620635 /* Cells */,
 				B5BE346328FD986600D09BEE /* YomojomoNewsViewController.swift */,
 				380DC762292BE34900BA93E6 /* NieGuessingViewController.swift */,

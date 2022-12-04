@@ -23,15 +23,26 @@ final class YomojomoNewsViewController: UIViewController {
         static let yomojomoNewsCollectionviewAndTitleInterval = UIScreen.main.bounds.height / 9
         static let yomojomoCollectionviewHeight = UIScreen.main.bounds.height - 400.0
         static let yomojomoCollectionviewWidth: CGFloat = 300.0
+        static let tabbarPadding: CGFloat = 306
     }
 
     // MARK: - property
 
     private let scrollView: UIScrollView = {
         let scrollview = UIScrollView()
-        scrollview.translatesAutoresizingMaskIntoConstraints = false
+        scrollview.contentSize = CGSize(width: UIScreen.main.bounds.width - 306,
+                                        height: UIScreen.main.bounds.height * 2)
+        scrollview.showsHorizontalScrollIndicator = false
         scrollview.showsVerticalScrollIndicator = false
+        scrollview.isScrollEnabled = true
+        scrollview.isPagingEnabled = true
+        scrollview.bounces = false
         return scrollview
+    }()
+    private let pageControl: UIPageControl = {
+        let pagecontrol = UIPageControl()
+        pagecontrol.isHidden = true
+        return pagecontrol
     }()
     private let yomojomoNewsContentView = UIView()
     private let yomojomoTitleView: MainTitleView = {
@@ -86,6 +97,7 @@ final class YomojomoNewsViewController: UIViewController {
         return label
     }()
 
+    private lazy var contentViews: [UIView] = [self.yomojomoNewsContentView, self.thisWeekNewsContentView]
     private let newsModel = NewsSortingManager()
     private let newsManager = NewsManager.shared
     private lazy var newsData = self.newsModel.arrangeNewsData(yomojomoViewDummyData)
@@ -95,6 +107,8 @@ final class YomojomoNewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayout()
+        self.addContentViewsToScrollView()
+        self.setupPageControl()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -105,20 +119,17 @@ final class YomojomoNewsViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
-        self.view.addSubview(scrollView)
+        self.view.addSubview(self.scrollView)
         self.scrollView.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
                                    leading: self.view.safeAreaLayoutGuide.leadingAnchor,
                                    bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
                                    trailing: self.view.safeAreaLayoutGuide.trailingAnchor,
                                    padding: UIEdgeInsets.zero)
 
-        self.scrollView.addSubview(yomojomoNewsContentView)
-        self.yomojomoNewsContentView.constraint(top: self.scrollView.contentLayoutGuide.topAnchor,
-                                                leading: self.scrollView.contentLayoutGuide.leadingAnchor,
-                                                trailing: self.scrollView.contentLayoutGuide.trailingAnchor,
-                                                padding: UIEdgeInsets.zero)
-        self.yomojomoNewsContentView.constraint(.widthAnchor, constant: scrollView.frame.width)
-        self.yomojomoNewsContentView.constraint(.heightAnchor, constant: Size.contentviewHeight)
+        self.view.addSubview(self.pageControl)
+        self.pageControl.constraint(bottom: self.view.bottomAnchor,
+                                    centerX: self.view.centerXAnchor,
+                                    padding: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
 
         self.yomojomoNewsContentView.addSubview(self.yomojomoTitleView)
         self.yomojomoTitleView.constraint(top: self.yomojomoNewsContentView.topAnchor,
@@ -138,17 +149,6 @@ final class YomojomoNewsViewController: UIViewController {
                                         centerX: self.yomojomoNewsContentView.centerXAnchor,
                                         padding: UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0))
 
-
-        self.scrollView.addSubview(self.thisWeekNewsContentView)
-        self.thisWeekNewsContentView.constraint(top: self.yomojomoNewsContentView.bottomAnchor,
-                                                leading: self.scrollView.leadingAnchor,
-                                                bottom: self.scrollView.bottomAnchor,
-                                                trailing: self.scrollView.trailingAnchor,
-                                                padding: UIEdgeInsets.zero)
-        self.thisWeekNewsContentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        self.thisWeekNewsContentView.constraint(.heightAnchor, constant: Size.contentviewHeight)
-
-
         self.thisWeekNewsContentView.addSubview(self.thisWeekTitleView)
         self.thisWeekTitleView.constraint(top: self.thisWeekNewsContentView.topAnchor,
                                           leading: self.thisWeekNewsContentView.leadingAnchor,
@@ -161,6 +161,20 @@ final class YomojomoNewsViewController: UIViewController {
                                                    bottom: self.thisWeekNewsContentView.bottomAnchor,
                                                    trailing: self.thisWeekNewsContentView.trailingAnchor,
                                                    padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0))
+    }
+
+    private func addContentViewsToScrollView() {
+        self.contentViews.enumerated().forEach { index, item in
+            let contentView = item
+            contentView.frame = CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.size.width - Size.tabbarPadding,
+                                                                   height: Size.contentviewHeight))
+            contentView.frame.origin.y = UIScreen.main.bounds.height * CGFloat(index)
+            self.scrollView.addSubview(contentView)
+        }
+    }
+
+    private func setupPageControl() {
+        self.pageControl.numberOfPages = 2
     }
 }
 
