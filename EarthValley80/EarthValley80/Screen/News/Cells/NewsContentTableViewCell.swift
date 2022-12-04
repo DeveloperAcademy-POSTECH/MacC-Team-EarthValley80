@@ -92,7 +92,9 @@ final class NewsContentTableViewCell: UITableViewCell {
     private func appendSentences() {
         guard let content = self.contentLabel.text else { return }
         
-        self.sentences = content.components(separatedBy: [".", "!", "?"]).map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
+        self.sentences = content.components(separatedBy: [".", "!", "?"])
+                                .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+                                .filter { !$0.isEmpty }
     }
 
     func setupContentParagraphData(paragraphIndex: Int, content: String) {
@@ -121,6 +123,8 @@ final class NewsContentTableViewCell: UITableViewCell {
     }
     
     func shiftHighlight(to direction: Direction) {
+        dump(self.readingIndex)
+        
         switch direction {
         case .upper:
             guard (self.readingIndex - 1) >= 0 else { return }
@@ -131,19 +135,5 @@ final class NewsContentTableViewCell: UITableViewCell {
         }
         
         self.applyHighlight(to: self.readingIndex)
-    }
-    
-    func checkCurrentPosition() -> UITableView.ScrollPosition {
-        guard !self.sentences.isEmpty else { return .none }
-        let calculatedValue = CGFloat(self.readingIndex) / CGFloat(self.sentences.count)
-        
-        switch calculatedValue {
-        case 0..<0.4:
-            return .top
-        case 0.4..<0.7:
-            return .middle
-        default:
-            return .bottom
-        }
     }
 }

@@ -69,6 +69,22 @@ final class ReadingNewsViewController: UIViewController {
 
     private var paragraphs: [String] = []
     private var numberOfSentences: [Int] = []
+    private var currentSentenceIndex: Int = 0
+
+    private var currentRow: Int {
+        guard !self.numberOfSentences.isEmpty else { return 0 }
+        var sum: Int = 0
+
+        for (index, number) in self.numberOfSentences.enumerated() {
+            sum += number
+
+            if self.currentSentenceIndex < sum {
+                return index
+            }
+        }
+
+        return 0
+    }
 
     // MARK: - life cycle
 
@@ -124,9 +140,8 @@ final class ReadingNewsViewController: UIViewController {
         self.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    private func updateView(with scrollPosition: UITableView.ScrollPosition,
-                            indexPath: IndexPath = IndexPath(row: 0, section: 0)) {
-        self.newsTableView.scrollToRow(at: indexPath, at: scrollPosition, animated: true)
+    private func scrollTo(_ indexPath: IndexPath) {
+        self.newsTableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
 
     private func appendParagraphs() {
@@ -167,19 +182,21 @@ final class ReadingNewsViewController: UIViewController {
         self.titleHeaderView.status = .scrolled
 
         if gestureRecognizer.state == UIGestureRecognizer.State.recognized {
-            let indexPath: IndexPath = IndexPath(row: 0, section: 0)
+            let row = self.currentRow
+            let indexPath: IndexPath = IndexPath(row: row, section: 0)
             guard let contentCell = self.newsTableView.cellForRow(at: indexPath) as? NewsContentTableViewCell else { return }
             let location = gestureRecognizer.location(in: gestureRecognizer.view)
 
             switch location.y {
             case 0...Size.halfOfScreenWidth:
+                self.currentSentenceIndex -= 1
                 contentCell.shiftHighlight(to: .upper)
             default:
+                self.currentSentenceIndex += 1
                 contentCell.shiftHighlight(to: .lower)
             }
-            
-            let scrollPosition = contentCell.checkCurrentPosition()
-            self.updateView(with: scrollPosition)
+
+            self.scrollTo(indexPath)
         }
     }
 }
