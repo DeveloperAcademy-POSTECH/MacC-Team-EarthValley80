@@ -33,7 +33,7 @@ final class NewsContentTableViewCell: UITableViewCell {
 
     override var isHighlighted: Bool {
         willSet {
-            newValue ? applyHighlightInCaption() : removeHighlight()
+            newValue ? self.applyHighlightInCaption() : self.removeHighlight()
         }
     }
 
@@ -56,7 +56,7 @@ final class NewsContentTableViewCell: UITableViewCell {
 
     private let newsManager = NewsManager.shared
     private var sentences: [String] = []
-    private var readingIndex: Int = -1
+    private var readingIndex: Int = 0
 
     // MARK: - init
     
@@ -134,6 +134,7 @@ final class NewsContentTableViewCell: UITableViewCell {
         self.captionLabel.textColor = .evyGray1
         self.contentLabel.textColor = .expandedTextColor
         self.contentLabel.font = .font(.regular, ofSize: Size.originalFontSize)
+        self.contentLabel.textColor = .expandedTextColor
     }
 
     func shiftHighlight(to direction: Direction) {

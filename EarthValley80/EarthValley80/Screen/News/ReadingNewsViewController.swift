@@ -183,12 +183,17 @@ final class ReadingNewsViewController: UIViewController {
         reactionViewController.modalPresentationStyle = .overCurrentContext
         self.present(reactionViewController, animated: true)
     }
+
+    private func removeHighlight() {
+        let _ = self.newsTableView.visibleCells.map { $0.isHighlighted = false }
+    }
     
     // MARK: - selector
     
     @objc
     private func didTappedView(_ gestureRecognizer: UITapGestureRecognizer) {
         self.titleHeaderView.status = .scrolled
+        self.removeHighlight()
 
         if gestureRecognizer.state == UIGestureRecognizer.State.recognized {
             guard let contentCell = self.newsTableView.cellForRow(at: self.currentIndexPath) as? NewsContentTableViewCell else { return }
@@ -197,9 +202,14 @@ final class ReadingNewsViewController: UIViewController {
             let location = gestureRecognizer.location(in: gestureRecognizer.view)
             switch location.y {
             case 0...Size.halfOfScreenWidth:
+                guard self.currentSentenceIndex >= 0 else {
+                    self.titleHeaderView.status = .expanded
+                    return
+                }
                 self.currentSentenceIndex -= 1
                 contentCell.shiftHighlight(to: .upper)
             default:
+                guard self.currentSentenceIndex < self.numberOfSentences.reduce(0, +) - 1 else { return }
                 self.currentSentenceIndex += 1
                 contentCell.shiftHighlight(to: .lower)
             }
