@@ -71,19 +71,28 @@ final class ReadingNewsViewController: UIViewController {
     private var numberOfSentences: [Int] = []
     private var currentSentenceIndex: Int = 0
 
-    private var currentRow: Int {
-        guard !self.numberOfSentences.isEmpty else { return 0 }
-        var sum: Int = 0
+    private var currentRow: Int? {
+        get {
+            guard !self.numberOfSentences.isEmpty else { return nil }
+            var sum: Int = 0
 
-        for (index, number) in self.numberOfSentences.enumerated() {
-            sum += number
+            for (index, number) in self.numberOfSentences.enumerated() {
+                sum += number
 
-            if self.currentSentenceIndex < sum {
-                return index
+                if self.currentSentenceIndex < sum {
+                    return index
+                }
             }
-        }
 
-        return 0
+            return nil
+        }
+    }
+
+    private var currentIndexPath: IndexPath {
+        guard let row = self.currentRow else { return IndexPath(row: 0, section: 0) }
+        let indexPath: IndexPath = IndexPath(row: row, section: 0)
+
+        return indexPath
     }
 
     // MARK: - life cycle
@@ -182,11 +191,10 @@ final class ReadingNewsViewController: UIViewController {
         self.titleHeaderView.status = .scrolled
 
         if gestureRecognizer.state == UIGestureRecognizer.State.recognized {
-            let row = self.currentRow
-            let indexPath: IndexPath = IndexPath(row: row, section: 0)
-            guard let contentCell = self.newsTableView.cellForRow(at: indexPath) as? NewsContentTableViewCell else { return }
-            let location = gestureRecognizer.location(in: gestureRecognizer.view)
+            guard let contentCell = self.newsTableView.cellForRow(at: self.currentIndexPath) as? NewsContentTableViewCell else { return }
+            contentCell.isHighlighted = true
 
+            let location = gestureRecognizer.location(in: gestureRecognizer.view)
             switch location.y {
             case 0...Size.halfOfScreenWidth:
                 self.currentSentenceIndex -= 1
@@ -196,7 +204,7 @@ final class ReadingNewsViewController: UIViewController {
                 contentCell.shiftHighlight(to: .lower)
             }
 
-            self.scrollTo(indexPath)
+            self.scrollTo(self.currentIndexPath)
         }
     }
 }

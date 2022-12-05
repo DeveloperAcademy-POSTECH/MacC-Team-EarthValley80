@@ -31,6 +31,12 @@ final class NewsContentTableViewCell: UITableViewCell {
     
     // MARK: - property
 
+    override var isHighlighted: Bool {
+        willSet {
+            newValue ? applyHighlightInCaption() : removeHighlight()
+        }
+    }
+
     private let captionLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.regular, ofSize: 14)
@@ -43,10 +49,8 @@ final class NewsContentTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.textColor = .expandedTextColor
         label.font = .font(.regular, ofSize: Size.originalFontSize)
-        label.text = self.newsManager.newsContent
         label.setLineSpacing(kernValue: -2.0,
                              lineHeightMultiple: Size.originalLineHeightMultiple)
-
         return label
     }()
 
@@ -60,7 +64,6 @@ final class NewsContentTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setupLayout()
         self.configureUI()
-        self.appendSentences()
     }
     
     @available(*, unavailable)
@@ -102,6 +105,7 @@ final class NewsContentTableViewCell: UITableViewCell {
         self.contentLabel.text = content
         self.contentLabel.setLineSpacing(kernValue: -2.0,
                                          lineHeightMultiple: Size.originalLineHeightMultiple)
+        self.appendSentences()
     }
     
     private func applyHighlight(to index: Int) {
@@ -121,9 +125,19 @@ final class NewsContentTableViewCell: UITableViewCell {
         self.contentLabel.setLineSpacing(kernValue: -2.0,
                                          lineHeightMultiple: Size.originalLineHeightMultiple)
     }
-    
+
+    private func applyHighlightInCaption() {
+        self.captionLabel.textColor = .evyWhite
+    }
+
+    private func removeHighlight() {
+        self.captionLabel.textColor = .evyGray1
+        self.contentLabel.textColor = .expandedTextColor
+        self.contentLabel.font = .font(.regular, ofSize: Size.originalFontSize)
+    }
+
     func shiftHighlight(to direction: Direction) {
-        dump(self.readingIndex)
+        print("현재 가지고 있는 reading index : ", readingIndex)
         
         switch direction {
         case .upper:
