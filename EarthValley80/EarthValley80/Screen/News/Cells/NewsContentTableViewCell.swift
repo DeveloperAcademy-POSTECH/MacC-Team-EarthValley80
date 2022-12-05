@@ -149,6 +149,6 @@ final class NewsContentTableViewCell: UITableViewCell {
             self.readingIndex += 1
         }
         
-        self.applyHighlight(to: self.readingIndex)
+        self.applyHighlight(to: self.readingIndex - 1)
     }
 }

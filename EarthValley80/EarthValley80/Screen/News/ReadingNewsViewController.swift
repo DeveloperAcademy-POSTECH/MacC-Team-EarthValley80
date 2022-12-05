@@ -202,6 +202,7 @@ final class ReadingNewsViewController: UIViewController {
             let location = gestureRecognizer.location(in: gestureRecognizer.view)
             switch location.y {
             case 0...Size.halfOfScreenWidth:
+                print(self.currentSentenceIndex)
                 guard self.currentSentenceIndex >= 0 else {
                     self.titleHeaderView.status = .expanded
                     return
@@ -237,11 +238,11 @@ extension ReadingNewsViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension ReadingNewsViewController: UITableViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard self.titleHeaderView.status != .compact else { return }
-        let offsetY = scrollView.contentOffset.y
-        let isScrolled = offsetY > 0
-        
-        self.titleHeaderView.updateTitleStatus(to: isScrolled ? .scrolled : .expanded)
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        guard self.titleHeaderView.status != .compact else { return }
+//        let offsetY = scrollView.contentOffset.y
+//        let isScrolled = offsetY > 0
+//        
+//        self.titleHeaderView.updateTitleStatus(to: isScrolled ? .scrolled : .expanded)
+//    }
 }
