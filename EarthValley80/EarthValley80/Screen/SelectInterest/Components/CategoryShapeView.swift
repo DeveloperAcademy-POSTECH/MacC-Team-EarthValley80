@@ -28,42 +28,42 @@ class CategoryShapeView: UIView {
         case exercise = "운동"
         case culture = "문화"
 
-        var imageName: String {
+        var name: String {
             switch self {
             case .society:
-                return "selected_society"
+                return "society"
             case .world:
-                return "selected_world"
+                return "world"
             case .history:
-                return "selected_history"
+                return "history"
             case .robot:
-                return "selected_robot"
+                return "robot"
             case .environment:
-                return "selected_environment"
+                return "environment"
             case .health:
-                return "selected_health"
+                return "health"
             case .animal:
-                return "selected_animal"
+                return "animal"
             case .space:
-                return "selected_space"
+                return "space"
             case .science:
-                return "selected_science"
+                return "science"
             case .company:
-                return "selected_company"
+                return "company"
             case .money:
-                return "selected_money"
+                return "money"
             case .economyIT:
-                return "selected_economyIT"
+                return "economyIT"
             case .economy:
-                return "selected_economy"
+                return "economy"
             case .art:
-                return "selected_art"
+                return "art"
             case .broadcast:
-                return "selected_broadcast"
+                return "broadcast"
             case .exercise:
-                return "selected_exercise"
+                return "exercise"
             case .culture:
-                return "selected_culture"
+                return "culture"
             }
         }
     }
