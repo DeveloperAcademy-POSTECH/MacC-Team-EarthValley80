@@ -11,7 +11,7 @@ final class ReactionButton: UIButton {
 
     private enum Size {
         static let imageSize: CGFloat = 91.0
-        static let emotionImageSize: CGFloat = 80.0
+        static let emotionImageSize: CGFloat = 116.0
         static let smallerEmotionImageSize: CGFloat = 39.0
         static let smallerEmojiSpacing: CGFloat = 26.0
     }
