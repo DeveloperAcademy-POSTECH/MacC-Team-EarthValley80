@@ -62,7 +62,8 @@ class SelectInterestViewController: UIViewController {
     // MARK: - func
 
     private func setupButton() {
-        self.finishButton.setupButtonContents(buttonImage: UIImage(systemName: "checkmark.circle") ?? UIImage(), buttonTitle: "선택완료")
+        self.finishButton.setupButtonContents(buttonImage: UIImage(systemName: "checkmark.circle") ?? UIImage(),
+                                              buttonTitle: StringLiteral.finishSelectButtonText)
     }
 
     private func setupLayout() {

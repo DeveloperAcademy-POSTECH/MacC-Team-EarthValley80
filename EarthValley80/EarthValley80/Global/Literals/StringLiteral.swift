@@ -59,6 +59,7 @@ enum StringLiteral {
     static let findCentralSentenceButtonText = "중심문장 찾으러 가기"
     static let shareArticleButtonText = "기사 공유하기"
     static let goToNewsDrawerButtonText = "뉴스서랍가기"
+    static let finishSelectButtonText = "선택완료"
 
     // MARK: - lottie
 
