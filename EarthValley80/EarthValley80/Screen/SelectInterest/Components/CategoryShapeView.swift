@@ -67,7 +67,21 @@ class CategoryShapeView: UIView {
             }
         }
     }
+
     // MARK: - property
+
+    var isSelected: Bool = false {
+        didSet {
+            switch self.isSelected {
+            case true:
+                self.cagtegoryShapeViewSize = 280
+            default:
+                self.cagtegoryShapeViewSize = 200
+            }
+            self.CategoryShapeViewWidthConstraint?[.widthAnchor]?.constant = self.cagtegoryShapeViewSize
+            self.CategoryShapeViewHeightConstraint?[.heightAnchor]?.constant = self.cagtegoryShapeViewSize
+        }
+    }
 
     private let backgroundImage: UIImageView = {
         let backgroundview = UIImageView()
@@ -82,6 +96,10 @@ class CategoryShapeView: UIView {
         label.textAlignment = .center
         return label
     }()
+
+    private var cagtegoryShapeViewSize: CGFloat = 200
+    private var CategoryShapeViewWidthConstraint: [Frame: NSLayoutConstraint]?
+    private var CategoryShapeViewHeightConstraint: [Frame: NSLayoutConstraint]?
 
     // MARK: - init
 
@@ -108,9 +126,9 @@ class CategoryShapeView: UIView {
     }
 
     private func setupLayout() {
-        self.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.constraint(.heightAnchor, constant: 200.adjustedHeight)
-        
+        self.CategoryShapeViewWidthConstraint = self.constraint(.widthAnchor, constant: 200.adjustedWidth)
+        self.CategoryShapeViewHeightConstraint = self.constraint(.heightAnchor, constant: 200.adjustedHeight)
+
         self.addSubview(self.backgroundImage)
         self.backgroundImage.constraint(top: self.topAnchor,
                                         leading: self.leadingAnchor,
@@ -126,9 +144,16 @@ class CategoryShapeView: UIView {
 
     @objc
     func didTappedCategory(_ sender: UITapGestureRecognizer) {
-        guard let categoryText = categoryLabel.text else { return }
+        // TODO: - 클릭된 카테고리를 저장해야 합니다. (user defaults)
+        guard let categoryText = self.categoryLabel.text else { return }
         guard let type = CategoryBackground(rawValue: categoryText) else { return }
-        backgroundImage.image = UIImage(named: type.imageName)
-        // TODO: - 클릭된 카테고리를 저장해야 합니다. (user defaults?)
+
+        if self.isSelected {
+            self.isSelected = false
+            self.backgroundImage.image = UIImage(named: type.name)
+        } else {
+            self.isSelected = true
+            self.backgroundImage.image = UIImage(named: "selected_"+type.name)
+        }
     }
 }
