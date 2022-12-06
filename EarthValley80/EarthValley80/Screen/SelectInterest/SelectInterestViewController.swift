@@ -55,8 +55,8 @@ class SelectInterestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLayout()
-        setupButton()
+        self.setupLayout()
+        self.setupButton()
     }
 
     // MARK: - func
@@ -137,6 +137,7 @@ class SelectInterestViewController: UIViewController {
                                                           bottom: 0,
                                                           right: 0))
 
+        self.scrollView.addSubview(self.health)
         self.health.constraint(top: self.art.topAnchor,
                                leading: self.art.trailingAnchor,
                                padding: UIEdgeInsets(top: -50.adjustedHeight,
