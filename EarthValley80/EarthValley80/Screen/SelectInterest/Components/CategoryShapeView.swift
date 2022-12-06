@@ -32,6 +32,7 @@ class CategoryShapeView: UIView {
         self.backgroundImage.image = image
         self.categoryLabel.text = labelText
         self.setupLayout()
+        self.setupGesture()
     }
 
     @available(*, unavailable)
@@ -41,18 +42,30 @@ class CategoryShapeView: UIView {
 
     // MARK: - func
 
+    private func setupGesture() {
+        self.isUserInteractionEnabled = true
+
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.didTappedCategory(_:)))
+        self.addGestureRecognizer(gesture)
+    }
+
     private func setupLayout() {
         self.addSubview(self.backgroundImage)
         self.backgroundImage.constraint(top: self.topAnchor,
                                         leading: self.leadingAnchor,
                                         padding: UIEdgeInsets.zero)
-        self.backgroundImage.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.backgroundImage.constraint(.heightAnchor, constant: 200.adjustedHeight)
-
 
         self.addSubview(self.categoryLabel)
         self.categoryLabel.constraint(centerX: self.backgroundImage.centerXAnchor,
                                       centerY: self.backgroundImage.centerYAnchor,
                                       padding: UIEdgeInsets.zero)
+    }
+
+    // MARK: - selector
+
+    @objc
+    func didTappedCategory(_ sender: UITapGestureRecognizer) {
+        print("여기다가 변경되는 이미지를 넣어야함")
+        backgroundImage.image = UIImage(named: "money")
     }
 }
