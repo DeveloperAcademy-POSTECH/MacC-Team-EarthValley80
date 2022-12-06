@@ -186,9 +186,17 @@ class SelectInterestViewController: UIViewController {
                                                     bottom: 0,
                                                     right: 0))
 
-        self.scrollView.addSubview(self.history)
-        self.history.constraint(top: self.company.bottomAnchor,
+        self.scrollView.addSubview(self.economy)
+        self.economy.constraint(top: self.robot.bottomAnchor,
                                 leading: self.company.trailingAnchor,
+                                padding: UIEdgeInsets(top: 10.adjustedHeight,
+                                                      left: 30.adjustedWidth,
+                                                      bottom: 0,
+                                                      right: 0))
+
+        self.scrollView.addSubview(self.history)
+        self.history.constraint(top: self.economy.bottomAnchor,
+                                leading: self.science.trailingAnchor,
                                 padding: UIEdgeInsets(top: 40.adjustedHeight,
                                                       left: 20.adjustedWidth,
                                                       bottom: 0,
@@ -201,14 +209,6 @@ class SelectInterestViewController: UIViewController {
                                                         left: 5.adjustedWidth,
                                                         bottom: 0,
                                                         right: 0))
-
-        self.scrollView.addSubview(self.economy)
-        self.economy.constraint(top: self.robot.bottomAnchor,
-                                leading: self.company.trailingAnchor,
-                                padding: UIEdgeInsets(top: 10.adjustedHeight,
-                                                      left: 30.adjustedWidth,
-                                                      bottom: 0,
-                                                      right: 0))
 
         self.scrollView.addSubview(self.space)
         self.space.constraint(top: self.history.bottomAnchor,
