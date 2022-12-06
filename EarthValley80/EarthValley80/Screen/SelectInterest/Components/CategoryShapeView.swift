@@ -9,6 +9,64 @@ import UIKit
 
 class CategoryShapeView: UIView {
 
+    private enum CategoryBackground : String {
+        case society = "사회"
+        case world = "세계"
+        case history = "역사"
+        case robot = "로봇"
+        case environment = "환경"
+        case health = "건강"
+        case animal = "동물"
+        case space = "우주"
+        case science = "과학"
+        case company = "회사"
+        case money = "돈"
+        case economyIT = "IT"
+        case economy = "경제"
+        case art = "예술"
+        case broadcast = "방송"
+        case exercise = "운동"
+        case culture = "문화"
+
+        var imageName: String {
+            switch self {
+            case .society:
+                return "selected_society"
+            case .world:
+                return "selected_world"
+            case .history:
+                return "selected_history"
+            case .robot:
+                return "selected_robot"
+            case .environment:
+                return "selected_environment"
+            case .health:
+                return "selected_health"
+            case .animal:
+                return "selected_animal"
+            case .space:
+                return "selected_space"
+            case .science:
+                return "selected_science"
+            case .company:
+                return "selected_company"
+            case .money:
+                return "selected_money"
+            case .economyIT:
+                return "selected_economyIT"
+            case .economy:
+                return "selected_economy"
+            case .art:
+                return "selected_art"
+            case .broadcast:
+                return "selected_broadcast"
+            case .exercise:
+                return "selected_exercise"
+            case .culture:
+                return "selected_culture"
+            }
+        }
+    }
     // MARK: - property
 
     private let backgroundImage: UIImageView = {
@@ -65,7 +123,9 @@ class CategoryShapeView: UIView {
 
     @objc
     func didTappedCategory(_ sender: UITapGestureRecognizer) {
-        print("여기다가 변경되는 이미지를 넣어야함")
-        backgroundImage.image = UIImage(named: "money")
+        guard let categoryText = categoryLabel.text else { return }
+        guard let type = CategoryBackground(rawValue: categoryText) else { return }
+        backgroundImage.image = UIImage(named: type.imageName)
+        // TODO: - 클릭된 카테고리를 저장해야 합니다. (user defaults?)
     }
 }
