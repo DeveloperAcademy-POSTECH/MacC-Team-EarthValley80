@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectInterestViewController: UIViewController, UIGestureRecognizerDelegate {
+class SelectInterestViewController: UIViewController {
 
     // MARK: - property
     
@@ -21,7 +21,7 @@ class SelectInterestViewController: UIViewController, UIGestureRecognizerDelegat
     }()
     private let greetingLabel: UILabel = {
         let label = UILabel()
-        label.text = StringLiteral.greetingTitle  
+        label.text = StringLiteral.greetingTitle
         label.font = .font(.regular, ofSize: 12)
         return label
     }()
@@ -218,8 +218,8 @@ class SelectInterestViewController: UIViewController, UIGestureRecognizerDelegat
 
         self.scrollView.addSubview(self.greetingLabel)
         self.greetingLabel.constraint(top: self.view.topAnchor,
-                                   leading: self.view.leadingAnchor,
-                                   padding: UIEdgeInsets(top: 60.adjustedHeight, left: 40.adjustedWidth, bottom: 0, right: 0))
+                                      leading: self.view.leadingAnchor,
+                                      padding: UIEdgeInsets(top: 60.adjustedHeight, left: 40.adjustedWidth, bottom: 0, right: 0))
 
         self.scrollView.addSubview(self.selectGuideTitleLabel)
         self.selectGuideTitleLabel.constraint(top: self.greetingLabel.bottomAnchor,
