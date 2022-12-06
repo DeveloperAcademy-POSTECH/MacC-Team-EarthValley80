@@ -77,10 +77,8 @@ final class ReactionButton: UIButton {
 
         var imageSize: CGFloat {
             switch self {
-            case .emotion:
+            case .emotion, .after:
                 return Size.emotionImageSize
-            case .after:
-                return Size.smallerEmotionImageSize
             default:
                 return Size.imageSize
             }
@@ -103,7 +101,7 @@ final class ReactionButton: UIButton {
     private let reactionButtonImageView: UIImageView = UIImageView()
     private let alphaBackgroundView: UIView = {
         let view = UIView()
-        view.backgroundColor = .evyWhite.withAlphaComponent(0.14)
+        view.backgroundColor = .clear
         view.layer.cornerRadius = Size.imageSize / 2
         view.isHidden = true
         view.isUserInteractionEnabled = false
@@ -177,18 +175,5 @@ final class ReactionButton: UIButton {
         self.reactionLabel.text = type.title
 
         self.updateEmotionType(with: type)
-        self.updateAlphaBackgroundIsHidden(to: type)
-    }
-
-    func updateAlphaBackgroundIsHidden(to type: ButtonType) {
-        switch type {
-        case .after:
-            self.imageViewInsetConstraints?[.top]?.constant = Size.smallerEmojiSpacing
-            self.imageViewHeightConstraint?[.heightAnchor]?.constant = type.imageSize
-            self.imageViewWidthConstraint?[.widthAnchor]?.constant = type.imageSize
-            self.alphaBackgroundView.isHidden = false
-        default:
-            self.alphaBackgroundView.isHidden = true
-        }
     }
 }
