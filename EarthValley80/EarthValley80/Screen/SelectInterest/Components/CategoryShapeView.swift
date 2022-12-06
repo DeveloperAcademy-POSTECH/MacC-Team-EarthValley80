@@ -108,6 +108,9 @@ class CategoryShapeView: UIView {
     }
 
     private func setupLayout() {
+        self.constraint(.widthAnchor, constant: 200.adjustedWidth)
+        self.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        
         self.addSubview(self.backgroundImage)
         self.backgroundImage.constraint(top: self.topAnchor,
                                         leading: self.leadingAnchor,

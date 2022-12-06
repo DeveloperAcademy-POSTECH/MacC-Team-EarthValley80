@@ -16,7 +16,7 @@ class SelectInterestViewController: UIViewController, UIGestureRecognizerDelegat
         scrollview.backgroundColor = .evyWhite
         scrollview.showsVerticalScrollIndicator = false
         scrollview.showsHorizontalScrollIndicator = false
-        scrollview.contentSize = CGSize(width: UIScreen.main.bounds.width * 1.3, height: UIScreen.main.bounds.height * 1.3)
+        scrollview.contentSize = CGSize(width: UIScreen.main.bounds.width * 1.4, height: UIScreen.main.bounds.height * 1.4)
         return scrollview
     }()
     private let greetingLabel: UILabel = {
@@ -70,121 +70,145 @@ class SelectInterestViewController: UIViewController, UIGestureRecognizerDelegat
         self.scrollView.addSubview(self.society)
         self.society.constraint(top: self.scrollView.topAnchor,
                                 leading: self.scrollView.leadingAnchor,
-                                padding: UIEdgeInsets(top: 366.adjustedHeight, left: 49.adjustedWidth, bottom: 0, right: 0))
-        self.society.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.society.constraint(.heightAnchor, constant: 200.adjustedHeight)
-
-        self.scrollView.addSubview(self.animal)
-        self.animal.constraint(top: self.scrollView.topAnchor,
-                               leading: self.scrollView.leadingAnchor,
-                               padding: UIEdgeInsets(top: 404.adjustedHeight, left: 282.adjustedWidth, bottom: 0, right: 0))
-        self.animal.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.animal.constraint(.heightAnchor, constant: 200.adjustedHeight)
-
-        self.scrollView.addSubview(self.broadcast)
-        self.broadcast.constraint(top: self.scrollView.topAnchor,
-                                  leading: self.scrollView.leadingAnchor,
-                                  padding: UIEdgeInsets(top: 588.adjustedHeight, left: 168.adjustedWidth, bottom: 0, right: 0))
-        self.broadcast.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.broadcast.constraint(.heightAnchor, constant: 200.adjustedHeight)
-
-        self.scrollView.addSubview(self.money)
-        self.money.constraint(top: self.scrollView.topAnchor,
-                              leading: self.scrollView.leadingAnchor,
-                              padding: UIEdgeInsets(top: 600.adjustedHeight, left: 390.adjustedWidth, bottom: 0, right: 0))
-        self.money.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.money.constraint(.heightAnchor, constant: 200.adjustedHeight)
+                                padding: UIEdgeInsets(top: 360.adjustedHeight,
+                                                      left: 260.adjustedWidth,
+                                                      bottom: 0,
+                                                      right: 0))
 
         self.scrollView.addSubview(self.art)
-        self.art.constraint(top: self.scrollView.topAnchor,
-                            leading: self.scrollView.leadingAnchor,
-                            padding: UIEdgeInsets(top: 322.adjustedHeight, left: 485.adjustedWidth, bottom: 0, right: 0))
-        self.art.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.art.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        self.art.constraint(top: self.society.topAnchor,
+                            leading: self.society.trailingAnchor,
+                            padding: UIEdgeInsets(top: -100.adjustedHeight,
+                                                  left: 20.adjustedWidth,
+                                                  bottom: 0,
+                                                  right: 0))
 
-        self.scrollView.addSubview(self.environment)
-        self.environment.constraint(top: self.scrollView.topAnchor,
-                                    leading: self.scrollView.leadingAnchor,
-                                    padding: UIEdgeInsets(top: 763.adjustedHeight, left: 270.adjustedWidth, bottom: 0, right: 0))
-        self.environment.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.environment.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        self.scrollView.addSubview(self.animal)
+        self.animal.constraint(top: self.society.bottomAnchor,
+                               leading: self.society.leadingAnchor,
+                               padding: UIEdgeInsets(top: 10.adjustedHeight,
+                                                     left: 100.adjustedWidth,
+                                                     bottom: 0,
+                                                     right: 0))
 
-        self.scrollView.addSubview(self.culture)
-        self.culture.constraint(top: self.scrollView.topAnchor,
-                                leading: self.scrollView.leadingAnchor,
-                                padding: UIEdgeInsets(top: 514.adjustedHeight, left: 569.adjustedWidth, bottom: 0, right: 0))
-        self.culture.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.culture.constraint(.heightAnchor, constant: 200.adjustedHeight)
-
-        self.scrollView.addSubview(self.history)
-        self.history.constraint(top: self.scrollView.topAnchor,
-                                leading: self.scrollView.leadingAnchor,
-                                padding: UIEdgeInsets(top: 689.adjustedHeight, left: 554.adjustedWidth, bottom: 0, right: 0))
-        self.history.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.history.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        self.scrollView.addSubview(self.broadcast)
+        self.broadcast.constraint(top: self.animal.bottomAnchor,
+                                  leading: self.animal.leadingAnchor,
+                                  padding: UIEdgeInsets(top: 10.adjustedHeight,
+                                                        left: -20.adjustedWidth,
+                                                        bottom: 0,
+                                                        right: 0))
 
         self.scrollView.addSubview(self.health)
-        self.health.constraint(top: self.scrollView.topAnchor,
-                               leading: self.scrollView.leadingAnchor,
-                               padding: UIEdgeInsets(top: 140.adjustedHeight, left: 840.adjustedWidth, bottom: 0, right: 0))
-        self.health.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.health.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        self.health.constraint(top: self.art.topAnchor,
+                               leading: self.art.trailingAnchor,
+                               padding: UIEdgeInsets(top: -50.adjustedHeight,
+                                                     left: 20.adjustedWidth,
+                                                     bottom: 0,
+                                                     right: 0))
+
+        self.scrollView.addSubview(self.culture)
+        self.culture.constraint(top: self.art.bottomAnchor,
+                                leading: self.animal.trailingAnchor,
+                                padding: UIEdgeInsets(top: 0.adjustedHeight,
+                                                      left: 45.adjustedWidth,
+                                                      bottom: 0,
+                                                      right: 0))
+
+        self.scrollView.addSubview(self.money)
+        self.money.constraint(top: self.culture.bottomAnchor,
+                              leading: self.broadcast.trailingAnchor,
+                              padding: UIEdgeInsets(top: 10.adjustedHeight,
+                                                    left: 20.adjustedWidth,
+                                                    bottom: 0,
+                                                    right: 0))
+
+        self.scrollView.addSubview(self.environment)
+        self.environment.constraint(top: self.money.bottomAnchor,
+                                    leading: self.money.leadingAnchor,
+                                    padding: UIEdgeInsets(top: 10.adjustedHeight,
+                                                          left: 10.adjustedWidth,
+                                                          bottom: 0,
+                                                          right: 0))
+
+        self.health.constraint(top: self.art.topAnchor,
+                               leading: self.art.trailingAnchor,
+                               padding: UIEdgeInsets(top: -50.adjustedHeight,
+                                                     left: 10.adjustedWidth,
+                                                     bottom: 0,
+                                                     right: 0))
 
         self.scrollView.addSubview(self.company)
-        self.company.constraint(top: self.scrollView.topAnchor,
-                                leading: self.scrollView.leadingAnchor,
-                                padding: UIEdgeInsets(top: 352.adjustedHeight, left: 747.adjustedWidth, bottom: 0, right: 0))
-        self.company.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.company.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        self.company.constraint(top: self.health.bottomAnchor,
+                                leading: self.culture.trailingAnchor,
+                                padding: UIEdgeInsets(top: 10.adjustedHeight,
+                                                      left: 15.adjustedWidth,
+                                                      bottom: 0,
+                                                      right: 0))
 
         self.scrollView.addSubview(self.science)
-        self.science.constraint(top: self.scrollView.topAnchor,
-                                leading: self.scrollView.leadingAnchor,
-                                padding: UIEdgeInsets(top: 543.adjustedHeight, left: 773.adjustedWidth, bottom: 0, right: 0))
-        self.science.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.science.constraint(.heightAnchor, constant: 200.adjustedHeight)
-
-        self.scrollView.addSubview(self.economyIT)
-        self.economyIT.constraint(top: self.scrollView.topAnchor,
-                                  leading: self.scrollView.leadingAnchor,
-                                  padding: UIEdgeInsets(top: 720.adjustedHeight, left: 800.adjustedWidth, bottom: 0, right: 0))
-        self.economyIT.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.economyIT.constraint(.heightAnchor, constant: 200.adjustedHeight)
-
-        self.scrollView.addSubview(self.exercise)
-        self.exercise.constraint(top: self.scrollView.topAnchor,
-                                 leading: self.scrollView.leadingAnchor,
-                                 padding: UIEdgeInsets(top: 300.adjustedHeight, left: 1000.adjustedWidth, bottom: 0, right: 0))
-        self.exercise.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.exercise.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        self.science.constraint(top: self.company.bottomAnchor,
+                                leading: self.money.trailingAnchor,
+                                padding: UIEdgeInsets(top: 15.adjustedHeight,
+                                                      left: 15.adjustedWidth,
+                                                      bottom: 0,
+                                                      right: 0))
 
         self.scrollView.addSubview(self.world)
-        self.world.constraint(top: self.scrollView.topAnchor,
-                              leading: self.scrollView.leadingAnchor,
-                              padding: UIEdgeInsets(top: 490.adjustedHeight, left: 971.adjustedWidth, bottom: 0, right: 0))
-        self.world.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.world.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        self.world.constraint(top: self.science.bottomAnchor,
+                              leading: self.environment.trailingAnchor,
+                              padding: UIEdgeInsets(top: 10.adjustedHeight,
+                                                    left: 20.adjustedWidth,
+                                                    bottom: 0,
+                                                    right: 0))
+
+        self.scrollView.addSubview(self.exercise)
+        self.exercise.constraint(top: self.health.topAnchor,
+                                 leading: self.health.trailingAnchor,
+                                 padding: UIEdgeInsets(top: 30.adjustedHeight,
+                                                       left: 10.adjustedWidth,
+                                                       bottom: 0,
+                                                       right: 0))
 
         self.scrollView.addSubview(self.robot)
-        self.robot.constraint(top: self.scrollView.topAnchor,
-                              leading: self.scrollView.leadingAnchor,
-                              padding: UIEdgeInsets(top: 220.adjustedHeight, left: 1200.adjustedWidth, bottom: 0, right: 0))
-        self.robot.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.robot.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        self.robot.constraint(top: self.exercise.topAnchor,
+                              leading: self.exercise.trailingAnchor,
+                              padding: UIEdgeInsets(top: 10.adjustedHeight,
+                                                    left: 10.adjustedWidth,
+                                                    bottom: 0,
+                                                    right: 0))
+
+        self.scrollView.addSubview(self.history)
+        self.history.constraint(top: self.company.bottomAnchor,
+                                leading: self.company.trailingAnchor,
+                                padding: UIEdgeInsets(top: 0,
+                                                      left: 20.adjustedWidth,
+                                                      bottom: 0,
+                                                      right: 0))
+
+        self.scrollView.addSubview(self.economyIT)
+        self.economyIT.constraint(top: self.history.bottomAnchor,
+                                  leading: self.world.trailingAnchor,
+                                  padding: UIEdgeInsets(top: 25.adjustedHeight,
+                                                        left: 5.adjustedWidth,
+                                                        bottom: 0,
+                                                        right: 0))
 
         self.scrollView.addSubview(self.economy)
-        self.economy.constraint(top: self.scrollView.topAnchor,
-                                leading: self.scrollView.leadingAnchor,
-                                padding: UIEdgeInsets(top: 457.adjustedHeight, left: 1185.adjustedWidth, bottom: 0, right: 0))
-        self.economy.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.economy.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        self.economy.constraint(top: self.robot.bottomAnchor,
+                                leading: self.company.trailingAnchor,
+                                padding: UIEdgeInsets(top: 10.adjustedHeight,
+                                                      left: 30.adjustedWidth,
+                                                      bottom: 0,
+                                                      right: 0))
 
         self.scrollView.addSubview(self.space)
-        self.space.constraint(top: self.scrollView.topAnchor,
-                              leading: self.scrollView.leadingAnchor,
-                              padding: UIEdgeInsets(top: 670.adjustedHeight, left: 1050.adjustedWidth, bottom: 0, right: 0))
-        self.space.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.space.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        self.space.constraint(top: self.history.bottomAnchor,
+                              leading: self.economyIT.trailingAnchor,
+                              padding: UIEdgeInsets(top: 5.adjustedHeight,
+                                                    left: 10.adjustedWidth,
+                                                    bottom: 0,
+                                                    right: 0))
 
         self.scrollView.addSubview(self.greetingLabel)
         self.greetingLabel.constraint(top: self.view.topAnchor,
