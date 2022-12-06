@@ -32,6 +32,7 @@ class SelectInterestViewController: UIViewController, UIGestureRecognizerDelegat
         label.numberOfLines = 0
         return label
     }()
+    private let finishButton = GotoSomewhereButton()
     private let society: CategoryShapeView = CategoryShapeView(image: ImageLiteral.society, labelText: "사회")
     private let world: CategoryShapeView = CategoryShapeView(image: ImageLiteral.world, labelText: "세계")
     private let history: CategoryShapeView = CategoryShapeView(image: ImageLiteral.history, labelText: "역사")
@@ -55,9 +56,14 @@ class SelectInterestViewController: UIViewController, UIGestureRecognizerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        setupButton()
     }
 
     // MARK: - func
+
+    private func setupButton() {
+        self.finishButton.setupButtonContents(buttonImage: UIImage(systemName: "checkmark.circle") ?? UIImage(), buttonTitle: "선택완료")
+    }
 
     private func setupLayout() {
         self.view.addSubview(self.scrollView)
@@ -217,7 +223,15 @@ class SelectInterestViewController: UIViewController, UIGestureRecognizerDelegat
 
         self.scrollView.addSubview(self.selectGuideTitleLabel)
         self.selectGuideTitleLabel.constraint(top: self.greetingLabel.bottomAnchor,
-                                 leading: self.greetingLabel.leadingAnchor,
-                                 padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0))
-    }
-}
+                                              leading: self.greetingLabel.leadingAnchor,
+                                              padding: UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.finishButton)
+        self.finishButton.constraint(bottom: self.view.bottomAnchor,
+                                     trailing: self.view.trailingAnchor,
+                                     padding: UIEdgeInsets(top: 0,
+                                                           left: 0,
+                                                           bottom: 46.adjustedHeight,
+                                                           right: 40.adjustedWidth))
+     }
+ }
