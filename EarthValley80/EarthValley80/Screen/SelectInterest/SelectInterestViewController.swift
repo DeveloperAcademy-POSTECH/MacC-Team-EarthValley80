@@ -64,6 +64,13 @@ final class SelectInterestViewController: UIViewController {
     private func setupButton() {
         self.finishButton.setupButtonContents(buttonImage: UIImage(systemName: "checkmark.circle") ?? UIImage(),
                                               buttonTitle: StringLiteral.finishSelectButtonText)
+        let action = UIAction { _ in
+            let vc = SideTabbarViewController()
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        }
+        self.finishButton.addAction(action, for: .touchUpInside)
     }
 
     private func setupLayout() {
