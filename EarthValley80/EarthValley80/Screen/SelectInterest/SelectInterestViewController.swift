@@ -103,7 +103,7 @@ class SelectInterestViewController: UIViewController, UIGestureRecognizerDelegat
         self.health.constraint(top: self.art.topAnchor,
                                leading: self.art.trailingAnchor,
                                padding: UIEdgeInsets(top: -50.adjustedHeight,
-                                                     left: 20.adjustedWidth,
+                                                     left: 10.adjustedWidth,
                                                      bottom: 0,
                                                      right: 0))
 
@@ -181,7 +181,7 @@ class SelectInterestViewController: UIViewController, UIGestureRecognizerDelegat
         self.scrollView.addSubview(self.history)
         self.history.constraint(top: self.company.bottomAnchor,
                                 leading: self.company.trailingAnchor,
-                                padding: UIEdgeInsets(top: 0,
+                                padding: UIEdgeInsets(top: 40.adjustedHeight,
                                                       left: 20.adjustedWidth,
                                                       bottom: 0,
                                                       right: 0))
