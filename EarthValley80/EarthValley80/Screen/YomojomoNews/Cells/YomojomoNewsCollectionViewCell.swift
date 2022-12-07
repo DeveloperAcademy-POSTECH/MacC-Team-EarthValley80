@@ -12,7 +12,7 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
     private enum Size {
         static let categoryLabelFontSize: CGFloat = 16.0
         static let newsTitleFontSize: CGFloat = 28.0
-        static let categoryImageSize: CGFloat = 155.0
+        static let categoryImageSize: CGFloat = 200
         static let newsTitleImageSize: CGFloat = 233.0
         static let categoryLabelHeight: CGFloat = 26.0
         static let categoryLabelPadding: CGFloat = 24.0
@@ -27,7 +27,7 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
         imageview.contentMode = .scaleToFill
         imageview.clipsToBounds = true
         imageview.layer.cornerRadius = 12.0
-        imageview.backgroundColor = .red
+//        imageview.backgroundColor = .red
         return imageview
     }()
     private let newsImageView: UIImageView = {
@@ -106,6 +106,20 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
         newsTitleLabel.text = news.title
         newsCategoryLabel.text = news.category
         newsImageView.image = news.image
+        setCategoryImage(news.category!)
+    }
+
+    // TODO: - 더미데이터에서 이미지 아무거나 끼워넣는 함수입니다. 추후 지워버릴 예정.
+    func setCategoryImage(_ category: String) {
+        if category == "시사" {
+            categoryBackgroundImageView.image = ImageLiteral.society
+        } else if category == "과학" {
+            categoryBackgroundImageView.image = ImageLiteral.environment
+        } else if category == "문화" {
+            categoryBackgroundImageView.image = ImageLiteral.exercise
+        } else {
+            categoryBackgroundImageView.image = ImageLiteral.company
+        }
     }
 
     func calculateLabelWidth(_ newsData: News) {
