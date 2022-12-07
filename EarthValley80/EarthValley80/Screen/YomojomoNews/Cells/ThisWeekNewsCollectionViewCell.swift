@@ -47,7 +47,7 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
         view.layer.borderColor = UIColor.evyGray3.cgColor
         view.layer.borderWidth = 1.0
         view.backgroundColor = .evyWhite
-        view.makeShadow(color: .evyBlack1, opacity: 0.08, offset: CGSize(width: 2, height: 8), radius: 18)
+        view.makeShadow(color: .evyBlack1, opacity: 0.08, offset: .zero, radius: 8)
         return view
     }()
     private let newsTitleLabel: UILabel = {

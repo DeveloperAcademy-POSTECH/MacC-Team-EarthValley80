@@ -39,7 +39,7 @@ final class SideTabbarViewController: UIViewController {
         addChild(self.containerViewController)
         self.view.addSubview(self.containerViewController.view)
         self.containerViewController.didMove(toParent: self)
-        self.containerViewController.view.constraint(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 254, bottom: 20, right: 50))
+        self.containerViewController.view.constraint(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 235, bottom: 20, right: 0))
     }
 
     private func setupNotificationCenter() {

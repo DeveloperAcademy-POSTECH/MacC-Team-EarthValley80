@@ -28,7 +28,9 @@ final class ContainerViewController: UIViewController {
     //MARK: - func
     private func setupLayout() {
         self.view.addSubview(self.embeddedYomoJomoNewsViewController.view)
+        self.embeddedYomoJomoNewsViewController.view.constraint(to: self.view)
         self.view.addSubview(self.embeddedMyNewsDrawerViewController.view)
+        self.embeddedMyNewsDrawerViewController.view.constraint(to: self.view)
     }
     
     private func setupNotifier() {

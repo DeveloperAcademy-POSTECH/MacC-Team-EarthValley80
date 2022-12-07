@@ -23,7 +23,7 @@ final class YomojomoNewsViewController: UIViewController {
         static let yomojomoNewsCollectionviewAndTitleInterval = UIScreen.main.bounds.height / 9
         static let yomojomoCollectionviewHeight = UIScreen.main.bounds.height - 400.0
         static let yomojomoCollectionviewWidth: CGFloat = 300.0
-        static let tabbarPadding: CGFloat = 306
+        static let tabbarPadding: CGFloat = 230
     }
 
     // MARK: - property
@@ -56,6 +56,7 @@ final class YomojomoNewsViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 113
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 39, bottom: 0, right: 0)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
@@ -63,9 +64,9 @@ final class YomojomoNewsViewController: UIViewController {
         collectionView.register(cell: YomojomoNewsCollectionViewCell.self)
         return collectionView
     }()
-    private let thisWeekNewsContentView: UIView = {
-        let contentview = UIView()
-        contentview.backgroundColor = .evyGray2
+    private let thisWeekNewsContentView: UIImageView = {
+        let contentview = UIImageView()
+        contentview.image = UIImage(named: "paper_bg")
         return contentview
     }()
     private let thisWeekTitleView: MainTitleView = {
@@ -81,9 +82,11 @@ final class YomojomoNewsViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = Size.cellInterval
         layout.minimumInteritemSpacing = Size.cellInterval
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 39, bottom: 0, right: 39)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
         collectionView.register(cell: ThisWeekNewsCollectionViewCell.self)
         collectionView.register(cell: EmptySpaceCollectionViewCell.self)
         return collectionView
@@ -107,7 +110,7 @@ final class YomojomoNewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayout()
-        self.addContentViewsToScrollView()
+//        self.addContentViewsToScrollView()
         self.setupPageControl()
     }
 
@@ -126,6 +129,16 @@ final class YomojomoNewsViewController: UIViewController {
                                    trailing: self.view.safeAreaLayoutGuide.trailingAnchor,
                                    padding: UIEdgeInsets.zero)
 
+        self.scrollView.addSubview(yomojomoNewsContentView)
+        yomojomoNewsContentView.constraint(top: self.scrollView.topAnchor, leading: self.scrollView.leadingAnchor, trailing: self.scrollView.trailingAnchor)
+        yomojomoNewsContentView.constraint(.widthAnchor, constant: UIScreen.main.bounds.size.width - Size.tabbarPadding)
+        yomojomoNewsContentView.constraint(.heightAnchor, constant: Size.contentviewHeight)
+
+        self.scrollView.addSubview(thisWeekNewsContentView)
+        thisWeekNewsContentView.constraint(top: self.yomojomoNewsContentView.bottomAnchor, leading: self.scrollView.leadingAnchor, bottom: self.scrollView.bottomAnchor, trailing: self.scrollView.trailingAnchor)
+        thisWeekNewsContentView.constraint(.widthAnchor, constant: UIScreen.main.bounds.size.width - Size.tabbarPadding)
+        thisWeekNewsContentView.constraint(.heightAnchor, constant: UIScreen.main.bounds.size.height + 70)
+
         self.view.addSubview(self.pageControl)
         self.pageControl.constraint(bottom: self.view.bottomAnchor,
                                     centerX: self.view.centerXAnchor,
@@ -135,7 +148,7 @@ final class YomojomoNewsViewController: UIViewController {
         self.yomojomoTitleView.constraint(top: self.yomojomoNewsContentView.topAnchor,
                                           leading: self.yomojomoNewsContentView.leadingAnchor,
                                           trailing: self.yomojomoNewsContentView.trailingAnchor,
-                                          padding: UIEdgeInsets(top: 65, left: 0, bottom: 0, right: 0))
+                                          padding: UIEdgeInsets(top: 65, left: 39, bottom: 0, right: 0))
 
         self.yomojomoNewsContentView.addSubview(self.yomojomoNewsCollectionView)
         self.yomojomoNewsCollectionView.constraint(top: self.yomojomoTitleView.bottomAnchor,
@@ -147,13 +160,13 @@ final class YomojomoNewsViewController: UIViewController {
         self.yomojomoNewsContentView.addSubview(self.slideGuideLabel)
         self.slideGuideLabel.constraint(bottom: self.yomojomoNewsContentView.bottomAnchor,
                                         centerX: self.yomojomoNewsContentView.centerXAnchor,
-                                        padding: UIEdgeInsets(top: 0, left: 0, bottom: 24, right: 0))
+                                        padding: UIEdgeInsets(top: 0, left: 39, bottom: 24, right: 0))
 
         self.thisWeekNewsContentView.addSubview(self.thisWeekTitleView)
         self.thisWeekTitleView.constraint(top: self.thisWeekNewsContentView.topAnchor,
                                           leading: self.thisWeekNewsContentView.leadingAnchor,
                                           trailing: self.thisWeekNewsContentView.trailingAnchor,
-                                          padding: UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0))
+                                          padding: UIEdgeInsets(top: 110, left: 39, bottom: 0, right: 0))
 
         self.thisWeekNewsContentView.addSubview(self.thisWeekNewsCollectionView)
         self.thisWeekNewsCollectionView.constraint(top: self.thisWeekTitleView.bottomAnchor,
@@ -223,9 +236,9 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
         case self.thisWeekNewsCollectionView:
             var width: CGFloat
             if self.newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
-                width = ((collectionView.frame.width - (Size.cellInterval * 4)) / Size.column) * 2 + Size.cellInterval
+                width = ((collectionView.frame.width - (Size.cellInterval * 4) - 78) / Size.column) * 2 + Size.cellInterval
             } else {
-                width = (collectionView.frame.width - (Size.cellInterval * 4)) / Size.column - 0.00000001
+                width = (collectionView.frame.width - 78 - (Size.cellInterval * 4)) / Size.column - 0.00000001
             }
             return CGSize(width: width, height: Size.cellHeight)
         default:
