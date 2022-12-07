@@ -79,17 +79,15 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let hasTitle = newsData[indexPath.row].title != nil
 
-        switch (collectionView, hasTitle) {
-        case (self.collectionView, true):
+        switch hasTitle {
+        case true:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }
             cell.setData(newsData[indexPath.row])
             cell.calculateLabelWidth(newsData[indexPath.row])
             return cell
-        case (self.collectionView, false):
+        case false:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
             return cell
-        default:
-            return UICollectionViewCell()
         }
     }
 }
