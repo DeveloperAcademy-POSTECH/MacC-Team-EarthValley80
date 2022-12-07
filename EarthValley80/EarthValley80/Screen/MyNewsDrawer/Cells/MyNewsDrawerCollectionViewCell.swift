@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
+final class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
 
     private enum Size {
         static let standardOfTitle: Int = 30
