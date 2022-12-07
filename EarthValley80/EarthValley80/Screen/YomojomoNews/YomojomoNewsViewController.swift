@@ -167,7 +167,7 @@ final class YomojomoNewsViewController: UIViewController {
         self.thisWeekTitleView.constraint(top: self.thisWeekNewsContentView.topAnchor,
                                           leading: self.thisWeekNewsContentView.leadingAnchor,
                                           trailing: self.thisWeekNewsContentView.trailingAnchor,
-                                          padding: UIEdgeInsets(top: 110, left: 39, bottom: 0, right: 0))
+                                          padding: UIEdgeInsets(top: 90, left: 39, bottom: 0, right: 0))
 
         self.thisWeekNewsContentView.addSubview(self.thisWeekNewsCollectionView)
         self.thisWeekNewsCollectionView.constraint(top: self.thisWeekTitleView.bottomAnchor,

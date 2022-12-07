@@ -27,13 +27,14 @@ final class MyNewsDrawerViewController: UIViewController {
                                   description: StringLiteral.myNewsDrawerTitleDescription)
         return titleView
     }()
+    private let background = UIImageView(image: UIImage(named: "paper_bg"))
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = Size.cellInterval
         layout.minimumInteritemSpacing = Size.cellInterval
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 39, bottom: 0, right: 39)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 39)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -56,6 +57,9 @@ final class MyNewsDrawerViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
+        view.addSubview(background)
+        background.constraint(to: view)
+
         self.view.addSubview(self.myNewsDrawerTitle)
         self.myNewsDrawerTitle.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
                                      leading: self.view.leadingAnchor,
@@ -100,9 +104,9 @@ extension MyNewsDrawerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var width: CGFloat
         if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
-            width = ((collectionView.frame.width - (Size.cellInterval * 4) - 78) / Size.column) * 2 + Size.cellInterval
+            width = ((collectionView.frame.width - (Size.cellInterval * 4) - 39) / Size.column) * 2 + Size.cellInterval
         } else {
-            width = (collectionView.frame.width - (Size.cellInterval * 4) - 78) / Size.column - 0.00000001
+            width = (collectionView.frame.width - (Size.cellInterval * 4) - 39) / Size.column - 0.00000001
         }
 
         return CGSize(width: width, height: Size.cellHeight)
