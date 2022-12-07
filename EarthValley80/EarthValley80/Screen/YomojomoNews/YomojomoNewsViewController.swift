@@ -31,7 +31,7 @@ final class YomojomoNewsViewController: UIViewController {
 
     private let scrollView: UIScrollView = {
         let scrollview = UIScrollView()
-        scrollview.contentSize = CGSize(width: UIScreen.main.bounds.width - 306,
+        scrollview.contentSize = CGSize(width: UIScreen.main.bounds.width - Size.tabbarPadding,
                                         height: UIScreen.main.bounds.height * 2)
         scrollview.showsHorizontalScrollIndicator = false
         scrollview.showsVerticalScrollIndicator = false

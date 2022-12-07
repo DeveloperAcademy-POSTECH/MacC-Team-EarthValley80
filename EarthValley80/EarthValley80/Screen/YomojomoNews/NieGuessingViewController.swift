@@ -27,13 +27,22 @@ final class NieGuessingViewController: UIViewController {
         imageView.clipsToBounds = true
         return imageView
     }()
-    private lazy var timerLabel: UILabel = {
-        let label = UILabel()
-        label.text = "\(newsGuessingTime)"
-        label.textColor = .evyWhite
-        label.textAlignment = .center
-        label.font = .font(.regular, ofSize: 24)
-        return label
+//    private lazy var timerLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "\(newsGuessingTime)"
+//        label.textColor = .evyWhite
+//        label.textAlignment = .center
+//        label.font = .font(.regular, ofSize: 24)
+//        return label
+//    }()
+    private lazy var nextButton: GotoSomewhereButton = {
+        let button = GotoSomewhereButton(type: .white)
+        let action = UIAction { [weak self] _ in
+            self?.presentReadingNewsViewController()
+        }
+        button.addAction(action, for: .touchUpInside)
+        button.setupButtonContents(buttonImage: ImageLiteral.icArrowRight, buttonTitle: "읽으러가기")
+        return button
     }()
 
     private var timer: Timer?
@@ -45,7 +54,7 @@ final class NieGuessingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupTimer()
+//        self.setupTimer()
         self.configureUI()
         self.setupLayout()
     }
@@ -74,10 +83,15 @@ final class NieGuessingViewController: UIViewController {
         self.newsImageView.constraint(.widthAnchor, constant: 340.adjustedWidth)
         self.newsImageView.constraint(.heightAnchor, constant: 272.adjustedHeight)
 
-        self.view.addSubview(self.timerLabel)
-        self.timerLabel.constraint(top: self.newsImageView.bottomAnchor,
-                                   centerX: self.view.centerXAnchor,
-                                   padding: UIEdgeInsets(top: 80, left: 0, bottom: 0, right: 0))
+//        self.view.addSubview(self.timerLabel)
+//        self.timerLabel.constraint(top: self.newsImageView.bottomAnchor,
+//                                   centerX: self.view.centerXAnchor,
+//                                   padding: UIEdgeInsets(top: 80, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.nextButton)
+        self.nextButton.constraint(bottom: self.view.bottomAnchor,
+                                   trailing: self.view.trailingAnchor,
+                                   padding: UIEdgeInsets(top: 0, left: 0, bottom: 37, right: 56))
     }
 
     private func setupTimer() {
@@ -110,6 +124,6 @@ final class NieGuessingViewController: UIViewController {
         }
 
         self.newsGuessingTime -= 1
-        self.timerLabel.text = self.newsGuessingTime.description
+//        self.timerLabel.text = self.newsGuessingTime.description
     }
 }
