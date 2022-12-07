@@ -25,7 +25,7 @@ class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
         case culture = "문화"
         case society = "시사"
 
-        var categoryBackgroundColor: UIColor {
+        var background: UIColor {
             switch self {
             case .economy:
                 return .evyCategoryEcnmy
@@ -116,7 +116,7 @@ class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
     func setData(_ newsData: News) {
         self.newsTitleLabel.text = newsData.title
         self.newsCategoryLabel.text = newsData.category
-        self.newsCategoryLabel.backgroundColor = CardUI(rawValue: newsData.category ?? "")?.categoryBackgroundColor
+        self.newsCategoryLabel.backgroundColor = CardUI(rawValue: newsData.category ?? "")?.background
     }
 
     func calculateLabelWidth(_ newsData: News) {
