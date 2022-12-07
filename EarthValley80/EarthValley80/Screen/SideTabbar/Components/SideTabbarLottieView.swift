@@ -26,11 +26,7 @@ struct SideTabbarLottieView: UIViewRepresentable {
     
     private func setupAnimationView() -> UIView {
         let view = UIView(frame: .zero)
-        let animationView = LottieAnimationView()
-        animationView.animation = Animation.named(self.filename)
-        animationView.contentMode = .scaleAspectFit
-        animationView.loopMode = .loop
-        animationView.play()
+        let animationView = UIImageView(image: UIImage(named: "character_yomo"))
         
         animationView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(animationView)

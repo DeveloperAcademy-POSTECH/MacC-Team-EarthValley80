@@ -9,6 +9,8 @@ import SwiftUI
 
 struct GotoYomoRoomButton: View {
     @State private var isTapped = false
+
+    let uiFont = UIFont.font(.regular, ofSize: 12)
     
     var body: some View {
         Button {
@@ -16,15 +18,14 @@ struct GotoYomoRoomButton: View {
                 isTapped.toggle()
             }
         } label: {
-            HStack(spacing: 8) {
+            HStack(spacing: 4) {
                 Text(StringLiteral.goToYomoRoomText)
-                    .font(.system(size: 12))
+                    .font(Font(uiFont))
                     .foregroundColor(.black)
                 ImageLiteral.imgGoToYomoRoomArrow
                     .font(.system(size: 12))
                     .foregroundColor(.black)
             }
-            .frame(width: 90, height: 14)
         }
         
         if isTapped {

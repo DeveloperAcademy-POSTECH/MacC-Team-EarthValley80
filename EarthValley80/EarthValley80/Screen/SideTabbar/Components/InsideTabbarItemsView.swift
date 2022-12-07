@@ -10,7 +10,9 @@ import SwiftUI
 struct InsideTabBarItems: View {
     @Binding var selectedTab: String
     private let notifier = EventManager.shared
-    
+
+    let uiFont = UIFont.font(.regular, ofSize: 12)
+
     var body: some View {
         VStack {
             ImageLiteral.imgYomoJomoLogo
@@ -21,12 +23,13 @@ struct InsideTabBarItems: View {
                 .background(Color.white)
             ZStack {
                 SideTabbarLottieView(filename: StringLiteral.yomoProfileLottieFile)
-                    .frame(width: 200, height: 250)
+                    .frame(width: 132, height: 143)
                 Text(StringLiteral.yomoProfileTitle)
-                    .font(.system(size: 10))
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 120, trailing: 0))
+                    .font(Font(uiFont))
+                    .foregroundColor(.gray)
+                    .padding(EdgeInsets(top: 30, leading: 0, bottom: 230, trailing: 0))
                 GotoYomoRoomButton()
-                    .padding(EdgeInsets(top: 100, leading: 90, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 200, leading: 90, bottom: 0, trailing: 0))
             }
             .padding(.bottom)
             VStack(spacing: 0) {
