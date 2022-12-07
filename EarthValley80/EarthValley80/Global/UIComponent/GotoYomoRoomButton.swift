@@ -16,6 +16,7 @@ struct GotoYomoRoomButton: View {
         Button {
             withAnimation {
                 isTapped.toggle()
+                NotificationCenter.default.post(name: .presentYomoRoom, object: nil)
             }
         } label: {
             HStack(spacing: 4) {
@@ -26,11 +27,6 @@ struct GotoYomoRoomButton: View {
                     .font(.system(size: 12))
                     .foregroundColor(.black)
             }
-        }
-        
-        if isTapped {
-            YomoRoomView()
-                .transition(.move(edge: .leading))
         }
     }
 }

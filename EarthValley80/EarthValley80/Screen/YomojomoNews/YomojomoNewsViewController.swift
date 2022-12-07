@@ -9,6 +9,7 @@ import UIKit
 
 extension NSNotification.Name {
     static let presentReadingNews = NSNotification.Name("presentReadingNews")
+    static let presentYomoRoom = NSNotification.Name("presentYomoRoom")
 }
 
 final class YomojomoNewsViewController: UIViewController {

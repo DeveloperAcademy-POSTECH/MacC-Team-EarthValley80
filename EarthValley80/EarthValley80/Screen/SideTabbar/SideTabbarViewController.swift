@@ -14,6 +14,7 @@ final class SideTabbarViewController: UIViewController {
     private lazy var notifier = EventManager.shared
     private var sideTabbarView = SideTabbarView()
     private lazy var sideTabbar = UIHostingController(rootView: sideTabbarView)
+    private lazy var yomoroom = UIHostingController(rootView: YomoRoomView())
     private var cancellables = Set<AnyCancellable>()
     private let containerViewController = ContainerViewController()
     
@@ -44,6 +45,7 @@ final class SideTabbarViewController: UIViewController {
 
     private func setupNotificationCenter() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.presentNIEGuessingViewController), name: .presentReadingNews, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.presentYomoRoom), name: .presentYomoRoom, object: nil)
     }
 
     @objc
@@ -54,5 +56,15 @@ final class SideTabbarViewController: UIViewController {
         nigGuessingViewController.modalPresentationStyle = .overCurrentContext
 
         self.present(nigGuessingViewController, animated: true)
+    }
+
+    @objc
+    private func presentYomoRoom() {
+        let vc = yomoroom
+
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+
+        self.present(vc, animated: true)
     }
 }
