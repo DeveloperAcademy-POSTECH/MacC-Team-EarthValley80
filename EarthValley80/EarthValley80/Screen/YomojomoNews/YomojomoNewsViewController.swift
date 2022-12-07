@@ -200,7 +200,7 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
         case self.yomojomoNewsCollectionView:
             return 8
         case self.thisWeekNewsCollectionView:
-            return self.newsData2.count
+            return self.newsData.count
         default:
             return 0
         }
@@ -217,8 +217,7 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
             return cell
         case (self.thisWeekNewsCollectionView, true):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ThisWeekNewsCollectionViewCell.className, for: indexPath) as? ThisWeekNewsCollectionViewCell else { return UICollectionViewCell() }
-            // TODO: - 더미데이터 삭제해야합니다.
-            cell.setData(newsData2[indexPath.row])
+            cell.setData(newsData[indexPath.row])
             cell.calculateLabelWidth(newsData2[indexPath.row])
             return cell
         case (self.thisWeekNewsCollectionView, false):
@@ -238,7 +237,7 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: Size.yomojomoCollectionviewWidth, height: Size.yomojomoCollectionviewHeight)
         case self.thisWeekNewsCollectionView:
             var width: CGFloat
-            if self.newsData2[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
+            if self.newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
                 width = ((collectionView.frame.width - (Size.cellInterval * 4) - 78) / Size.column) * 2 + Size.cellInterval
             } else {
                 width = (collectionView.frame.width - 78 - (Size.cellInterval * 4)) / Size.column - 0.00000001

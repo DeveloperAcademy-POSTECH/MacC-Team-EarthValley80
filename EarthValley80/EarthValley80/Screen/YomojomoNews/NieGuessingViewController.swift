@@ -62,7 +62,7 @@ final class NieGuessingViewController: UIViewController {
     // MARK: - func
 
     private func configureUI() {
-        self.view.backgroundColor = .black.withAlphaComponent(0.69)
+        self.view.backgroundColor = .black.withAlphaComponent(0.9)
     }
 
     private func setupLayout() {
