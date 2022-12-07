@@ -42,8 +42,8 @@ final class MyNewsDrawerViewController: UIViewController {
     }()
 
     // TODO: - 더미데이터 입니다. 추후 변경 예정입니다. 내림차순으로 정렬해주어야합니다.
-    private let newsModel = NewsSortingManager()
-    private lazy var newsData: [News] = self.newsModel.arrangeNewsData(yomojomoViewDummyData)
+    private let sortingManager = NewsSortingManager()
+    private lazy var newsData: [News] = self.sortingManager.arrangeNewsData(yomojomoViewDummyData)
 
     // MARK: - init
 
