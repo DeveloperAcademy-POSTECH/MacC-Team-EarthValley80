@@ -183,7 +183,7 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
         case self.yomojomoNewsCollectionView:
-            return self.newsData.count
+            return 8
         case self.thisWeekNewsCollectionView:
             return self.newsData.count
         default:
@@ -197,7 +197,7 @@ extension YomojomoNewsViewController: UICollectionViewDataSource {
         switch (collectionView, hasTitle) {
         case (self.yomojomoNewsCollectionView, _):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: YomojomoNewsCollectionViewCell.className, for: indexPath) as! YomojomoNewsCollectionViewCell
-            cell.setData(with: newsData[indexPath.row])
+            cell.setData(with: yomojomoViewDummyData[indexPath.row])
             cell.calculateLabelWidth(newsData[indexPath.row])
             return cell
         case (self.thisWeekNewsCollectionView, true):
@@ -237,10 +237,19 @@ extension YomojomoNewsViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDelegate
 extension YomojomoNewsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let index = indexPath.row
-        self.newsManager.setupNews(title: newsData[index].title ?? "",
-                                   content: newsData[index].content ?? "",
-                                   image: newsData[index].image ?? UIImage())
-        NotificationCenter.default.post(name: .presentReadingNews, object: nil)
+        switch collectionView {
+        case yomojomoNewsCollectionView:
+            let index = indexPath.row
+            self.newsManager.setupNews(title: yomojomoViewDummyData[index].title ?? "",
+                                       content: yomojomoViewDummyData[index].content ?? "",
+                                       image: yomojomoViewDummyData[index].image ?? UIImage())
+            NotificationCenter.default.post(name: .presentReadingNews, object: nil)
+        default:
+            let index = indexPath.row
+            self.newsManager.setupNews(title: newsData[index].title ?? "",
+                                       content: newsData[index].content ?? "",
+                                       image: newsData[index].image ?? UIImage())
+            NotificationCenter.default.post(name: .presentReadingNews, object: nil)
+        }
     }
 }
