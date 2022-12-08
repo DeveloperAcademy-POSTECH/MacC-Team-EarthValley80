@@ -9,14 +9,17 @@ import UIKit
 
 final class ReactionViewController: UIViewController {
 
+    private enum Size {
+        static let buttonSize: CGFloat = 69.0
+    }
+
     // MARK: - property
 
     private let titleView: CapsuleFormTitleView = CapsuleFormTitleView(title: StringLiteral.reactionTitle)
-    private let headlineLabel: UILabel = {
+    private lazy var headlineLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.bold, ofSize: 34)
-        // TODO: - 더미로 넣어둔 텍스트
-        label.text = "세상에 다람쥐가 없다고 무슨 문제야?"
+        label.text = self.newsManager.newsTitle
         label.textColor = .evyWhite
         return label
     }()
@@ -49,6 +52,49 @@ final class ReactionViewController: UIViewController {
         }
         return view
     }()
+    private lazy var nextButton: GotoSomewhereButton = {
+        let button = GotoSomewhereButton(type: .white)
+        let action = UIAction { [weak self] _ in
+            self?.presentMainSentenceViewController()
+        }
+        button.addAction(action, for: .touchUpInside)
+        button.setupButtonContents(buttonImage: ImageLiteral.icArrowRight, buttonTitle: StringLiteral.findCentralSentenceButtonText)
+        button.isHidden = true
+        return button
+    }()
+    private lazy var shareButton: GotoSomewhereButton = {
+        let button = GotoSomewhereButton(type: .transparentWhite)
+        let action = UIAction { [weak self] _ in
+            // TODO: - 후에 받은 newsId로 수정
+            self?.presentActivityViewController(newsId: "123456")
+        }
+        button.addAction(action, for: .touchUpInside)
+        button.setupButtonContents(buttonImage: ImageLiteral.icSquareAndArrowUp, buttonTitle: StringLiteral.shareArticleButtonText)
+        button.isHidden = true
+        return button
+    }()
+    private lazy var closeButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .evyWhite
+        button.isHidden = true
+
+        // TODO: - 나중에 Asset 이미지 변경
+        let imageView = UIImageView(image: UIImage(systemName: "xmark.circle"))
+        button.addSubview(imageView)
+        imageView.constraint(top: button.topAnchor, centerX: button.centerXAnchor)
+        imageView.constraint(.heightAnchor, constant: Size.buttonSize)
+        imageView.constraint(.widthAnchor, constant: Size.buttonSize)
+
+        let action = UIAction { [weak self] _ in
+            guard let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate else { return }
+            sceneDelegate.navigateToNewsFeedViewController()
+        }
+        button.addAction(action, for: .touchUpInside)
+
+        return button
+    }()
+
+    private let newsManager = NewsManager.shared
 
     // MARK: - life cycle
 
@@ -61,6 +107,13 @@ final class ReactionViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
+        self.view.addSubview(self.closeButton)
+        self.closeButton.constraint(top: self.view.topAnchor,
+                                    trailing: self.view.trailingAnchor,
+                                    padding: UIEdgeInsets(top: 46, left: 0, bottom: 0, right: 65))
+        self.closeButton.constraint(.heightAnchor, constant: Size.buttonSize)
+        self.closeButton.constraint(.widthAnchor, constant: Size.buttonSize)
+        
         self.view.addSubview(self.titleView)
         self.titleView.constraint(top: self.view.topAnchor,
                                   centerX: self.view.centerXAnchor,
@@ -79,6 +132,16 @@ final class ReactionViewController: UIViewController {
         self.descriptionLabel.constraint(top: self.reactionButton.bottomAnchor,
                                          centerX: self.view.centerXAnchor,
                                          padding: UIEdgeInsets(top: 76, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.nextButton)
+        self.nextButton.constraint(top: self.reactionButton.bottomAnchor,
+                                   centerX: self.view.centerXAnchor,
+                                   padding: UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.shareButton)
+        self.shareButton.constraint(top: self.nextButton.bottomAnchor,
+                                    centerX: self.view.centerXAnchor,
+                                    padding: UIEdgeInsets(top: 14, left: 0, bottom: 0, right: 0))
     }
 
     private func configureUI() {
@@ -103,6 +166,30 @@ final class ReactionViewController: UIViewController {
 
         if hasDescriptionLabel {
             self.descriptionLabel.removeFromSuperview()
+            self.nextButton.isHidden = false
+            self.shareButton.isHidden = false
+            self.closeButton.isHidden = false
         }
+    }
+
+    private func presentMainSentenceViewController() {
+        let mainSentenceViewController = MainSentenceViewController()
+        mainSentenceViewController.modalTransitionStyle = .crossDissolve
+        mainSentenceViewController.modalPresentationStyle = .fullScreen
+        self.present(mainSentenceViewController, animated: true)
+    }
+
+    private func presentActivityViewController(newsId: String) {
+        let shareURL = StringLiteral.deeplink + "=\(newsId)"
+        let activityViewController = UIActivityViewController(activityItems: [shareURL],
+                                                              applicationActivities: nil)
+        activityViewController.isModalInPresentation = true
+        activityViewController.popoverPresentationController?.permittedArrowDirections = []
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX,
+                                                                                  y: self.view.bounds.midY,
+                                                                                  width: 0,
+                                                                                  height: 0)
+        self.present(activityViewController, animated: true)
     }
 }

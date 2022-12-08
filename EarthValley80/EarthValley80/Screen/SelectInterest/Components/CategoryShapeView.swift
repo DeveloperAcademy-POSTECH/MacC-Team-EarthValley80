@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryShapeView: UIView {
+final class CategoryShapeView: UIView {
 
     private enum CategoryBackground : String {
         case society = "사회"

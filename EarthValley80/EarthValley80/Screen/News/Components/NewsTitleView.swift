@@ -41,7 +41,7 @@ final class NewsTitleView: UIView {
             case .expanded:
                 return .evyWhite
             default:
-                return .evyWhite.withAlphaComponent(0.4)
+                return .evyWhite.withAlphaComponent(0.14)
             }
         }
         
@@ -87,9 +87,7 @@ final class NewsTitleView: UIView {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        
-        // TODO: - 더미 데이터, 나중에 지우겠습니다.
-        label.text = "인류보다 로봇 진화 속도가 더 빠르대요, 청소로봇은 '루시'…생각하는 로봇 등장"
+        label.text = self.newsManager.newsTitle
         label.numberOfLines = 0
         label.font = .font(.bold, ofSize: self.status.fontSize)
         label.setLineSpacing(kernValue: -2.0, lineHeightMultiple: 1.16)
@@ -118,6 +116,8 @@ final class NewsTitleView: UIView {
         
         return label.frame.height + self.status.bottomSpacing
     }
+
+    private let newsManager = NewsManager.shared
     
     // MARK: - init
     

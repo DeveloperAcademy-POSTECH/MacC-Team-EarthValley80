@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380DC75D292A30DB00BA93E6 /* YomojomoNewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380DC75C292A30DB00BA93E6 /* YomojomoNewsCollectionViewCell.swift */; };
+		380DC763292BE34900BA93E6 /* NieGuessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380DC762292BE34900BA93E6 /* NieGuessingViewController.swift */; };
 		381AB419290A9AE500620635 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB418290A9AE500620635 /* Date+Extension.swift */; };
 		381AB41D290A9EFE00620635 /* MainTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB41C290A9EFE00620635 /* MainTitleView.swift */; };
 		381AB422290AB6AD00620635 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB421290AB6AD00620635 /* News.swift */; };
-		381AB425290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB424290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift */; };
+		381AB425290AB99900620635 /* ThisWeekNewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB424290AB99900620635 /* ThisWeekNewsCollectionViewCell.swift */; };
 		381AB429290AE18D00620635 /* EmptySpaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */; };
 		381AB42F290FB5EE00620635 /* NewsSortingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB42E290FB5EE00620635 /* NewsSortingManager.swift */; };
 		381AB432290FBFFF00620635 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 381AB431290FBFFF00620635 /* Lottie */; };
@@ -18,11 +20,9 @@
 		381AB44829116D0D00620635 /* GotoSomewhereButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB44729116D0D00620635 /* GotoSomewhereButton.swift */; };
 		381AB44A2911726B00620635 /* mp4TempFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 381AB4492911726B00620635 /* mp4TempFile.json */; };
 		3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */; };
-		3851FC032912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */; };
-		3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */; };
 		38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */; };
 		38EF7C5E292D463200347DE4 /* CategoryShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */; };
-		38F0297929177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */; };
+		38EF7C652939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */; };
 		B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A462925C072009D8410 /* ReactionViewController.swift */; };
 		B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */; };
 		B50E7A4C29260899009D8410 /* Constant+Adjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A4B29260899009D8410 /* Constant+Adjusted.swift */; };
@@ -43,6 +43,10 @@
 		B589F370292718BC008468A8 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F36F292718BC008468A8 /* SummaryViewController.swift */; };
 		B589F3722927232A008468A8 /* SummaryTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F3712927232A008468A8 /* SummaryTextView.swift */; };
 		B589F37429278068008468A8 /* MainSentenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F37329278068008468A8 /* MainSentenceView.swift */; };
+		B589F378292A2C35008468A8 /* MainSentenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F377292A2C35008468A8 /* MainSentenceTableViewCell.swift */; };
+		B589F37A292A5CB9008468A8 /* MyMainSentenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F379292A5CB9008468A8 /* MyMainSentenceViewController.swift */; };
+		B589F37C292A6BDE008468A8 /* SummaryCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F37B292A6BDE008468A8 /* SummaryCompletionViewController.swift */; };
+		B589F37E292AF1E7008468A8 /* MainContentParagraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B589F37D292AF1E7008468A8 /* MainContentParagraphTableViewCell.swift */; };
 		B5BE345C28FD981C00D09BEE /* MyNews.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE345B28FD981C00D09BEE /* MyNews.storyboard */; };
 		B5BE345E28FD982700D09BEE /* MyNewsDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */; };
 		B5BE346028FD984C00D09BEE /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BE345F28FD984C00D09BEE /* News.storyboard */; };
@@ -59,6 +63,9 @@
 		B5BE347B28FD9E5500D09BEE /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347A28FD9E5500D09BEE /* UIViewController+Alert.swift */; };
 		B5BE347E28FDA22F00D09BEE /* ImageLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347D28FDA22F00D09BEE /* ImageLiteral.swift */; };
 		B5BE348028FDA2A200D09BEE /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347F28FDA2A200D09BEE /* StringLiteral.swift */; };
+		B5E8FB1C292DBC42004A187E /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E8FB1B292DBC42004A187E /* NewsManager.swift */; };
+		B5E8FB1E29385679004A187E /* NewsDeeplinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E8FB1D29385678004A187E /* NewsDeeplinkHandler.swift */; };
+		B5E8FB2029385ABB004A187E /* DeeplinkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E8FB1F29385ABB004A187E /* DeeplinkCoordinator.swift */; };
 		B5FAC8DC2907652800537F58 /* ReadingNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8DB2907652800537F58 /* ReadingNewsViewController.swift */; };
 		B5FAC8DF2907786F00537F58 /* NewsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8DE2907786F00537F58 /* NewsTitleView.swift */; };
 		B5FAC8E2290781C200537F58 /* NewsContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8E1290781C200537F58 /* NewsContentTableViewCell.swift */; };
@@ -71,6 +78,11 @@
 		CD3A48D9290A6687002D7C15 /* SideTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A48D8290A6687002D7C15 /* SideTabbarView.swift */; };
 		CD3A48DB290A66EF002D7C15 /* SideTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */; };
 		CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4AC940291DEF1A003D02E4 /* SideTabbarLottieView.swift */; };
+		CD6CBB37293794B500342771 /* GotoYomoRoomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6CBB36293794B500342771 /* GotoYomoRoomButton.swift */; };
+		CD6CBB3C2937989900342771 /* YomoRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6CBB3B2937989900342771 /* YomoRoomView.swift */; };
+		CD938A8F2926FDEE0026641B /* SideTabbarEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD938A8E2926FDEE0026641B /* SideTabbarEventManager.swift */; };
+		CD938AB9292A32050026641B /* yomoProfileLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = CD938AB8292A32050026641B /* yomoProfileLottie.json */; };
+		CD938AC0292C8FB10026641B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD938ABF292C8FB10026641B /* ContainerViewController.swift */; };
 		CDE23AA2290ABC5000EEB824 /* InsideTabbarItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */; };
 		CDE23AA4290ABCAE00EEB824 /* TabbarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */; };
 		CDE23AA7290ABE2200EEB824 /* SwiftUI+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDE23AA6290ABE2200EEB824 /* SwiftUI+Extension.swift */; };
@@ -94,21 +106,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		380DC75C292A30DB00BA93E6 /* YomojomoNewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YomojomoNewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		380DC762292BE34900BA93E6 /* NieGuessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NieGuessingViewController.swift; sourceTree = "<group>"; };
 		381AB418290A9AE500620635 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		381AB41C290A9EFE00620635 /* MainTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTitleView.swift; sourceTree = "<group>"; };
 		381AB421290AB6AD00620635 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
-		381AB424290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YomojomoNewsTitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		381AB424290AB99900620635 /* ThisWeekNewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThisWeekNewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		381AB42E290FB5EE00620635 /* NewsSortingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsSortingManager.swift; sourceTree = "<group>"; };
 		381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoYomojomoNewsEmptyView.swift; sourceTree = "<group>"; };
 		381AB44729116D0D00620635 /* GotoSomewhereButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoSomewhereButton.swift; sourceTree = "<group>"; };
 		381AB4492911726B00620635 /* mp4TempFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mp4TempFile.json; sourceTree = "<group>"; };
 		3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPopupViewController.swift; sourceTree = "<group>"; };
-		3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
-		3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestViewController.swift; sourceTree = "<group>"; };
 		38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShapeView.swift; sourceTree = "<group>"; };
-		38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGoalAttainmentLottieCollectionViewCell.swift; sourceTree = "<group>"; };
+		38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
 		B50E7A462925C072009D8410 /* ReactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionViewController.swift; sourceTree = "<group>"; };
 		B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleFormTitleView.swift; sourceTree = "<group>"; };
 		B50E7A4B29260899009D8410 /* Constant+Adjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+Adjusted.swift"; sourceTree = "<group>"; };
@@ -133,6 +145,10 @@
 		B589F36F292718BC008468A8 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		B589F3712927232A008468A8 /* SummaryTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTextView.swift; sourceTree = "<group>"; };
 		B589F37329278068008468A8 /* MainSentenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSentenceView.swift; sourceTree = "<group>"; };
+		B589F377292A2C35008468A8 /* MainSentenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSentenceTableViewCell.swift; sourceTree = "<group>"; };
+		B589F379292A5CB9008468A8 /* MyMainSentenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMainSentenceViewController.swift; sourceTree = "<group>"; };
+		B589F37B292A6BDE008468A8 /* SummaryCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryCompletionViewController.swift; sourceTree = "<group>"; };
+		B589F37D292AF1E7008468A8 /* MainContentParagraphTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentParagraphTableViewCell.swift; sourceTree = "<group>"; };
 		B5BE345B28FD981C00D09BEE /* MyNews.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyNews.storyboard; sourceTree = "<group>"; };
 		B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerViewController.swift; sourceTree = "<group>"; };
 		B5BE345F28FD984C00D09BEE /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
@@ -149,6 +165,9 @@
 		B5BE347A28FD9E5500D09BEE /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		B5BE347D28FDA22F00D09BEE /* ImageLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiteral.swift; sourceTree = "<group>"; };
 		B5BE347F28FDA2A200D09BEE /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
+		B5E8FB1B292DBC42004A187E /* NewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
+		B5E8FB1D29385678004A187E /* NewsDeeplinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDeeplinkHandler.swift; sourceTree = "<group>"; };
+		B5E8FB1F29385ABB004A187E /* DeeplinkCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkCoordinator.swift; sourceTree = "<group>"; };
 		B5FAC8DB2907652800537F58 /* ReadingNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingNewsViewController.swift; sourceTree = "<group>"; };
 		B5FAC8DE2907786F00537F58 /* NewsTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTitleView.swift; sourceTree = "<group>"; };
 		B5FAC8E1290781C200537F58 /* NewsContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContentTableViewCell.swift; sourceTree = "<group>"; };
@@ -161,6 +180,11 @@
 		CD3A48D8290A6687002D7C15 /* SideTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarView.swift; sourceTree = "<group>"; };
 		CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarViewController.swift; sourceTree = "<group>"; };
 		CD4AC940291DEF1A003D02E4 /* SideTabbarLottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarLottieView.swift; sourceTree = "<group>"; };
+		CD6CBB36293794B500342771 /* GotoYomoRoomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoYomoRoomButton.swift; sourceTree = "<group>"; };
+		CD6CBB3B2937989900342771 /* YomoRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YomoRoomView.swift; sourceTree = "<group>"; };
+		CD938A8E2926FDEE0026641B /* SideTabbarEventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideTabbarEventManager.swift; sourceTree = "<group>"; };
+		CD938AB8292A32050026641B /* yomoProfileLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = yomoProfileLottie.json; sourceTree = "<group>"; };
+		CD938ABF292C8FB10026641B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		CDE23AA1290ABC5000EEB824 /* InsideTabbarItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideTabbarItemsView.swift; sourceTree = "<group>"; };
 		CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarButtonView.swift; sourceTree = "<group>"; };
 		CDE23AA6290ABE2200EEB824 /* SwiftUI+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI+Extension.swift"; sourceTree = "<group>"; };
@@ -195,9 +219,11 @@
 		381AB41B290A9DF200620635 /* UIComponent */ = {
 			isa = PBXGroup;
 			children = (
+				381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */,
 				381AB41C290A9EFE00620635 /* MainTitleView.swift */,
 				381AB435290FC96900620635 /* GotoYomojomoNewsEmptyView.swift */,
 				381AB44729116D0D00620635 /* GotoSomewhereButton.swift */,
+				CD6CBB36293794B500342771 /* GotoYomoRoomButton.swift */,
 			);
 			path = UIComponent;
 			sourceTree = "<group>";
@@ -221,8 +247,8 @@
 		381AB423290AB8EE00620635 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				381AB424290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift */,
-				381AB428290AE18D00620635 /* EmptySpaceCollectionViewCell.swift */,
+				381AB424290AB99900620635 /* ThisWeekNewsCollectionViewCell.swift */,
+				380DC75C292A30DB00BA93E6 /* YomojomoNewsCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -235,15 +261,6 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		381AB434290FC8E000620635 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				3851FC022912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift */,
-				38F0297829177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		3846FBFB2918101E003784F3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,18 +269,11 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		3851FC042912E58300CF3E89 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				3851FC052912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift */,
-			);
-			path = Helper;
-			sourceTree = "<group>";
-		};
 		3859DC5B2911978B00EDFB0B /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
 				381AB4492911726B00620635 /* mp4TempFile.json */,
+				CD938AB8292A32050026641B /* yomoProfileLottie.json */,
 			);
 			path = Lottie;
 			sourceTree = "<group>";
@@ -283,6 +293,22 @@
 				38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		38EF7C632939CC3300347DE4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		38EF7C5F2938570600347DE4 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				381AB42E290FB5EE00620635 /* NewsSortingManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		B50E7A482925D15E009D8410 /* Font */ = {
@@ -345,11 +371,12 @@
 		B5BE345228FD96B900D09BEE /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				CD6CBB382937984500342771 /* YomoRoom */,
 				38EDAA46292D2206007EFFA4 /* SelectInterest */,
 				CD3A48D7290A6654002D7C15 /* SideTabbar */,
 				B5BE345628FD96CA00D09BEE /* YomojomoNews */,
 				B5BE345528FD96C700D09BEE /* News */,
-				B5BE345428FD96C100D09BEE /* MyNews */,
+				B5BE345428FD96C100D09BEE /* MyNewsDrawer */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -358,7 +385,6 @@
 			isa = PBXGroup;
 			children = (
 				CDE23AA5290ABDF400EEB824 /* SwiftUIExtensions */,
-				381AB42D290FB5CB00620635 /* Manager */,
 				381AB41B290A9DF200620635 /* UIComponent */,
 				B5BE347C28FDA21E00D09BEE /* Literals */,
 				B5BE347728FD9DCF00D09BEE /* Utils */,
@@ -369,20 +395,20 @@
 			path = Global;
 			sourceTree = "<group>";
 		};
-		B5BE345428FD96C100D09BEE /* MyNews */ = {
+		B5BE345428FD96C100D09BEE /* MyNewsDrawer */ = {
 			isa = PBXGroup;
 			children = (
+				38EF7C632939CC3300347DE4 /* Cells */,
 				3846FBFB2918101E003784F3 /* Components */,
-				3851FC042912E58300CF3E89 /* Helper */,
-				381AB434290FC8E000620635 /* Cells */,
 				B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */,
 			);
-			path = MyNews;
+			path = MyNewsDrawer;
 			sourceTree = "<group>";
 		};
 		B5BE345528FD96C700D09BEE /* News */ = {
 			isa = PBXGroup;
 			children = (
+				B5E8FB1A292DBC39004A187E /* Manager */,
 				B5FAC8E0290781AD00537F58 /* Cells */,
 				B5FAC8DD2907785D00537F58 /* Components */,
 				B5FAC8DB2907652800537F58 /* ReadingNewsViewController.swift */,
@@ -390,6 +416,8 @@
 				B5FAC8F82909FD0300537F58 /* MainSentenceViewController.swift */,
 				B50E7A462925C072009D8410 /* ReactionViewController.swift */,
 				B589F36F292718BC008468A8 /* SummaryViewController.swift */,
+				B589F379292A5CB9008468A8 /* MyMainSentenceViewController.swift */,
+				B589F37B292A6BDE008468A8 /* SummaryCompletionViewController.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -397,8 +425,10 @@
 		B5BE345628FD96CA00D09BEE /* YomojomoNews */ = {
 			isa = PBXGroup;
 			children = (
+				38EF7C5F2938570600347DE4 /* Manager */,
 				381AB423290AB8EE00620635 /* Cells */,
 				B5BE346328FD986600D09BEE /* YomojomoNewsViewController.swift */,
+				380DC762292BE34900BA93E6 /* NieGuessingViewController.swift */,
 			);
 			path = YomojomoNews;
 			sourceTree = "<group>";
@@ -461,6 +491,8 @@
 				B50E7A4B29260899009D8410 /* Constant+Adjusted.swift */,
 				B5205BD72914E86900821C8B /* UserDefaultStorage.swift */,
 				B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */,
+				B5E8FB1D29385678004A187E /* NewsDeeplinkHandler.swift */,
+				B5E8FB1F29385ABB004A187E /* DeeplinkCoordinator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -472,6 +504,14 @@
 				B5BE347F28FDA2A200D09BEE /* StringLiteral.swift */,
 			);
 			path = Literals;
+			sourceTree = "<group>";
+		};
+		B5E8FB1A292DBC39004A187E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				B5E8FB1B292DBC42004A187E /* NewsManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		B5FAC8DD2907785D00537F58 /* Components */ = {
@@ -492,6 +532,8 @@
 			isa = PBXGroup;
 			children = (
 				B5FAC8E1290781C200537F58 /* NewsContentTableViewCell.swift */,
+				B589F377292A2C35008468A8 /* MainSentenceTableViewCell.swift */,
+				B589F37D292AF1E7008468A8 /* MainContentParagraphTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -499,8 +541,10 @@
 		CD3A48D7290A6654002D7C15 /* SideTabbar */ = {
 			isa = PBXGroup;
 			children = (
+				CD938ABE292C8C620026641B /* Manager */,
 				CD4AC94429220A5A003D02E4 /* Components */,
 				CD3A48DA290A66EF002D7C15 /* SideTabbarViewController.swift */,
+				CD938ABF292C8FB10026641B /* ContainerViewController.swift */,
 			);
 			path = SideTabbar;
 			sourceTree = "<group>";
@@ -514,6 +558,22 @@
 				CDE23AA3290ABCAE00EEB824 /* TabbarButtonView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		CD6CBB382937984500342771 /* YomoRoom */ = {
+			isa = PBXGroup;
+			children = (
+				CD6CBB3B2937989900342771 /* YomoRoomView.swift */,
+			);
+			path = YomoRoom;
+			sourceTree = "<group>";
+		};
+		CD938ABE292C8C620026641B /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CD938A8E2926FDEE0026641B /* SideTabbarEventManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		CDE23AA5290ABDF400EEB824 /* SwiftUIExtensions */ = {
@@ -642,6 +702,7 @@
 				381AB44A2911726B00620635 /* mp4TempFile.json in Resources */,
 				B55BCEE328FC4C6000AF7E45 /* Assets.xcassets in Resources */,
 				B50E7A52292645D5009D8410 /* Happiness-Sans-Regular.otf in Resources */,
+				CD938AB9292A32050026641B /* yomoProfileLottie.json in Resources */,
 				B5BE346028FD984C00D09BEE /* News.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -671,9 +732,12 @@
 				CD3A48DB290A66EF002D7C15 /* SideTabbarViewController.swift in Sources */,
 				B589F370292718BC008468A8 /* SummaryViewController.swift in Sources */,
 				B5BE347428FD9CD200D09BEE /* UIView+Extension.swift in Sources */,
+				B589F37C292A6BDE008468A8 /* SummaryCompletionViewController.swift in Sources */,
+				B589F37A292A5CB9008468A8 /* MyMainSentenceViewController.swift in Sources */,
 				B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */,
 				B5BE347028FD9C2C00D09BEE /* UICollectionView+Extension.swift in Sources */,
 				B589F37429278068008468A8 /* MainSentenceView.swift in Sources */,
+				CD6CBB37293794B500342771 /* GotoYomoRoomButton.swift in Sources */,
 				38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */,
 				381AB436290FC96900620635 /* GotoYomojomoNewsEmptyView.swift in Sources */,
 				B50E7A4E29260C19009D8410 /* ReactionButton.swift in Sources */,
@@ -681,11 +745,13 @@
 				B5FAC8DF2907786F00537F58 /* NewsTitleView.swift in Sources */,
 				B55BCEDA28FC4C6000AF7E45 /* AppDelegate.swift in Sources */,
 				B5BE347928FD9DDE00D09BEE /* UIView+Constraints.swift in Sources */,
-				3851FC032912B3FD00CF3E89 /* MyNewsDrawerCollectionViewCell.swift in Sources */,
+				380DC75D292A30DB00BA93E6 /* YomojomoNewsCollectionViewCell.swift in Sources */,
 				381AB42F290FB5EE00620635 /* NewsSortingManager.swift in Sources */,
 				B5BE347E28FDA22F00D09BEE /* ImageLiteral.swift in Sources */,
 				B55BCEDC28FC4C6000AF7E45 /* SceneDelegate.swift in Sources */,
 				B5205BDA2914E8B200821C8B /* UserDefaultHandler.swift in Sources */,
+				B589F378292A2C35008468A8 /* MainSentenceTableViewCell.swift in Sources */,
+				38EF7C652939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift in Sources */,
 				381AB419290A9AE500620635 /* Date+Extension.swift in Sources */,
 				381AB44829116D0D00620635 /* GotoSomewhereButton.swift in Sources */,
 				B589F3722927232A008468A8 /* SummaryTextView.swift in Sources */,
@@ -694,13 +760,15 @@
 				B5BE345E28FD982700D09BEE /* MyNewsDrawerViewController.swift in Sources */,
 				381AB41D290A9EFE00620635 /* MainTitleView.swift in Sources */,
 				B5BE347628FD9CF800D09BEE /* UIButton+Extension.swift in Sources */,
+				380DC763292BE34900BA93E6 /* NieGuessingViewController.swift in Sources */,
 				B50E7A4C29260899009D8410 /* Constant+Adjusted.swift in Sources */,
 				B5FAC8F32908E11900537F58 /* UITextView+Extension.swift in Sources */,
-				38F0297929177DE100C6EAFB /* UserGoalAttainmentLottieCollectionViewCell.swift in Sources */,
+				CD6CBB3C2937989900342771 /* YomoRoomView.swift in Sources */,
 				B5BE346A28FD9AEC00D09BEE /* UIColor+Extension.swift in Sources */,
+				CD938A8F2926FDEE0026641B /* SideTabbarEventManager.swift in Sources */,
 				B5FAC8EB2907BA6000537F58 /* UIFont+Extension.swift in Sources */,
 				B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */,
-				3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */,
+				CD938AC0292C8FB10026641B /* ContainerViewController.swift in Sources */,
 				CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */,
 				381AB422290AB6AD00620635 /* News.swift in Sources */,
 				B5FAC8DC2907652800537F58 /* ReadingNewsViewController.swift in Sources */,
@@ -708,12 +776,16 @@
 				B50E7A5629264E59009D8410 /* ReactionEmojiView.swift in Sources */,
 				B5BE346428FD986600D09BEE /* YomojomoNewsViewController.swift in Sources */,
 				B5FAC8E2290781C200537F58 /* NewsContentTableViewCell.swift in Sources */,
+				B589F37E292AF1E7008468A8 /* MainContentParagraphTableViewCell.swift in Sources */,
+				B5E8FB2029385ABB004A187E /* DeeplinkCoordinator.swift in Sources */,
+				B5E8FB1E29385679004A187E /* NewsDeeplinkHandler.swift in Sources */,
+				B5E8FB1C292DBC42004A187E /* NewsManager.swift in Sources */,
 				B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */,
 				CDE23AA4290ABCAE00EEB824 /* TabbarButtonView.swift in Sources */,
 				B5FAC8EF2907D2A300537F58 /* BackButton.swift in Sources */,
 				38EF7C5E292D463200347DE4 /* CategoryShapeView.swift in Sources */,
 				B5BE346C28FD9B7900D09BEE /* NSObject+Extension.swift in Sources */,
-				381AB425290AB99900620635 /* YomojomoNewsTitleCollectionViewCell.swift in Sources */,
+				381AB425290AB99900620635 /* ThisWeekNewsCollectionViewCell.swift in Sources */,
 				B5FAC8F529093CB500537F58 /* NewsGuideViewController.swift in Sources */,
 				381AB429290AE18D00620635 /* EmptySpaceCollectionViewCell.swift in Sources */,
 				B5BE347228FD9C9A00D09BEE /* UIViewController+Extension.swift in Sources */,

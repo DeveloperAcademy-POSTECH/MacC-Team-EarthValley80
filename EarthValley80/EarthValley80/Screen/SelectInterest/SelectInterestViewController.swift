@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SelectInterestViewController: UIViewController {
+final class SelectInterestViewController: UIViewController {
 
     // MARK: - property
     
