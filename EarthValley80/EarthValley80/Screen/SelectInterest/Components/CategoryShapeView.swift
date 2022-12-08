@@ -78,8 +78,8 @@ class CategoryShapeView: UIView {
             default:
                 self.cagtegoryShapeViewSize = 200
             }
-            self.CategoryShapeViewWidthConstraint?[.widthAnchor]?.constant = self.cagtegoryShapeViewSize
-            self.CategoryShapeViewHeightConstraint?[.heightAnchor]?.constant = self.cagtegoryShapeViewSize
+            self.categoryShapeViewWidthConstraint?[.widthAnchor]?.constant = self.cagtegoryShapeViewSize
+            self.categoryShapeViewHeightConstraint?[.heightAnchor]?.constant = self.cagtegoryShapeViewSize
         }
     }
 
@@ -98,8 +98,8 @@ class CategoryShapeView: UIView {
     }()
 
     private var cagtegoryShapeViewSize: CGFloat = 200
-    private var CategoryShapeViewWidthConstraint: [Frame: NSLayoutConstraint]?
-    private var CategoryShapeViewHeightConstraint: [Frame: NSLayoutConstraint]?
+    private var categoryShapeViewWidthConstraint: [Frame: NSLayoutConstraint]?
+    private var categoryShapeViewHeightConstraint: [Frame: NSLayoutConstraint]?
 
     // MARK: - init
 
@@ -126,8 +126,8 @@ class CategoryShapeView: UIView {
     }
 
     private func setupLayout() {
-        self.CategoryShapeViewWidthConstraint = self.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.CategoryShapeViewHeightConstraint = self.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        self.categoryShapeViewWidthConstraint = self.constraint(.widthAnchor, constant: 200.adjustedWidth)
+        self.categoryShapeViewHeightConstraint = self.constraint(.heightAnchor, constant: 200.adjustedHeight)
 
         self.addSubview(self.backgroundImage)
         self.backgroundImage.constraint(top: self.topAnchor,
