@@ -143,7 +143,7 @@ class CategoryShapeView: UIView {
     // MARK: - selector
 
     @objc
-    func didTappedCategory(_ sender: UITapGestureRecognizer) {
+    private func didTappedCategory(_ sender: UITapGestureRecognizer) {
         // TODO: - 클릭된 카테고리를 저장해야 합니다. (user defaults)
         guard let categoryText = self.categoryLabel.text else { return }
         guard let type = CategoryBackground(rawValue: categoryText) else { return }
