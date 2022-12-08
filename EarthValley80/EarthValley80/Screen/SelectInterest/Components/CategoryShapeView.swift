@@ -148,12 +148,7 @@ class CategoryShapeView: UIView {
         guard let categoryText = self.categoryLabel.text else { return }
         guard let type = CategoryBackground(rawValue: categoryText) else { return }
 
-        if self.isSelected {
-            self.isSelected = false
-            self.backgroundImage.image = UIImage(named: type.name)
-        } else {
-            self.isSelected = true
-            self.backgroundImage.image = UIImage(named: "selected_"+type.name)
-        }
+        self.backgroundImage.image = UIImage(named: isSelected ? type.name : "selected_"+type.name)
+        self.isSelected.toggle()
     }
 }
