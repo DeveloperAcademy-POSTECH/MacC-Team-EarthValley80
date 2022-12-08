@@ -76,5 +76,9 @@ enum StringLiteral {
 
     static let tempLottieFile = "mp4TempFile"
     static let yomoProfileLottieFile = "yomoProfileLottie"
-    
+}
+
+// MARK: - Link
+extension StringLiteral {
+    static let deeplink = "yomojomo://news"
 }

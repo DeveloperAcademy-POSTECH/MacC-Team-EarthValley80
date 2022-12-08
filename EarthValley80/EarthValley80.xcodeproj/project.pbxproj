@@ -64,6 +64,8 @@
 		B5BE347E28FDA22F00D09BEE /* ImageLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347D28FDA22F00D09BEE /* ImageLiteral.swift */; };
 		B5BE348028FDA2A200D09BEE /* StringLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE347F28FDA2A200D09BEE /* StringLiteral.swift */; };
 		B5E8FB1C292DBC42004A187E /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E8FB1B292DBC42004A187E /* NewsManager.swift */; };
+		B5E8FB1E29385679004A187E /* NewsDeeplinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E8FB1D29385678004A187E /* NewsDeeplinkHandler.swift */; };
+		B5E8FB2029385ABB004A187E /* DeeplinkCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E8FB1F29385ABB004A187E /* DeeplinkCoordinator.swift */; };
 		B5FAC8DC2907652800537F58 /* ReadingNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8DB2907652800537F58 /* ReadingNewsViewController.swift */; };
 		B5FAC8DF2907786F00537F58 /* NewsTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8DE2907786F00537F58 /* NewsTitleView.swift */; };
 		B5FAC8E2290781C200537F58 /* NewsContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FAC8E1290781C200537F58 /* NewsContentTableViewCell.swift */; };
@@ -164,6 +166,8 @@
 		B5BE347D28FDA22F00D09BEE /* ImageLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLiteral.swift; sourceTree = "<group>"; };
 		B5BE347F28FDA2A200D09BEE /* StringLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiteral.swift; sourceTree = "<group>"; };
 		B5E8FB1B292DBC42004A187E /* NewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
+		B5E8FB1D29385678004A187E /* NewsDeeplinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDeeplinkHandler.swift; sourceTree = "<group>"; };
+		B5E8FB1F29385ABB004A187E /* DeeplinkCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkCoordinator.swift; sourceTree = "<group>"; };
 		B5FAC8DB2907652800537F58 /* ReadingNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingNewsViewController.swift; sourceTree = "<group>"; };
 		B5FAC8DE2907786F00537F58 /* NewsTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTitleView.swift; sourceTree = "<group>"; };
 		B5FAC8E1290781C200537F58 /* NewsContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsContentTableViewCell.swift; sourceTree = "<group>"; };
@@ -299,6 +303,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		38EF7C5F2938570600347DE4 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				381AB42E290FB5EE00620635 /* NewsSortingManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		B50E7A482925D15E009D8410 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,7 +385,6 @@
 			isa = PBXGroup;
 			children = (
 				CDE23AA5290ABDF400EEB824 /* SwiftUIExtensions */,
-				381AB42D290FB5CB00620635 /* Manager */,
 				381AB41B290A9DF200620635 /* UIComponent */,
 				B5BE347C28FDA21E00D09BEE /* Literals */,
 				B5BE347728FD9DCF00D09BEE /* Utils */,
@@ -414,6 +425,7 @@
 		B5BE345628FD96CA00D09BEE /* YomojomoNews */ = {
 			isa = PBXGroup;
 			children = (
+				38EF7C5F2938570600347DE4 /* Manager */,
 				381AB423290AB8EE00620635 /* Cells */,
 				B5BE346328FD986600D09BEE /* YomojomoNewsViewController.swift */,
 				380DC762292BE34900BA93E6 /* NieGuessingViewController.swift */,
@@ -479,6 +491,8 @@
 				B50E7A4B29260899009D8410 /* Constant+Adjusted.swift */,
 				B5205BD72914E86900821C8B /* UserDefaultStorage.swift */,
 				B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */,
+				B5E8FB1D29385678004A187E /* NewsDeeplinkHandler.swift */,
+				B5E8FB1F29385ABB004A187E /* DeeplinkCoordinator.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -763,6 +777,8 @@
 				B5BE346428FD986600D09BEE /* YomojomoNewsViewController.swift in Sources */,
 				B5FAC8E2290781C200537F58 /* NewsContentTableViewCell.swift in Sources */,
 				B589F37E292AF1E7008468A8 /* MainContentParagraphTableViewCell.swift in Sources */,
+				B5E8FB2029385ABB004A187E /* DeeplinkCoordinator.swift in Sources */,
+				B5E8FB1E29385679004A187E /* NewsDeeplinkHandler.swift in Sources */,
 				B5E8FB1C292DBC42004A187E /* NewsManager.swift in Sources */,
 				B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */,
 				CDE23AA4290ABCAE00EEB824 /* TabbarButtonView.swift in Sources */,
