@@ -62,7 +62,7 @@ class SelectInterestViewController: UIViewController {
     // MARK: - func
 
     private func setupButton() {
-        self.finishButton.setupButtonContents(buttonImage: UIImage(systemName: "checkmark.circle") ?? UIImage(),
+        self.finishButton.setupButtonContents(buttonImage: ImageLiteral.icoCheck,
                                               buttonTitle: StringLiteral.finishSelectButtonText)
     }
 
