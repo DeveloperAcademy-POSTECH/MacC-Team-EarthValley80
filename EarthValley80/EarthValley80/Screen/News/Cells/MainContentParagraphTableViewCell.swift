@@ -75,6 +75,7 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
     }
 
     var didTappedMainSentence: ((String) -> ())?
+    var sentencecece: String = ""
 
     // MARK: - property
 
@@ -90,7 +91,7 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         label.font = TextStyle.caption(.original).font
         return label
     }()
-    private let contentLabel: UILabel = {
+    let contentLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = ParagraphType.original.textColor
@@ -150,6 +151,9 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         self.captionLabel.textColor = paragraphType.textColor
         self.contentLabel.textColor = paragraphType.textColor
         self.contentLabel.isUserInteractionEnabled = paragraphType.isUserInteractionEnabled
+        if paragraphType == .original {
+            self.contentLabel.applyBorder(to: "", color: .white.withAlphaComponent(0.01))
+        }
     }
 
     private func appendSentences() {
@@ -211,6 +215,9 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
             let closedRange = sentence.key
 
             if closedRange.contains(selectedIndex) {
+                self.contentLabel.applyBorder(to: sentence.value, color: .white)
+                sentencecece = sentence.value
+
                 self.didTappedMainSentence?(sentence.value)
                 break
             }

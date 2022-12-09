@@ -45,6 +45,24 @@ extension UILabel {
             self.attributedText = attributedString
         }
     }
+
+    func applyBorder(to targetString: String, color: UIColor) {
+        guard let labelText = self.text else { return }
+
+        let attributedString: NSMutableAttributedString
+        if let labelAttributedText = self.attributedText {
+            attributedString = NSMutableAttributedString(attributedString: labelAttributedText)
+            attributedString.removeAttribute(NSAttributedString.Key.backgroundColor, range: NSMakeRange(0, attributedString.length))
+        } else {
+            attributedString = NSMutableAttributedString(string: labelText)
+        }
+
+        attributedString.addAttribute(NSAttributedString.Key.backgroundColor,
+                                      value: color.withAlphaComponent(0.2).cgColor,
+                                      range: (labelText as NSString).range(of: targetString))
+
+        self.attributedText = attributedString
+    }
     
     func applyFont(to targetString: String, with font: UIFont) {
         guard let labelText = self.text else { return }
