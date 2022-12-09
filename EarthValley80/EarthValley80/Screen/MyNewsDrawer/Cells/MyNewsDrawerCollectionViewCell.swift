@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
+final class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
 
     private enum Size {
         static let standardOfTitle: Int = 30
@@ -25,7 +25,7 @@ class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
         case culture = "문화"
         case society = "시사"
 
-        var categoryBackgroundColor: UIColor {
+        var backgroundColor: UIColor {
             switch self {
             case .economy:
                 return .evyCategoryEcnmy
@@ -89,7 +89,7 @@ class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
 
     // MARK: - func
 
-    func setupLayout() {
+    private func setupLayout() {
         self.contentView.addSubview(self.newsCardBackgroundView)
         self.newsCardBackgroundView.constraint(to: self)
 
@@ -116,7 +116,7 @@ class MyNewsDrawerCollectionViewCell: UICollectionViewCell {
     func setData(_ newsData: News) {
         self.newsTitleLabel.text = newsData.title
         self.newsCategoryLabel.text = newsData.category
-        self.newsCategoryLabel.backgroundColor = CardUI(rawValue: newsData.category ?? "")?.categoryBackgroundColor
+        self.newsCategoryLabel.backgroundColor = CardUI(rawValue: newsData.category ?? "")?.backgroundColor
     }
 
     func calculateLabelWidth(_ newsData: News) {

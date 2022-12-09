@@ -33,23 +33,23 @@ final class SelectInterestViewController: UIViewController {
         return label
     }()
     private let finishButton = GotoSomewhereButton()
-    private let society: CategoryShapeView = CategoryShapeView(image: ImageLiteral.society, labelText: "사회")
-    private let world: CategoryShapeView = CategoryShapeView(image: ImageLiteral.world, labelText: "세계")
-    private let history: CategoryShapeView = CategoryShapeView(image: ImageLiteral.history, labelText: "역사")
-    private let robot: CategoryShapeView = CategoryShapeView(image: ImageLiteral.robot, labelText: "로봇")
-    private let environment: CategoryShapeView = CategoryShapeView(image: ImageLiteral.environment, labelText: "환경")
-    private let health: CategoryShapeView = CategoryShapeView(image: ImageLiteral.health, labelText: "건강")
-    private let animal: CategoryShapeView = CategoryShapeView(image: ImageLiteral.animal, labelText: "동물")
-    private let space: CategoryShapeView = CategoryShapeView(image: ImageLiteral.space, labelText: "우주")
-    private let science: CategoryShapeView = CategoryShapeView(image: ImageLiteral.science, labelText: "과학")
-    private let company: CategoryShapeView = CategoryShapeView(image: ImageLiteral.company, labelText: "회사")
-    private let money: CategoryShapeView = CategoryShapeView(image: ImageLiteral.money, labelText: "돈")
-    private let economyIT: CategoryShapeView = CategoryShapeView(image: ImageLiteral.economyIT, labelText: "IT")
-    private let economy: CategoryShapeView = CategoryShapeView(image: ImageLiteral.economy, labelText: "경제")
-    private let art: CategoryShapeView = CategoryShapeView(image: ImageLiteral.art, labelText: "예술")
-    private let broadcast: CategoryShapeView = CategoryShapeView(image: ImageLiteral.broadcast, labelText: "방송")
-    private let exercise: CategoryShapeView = CategoryShapeView(image: ImageLiteral.exercise, labelText: "운동")
-    private let culture: CategoryShapeView = CategoryShapeView(image: ImageLiteral.culture, labelText: "문화")
+    private let societyShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.society, labelText: "사회")
+    private let worldShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.world, labelText: "세계")
+    private let historyShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.history, labelText: "역사")
+    private let robotShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.robot, labelText: "로봇")
+    private let environmentShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.environment, labelText: "환경")
+    private let healthShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.health, labelText: "건강")
+    private let animalShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.animal, labelText: "동물")
+    private let spaceShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.space, labelText: "우주")
+    private let scienceShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.science, labelText: "과학")
+    private let companyShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.company, labelText: "회사")
+    private let moneyShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.money, labelText: "돈")
+    private let economyITShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.economyIT, labelText: "IT")
+    private let economyShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.economy, labelText: "경제")
+    private let artShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.art, labelText: "예술")
+    private let broadcastShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.broadcast, labelText: "방송")
+    private let exerciseShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.exercise, labelText: "운동")
+    private let cultureShapeView: CategoryShapeView = CategoryShapeView(image: ImageLiteral.culture, labelText: "문화")
 
     // MARK: - life cycle
 
@@ -62,7 +62,7 @@ final class SelectInterestViewController: UIViewController {
     // MARK: - func
 
     private func setupButton() {
-        self.finishButton.setupButtonContents(buttonImage: UIImage(systemName: "checkmark.circle") ?? UIImage(),
+        self.finishButton.setupButtonContents(buttonImage: ImageLiteral.icoCheck,
                                               buttonTitle: StringLiteral.finishSelectButtonText)
         let action = UIAction { _ in
             let vc = SideTabbarViewController()
@@ -81,145 +81,145 @@ final class SelectInterestViewController: UIViewController {
                                    trailing: self.view.trailingAnchor,
                                    padding: UIEdgeInsets.zero)
 
-        self.scrollView.addSubview(self.society)
-        self.society.constraint(top: self.scrollView.topAnchor,
+        self.scrollView.addSubview(self.societyShapeView)
+        self.societyShapeView.constraint(top: self.scrollView.topAnchor,
                                 leading: self.scrollView.leadingAnchor,
                                 padding: UIEdgeInsets(top: 360.adjustedHeight,
                                                       left: 260.adjustedWidth,
                                                       bottom: 0,
                                                       right: 0))
 
-        self.scrollView.addSubview(self.art)
-        self.art.constraint(top: self.society.topAnchor,
-                            leading: self.society.trailingAnchor,
+        self.scrollView.addSubview(self.artShapeView)
+        self.artShapeView.constraint(top: self.societyShapeView.topAnchor,
+                            leading: self.societyShapeView.trailingAnchor,
                             padding: UIEdgeInsets(top: -100.adjustedHeight,
                                                   left: 20.adjustedWidth,
                                                   bottom: 0,
                                                   right: 0))
 
-        self.scrollView.addSubview(self.animal)
-        self.animal.constraint(top: self.society.bottomAnchor,
-                               leading: self.society.leadingAnchor,
+        self.scrollView.addSubview(self.animalShapeView)
+        self.animalShapeView.constraint(top: self.societyShapeView.bottomAnchor,
+                               leading: self.societyShapeView.leadingAnchor,
                                padding: UIEdgeInsets(top: 10.adjustedHeight,
                                                      left: 100.adjustedWidth,
                                                      bottom: 0,
                                                      right: 0))
 
-        self.scrollView.addSubview(self.broadcast)
-        self.broadcast.constraint(top: self.animal.bottomAnchor,
-                                  leading: self.animal.leadingAnchor,
+        self.scrollView.addSubview(self.broadcastShapeView)
+        self.broadcastShapeView.constraint(top: self.animalShapeView.bottomAnchor,
+                                  leading: self.animalShapeView.leadingAnchor,
                                   padding: UIEdgeInsets(top: 10.adjustedHeight,
                                                         left: -20.adjustedWidth,
                                                         bottom: 0,
                                                         right: 0))
 
-        self.scrollView.addSubview(self.health)
-        self.health.constraint(top: self.art.topAnchor,
-                               leading: self.art.trailingAnchor,
+        self.scrollView.addSubview(self.healthShapeView)
+        self.healthShapeView.constraint(top: self.artShapeView.topAnchor,
+                               leading: self.artShapeView.trailingAnchor,
                                padding: UIEdgeInsets(top: -50.adjustedHeight,
                                                      left: 10.adjustedWidth,
                                                      bottom: 0,
                                                      right: 0))
 
-        self.scrollView.addSubview(self.culture)
-        self.culture.constraint(top: self.art.bottomAnchor,
-                                leading: self.animal.trailingAnchor,
+        self.scrollView.addSubview(self.cultureShapeView)
+        self.cultureShapeView.constraint(top: self.artShapeView.bottomAnchor,
+                                leading: self.animalShapeView.trailingAnchor,
                                 padding: UIEdgeInsets(top: 0.adjustedHeight,
                                                       left: 45.adjustedWidth,
                                                       bottom: 0,
                                                       right: 0))
 
-        self.scrollView.addSubview(self.money)
-        self.money.constraint(top: self.culture.bottomAnchor,
-                              leading: self.broadcast.trailingAnchor,
+        self.scrollView.addSubview(self.moneyShapeView)
+        self.moneyShapeView.constraint(top: self.cultureShapeView.bottomAnchor,
+                              leading: self.broadcastShapeView.trailingAnchor,
                               padding: UIEdgeInsets(top: 10.adjustedHeight,
                                                     left: 20.adjustedWidth,
                                                     bottom: 0,
                                                     right: 0))
 
-        self.scrollView.addSubview(self.environment)
-        self.environment.constraint(top: self.money.bottomAnchor,
-                                    leading: self.money.leadingAnchor,
+        self.scrollView.addSubview(self.environmentShapeView)
+        self.environmentShapeView.constraint(top: self.moneyShapeView.bottomAnchor,
+                                    leading: self.moneyShapeView.leadingAnchor,
                                     padding: UIEdgeInsets(top: 10.adjustedHeight,
                                                           left: 10.adjustedWidth,
                                                           bottom: 0,
                                                           right: 0))
 
-        self.scrollView.addSubview(self.health)
-        self.health.constraint(top: self.art.topAnchor,
-                               leading: self.art.trailingAnchor,
+        self.scrollView.addSubview(self.healthShapeView)
+        self.healthShapeView.constraint(top: self.artShapeView.topAnchor,
+                               leading: self.artShapeView.trailingAnchor,
                                padding: UIEdgeInsets(top: -50.adjustedHeight,
                                                      left: 10.adjustedWidth,
                                                      bottom: 0,
                                                      right: 0))
 
-        self.scrollView.addSubview(self.company)
-        self.company.constraint(top: self.health.bottomAnchor,
-                                leading: self.culture.trailingAnchor,
+        self.scrollView.addSubview(self.companyShapeView)
+        self.companyShapeView.constraint(top: self.healthShapeView.bottomAnchor,
+                                leading: self.cultureShapeView.trailingAnchor,
                                 padding: UIEdgeInsets(top: 10.adjustedHeight,
                                                       left: 15.adjustedWidth,
                                                       bottom: 0,
                                                       right: 0))
 
-        self.scrollView.addSubview(self.science)
-        self.science.constraint(top: self.company.bottomAnchor,
-                                leading: self.money.trailingAnchor,
+        self.scrollView.addSubview(self.scienceShapeView)
+        self.scienceShapeView.constraint(top: self.companyShapeView.bottomAnchor,
+                                leading: self.moneyShapeView.trailingAnchor,
                                 padding: UIEdgeInsets(top: 15.adjustedHeight,
                                                       left: 15.adjustedWidth,
                                                       bottom: 0,
                                                       right: 0))
 
-        self.scrollView.addSubview(self.world)
-        self.world.constraint(top: self.science.bottomAnchor,
-                              leading: self.environment.trailingAnchor,
+        self.scrollView.addSubview(self.worldShapeView)
+        self.worldShapeView.constraint(top: self.scienceShapeView.bottomAnchor,
+                              leading: self.environmentShapeView.trailingAnchor,
                               padding: UIEdgeInsets(top: 10.adjustedHeight,
                                                     left: 20.adjustedWidth,
                                                     bottom: 0,
                                                     right: 0))
 
-        self.scrollView.addSubview(self.exercise)
-        self.exercise.constraint(top: self.health.topAnchor,
-                                 leading: self.health.trailingAnchor,
+        self.scrollView.addSubview(self.exerciseShapeView)
+        self.exerciseShapeView.constraint(top: self.healthShapeView.topAnchor,
+                                 leading: self.healthShapeView.trailingAnchor,
                                  padding: UIEdgeInsets(top: 30.adjustedHeight,
                                                        left: 10.adjustedWidth,
                                                        bottom: 0,
                                                        right: 0))
 
-        self.scrollView.addSubview(self.robot)
-        self.robot.constraint(top: self.exercise.topAnchor,
-                              leading: self.exercise.trailingAnchor,
+        self.scrollView.addSubview(self.robotShapeView)
+        self.robotShapeView.constraint(top: self.exerciseShapeView.topAnchor,
+                              leading: self.exerciseShapeView.trailingAnchor,
                               padding: UIEdgeInsets(top: 10.adjustedHeight,
                                                     left: 10.adjustedWidth,
                                                     bottom: 0,
                                                     right: 0))
 
-        self.scrollView.addSubview(self.economy)
-        self.economy.constraint(top: self.robot.bottomAnchor,
-                                leading: self.company.trailingAnchor,
+        self.scrollView.addSubview(self.economyShapeView)
+        self.economyShapeView.constraint(top: self.robotShapeView.bottomAnchor,
+                                leading: self.companyShapeView.trailingAnchor,
                                 padding: UIEdgeInsets(top: 10.adjustedHeight,
                                                       left: 30.adjustedWidth,
                                                       bottom: 0,
                                                       right: 0))
 
-        self.scrollView.addSubview(self.history)
-        self.history.constraint(top: self.economy.bottomAnchor,
-                                leading: self.science.trailingAnchor,
+        self.scrollView.addSubview(self.historyShapeView)
+        self.historyShapeView.constraint(top: self.economyShapeView.bottomAnchor,
+                                leading: self.scienceShapeView.trailingAnchor,
                                 padding: UIEdgeInsets(top: 40.adjustedHeight,
                                                       left: 20.adjustedWidth,
                                                       bottom: 0,
                                                       right: 0))
 
-        self.scrollView.addSubview(self.economyIT)
-        self.economyIT.constraint(top: self.history.bottomAnchor,
-                                  leading: self.world.trailingAnchor,
+        self.scrollView.addSubview(self.economyITShapeView)
+        self.economyITShapeView.constraint(top: self.historyShapeView.bottomAnchor,
+                                  leading: self.worldShapeView.trailingAnchor,
                                   padding: UIEdgeInsets(top: 25.adjustedHeight,
                                                         left: 5.adjustedWidth,
                                                         bottom: 0,
                                                         right: 0))
 
-        self.scrollView.addSubview(self.space)
-        self.space.constraint(top: self.history.bottomAnchor,
-                              leading: self.economyIT.trailingAnchor,
+        self.scrollView.addSubview(self.spaceShapeView)
+        self.spaceShapeView.constraint(top: self.historyShapeView.bottomAnchor,
+                              leading: self.economyITShapeView.trailingAnchor,
                               padding: UIEdgeInsets(top: 5.adjustedHeight,
                                                     left: 10.adjustedWidth,
                                                     bottom: 0,

@@ -44,8 +44,8 @@ final class MyNewsDrawerViewController: UIViewController {
     }()
 
     // TODO: - 더미데이터 입니다. 추후 변경 예정입니다. 내림차순으로 정렬해주어야합니다.
-    private let newsModel = NewsSortingManager()
-    private lazy var newsData: [News] = self.newsModel.arrangeNewsData(yomojomoViewDummyData)
+    private let sortingManager = NewsSortingManager()
+    private lazy var newsData: [News] = self.sortingManager.arrangeNewsData(yomojomoViewDummyData)
 
     // MARK: - init
 
@@ -82,19 +82,17 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let hasTitle = newsData[indexPath.row].title != nil
+        let hasTitle = self.newsData[indexPath.row].title != nil
 
-        switch (collectionView, hasTitle) {
-        case (self.collectionView, true):
+        switch hasTitle {
+        case true:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }
-            cell.setData(newsData[indexPath.row])
-            cell.calculateLabelWidth(newsData[indexPath.row])
+            cell.setData(self.newsData[indexPath.row])
+            cell.calculateLabelWidth(self.newsData[indexPath.row])
             return cell
-        case (self.collectionView, false):
+        case false:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
             return cell
-        default:
-            return UICollectionViewCell()
         }
     }
 }
@@ -103,7 +101,7 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
 extension MyNewsDrawerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var width: CGFloat
-        if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
+        if self.newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
             width = ((collectionView.frame.width - (Size.cellInterval * 4) - 39) / Size.column) * 2 + Size.cellInterval
         } else {
             width = (collectionView.frame.width - (Size.cellInterval * 4) - 39) / Size.column - 0.00000001
