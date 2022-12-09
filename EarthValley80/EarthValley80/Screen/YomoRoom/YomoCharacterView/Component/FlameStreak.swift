@@ -33,7 +33,7 @@ struct FlameStreak: View {
         .frame(width: 73.6, height: 123.11, alignment: .center)
         .onAppear {
             if ("\(Date.getTodayDate())") == TapDate ||
-                ("\(Date.getTomorrowDate())") == TapDate {
+                "(Date.getTomorrowDate())" == TapDate {
                 self.ButtonTapped = true
             }
             else {
