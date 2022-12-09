@@ -14,94 +14,109 @@ struct CurrentAffairsArticleProgress: View {
     
     var body: some View {
         LazyVStack(spacing: 5) {
-            ZStack {
-                Image(pebbleOff)
-                    .frame(width: 57, height: 57)
-                Image("pebble1")
-                    .frame(width: 9, height: 19)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-            }
-            
-            ZStack {
-                Image(pebbleOff)
-                    .frame(width: 57, height: 57)
-                Image("pebble5")
-                    .frame(width: 9, height: 19)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-            }
-            .offset(x: 25, y: 0)
-            
-            ZStack {
-                Image(pebbleOff)
-                    .frame(width: 57, height: 57)
-                Image("pebble10")
-                    .frame(width: 9, height: 19)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-            }
-            .offset(x: 50, y: 0)
-            
-            ZStack {
-                Image(pebbleOff)
-                    .frame(width: 57, height: 57)
-                Image("grayCurrentAffairsLv2Badge")
-                    .frame(width: 41.5, height: 47.5)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 12.5, trailing: 0))
-            }
-            .offset(x: 25, y: 0)
-            
-            ZStack {
-                Image(pebbleOff)
-                    .frame(width: 57, height: 57)
-                Image("pebble20")
-                    .frame(width: 9, height: 19)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-            }
-            
-            ZStack {
-                Image(pebbleOff)
-                    .frame(width: 57, height: 57)
+            Group {
+                ZStack {
+                    Image(pebbleOff)
+                        .frame(width: 57, height: 57)
+                    Image("pebble1")
+                        .frame(width: 9, height: 19)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                }
                 
-                Image("pebble25")
-                    .frame(width: 9, height: 19)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                ZStack {
+                    Image(pebbleOff)
+                        .frame(width: 57, height: 57)
+                    Image("pebble5")
+                        .frame(width: 9, height: 19)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                }
+                .offset(x: 25, y: 0)
+                
+                ZStack {
+                    Image(pebbleOff)
+                        .frame(width: 57, height: 57)
+                    Image("pebble10")
+                        .frame(width: 9, height: 19)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                }
+                .offset(x: 50, y: 0)
+                
+                ZStack {
+                    Image(pebbleOff)
+                        .frame(width: 57, height: 57)
+                    Image("grayCurrentAffairsLv1Badge")
+                        .frame(width: 41.5, height: 47.5)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 12.5, trailing: 0))
+                }
+                .offset(x: 25, y: 0)
             }
-            .offset(x: -25, y: 0)
             
-            ZStack {
-                Image(pebbleOff)
-                    .frame(width: 57, height: 57)
-                Image("grayCurrentAffairsLv2Badge")
-                    .frame(width: 41.5, height: 47.5)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 12.5, trailing: 0))
+            Group {
+                ZStack {
+                    Image(pebbleOff)
+                        .frame(width: 57, height: 57)
+                    Image("pebble20")
+                        .frame(width: 9, height: 19)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                }
+                
+                ZStack {
+                    Image(pebbleOff)
+                        .frame(width: 57, height: 57)
+                    
+                    Image("pebble25")
+                        .frame(width: 9, height: 19)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                }
+                .offset(x: -25, y: 0)
+                
+                ZStack {
+                    Image(pebbleOff)
+                        .frame(width: 57, height: 57)
+                    Image("grayCurrentAffairsLv2Badge")
+                        .frame(width: 41.5, height: 47.5)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 12.5, trailing: 0))
+                }
+                .offset(x: -50, y: 0)
             }
-            .offset(x: -50, y: 0)
             
-            ZStack {
-                Image(pebbleOff)
-                    .frame(width: 57, height: 57)
-                Image("pebble35")
-                    .frame(width: 9, height: 19)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+            Group {
+                ZStack {
+                    Image(pebbleOff)
+                        .frame(width: 57, height: 57)
+                    Image("pebble35")
+                        .frame(width: 9, height: 19)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                }
+                .offset(x: -65, y: 0)
+                
+                ZStack {
+                    Image(pebbleOff)
+                        .frame(width: 57, height: 57)
+                    Image("pebble40")
+                        .frame(width: 9, height: 19)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                }
+                .offset(x: -50, y: 0)
+                
+                ZStack {
+                    Image(pebbleOff)
+                        .frame(width: 57, height: 57)
+                    Image("pebble45")
+                        .frame(width: 41.5, height: 47.5)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 12.5, trailing: 0))
+                }
+                .offset(x: -25, y: 0)
+                
+                ZStack {
+                    Image(pebbleOff)
+                        .frame(width: 57, height: 57)
+                    Image("grayCurrentAffairsLv3Badge")
+                        .frame(width: 41.5, height: 47.5)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 12.5, trailing: 0))
+                }
+                .offset(x: 0, y: 0)
             }
-            .offset(x: -65, y: 0)
-            
-            ZStack {
-                Image(pebbleOff)
-                    .frame(width: 57, height: 57)
-                Image("pebble35")
-                    .frame(width: 9, height: 19)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-            }
-            .offset(x: -65, y: 0)
-            
-            ZStack {
-                Image(pebbleOff)
-                    .frame(width: 57, height: 57)
-                Image("grayCurrentAffairsLv2Badge")
-                    .frame(width: 41.5, height: 47.5)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 12.5, trailing: 0))
-            }
-            .offset(x: -50, y: 0)
         }
     }
 }

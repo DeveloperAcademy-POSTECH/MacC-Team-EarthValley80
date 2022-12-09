@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "pebble10@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "pebble10@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

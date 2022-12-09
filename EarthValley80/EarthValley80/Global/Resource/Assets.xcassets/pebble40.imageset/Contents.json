@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "pebble1.png",
+      "filename" : "pebble40.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "pebble1@2x.png",
+      "filename" : "pebble40@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "pebble1@3x.png",
+      "filename" : "pebble40@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
