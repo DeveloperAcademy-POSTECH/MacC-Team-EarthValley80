@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct CultureArticleProgress: View {
     var count = 0
     private let pebbleOn = "sciencePebble"
