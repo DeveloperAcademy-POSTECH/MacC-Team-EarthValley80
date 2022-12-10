@@ -27,6 +27,11 @@ struct BadgeIGotView: View {
 
 struct BadgeIGotView_Previews: PreviewProvider {
     static var previews: some View {
-        BadgeIGotView()
+        if #available(iOS 15.0, *) {
+            BadgeIGotView()
+                .previewInterfaceOrientation(.landscapeLeft)
+        } else {
+            
+        }
     }
 }

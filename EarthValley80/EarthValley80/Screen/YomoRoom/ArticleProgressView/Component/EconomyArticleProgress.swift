@@ -8,44 +8,47 @@
 import SwiftUI
 
 struct EconomyArticleProgress: View {
-    var count = 0
-    private let pebbleOn = "economyPebble"
-    private let pebbleOff = "grayPebble"
-    
+    private var count = 30
+    private let pebbleOn = "economyStamp"
+    private let pebbleOff = "grayStamp"
+    private let badgeOn = "badgeStamp"
+
     var body: some View {
         VStack(spacing: 22) {
             LazyVStack(spacing: 5) {
                 Group {
                     ZStack {
-                        Image(pebbleOff)
+                        Image(count > 0 ? pebbleOn : pebbleOff)
                             .frame(width: 57, height: 57)
-                        Image("pebble1")
+                        Image("stamp1")
                             .frame(width: 9, height: 19)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                     }
                     
                     ZStack {
-                        Image(pebbleOff)
+                        Image(count > 4 ? pebbleOn : pebbleOff)
                             .frame(width: 57, height: 57)
-                        Image("pebble5")
+                        Image("stamp5")
                             .frame(width: 9, height: 19)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                     }
                     .offset(x: 25, y: 0)
                     
                     ZStack {
-                        Image(pebbleOff)
+                        Image(count > 9 ? pebbleOn : pebbleOff)
                             .frame(width: 57, height: 57)
-                        Image("pebble10")
+                        Image("stamp10")
                             .frame(width: 9, height: 19)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                     }
                     .offset(x: 50, y: 0)
                     
                     ZStack {
-                        Image(pebbleOff)
+                        Image(count > 14 ? badgeOn : pebbleOff)
                             .frame(width: 57, height: 57)
-                        Image("grayEconomyLv1Badge")
+                        Image(count > 14 ? "economyLv1" : "grayEconomyLv1")
+                            .resizable()
+                            .scaledToFit()
                             .frame(width: 41.5, height: 47.5)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 12.5, trailing: 0))
                     }
@@ -54,27 +57,29 @@ struct EconomyArticleProgress: View {
                 
                 Group {
                     ZStack {
-                        Image(pebbleOff)
+                        Image(count > 19 ? pebbleOn : pebbleOff)
                             .frame(width: 57, height: 57)
-                        Image("pebble20")
+                        Image("stamp20")
                             .frame(width: 9, height: 19)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                     }
                     
                     ZStack {
-                        Image(pebbleOff)
+                        Image(count > 24 ? pebbleOn : pebbleOff)
                             .frame(width: 57, height: 57)
                         
-                        Image("pebble25")
+                        Image("stamp25")
                             .frame(width: 9, height: 19)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                     }
                     .offset(x: -25, y: 0)
                     
                     ZStack {
-                        Image(pebbleOff)
+                        Image(count > 29 ? badgeOn : pebbleOff)
                             .frame(width: 57, height: 57)
-                        Image("grayEconomyLv2Badge")
+                        Image(count > 29 ? "economyLv2" : "grayEconomyLv2")
+                            .resizable()
+                            .scaledToFit()
                             .frame(width: 41.5, height: 47.5)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 12.5, trailing: 0))
                     }
@@ -83,36 +88,38 @@ struct EconomyArticleProgress: View {
                 
                 Group {
                     ZStack {
-                        Image(pebbleOff)
+                        Image(count > 34 ? pebbleOn : pebbleOff)
                             .frame(width: 57, height: 57)
-                        Image("pebble35")
+                        Image("stamp35")
                             .frame(width: 9, height: 19)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                     }
                     .offset(x: -65, y: 0)
                     
                     ZStack {
-                        Image(pebbleOff)
+                        Image(count > 39 ? pebbleOn : pebbleOff)
                             .frame(width: 57, height: 57)
-                        Image("pebble40")
+                        Image("stamp40")
                             .frame(width: 9, height: 19)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                     }
                     .offset(x: -50, y: 0)
                     
                     ZStack {
-                        Image(pebbleOff)
+                        Image(count > 44 ? pebbleOn : pebbleOff)
                             .frame(width: 57, height: 57)
-                        Image("pebble45")
+                        Image("stamp45")
                             .frame(width: 9, height: 19)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
                     }
                     .offset(x: -25, y: 0)
                     
                     ZStack {
-                        Image(pebbleOff)
+                        Image(count > 49 ? badgeOn : pebbleOff)
                             .frame(width: 57, height: 57)
-                        Image("grayEconomyLv3Badge")
+                        Image(count > 49 ? "economyLv3" : "grayEconomyLv3")
+                            .resizable()
+                            .scaledToFit()
                             .frame(width: 41.5, height: 47.5)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 12.5, trailing: 0))
                     }
