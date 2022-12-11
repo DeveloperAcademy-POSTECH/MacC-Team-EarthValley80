@@ -75,7 +75,6 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
     }
 
     var didTappedMainSentence: ((String) -> ())?
-    var sentencecece: String = ""
 
     // MARK: - property
 
@@ -152,7 +151,7 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
         self.contentLabel.textColor = paragraphType.textColor
         self.contentLabel.isUserInteractionEnabled = paragraphType.isUserInteractionEnabled
         if paragraphType == .original {
-            self.contentLabel.applyBorder(to: "", color: .white.withAlphaComponent(0.01))
+            self.contentLabel.applyBackgroundColor(to: "", color: .white.withAlphaComponent(0.01))
         }
     }
 
@@ -215,9 +214,7 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
             let closedRange = sentence.key
 
             if closedRange.contains(selectedIndex) {
-                self.contentLabel.applyBorder(to: sentence.value, color: .white)
-                sentencecece = sentence.value
-
+                self.contentLabel.applyBackgroundColor(to: sentence.value, color: .white)
                 self.didTappedMainSentence?(sentence.value)
                 break
             }

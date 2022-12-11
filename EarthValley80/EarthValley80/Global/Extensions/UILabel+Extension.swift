@@ -46,7 +46,7 @@ extension UILabel {
         }
     }
 
-    func applyBorder(to targetString: String, color: UIColor) {
+    func applyBackgroundColor(to targetString: String, color: UIColor) {
         guard let labelText = self.text else { return }
 
         let attributedString: NSMutableAttributedString
