@@ -32,7 +32,7 @@ final class SelectInterestViewController: UIViewController {
     private var categoryList = [("art", "예술"), ("environment", "환경"), ("money", "돈"), ("animal", "동물"),
                                 ("company", "회사"), ("space", "우주"), ("economyIT", "IT"), ("economy", "경제"),
                                 ("robot", "로봇"), ("society", "사회"), ("broadcast", "방송"), ("culture", "문화"),
-                                ("history", "역사"), ("exercise", "운동"), ("health", "견강"), ("science", "과학"), ("world", "세계")]
+                                ("history", "역사"), ("exercise", "운동"), ("health", "건강"), ("science", "과학"), ("world", "세계")]
 
     // MARK: - life cycle
 

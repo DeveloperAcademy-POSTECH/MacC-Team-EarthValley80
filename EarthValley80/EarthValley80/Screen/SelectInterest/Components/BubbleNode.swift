@@ -24,7 +24,7 @@ final class BubbleNode: SIFloatingNode {
 
         node.self.labelNode.text = tag
         node.self.labelNode.position = CGPoint.zero
-        node.self.labelNode.fontColor = SKColor.white
+        node.self.labelNode.fontColor = SKColor.evyBlack2
         node.self.labelNode.fontSize = 20
 
         node.self.labelNode.verticalAlignmentMode = .center
