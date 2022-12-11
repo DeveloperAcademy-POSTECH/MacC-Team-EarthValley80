@@ -59,6 +59,9 @@ final class SummaryViewController: UIViewController {
     private lazy var nextButton: GotoSomewhereButton = {
         let button = GotoSomewhereButton(type: .white)
         let action = UIAction { [weak self] _ in
+            if let content = self?.summaryTextView.contentTextView.text {
+                summaryNews.append(content)
+            }
             self?.presentSummaryCompletionViewController()
         }
         button.addAction(action, for: .touchUpInside)

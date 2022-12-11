@@ -153,6 +153,7 @@ extension MyNewsDrawerViewController: UICollectionViewDelegateFlowLayout {
 extension MyNewsDrawerViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let viewController = SummaryPopupViewController()
+        viewController.setupPopupData(title: self.newsData[indexPath.item].title ?? "", summary: summaryNews[indexPath.item])
         viewController.modalTransitionStyle = .crossDissolve
         viewController.modalPresentationStyle = .overFullScreen
         self.present(viewController, animated: true)

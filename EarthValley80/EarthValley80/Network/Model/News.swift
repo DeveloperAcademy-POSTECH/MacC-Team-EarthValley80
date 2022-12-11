@@ -463,3 +463,4 @@ var yomojomoViewDummyData2: [News] = [
 ]
 
 var savedNews: [News] = []
+var summaryNews: [String] = []

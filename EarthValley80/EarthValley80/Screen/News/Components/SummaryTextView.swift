@@ -49,7 +49,7 @@ final class SummaryTextView: UIView {
         view.layer.cornerRadius = 30.0
         return view
     }()
-    private lazy var contentTextView: UITextView = {
+    private(set) lazy var contentTextView: UITextView = {
         let textView = UITextView()
         textView.textContainer.lineBreakMode = .byCharWrapping
         textView.setTypingAttributes(lineSpacing: 10.0)
