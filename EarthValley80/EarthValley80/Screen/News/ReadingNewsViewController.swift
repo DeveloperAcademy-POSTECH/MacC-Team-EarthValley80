@@ -51,11 +51,7 @@ final class ReadingNewsViewController: UIViewController {
         button.setupButtonContents(buttonImage: ImageLiteral.icArrowRight, buttonTitle: StringLiteral.finishReadButtonText)
         return button
     }()
-    private let backgroundView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = ImageLiteral.imgBackground
-        return imageView
-    }()
+    private let backgroundView = UIImageView(image: ImageLiteral.imgBackground)
     private let backButton = BackButton()
     private let titleHeaderView: NewsTitleView = {
         let view = NewsTitleView()

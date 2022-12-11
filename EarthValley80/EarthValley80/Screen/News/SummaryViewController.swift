@@ -15,11 +15,7 @@ final class SummaryViewController: UIViewController {
 
     // MARK: - property
 
-    private let backgroundView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = ImageLiteral.imgBackground
-        return imageView
-    }()
+    private let backgroundView = UIImageView(image: ImageLiteral.imgBackground)
     private let captionLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.bold, ofSize: 15)
