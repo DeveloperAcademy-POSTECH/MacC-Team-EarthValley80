@@ -25,6 +25,7 @@
 		384DF062294615ED005C31D8 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF061294615ED005C31D8 /* CGPoint+Extension.swift */; };
 		384DF06529462D28005C31D8 /* BubbleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF06429462D28005C31D8 /* BubbleNode.swift */; };
 		384DF06729462E93005C31D8 /* BubbleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF06629462E93005C31D8 /* BubbleScene.swift */; };
+		384DF069294630C1005C31D8 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF068294630C1005C31D8 /* CGFloat+Extension.swift */; };
 		38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */; };
 		38EF7C5E292D463200347DE4 /* CategoryShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */; };
 		38EF7C652939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */; };
@@ -140,6 +141,7 @@
 		384DF061294615ED005C31D8 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		384DF06429462D28005C31D8 /* BubbleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleNode.swift; sourceTree = "<group>"; };
 		384DF06629462E93005C31D8 /* BubbleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleScene.swift; sourceTree = "<group>"; };
+		384DF068294630C1005C31D8 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestViewController.swift; sourceTree = "<group>"; };
 		38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShapeView.swift; sourceTree = "<group>"; };
 		38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -510,6 +512,7 @@
 				B5FAC8F22908E11900537F58 /* UITextView+Extension.swift */,
 				381AB418290A9AE500620635 /* Date+Extension.swift */,
 				384DF061294615ED005C31D8 /* CGPoint+Extension.swift */,
+				384DF068294630C1005C31D8 /* CGFloat+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -876,6 +879,7 @@
 				B5FAC8E5290786B800537F58 /* UILabel+Extension.swift in Sources */,
 				384DF05E2946146F005C31D8 /* SIFloatingNode.swift in Sources */,
 				B50E7A5629264E59009D8410 /* ReactionEmojiView.swift in Sources */,
+				384DF069294630C1005C31D8 /* CGFloat+Extension.swift in Sources */,
 				B5BE346428FD986600D09BEE /* YomojomoNewsViewController.swift in Sources */,
 				CD6CBB80293FAA2B00342771 /* FlameStreak.swift in Sources */,
 				CD6CBB78293FA9EF00342771 /* CultureArticleProgress.swift in Sources */,
