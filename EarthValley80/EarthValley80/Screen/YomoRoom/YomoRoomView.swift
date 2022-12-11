@@ -32,7 +32,7 @@ struct YomoRoomView: View {
 struct YomoRoomView_Previews: PreviewProvider {
     static var previews: some View {
         if #available(iOS 15.0, *) {
-            YomoRoomView(pushedStamp: .constant(2)).previewInterfaceOrientation(.landscapeRight)
+            YomoRoomView(pushedStamp: .constant(1)).previewInterfaceOrientation(.landscapeRight)
         } else {
             YomoRoomView(pushedStamp: .constant(2))
         }
