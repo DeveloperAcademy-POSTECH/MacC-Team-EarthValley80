@@ -16,6 +16,7 @@ final class NewsManager {
     private(set) var newsTitle: String = ""
     private(set) var newsContent: String = ""
     private(set) var newsImage: UIImage = UIImage()
+    private(set) var newsCategory: String = ""
     private(set) var mainSentences: [String] = []
 
     // MARK: - init
@@ -31,9 +32,10 @@ final class NewsManager {
         self.mainSentences.removeAll()
     }
 
-    func setupNews(title: String, content: String, image: UIImage) {
+    func setupNews(title: String, content: String, category: String, image: UIImage) {
         self.newsTitle = title
         self.newsContent = content
+        self.newsCategory = category
         self.newsImage = image
     }
 

@@ -39,6 +39,7 @@ final class NewsDeeplinkHandler: DeeplinkHandlerProtocol {
         let dummyData = yomojomoViewDummyData
         self.newsManager.setupNews(title: dummyData.first?.title ?? "",
                                    content: dummyData.first?.content ?? "",
+                                   category: dummyData.first?.category ?? "",
                                    image: dummyData.first?.image ?? UIImage())
 
         self.presentReadingNewsViewController(newsId: newsId)

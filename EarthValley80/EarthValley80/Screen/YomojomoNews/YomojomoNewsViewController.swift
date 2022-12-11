@@ -247,12 +247,14 @@ extension YomojomoNewsViewController: UICollectionViewDelegate {
             let index = indexPath.row
             self.newsManager.setupNews(title: yomojomoViewDummyData[index].title ?? "",
                                        content: yomojomoViewDummyData[index].content ?? "",
+                                       category: yomojomoViewDummyData[index].category ?? "",
                                        image: yomojomoViewDummyData[index].image ?? UIImage())
             NotificationCenter.default.post(name: .presentReadingNews, object: nil)
         default:
             let index = indexPath.row
             self.newsManager.setupNews(title: self.newsData[index].title ?? "",
                                        content: self.newsData[index].content ?? "",
+                                       category: yomojomoViewDummyData[index].category ?? "",
                                        image: self.newsData[index].image ?? UIImage())
             NotificationCenter.default.post(name: .presentReadingNews, object: nil)
         }

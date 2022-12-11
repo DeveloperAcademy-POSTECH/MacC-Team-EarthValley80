@@ -79,6 +79,10 @@ final class SummaryCompletionViewController: UIViewController {
     }
 
     private func resetNewsData() {
+        savedNews.append(News(title: newsManager.newsTitle,
+                              content: newsManager.newsContent,
+                              category: newsManager.newsCategory,
+                              image: newsManager.newsImage))
         self.newsManager.resetAll()
     }
 }
