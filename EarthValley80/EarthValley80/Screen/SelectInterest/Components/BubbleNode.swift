@@ -21,14 +21,13 @@ final class BubbleNode: SIFloatingNode {
 
     class func instantiate(texture: SKTexture, tag: String) -> BubbleNode {
         let node = BubbleNode(texture: texture)
-
-        node.self.labelNode.text = tag
-        node.self.labelNode.position = CGPoint.zero
-        node.self.labelNode.fontColor = SKColor.evyBlack2
-        node.self.labelNode.fontSize = 20
-
-        node.self.labelNode.verticalAlignmentMode = .center
-        node.self.labelNode.horizontalAlignmentMode = .center
+        let attStr: NSMutableAttributedString = NSMutableAttributedString(string: tag)
+        attStr.mutableString.setString(tag)
+        attStr.addAttribute(.font, value: UIFont.systemFont(ofSize: 20), range: NSMakeRange(0, attStr.length))
+        attStr.addAttribute(.foregroundColor, value: UIColor.white, range: NSMakeRange(0, attStr.length))
+        attStr.addAttribute(.strokeColor, value: UIColor.white, range: NSMakeRange(0, attStr.length))
+        attStr.addAttribute(.strokeWidth, value: -4.0, range: NSMakeRange(0, attStr.length))
+        node.labelNode.attributedText = attStr
         node.addChild(node.self.labelNode)
         return node
     }
