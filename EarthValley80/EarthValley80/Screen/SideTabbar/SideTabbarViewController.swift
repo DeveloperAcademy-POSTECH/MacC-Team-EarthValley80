@@ -68,7 +68,7 @@ final class SideTabbarViewController: UIViewController {
 
     @objc
     private func presentYomoRoom() {
-        let hostingController = UIHostingController(rootView: YomoRoomView())
+        let hostingController = UIHostingController(rootView: YomoRoomView(pushedStamp: .constant(1)))
         hostingController.modalTransitionStyle = .crossDissolve
         hostingController.modalPresentationStyle = .overCurrentContext
         self.present(hostingController, animated: true)

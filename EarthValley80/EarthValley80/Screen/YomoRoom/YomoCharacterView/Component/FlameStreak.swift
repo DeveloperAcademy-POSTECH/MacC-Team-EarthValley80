@@ -39,7 +39,7 @@ struct FlameStreak: View {
             else {
                 self.TapDate = nil
                 self.ButtonTapped = false
-                self.counter = 0
+                self.counter = 25
             }
         }
     }

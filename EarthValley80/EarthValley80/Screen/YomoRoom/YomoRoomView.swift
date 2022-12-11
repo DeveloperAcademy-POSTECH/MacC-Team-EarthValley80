@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct YomoRoomView: View {
+    @Binding var pushedStamp: Int
     
     var body: some View {
         VStack(spacing: 0) {
@@ -32,13 +33,13 @@ struct YomoRoomView: View {
             }
 
             HStack(alignment: .top, spacing: 0) {
-                YomoCharacterView()
+                YomoCharacterView(pushedStamp: $pushedStamp)
                     .padding(EdgeInsets(top: 25, leading: 50, bottom: 0, trailing: 0))
                 VStack(alignment: .leading) {
                     BadgeIGotView()
-                        .padding(EdgeInsets(top: 25, leading: 13, bottom: 60, trailing: 00))
+                        .padding(EdgeInsets(top: 25, leading: 13, bottom: 60, trailing: 60))
                     ArticleProgressView()
-                        .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 25))
+                        .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 60))
                 }
             }
         }
@@ -48,9 +49,9 @@ struct YomoRoomView: View {
 struct YomoRoomView_Previews: PreviewProvider {
     static var previews: some View {
         if #available(iOS 15.0, *) {
-            YomoRoomView().previewInterfaceOrientation(.landscapeRight)
+            YomoRoomView(pushedStamp: .constant(1)).previewInterfaceOrientation(.landscapeRight)
         } else {
-            // Fallback on earlier versions
+            YomoRoomView(pushedStamp: .constant(2))
         }
     }
 }

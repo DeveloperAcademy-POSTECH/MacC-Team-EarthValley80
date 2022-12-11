@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct YomoCharacterView: View {
+    @Binding var pushedStamp: Int
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 25)
@@ -22,7 +24,7 @@ struct YomoCharacterView: View {
                     FlameStreak()
                         .padding(EdgeInsets(top: 28, leading: 0, bottom: 30, trailing: 30.4))
                 }
-                YomoCoustume()
+                YomoCoustume(pushedStamp: $pushedStamp)
                     .padding(EdgeInsets(top: 0, leading: 63, bottom: 44, trailing: 48))
             }
         }
@@ -31,7 +33,7 @@ struct YomoCharacterView: View {
 
 struct YomoCharacterView_Previews: PreviewProvider {
     static var previews: some View {
-        YomoCharacterView()
+        YomoCharacterView(pushedStamp: .constant(2))
     }
 }
 

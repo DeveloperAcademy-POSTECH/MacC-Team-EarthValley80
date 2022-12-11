@@ -8,16 +8,25 @@
 import SwiftUI
 
 struct YomoCoustume: View {
+    @Binding var pushedStamp: Int
+
     var body: some View {
-        Image("economyLv2Yomo")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 207, height: 297, alignment: .center)
+        if pushedStamp == 1 {
+            Image("economyLv1Yomo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 207, height: 297, alignment: .center)
+        } else if pushedStamp == 2 {
+            Image("economyLv2Yomo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 207, height: 297, alignment: .center)
+        }
     }
 }
 
 struct YomoCoustume_Previews: PreviewProvider {
     static var previews: some View {
-        YomoCoustume()
+        YomoCoustume(pushedStamp: .constant(2))
     }
 }
