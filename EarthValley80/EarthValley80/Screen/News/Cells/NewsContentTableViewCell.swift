@@ -142,10 +142,10 @@ final class NewsContentTableViewCell: UITableViewCell {
         
         switch direction {
         case .upper:
-            guard (self.readingIndex - 1) >= 0 else { return }
+            guard self.readingIndex >= 0 else { return }
             self.readingIndex -= 1
         case .lower:
-            guard (self.readingIndex + 1) < self.sentences.count else { return }
+            guard self.readingIndex < self.sentences.count else { return }
             self.readingIndex += 1
         }
         

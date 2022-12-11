@@ -27,7 +27,6 @@ final class ReadingNewsViewController: UIViewController {
     private lazy var newsTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
-        tableView.delegate = self
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
         tableView.indicatorStyle = .white
@@ -229,15 +228,4 @@ extension ReadingNewsViewController: UITableViewDataSource {
         
         return cell
     }
-}
-
-// MARK: - UITableViewDelegate
-extension ReadingNewsViewController: UITableViewDelegate {
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        guard self.titleHeaderView.status != .compact else { return }
-//        let offsetY = scrollView.contentOffset.y
-//        let isScrolled = offsetY > 0
-//        
-//        self.titleHeaderView.updateTitleStatus(to: isScrolled ? .scrolled : .expanded)
-//    }
 }
