@@ -71,6 +71,7 @@ enum StringLiteral {
     static let sideTapButton2 = "골라봐요 중심문장"
     static let sideTapButton3 = "내가 읽은 뉴스"
     static let slideGuideText = "아래로 슬라이드 해보세요"
+    static let modifySummaryButtonText = "요약 수정하기"
 
     // MARK: - lottie
 

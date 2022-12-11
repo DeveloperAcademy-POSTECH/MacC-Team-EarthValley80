@@ -79,6 +79,7 @@ class SummaryPopupView: UIView {
         super.init(frame: frame)
         self.configureUI()
         self.setupLayout()
+        self.setupButton()
     }
 
     required init?(coder: NSCoder) {
@@ -90,6 +91,11 @@ class SummaryPopupView: UIView {
     private func configureUI() {
         self.backgroundColor = .evyWhite
         self.layer.cornerRadius = 16
+    }
+
+    private func setupButton() {
+        self.modifySummaryButton.setupButtonContents(buttonImage: ImageLiteral.icoCheck,
+                                                     buttonTitle: StringLiteral.modifySummaryButtonText)
     }
 
     private func setupLayout() {
@@ -120,6 +126,11 @@ class SummaryPopupView: UIView {
 
         self.sheetStackView.setCustomSpacing(53, after: self.newsTitleStackView)
         self.sheetStackView.setCustomSpacing(75, after: self.newsTitleStackView)
+
+        self.addSubview(self.modifySummaryButton)
+        self.modifySummaryButton.constraint(bottom: self.bottomAnchor,
+                                            trailing: self.trailingAnchor,
+                                            padding: UIEdgeInsets(top: 0, left: 0, bottom: 30, right: 30))
     }
 
     func setupLabel(newsTitle: String, mySummary: String) {
