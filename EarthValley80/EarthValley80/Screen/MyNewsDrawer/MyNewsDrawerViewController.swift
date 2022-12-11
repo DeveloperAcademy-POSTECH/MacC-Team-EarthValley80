@@ -44,6 +44,31 @@ final class MyNewsDrawerViewController: UIViewController {
         collectionView.register(cell: EmptySpaceCollectionViewCell.self)
         return collectionView
     }()
+    private let emptyView: UIView = {
+        let view = UIView()
+        let imageView = UIImageView(image: UIImage(named: "imgEmpty"))
+        let label = UILabel()
+
+        label.text = "기사를 읽어봐요!"
+        label.font = .font(.bold, ofSize: 16)
+
+        view.addSubview(label)
+        view.addSubview(imageView)
+
+        imageView.constraint(leading: view.leadingAnchor,
+                             bottom: view.bottomAnchor,
+                             trailing: view.trailingAnchor,
+                             padding: UIEdgeInsets.zero)
+        imageView.constraint(.heightAnchor, constant: 240)
+        imageView.constraint(.widthAnchor, constant: 407)
+
+        label.constraint(top: view.topAnchor,
+                         centerX: view.centerXAnchor,
+                         padding: UIEdgeInsets.zero)
+
+        view.isHidden = true
+        return view
+    }()
 
     // TODO: - 더미데이터 입니다. 추후 변경 예정입니다. 내림차순으로 정렬해주어야합니다.
     private let sortingManager = NewsSortingManager()
@@ -54,6 +79,11 @@ final class MyNewsDrawerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayout()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setupHiddenStatus()
     }
 
     // MARK: - func
@@ -74,6 +104,15 @@ final class MyNewsDrawerViewController: UIViewController {
                                        bottom: self.view.bottomAnchor,
                                        trailing: self.view.trailingAnchor,
                                        padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
+
+        self.view.addSubview(self.emptyView)
+        self.emptyView.constraint(top: self.collectionView.topAnchor,
+                                  centerX: self.view.centerXAnchor,
+                                  padding: UIEdgeInsets(top: 294.0.adjustedHeight, left: 0, bottom: 0, right: 0))
+    }
+
+    private func setupHiddenStatus() {
+        self.emptyView.isHidden = !self.newsData.isEmpty
     }
 }
 
