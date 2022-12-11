@@ -149,3 +149,12 @@ extension MyNewsDrawerViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: Size.cellHeight)
     }
 }
+
+extension MyNewsDrawerViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let viewController = SummaryPopupViewController()
+        viewController.modalTransitionStyle = .crossDissolve
+        viewController.modalPresentationStyle = .overFullScreen
+        self.present(viewController, animated: true)
+    }
+}
