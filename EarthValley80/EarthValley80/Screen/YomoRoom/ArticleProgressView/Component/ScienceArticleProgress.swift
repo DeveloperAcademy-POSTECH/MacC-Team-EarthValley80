@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ScienceArticleProgress: View {
     private var count = 0
-    private let pebbleOn = "scienceStamp"
+    private let pebbleOn = "economyStamp"
     private let pebbleOff = "grayStamp"
     private let badgeOn = "badgeStamp"
-    
+
     var body: some View {
         VStack(spacing: 22) {
             LazyVStack(spacing: 5) {
@@ -117,7 +117,7 @@ struct ScienceArticleProgress: View {
                     ZStack {
                         Image(count > 49 ? badgeOn : pebbleOff)
                             .frame(width: 57, height: 57)
-                        Image(count > 49 ? "scienceLv3" : "grayScienceLv3")
+                        Image(count > 49 ? "scienceLv3" : "graySceinceLv3")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 41.5, height: 47.5)
