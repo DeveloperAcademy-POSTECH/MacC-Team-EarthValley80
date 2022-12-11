@@ -851,6 +851,7 @@
 				CD938A8F2926FDEE0026641B /* SideTabbarEventManager.swift in Sources */,
 				B5FAC8EB2907BA6000537F58 /* UIFont+Extension.swift in Sources */,
 				B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */,
+				3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */,
 				CD6CBB7E293FAA1F00342771 /* BadgeIGotView.swift in Sources */,
 				CD938AC0292C8FB10026641B /* ContainerViewController.swift in Sources */,
 				CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */,

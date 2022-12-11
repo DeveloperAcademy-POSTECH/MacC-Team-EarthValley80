@@ -9,7 +9,7 @@ import SwiftUI
 
 struct YomoCoustume: View {
     var body: some View {
-        Image("normalYomo")
+        Image("economyLv2Yomo")
             .resizable()
             .scaledToFit()
             .frame(width: 207, height: 297, alignment: .center)

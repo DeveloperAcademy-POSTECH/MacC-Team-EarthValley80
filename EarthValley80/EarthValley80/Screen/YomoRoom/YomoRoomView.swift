@@ -36,7 +36,7 @@ struct YomoRoomView: View {
                     .padding(EdgeInsets(top: 25, leading: 50, bottom: 0, trailing: 0))
                 VStack(alignment: .leading) {
                     BadgeIGotView()
-                        .padding(EdgeInsets(top: 25, leading: 13, bottom: 60, trailing: 60))
+                        .padding(EdgeInsets(top: 25, leading: 13, bottom: 60, trailing: 00))
                     ArticleProgressView()
                         .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 25))
                 }

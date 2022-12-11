@@ -26,6 +26,11 @@ struct ArticleProgressView: View {
 
 struct ArticleProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleProgressView()
+        if #available(iOS 15.0, *) {
+            ArticleProgressView()
+                .previewInterfaceOrientation(.landscapeLeft)
+        } else {
+
+        }
     }
 }
