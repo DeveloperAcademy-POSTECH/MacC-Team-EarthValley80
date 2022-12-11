@@ -27,7 +27,6 @@
 		384DF06729462E93005C31D8 /* BubbleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF06629462E93005C31D8 /* BubbleScene.swift */; };
 		384DF069294630C1005C31D8 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF068294630C1005C31D8 /* CGFloat+Extension.swift */; };
 		38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */; };
-		38EF7C5E292D463200347DE4 /* CategoryShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */; };
 		38EF7C652939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */; };
 		B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A462925C072009D8410 /* ReactionViewController.swift */; };
 		B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */; };
@@ -143,7 +142,6 @@
 		384DF06629462E93005C31D8 /* BubbleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleScene.swift; sourceTree = "<group>"; };
 		384DF068294630C1005C31D8 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestViewController.swift; sourceTree = "<group>"; };
-		38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShapeView.swift; sourceTree = "<group>"; };
 		38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
 		B50E7A462925C072009D8410 /* ReactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionViewController.swift; sourceTree = "<group>"; };
 		B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleFormTitleView.swift; sourceTree = "<group>"; };
@@ -318,7 +316,6 @@
 		38EF7C5C292D41C300347DE4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */,
 				384DF05D2946146F005C31D8 /* SIFloatingNode.swift */,
 				384DF05F29461589005C31D8 /* SIFloatingCollectionScene.swift */,
 				384DF06429462D28005C31D8 /* BubbleNode.swift */,
@@ -892,7 +889,6 @@
 				B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */,
 				CDE23AA4290ABCAE00EEB824 /* TabbarButtonView.swift in Sources */,
 				B5FAC8EF2907D2A300537F58 /* BackButton.swift in Sources */,
-				38EF7C5E292D463200347DE4 /* CategoryShapeView.swift in Sources */,
 				B5BE346C28FD9B7900D09BEE /* NSObject+Extension.swift in Sources */,
 				381AB425290AB99900620635 /* ThisWeekNewsCollectionViewCell.swift in Sources */,
 				B5FAC8F529093CB500537F58 /* NewsGuideViewController.swift in Sources */,
