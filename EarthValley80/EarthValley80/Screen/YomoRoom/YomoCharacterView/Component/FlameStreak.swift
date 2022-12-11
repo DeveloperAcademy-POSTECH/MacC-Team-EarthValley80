@@ -29,47 +29,11 @@ struct FlameStreak: View {
                 }
                 .padding(EdgeInsets(top: 6.36, leading: 0, bottom: 0, trailing: 0))
             }
-
-            // TODO: 카운터 숫자 올려주기 & 카운터 리셋 시키기
-//            Button {
-//                if self.TapDate == nil {
-//                    self.TapDate = ("\(Date.getTomorrowDate())")
-//                    self.counter += 1
-//                    self.ButtonTapped = true
-//                }
-//                else if Date.getTodayDate() == self.TapDate {
-//                    self.TapDate = ("\(Date.getTomorrowDate())")
-//                    self.counter += 1
-//                    self.ButtonTapped = true
-//                }
-//            } label: {
-//                RoundedRectangle(cornerRadius: 12)
-//                    .foregroundColor(.black)
-//                    .frame(width: 120, height: 40)
-//                    .overlay {
-//                        Text("Add Streak")
-//                            .foregroundColor(.white)
-//                    }
-//            }
-//
-//            Button {
-//                self.TapDate = nil
-//                self.ButtonTapped = false
-//                self.counter = 0
-//            } label: {
-//                RoundedRectangle(cornerRadius: 12)
-//                    .foregroundColor(.black)
-//                    .frame(width: 120, height: 40)
-//                    .overlay {
-//                        Text("Reset Streak")
-//                            .foregroundColor(.white)
-//                    }
-//            }
         }
         .frame(width: 73.6, height: 123.11, alignment: .center)
         .onAppear {
             if ("\(Date.getTodayDate())") == TapDate ||
-                ("\(Date.getTomorrowDate())") == TapDate {
+                "(Date.getTomorrowDate())" == TapDate {
                 self.ButtonTapped = true
             }
             else {

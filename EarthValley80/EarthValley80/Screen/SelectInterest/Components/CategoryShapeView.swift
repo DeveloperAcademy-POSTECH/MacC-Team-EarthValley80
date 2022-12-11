@@ -78,8 +78,8 @@ final class CategoryShapeView: UIView {
             default:
                 self.cagtegoryShapeViewSize = 200
             }
-            self.CategoryShapeViewWidthConstraint?[.widthAnchor]?.constant = self.cagtegoryShapeViewSize
-            self.CategoryShapeViewHeightConstraint?[.heightAnchor]?.constant = self.cagtegoryShapeViewSize
+            self.categoryShapeViewWidthConstraint?[.widthAnchor]?.constant = self.cagtegoryShapeViewSize
+            self.categoryShapeViewHeightConstraint?[.heightAnchor]?.constant = self.cagtegoryShapeViewSize
         }
     }
 
@@ -98,8 +98,8 @@ final class CategoryShapeView: UIView {
     }()
 
     private var cagtegoryShapeViewSize: CGFloat = 200
-    private var CategoryShapeViewWidthConstraint: [Frame: NSLayoutConstraint]?
-    private var CategoryShapeViewHeightConstraint: [Frame: NSLayoutConstraint]?
+    private var categoryShapeViewWidthConstraint: [Frame: NSLayoutConstraint]?
+    private var categoryShapeViewHeightConstraint: [Frame: NSLayoutConstraint]?
 
     // MARK: - init
 
@@ -126,8 +126,8 @@ final class CategoryShapeView: UIView {
     }
 
     private func setupLayout() {
-        self.CategoryShapeViewWidthConstraint = self.constraint(.widthAnchor, constant: 200.adjustedWidth)
-        self.CategoryShapeViewHeightConstraint = self.constraint(.heightAnchor, constant: 200.adjustedHeight)
+        self.categoryShapeViewWidthConstraint = self.constraint(.widthAnchor, constant: 200.adjustedWidth)
+        self.categoryShapeViewHeightConstraint = self.constraint(.heightAnchor, constant: 200.adjustedHeight)
 
         self.addSubview(self.backgroundImage)
         self.backgroundImage.constraint(top: self.topAnchor,
@@ -143,17 +143,12 @@ final class CategoryShapeView: UIView {
     // MARK: - selector
 
     @objc
-    func didTappedCategory(_ sender: UITapGestureRecognizer) {
+    private func didTappedCategory(_ sender: UITapGestureRecognizer) {
         // TODO: - 클릭된 카테고리를 저장해야 합니다. (user defaults)
         guard let categoryText = self.categoryLabel.text else { return }
         guard let type = CategoryBackground(rawValue: categoryText) else { return }
 
-        if self.isSelected {
-            self.isSelected = false
-            self.backgroundImage.image = UIImage(named: type.name)
-        } else {
-            self.isSelected = true
-            self.backgroundImage.image = UIImage(named: "selected_"+type.name)
-        }
+        self.backgroundImage.image = UIImage(named: isSelected ? type.name : "selected_"+type.name)
+        self.isSelected.toggle()
     }
 }

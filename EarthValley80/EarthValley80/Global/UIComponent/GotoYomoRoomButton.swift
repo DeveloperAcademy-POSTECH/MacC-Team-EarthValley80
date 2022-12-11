@@ -10,7 +10,7 @@ import SwiftUI
 struct GotoYomoRoomButton: View {
     @State private var isTapped = false
 
-    let uiFont = UIFont.font(.regular, ofSize: 12)
+    let font = UIFont.font(.regular, ofSize: 12)
     
     var body: some View {
         Button {
@@ -21,7 +21,7 @@ struct GotoYomoRoomButton: View {
         } label: {
             HStack(spacing: 4) {
                 Text(StringLiteral.goToYomoRoomText)
-                    .font(Font(uiFont))
+                    .font(Font(font))
                     .foregroundColor(.black)
                 ImageLiteral.imgGoToYomoRoomArrow
                     .font(.system(size: 12))

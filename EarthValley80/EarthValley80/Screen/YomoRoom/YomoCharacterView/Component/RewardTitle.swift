@@ -13,8 +13,13 @@ struct RewardTitle: View {
             VStack {
                 Text("세상에, 당신은")
                     .font(.system(size: 24))
-                Text("잠재력왕이군요!")
+                HStack(spacing: 0) {
+                Text("경제왕")
                     .font(.system(size: 24))
+                    .foregroundColor(Color(hex: "#ADBBF8"))
+                Text("이군요!")
+                    .font(.system(size: 24))
+                }
             }
             .frame(width: 160, height: 65, alignment: .center)
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 17, trailing: 0))
@@ -25,11 +30,12 @@ struct RewardTitle: View {
                     .frame(width: 120, height: 22)
                     .overlay {
                         HStack(spacing: 7) {
-                            Text("잠재력왕")
+                            Text("경제왕")
                                 .font(.system(size: 13))
+                                .foregroundColor(Color(hex:  "#ADBBF8"))
                             Text("|")
                                 .font(.system(size: 13))
-                            Text("요모")
+                            Text("얼룩 요모")
                                 .font(.system(size: 13))
                         }
                         .foregroundColor(.white)

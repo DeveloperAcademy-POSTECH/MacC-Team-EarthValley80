@@ -16,6 +16,7 @@ final class MyNewsDrawerViewController: UIViewController {
         static let cellInterval: CGFloat = 12
         static let column: CGFloat = 5
         static let cellHeight: CGFloat = 180.0
+        static let leadingSpacing: CGFloat = 39.0
     }
 
     // MARK: - property
@@ -27,14 +28,14 @@ final class MyNewsDrawerViewController: UIViewController {
                                   description: StringLiteral.myNewsDrawerTitleDescription)
         return titleView
     }()
-    private let background = UIImageView(image: UIImage(named: "paper_bg"))
+    private let backgroundView = UIImageView(image: ImageLiteral.imgPaperBackground)
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = Size.cellInterval
         layout.minimumInteritemSpacing = Size.cellInterval
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 39)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: Size.leadingSpacing)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -44,8 +45,8 @@ final class MyNewsDrawerViewController: UIViewController {
     }()
 
     // TODO: - 더미데이터 입니다. 추후 변경 예정입니다. 내림차순으로 정렬해주어야합니다.
-    private let newsModel = NewsSortingManager()
-    private lazy var newsData: [News] = self.newsModel.arrangeNewsData(yomojomoViewDummyData)
+    private let sortingManager = NewsSortingManager()
+    private lazy var newsData: [News] = self.sortingManager.arrangeNewsData(yomojomoViewDummyData)
 
     // MARK: - init
 
@@ -57,21 +58,21 @@ final class MyNewsDrawerViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
-        view.addSubview(background)
-        background.constraint(to: view)
+        self.view.addSubview(self.backgroundView)
+        self.backgroundView.constraint(to: self.view)
 
         self.view.addSubview(self.myNewsDrawerTitle)
         self.myNewsDrawerTitle.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
-                                     leading: self.view.leadingAnchor,
-                                     trailing: self.view.trailingAnchor,
-                                     padding: UIEdgeInsets(top: 60, left: 39, bottom: 0, right: 0))
+                                          leading: self.view.leadingAnchor,
+                                          trailing: self.view.trailingAnchor,
+                                          padding: UIEdgeInsets(top: 60, left: Size.leadingSpacing, bottom: 0, right: 0))
 
         self.view.addSubview(self.collectionView)
         self.collectionView.constraint(top: self.myNewsDrawerTitle.bottomAnchor,
-                                  leading: self.myNewsDrawerTitle.leadingAnchor,
-                                  bottom: self.view.bottomAnchor,
-                                  trailing: self.view.trailingAnchor,
-                                  padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
+                                       leading: self.myNewsDrawerTitle.leadingAnchor,
+                                       bottom: self.view.bottomAnchor,
+                                       trailing: self.view.trailingAnchor,
+                                       padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
     }
 }
 
@@ -82,19 +83,17 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let hasTitle = newsData[indexPath.row].title != nil
+        let hasTitle = self.newsData[indexPath.row].title != nil
 
-        switch (collectionView, hasTitle) {
-        case (self.collectionView, true):
+        switch hasTitle {
+        case true:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyNewsDrawerCollectionViewCell.className, for: indexPath) as? MyNewsDrawerCollectionViewCell else { return UICollectionViewCell() }
-            cell.setData(newsData[indexPath.row])
-            cell.calculateLabelWidth(newsData[indexPath.row])
+            cell.setData(self.newsData[indexPath.row])
+            cell.calculateLabelWidth(self.newsData[indexPath.row])
             return cell
-        case (self.collectionView, false):
+        case false:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EmptySpaceCollectionViewCell.className, for: indexPath) as? EmptySpaceCollectionViewCell else { return UICollectionViewCell() }
             return cell
-        default:
-            return UICollectionViewCell()
         }
     }
 }
@@ -103,10 +102,10 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
 extension MyNewsDrawerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var width: CGFloat
-        if newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
-            width = ((collectionView.frame.width - (Size.cellInterval * 4) - 39) / Size.column) * 2 + Size.cellInterval
+        if self.newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
+            width = ((collectionView.frame.width - (Size.cellInterval * 4) - Size.leadingSpacing) / Size.column) * 2 + Size.cellInterval
         } else {
-            width = (collectionView.frame.width - (Size.cellInterval * 4) - 39) / Size.column - 0.00000001
+            width = (collectionView.frame.width - (Size.cellInterval * 4) - Size.leadingSpacing) / Size.column - 0.00000001
         }
 
         return CGSize(width: width, height: Size.cellHeight)

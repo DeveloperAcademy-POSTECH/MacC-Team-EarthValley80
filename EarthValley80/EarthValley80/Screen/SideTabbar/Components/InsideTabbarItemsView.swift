@@ -11,7 +11,7 @@ struct InsideTabBarItems: View {
     @Binding var selectedTab: String
     private let notifier = EventManager.shared
 
-    let uiFont = UIFont.font(.regular, ofSize: 12)
+    let font = UIFont.font(.regular, ofSize: 12)
 
     var body: some View {
         VStack {
@@ -25,7 +25,7 @@ struct InsideTabBarItems: View {
                 SideTabbarLottieView(filename: StringLiteral.yomoProfileLottieFile)
                     .frame(width: 132, height: 143)
                 Text(StringLiteral.yomoProfileTitle)
-                    .font(Font(uiFont))
+                    .font(Font(font))
                     .foregroundColor(.gray)
                     .padding(EdgeInsets(top: 30, leading: 0, bottom: 230, trailing: 0))
                 GotoYomoRoomButton()

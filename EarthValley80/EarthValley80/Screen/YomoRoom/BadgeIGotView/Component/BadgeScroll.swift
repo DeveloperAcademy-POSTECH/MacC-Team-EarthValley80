@@ -9,15 +9,17 @@ import SwiftUI
 
 struct BadgeScroll: View {
     var body: some View {
+        let badgeList = ["economyLv2", "economyLv1"]
+        
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 14) {
-                ForEach(1..<15) {
+                ForEach(1..<15) {_ in
                     Image("unlockedTitle")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 74, height: 84)
                         .overlay(
-                            Image("economyLv" + "\($0)" + "Title")
+                            Image("\(badgeList[0])")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 74, height: 84)

@@ -12,7 +12,7 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
     private enum Size {
         static let categoryLabelFontSize: CGFloat = 16.0
         static let newsTitleFontSize: CGFloat = 28.0
-        static let categoryImageSize: CGFloat = 200
+        static let categoryImageSize: CGFloat = 200.0
         static let newsTitleImageSize: CGFloat = 233.0
         static let categoryLabelHeight: CGFloat = 26.0
         static let categoryLabelPadding: CGFloat = 24.0
@@ -22,12 +22,10 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
 
     private let cellBackground = UIView()
     private let categoryBackgroundImageView: UIImageView = {
-        // TODO: - 기사에 맞는 카테고리 이미지로 변경해야합니다.
         let imageview = UIImageView()
         imageview.contentMode = .scaleToFill
         imageview.clipsToBounds = true
         imageview.layer.cornerRadius = 12.0
-//        imageview.backgroundColor = .red
         return imageview
     }()
     private let newsImageView: UIImageView = {
@@ -103,22 +101,22 @@ final class YomojomoNewsCollectionViewCell: UICollectionViewCell {
     }
 
     func setData(with news: News) {
-        newsTitleLabel.text = news.title
-        newsCategoryLabel.text = news.category
-        newsImageView.image = news.image
-        setCategoryImage(news.category!)
+        self.newsTitleLabel.text = news.title
+        self.newsCategoryLabel.text = news.category
+        self.newsImageView.image = news.image
+        self.setCategoryImage(news.category!)
     }
 
     // TODO: - 더미데이터에서 이미지 아무거나 끼워넣는 함수입니다. 추후 지워버릴 예정.
     func setCategoryImage(_ category: String) {
         if category == "시사" {
-            categoryBackgroundImageView.image = ImageLiteral.society
+            self.categoryBackgroundImageView.image = ImageLiteral.society
         } else if category == "과학" {
-            categoryBackgroundImageView.image = ImageLiteral.environment
+            self.categoryBackgroundImageView.image = ImageLiteral.environment
         } else if category == "문화" {
-            categoryBackgroundImageView.image = ImageLiteral.exercise
+            self.categoryBackgroundImageView.image = ImageLiteral.exercise
         } else {
-            categoryBackgroundImageView.image = ImageLiteral.company
+            self.categoryBackgroundImageView.image = ImageLiteral.company
         }
     }
 
