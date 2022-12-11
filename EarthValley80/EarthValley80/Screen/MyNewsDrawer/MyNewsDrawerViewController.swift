@@ -39,6 +39,7 @@ final class MyNewsDrawerViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
         collectionView.register(cell: MyNewsDrawerCollectionViewCell.self)
         collectionView.register(cell: EmptySpaceCollectionViewCell.self)
         return collectionView
@@ -46,7 +47,7 @@ final class MyNewsDrawerViewController: UIViewController {
 
     // TODO: - 더미데이터 입니다. 추후 변경 예정입니다. 내림차순으로 정렬해주어야합니다.
     private let sortingManager = NewsSortingManager()
-    private lazy var newsData: [News] = self.sortingManager.arrangeNewsData(yomojomoViewDummyData)
+    private lazy var newsData: [News] = self.sortingManager.arrangeNewsData(savedNews)
 
     // MARK: - init
 

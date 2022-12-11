@@ -461,3 +461,5 @@ var yomojomoViewDummyData2: [News] = [
                    한편 지난 16일 유튜브에 공개된 타이틀곡 '셧 다운(Shut Down)'의 뮤직비디오 조회 수는 26일 기준 1억2000만 회를 넘어섰다. 이 곡은 19세기에 활약한 이탈리아 천재 바이올린 연주가 파가니니의 '라 캄파넬라(La campanella)'를 배경으로 해 공개 당시 세계의 주목을 받았다.
          """, category: "문화", image: ImageLiteral.imgMunhwa2)
 ]
+
+var savedNews: [News] = []
