@@ -282,7 +282,6 @@
 		3846FBFB2918101E003784F3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */,
 				384DF06A29465729005C31D8 /* SummaryPopupView.swift */,
 			);
 			path = Components;
@@ -419,6 +418,7 @@
 			children = (
 				38EF7C632939CC3300347DE4 /* Cells */,
 				3846FBFB2918101E003784F3 /* Components */,
+				3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */,
 				B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */,
 			);
 			path = MyNewsDrawer;
