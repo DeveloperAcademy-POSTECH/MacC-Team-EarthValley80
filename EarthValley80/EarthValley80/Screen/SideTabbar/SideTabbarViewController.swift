@@ -50,7 +50,7 @@ final class SideTabbarViewController: UIViewController {
                                                      leading: self.view.leadingAnchor,
                                                      bottom: self.view.bottomAnchor,
                                                      trailing: self.view.trailingAnchor,
-                                                     padding: UIEdgeInsets(top: 20, left: 235, bottom: 20, right: 0))
+                                                     padding: UIEdgeInsets(top: 0, left: 235, bottom: 0, right: 0))
     }
 
     private func setupNotificationCenter() {
