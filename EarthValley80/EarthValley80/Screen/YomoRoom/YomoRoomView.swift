@@ -20,7 +20,7 @@ struct YomoRoomView: View {
                         .foregroundColor(.black)
                     Spacer()
                         .frame(width: 3)
-                    Text("홈으로")
+                    Text(StringLiteral.backButtonText)
                         .foregroundColor(.black)
                 })
                 .padding(.leading, 20)

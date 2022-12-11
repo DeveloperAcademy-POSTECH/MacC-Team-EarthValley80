@@ -11,6 +11,7 @@ import UIKit
 import Lottie
 
 struct SideTabbarLottieView: UIViewRepresentable {
+
     // MARK: - property
     var filename: String
     
@@ -26,14 +27,14 @@ struct SideTabbarLottieView: UIViewRepresentable {
     
     private func setupAnimationView() -> UIView {
         let view = UIView(frame: .zero)
-        let animationView = UIImageView(image: UIImage(named: "character_yomo"))
+        let characterImageView = UIImageView(image: ImageLiteral.characterYomo)
         
-        animationView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(animationView)
+        characterImageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(characterImageView)
         
         NSLayoutConstraint.activate([
-            animationView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            animationView.heightAnchor.constraint(equalTo: view.heightAnchor)
+            characterImageView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            characterImageView.heightAnchor.constraint(equalTo: view.heightAnchor)
         ])
         
         return view

@@ -16,6 +16,7 @@ final class MyNewsDrawerViewController: UIViewController {
         static let cellInterval: CGFloat = 12
         static let column: CGFloat = 5
         static let cellHeight: CGFloat = 180.0
+        static let leadingSpacing: CGFloat = 39.0
     }
 
     // MARK: - property
@@ -34,7 +35,7 @@ final class MyNewsDrawerViewController: UIViewController {
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = Size.cellInterval
         layout.minimumInteritemSpacing = Size.cellInterval
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 39)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: Size.leadingSpacing)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -62,16 +63,16 @@ final class MyNewsDrawerViewController: UIViewController {
 
         self.view.addSubview(self.myNewsDrawerTitle)
         self.myNewsDrawerTitle.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
-                                     leading: self.view.leadingAnchor,
-                                     trailing: self.view.trailingAnchor,
-                                     padding: UIEdgeInsets(top: 60, left: 39, bottom: 0, right: 0))
+                                          leading: self.view.leadingAnchor,
+                                          trailing: self.view.trailingAnchor,
+                                          padding: UIEdgeInsets(top: 60, left: Size.leadingSpacing, bottom: 0, right: 0))
 
         self.view.addSubview(self.collectionView)
         self.collectionView.constraint(top: self.myNewsDrawerTitle.bottomAnchor,
-                                  leading: self.myNewsDrawerTitle.leadingAnchor,
-                                  bottom: self.view.bottomAnchor,
-                                  trailing: self.view.trailingAnchor,
-                                  padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
+                                       leading: self.myNewsDrawerTitle.leadingAnchor,
+                                       bottom: self.view.bottomAnchor,
+                                       trailing: self.view.trailingAnchor,
+                                       padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
     }
 }
 
@@ -102,9 +103,9 @@ extension MyNewsDrawerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var width: CGFloat
         if self.newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {
-            width = ((collectionView.frame.width - (Size.cellInterval * 4) - 39) / Size.column) * 2 + Size.cellInterval
+            width = ((collectionView.frame.width - (Size.cellInterval * 4) - Size.leadingSpacing) / Size.column) * 2 + Size.cellInterval
         } else {
-            width = (collectionView.frame.width - (Size.cellInterval * 4) - 39) / Size.column - 0.00000001
+            width = (collectionView.frame.width - (Size.cellInterval * 4) - Size.leadingSpacing) / Size.column - 0.00000001
         }
 
         return CGSize(width: width, height: Size.cellHeight)

@@ -64,6 +64,7 @@ enum ImageLiteral {
     static var imgSisa2: UIImage { .load(name: "img_sisa2")}
     static var imgBackground: UIImage { .load(name: "imgBackground")}
     static var imgPaperBackground: UIImage { .load(name: "imgPaperBackground")}
+    static var characterYomo: UIImage { .load(name: "character_yomo")}
 }
 
 extension ImageLiteral {

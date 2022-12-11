@@ -64,13 +64,13 @@ final class SelectInterestViewController: UIViewController {
     private func setupButton() {
         self.finishButton.setupButtonContents(buttonImage: ImageLiteral.icoCheck,
                                               buttonTitle: StringLiteral.finishSelectButtonText)
-        let action = UIAction { _ in
-            let vc = SideTabbarViewController()
-            vc.modalTransitionStyle = .crossDissolve
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+        let presentSideTabbarAction = UIAction { _ in
+            let sideTabbarViewController = SideTabbarViewController()
+            sideTabbarViewController.modalTransitionStyle = .crossDissolve
+            sideTabbarViewController.modalPresentationStyle = .fullScreen
+            self.present(sideTabbarViewController, animated: true)
         }
-        self.finishButton.addAction(action, for: .touchUpInside)
+        self.finishButton.addAction(presentSideTabbarAction, for: .touchUpInside)
     }
 
     private func setupLayout() {
