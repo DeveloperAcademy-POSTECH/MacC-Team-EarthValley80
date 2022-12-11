@@ -25,7 +25,11 @@ final class SelectInterestViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
-    private var skView = SKView()
+    private var skView: SKView = {
+        let skview = SKView(frame: UIScreen.main.bounds)
+        skview.backgroundColor = .clear
+        return skview
+    }()
     private var floatingCollectionScene = BubblesScene()
     private let finishButton = GotoSomewhereButton()
 
@@ -46,12 +50,10 @@ final class SelectInterestViewController: UIViewController {
     // MARK: - func
 
     private func setupFloatingSKView() {
-        self.skView = SKView(frame: UIScreen.main.bounds)
-        self.skView.backgroundColor = SKColor.white
         self.view.addSubview(skView)
 
         self.floatingCollectionScene = BubblesScene(size: skView.bounds.size)
-        self.floatingCollectionScene.topOffset = 0
+        self.floatingCollectionScene.topOffset = 200
         self.skView.presentScene(self.floatingCollectionScene)
 
         for indexNum in 0..<categoryList.count {

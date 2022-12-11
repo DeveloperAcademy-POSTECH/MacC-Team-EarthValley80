@@ -29,7 +29,8 @@ open class SIFloatingCollectionScene: SKScene {
     private var removingStartedTime: TimeInterval?
     open var allowMultipleSelection = true
     open var restrictedToBounds = true
-    open var pushStrength: CGFloat = 10000
+    open var moveStrength: CGFloat = 10000
+    open var isDragging: Bool = false
     open weak var floatingDelegate: SIFloatingCollectionSceneDelegate?
 
     // MARK: - func
@@ -51,6 +52,18 @@ open class SIFloatingCollectionScene: SKScene {
         }
     }
 
+    open func moveNodes(location: CGPoint, previous: CGPoint) {
+        let x = location.x - previous.x
+        let y = location.y - previous.y
+
+        for node in children {
+            let distance = node.position.distance(from: location)
+            let acceleration: CGFloat = 1 * pow(distance, 1/2)
+            let direction = CGVector(dx: x * acceleration, dy: y * acceleration)
+            node.self.physicsBody?.applyForce(direction)
+        }
+    }
+
     override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first as UITouch? {
             self.touchPoint = touch.location(in: self)
@@ -59,42 +72,12 @@ open class SIFloatingCollectionScene: SKScene {
     }
 
     override open func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first as UITouch? {
-            let plin = touch.previousLocation(in: self)
-            let lin = touch.location(in: self)
-            var dx = lin.x - plin.x
-            var dy = lin.y - plin.y
-            let b = sqrt(pow(lin.x, 2) + pow(lin.y, 2))
-            dx = b == 0 ? 0 : (dx / b)
-            dy = b == 0 ? 0 : (dy / b)
-
-            if dx == 0 && dy == 0 {
-                return
-            }
-            else if self.mode != .moving {
-                self.mode = .moving
-            }
-
-            for node in self.floatingNodes {
-                let w = node.frame.size.width / 2
-                let h = node.frame.size.height / 2
-                var direction = CGVector(
-                    dx: self.pushStrength * dx,
-                    dy: self.pushStrength * dy
-                )
-
-                if self.restrictedToBounds {
-                    if !(-w...(size.width + w) ~= node.position.x) && (node.position.x * dx) > 0 {
-                        direction.dx = 0
-                    }
-
-                    if !(-h...(size.height + h) ~= node.position.y) && (node.position.y * dy) > 0 {
-                        direction.dy = 0
-                    }
-                }
-                node.physicsBody?.applyForce(direction)
-            }
-        }
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        let previous = touch.previousLocation(in: self)
+        guard location.distance(from: previous) != 0 else { return }
+        self.isDragging = true
+        self.moveNodes(location: location, previous: previous)
     }
 
     override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -107,6 +90,7 @@ open class SIFloatingCollectionScene: SKScene {
     }
 
     override open func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.isDragging = false
         self.mode = .normal
     }
 
@@ -136,8 +120,8 @@ open class SIFloatingCollectionScene: SKScene {
         var currentNode = super.atPoint(p)
 
         while !(currentNode.parent is SKScene) && !(currentNode is SIFloatingNode)
-            && (currentNode.parent != nil) && !currentNode.isUserInteractionEnabled {
-                currentNode = currentNode.parent!
+                && (currentNode.parent != nil) && !currentNode.isUserInteractionEnabled {
+            currentNode = currentNode.parent!
         }
         return currentNode
     }
