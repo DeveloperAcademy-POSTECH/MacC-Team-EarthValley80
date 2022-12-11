@@ -21,6 +21,7 @@
 		381AB44A2911726B00620635 /* mp4TempFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 381AB4492911726B00620635 /* mp4TempFile.json */; };
 		3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */; };
 		384DF05E2946146F005C31D8 /* SIFloatingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF05D2946146F005C31D8 /* SIFloatingNode.swift */; };
+		384DF06029461589005C31D8 /* SIFloatingCollectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF05F29461589005C31D8 /* SIFloatingCollectionScene.swift */; };
 		384DF062294615ED005C31D8 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF061294615ED005C31D8 /* CGPoint+Extension.swift */; };
 		38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */; };
 		38EF7C5E292D463200347DE4 /* CategoryShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */; };
@@ -133,6 +134,7 @@
 		381AB4492911726B00620635 /* mp4TempFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mp4TempFile.json; sourceTree = "<group>"; };
 		3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPopupViewController.swift; sourceTree = "<group>"; };
 		384DF05D2946146F005C31D8 /* SIFloatingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFloatingNode.swift; sourceTree = "<group>"; };
+		384DF05F29461589005C31D8 /* SIFloatingCollectionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFloatingCollectionScene.swift; sourceTree = "<group>"; };
 		384DF061294615ED005C31D8 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestViewController.swift; sourceTree = "<group>"; };
 		38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShapeView.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			children = (
 				38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */,
 				384DF05D2946146F005C31D8 /* SIFloatingNode.swift */,
+				384DF05F29461589005C31D8 /* SIFloatingCollectionScene.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -883,6 +886,7 @@
 				B5FAC8F529093CB500537F58 /* NewsGuideViewController.swift in Sources */,
 				381AB429290AE18D00620635 /* EmptySpaceCollectionViewCell.swift in Sources */,
 				B5BE347228FD9C9A00D09BEE /* UIViewController+Extension.swift in Sources */,
+				384DF06029461589005C31D8 /* SIFloatingCollectionScene.swift in Sources */,
 				B5BE346E28FD9BB100D09BEE /* UITableView+Extension.swift in Sources */,
 				CD6CBB82293FAA3400342771 /* RewardTitle.swift in Sources */,
 				B5BE347B28FD9E5500D09BEE /* UIViewController+Alert.swift in Sources */,
