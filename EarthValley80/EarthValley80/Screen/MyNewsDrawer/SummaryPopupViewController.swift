@@ -19,6 +19,7 @@ final class SummaryPopupViewController: UIViewController {
         super.viewDidLoad()
         self.setupLayout()
         self.configureUI()
+        self.setupTapGesture()
     }
 
     // MARK: - func
@@ -34,7 +35,19 @@ final class SummaryPopupViewController: UIViewController {
                                   padding: UIEdgeInsets.zero)
     }
 
+    private func setupTapGesture() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.didTappedView(_:)))
+        self.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+
     func setupPopupData(title: String, summary: String) {
         self.popupView.setupLabel(newsTitle: title, mySummary: summary)
+    }
+
+    // MARK: - selector
+
+    @objc
+    private func didTappedView(_ gestureRecognizer: UITapGestureRecognizer) {
+        self.dismiss(animated: true)
     }
 }
