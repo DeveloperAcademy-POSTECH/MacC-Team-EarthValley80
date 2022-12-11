@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BadgeScroll: View {
     var body: some View {
-        let badgeList = ["economyLv2", "economyLv1", "unlockedTitle1", "unlockedTitle2", "unlockedTitle3", "unlockedTitle4", "unlockedTitle5", "unlockedTitle6", "unlockedTitle7", "unlockedTitle8", "unlockedTitle9", "unlockedTitle10"
+        let badgeList = ["economyLv2", "economyLv1", "unlockedTitle", "unlockedTitle", "unlockedTitle", "unlockedTitle", "unlockedTitle", "unlockedTitle", "unlockedTitle", "unlockedTitle", "unlockedTitle", "unlockedTitle"
         ]
         
         ScrollView(.horizontal, showsIndicators: false) {

@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "streakOn@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "streakOn@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
