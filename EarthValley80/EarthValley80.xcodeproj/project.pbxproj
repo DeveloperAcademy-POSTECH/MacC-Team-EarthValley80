@@ -33,6 +33,7 @@
 		B50E7A5629264E59009D8410 /* ReactionEmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A5529264E59009D8410 /* ReactionEmojiView.swift */; };
 		B5205BD82914E86900821C8B /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD72914E86900821C8B /* UserDefaultStorage.swift */; };
 		B5205BDA2914E8B200821C8B /* UserDefaultHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */; };
+		B53B6ECD2945E8E0000E0F50 /* MainSentenceDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53B6ECC2945E8E0000E0F50 /* MainSentenceDrawerViewController.swift */; };
 		B55BCEDA28FC4C6000AF7E45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BCED928FC4C6000AF7E45 /* AppDelegate.swift */; };
 		B55BCEDC28FC4C6000AF7E45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55BCEDB28FC4C6000AF7E45 /* SceneDelegate.swift */; };
 		B55BCEE328FC4C6000AF7E45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B55BCEE228FC4C6000AF7E45 /* Assets.xcassets */; };
@@ -143,6 +144,7 @@
 		B50E7A5529264E59009D8410 /* ReactionEmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionEmojiView.swift; sourceTree = "<group>"; };
 		B5205BD72914E86900821C8B /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
 		B5205BD92914E8B200821C8B /* UserDefaultHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultHandler.swift; sourceTree = "<group>"; };
+		B53B6ECC2945E8E0000E0F50 /* MainSentenceDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSentenceDrawerViewController.swift; sourceTree = "<group>"; };
 		B55BCED628FC4C6000AF7E45 /* EarthValley80.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EarthValley80.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55BCED928FC4C6000AF7E45 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B55BCEDB28FC4C6000AF7E45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				38EF7C632939CC3300347DE4 /* Cells */,
 				3846FBFB2918101E003784F3 /* Components */,
 				B5BE345D28FD982700D09BEE /* MyNewsDrawerViewController.swift */,
+				B53B6ECC2945E8E0000E0F50 /* MainSentenceDrawerViewController.swift */,
 			);
 			path = MyNewsDrawer;
 			sourceTree = "<group>";
@@ -843,6 +846,7 @@
 				CD6CBB7C293FAA1300342771 /* BadgeScroll.swift in Sources */,
 				B5BE347628FD9CF800D09BEE /* UIButton+Extension.swift in Sources */,
 				380DC763292BE34900BA93E6 /* NieGuessingViewController.swift in Sources */,
+				B53B6ECD2945E8E0000E0F50 /* MainSentenceDrawerViewController.swift in Sources */,
 				B50E7A4C29260899009D8410 /* Constant+Adjusted.swift in Sources */,
 				B5FAC8F32908E11900537F58 /* UITextView+Extension.swift in Sources */,
 				CD6CBB74293FA9D000342771 /* ScienceArticleProgress.swift in Sources */,

@@ -1,13 +1,13 @@
 //
-//  MyNewsDrawerViewController.swift
+//  MainSentenceDrawerViewController.swift
 //  EarthValley80
 //
-//  Created by SHIN YOON AH on 2022/10/17.
+//  Created by SHIN YOON AH on 2022/12/11.
 //
 
 import UIKit
 
-final class MyNewsDrawerViewController: UIViewController {
+final class MainSentenceDrawerViewController: UIViewController {
 
     private enum Size {
         static let standardOfTitle: Int = 30
@@ -22,11 +22,10 @@ final class MyNewsDrawerViewController: UIViewController {
     private let myNewsDrawerTitle: MainTitleView = {
         let titleView = MainTitleView()
         titleView.changeLabelText(date: Date().dateFormatted("EEEE, MM d"),
-                                  title: StringLiteral.myNewsDrawerTitle,
-                                  description: StringLiteral.myNewsDrawerTitleDescription)
+                                  title: StringLiteral.sideTapButton2,
+                                  description: "재밌게 읽은 뉴스에서 중요한 문장을 찾아봐요")
         return titleView
     }()
-    private let backgroundView = UIImageView(image: ImageLiteral.imgPaperBackground)
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -44,7 +43,7 @@ final class MyNewsDrawerViewController: UIViewController {
     }()
     private let emptyView: UIView = {
         let view = UIView()
-        let imageView = UIImageView(image: UIImage(named: "imgEmpty"))
+        let imageView = UIImageView(image: UIImage(named: "imgEmpty2"))
         let label = UILabel()
 
         label.text = "기사를 읽어봐요!"
@@ -87,9 +86,6 @@ final class MyNewsDrawerViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
-        self.view.addSubview(self.backgroundView)
-        self.backgroundView.constraint(to: self.view)
-
         self.view.addSubview(self.myNewsDrawerTitle)
         self.myNewsDrawerTitle.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
                                           leading: self.view.leadingAnchor,
@@ -115,7 +111,7 @@ final class MyNewsDrawerViewController: UIViewController {
 }
 
 // MARK: - UICollectionViewDataSource
-extension MyNewsDrawerViewController: UICollectionViewDataSource {
+extension MainSentenceDrawerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.newsData.count
     }
@@ -137,7 +133,7 @@ extension MyNewsDrawerViewController: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension MyNewsDrawerViewController: UICollectionViewDelegateFlowLayout {
+extension MainSentenceDrawerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var width: CGFloat
         if self.newsData[indexPath.item].title?.count ?? 0 > Size.standardOfTitle {

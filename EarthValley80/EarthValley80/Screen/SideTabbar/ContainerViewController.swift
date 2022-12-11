@@ -12,6 +12,7 @@ final class ContainerViewController: UIViewController {
     // MARK: - property
     private let embeddedYomoJomoNewsViewController = YomojomoNewsViewController()
     private let embeddedMyNewsDrawerViewController = MyNewsDrawerViewController()
+    private let embeddedMyMainSentenceDrawerViewController = MainSentenceDrawerViewController()
     private lazy var notifier = EventManager.shared
     private var cancellables = Set<AnyCancellable>()
     
@@ -31,6 +32,8 @@ final class ContainerViewController: UIViewController {
         self.embeddedYomoJomoNewsViewController.view.constraint(to: self.view)
         self.view.addSubview(self.embeddedMyNewsDrawerViewController.view)
         self.embeddedMyNewsDrawerViewController.view.constraint(to: self.view)
+        self.view.addSubview(self.embeddedMyMainSentenceDrawerViewController.view)
+        self.embeddedMyMainSentenceDrawerViewController.view.constraint(to: self.view)
     }
     
     private func setupNotifier() {
@@ -41,12 +44,15 @@ final class ContainerViewController: UIViewController {
                 case 1:
                     self?.embeddedYomoJomoNewsViewController.view.isHidden = false
                     self?.embeddedMyNewsDrawerViewController.view.isHidden = true
+                    self?.embeddedMyMainSentenceDrawerViewController.view.isHidden = true
                 case 2:
                     self?.embeddedYomoJomoNewsViewController.view.isHidden = true
                     self?.embeddedMyNewsDrawerViewController.view.isHidden = true
+                    self?.embeddedMyMainSentenceDrawerViewController.view.isHidden = false
                 case 3:
                     self?.embeddedYomoJomoNewsViewController.view.isHidden = true
                     self?.embeddedMyNewsDrawerViewController.view.isHidden = false
+                    self?.embeddedMyMainSentenceDrawerViewController.view.isHidden = true
                 default: break
                 }
             }
