@@ -25,7 +25,8 @@ final class SummaryPopupViewController: UIViewController {
 
     private func configureUI() {
         self.view.backgroundColor = .black.withAlphaComponent(0.4)
-        self.popupView.setupLabel(newsTitle: "gkdl", mySummary: "gkdl")
+        // TODO: - 더미데이터 입니다. 
+        self.popupView.setupLabel(newsTitle: "adjf;adfasdfad", mySummary: "asdfadfasdfasdfasdfadsfadf")
     }
 
     private func setupLayout() {
