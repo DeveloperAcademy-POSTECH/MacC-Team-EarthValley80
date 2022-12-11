@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SummaryPopupView: UIView {
+final class SummaryPopupView: UIView {
 
     private enum Size {
         static let stackViewSpacing: CGFloat = 10.0
