@@ -61,6 +61,6 @@ final class NewsGuideViewController: UIViewController {
     
     @objc
     private func didTappedView(_ gestureRecognizer: UITapGestureRecognizer) {
-
+        self.dismiss(animated: true)
     }
 }

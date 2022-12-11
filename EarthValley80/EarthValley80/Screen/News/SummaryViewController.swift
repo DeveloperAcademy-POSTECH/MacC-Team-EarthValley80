@@ -15,6 +15,7 @@ final class SummaryViewController: UIViewController {
 
     // MARK: - property
 
+    private let backgroundView = UIImageView(image: ImageLiteral.imgBackground)
     private let captionLabel: UILabel = {
         let label = UILabel()
         label.font = .font(.bold, ofSize: 15)
@@ -80,6 +81,9 @@ final class SummaryViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
+        self.view.addSubview(self.backgroundView)
+        self.backgroundView.constraint(to: self.view)
+        
         self.view.addSubview(self.backButton)
         self.backButton.constraint(top: self.view.topAnchor,
                                    leading: self.view.leadingAnchor,

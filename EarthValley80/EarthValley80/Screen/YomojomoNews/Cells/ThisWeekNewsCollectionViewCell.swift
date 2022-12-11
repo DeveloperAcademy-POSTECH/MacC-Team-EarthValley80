@@ -47,7 +47,7 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
         view.layer.borderColor = UIColor.evyGray3.cgColor
         view.layer.borderWidth = 1.0
         view.backgroundColor = .evyWhite
-        view.makeShadow(color: .evyBlack1, opacity: 0.08, offset: CGSize(width: 2, height: 8), radius: 18)
+        view.makeShadow(color: .evyBlack1, opacity: 0.08, offset: .zero, radius: 8)
         return view
     }()
     private let newsTitleLabel: UILabel = {
@@ -86,13 +86,13 @@ final class ThisWeekNewsCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(self.newsCardBackgroundView)
         self.newsCardBackgroundView.constraint(to: self)
 
-        self.addSubview(self.newsCategoryLabel)
+        self.contentView.addSubview(self.newsCategoryLabel)
         self.newsCategoryLabel.constraint(top: self.newsCardBackgroundView.topAnchor,
                                      leading: self.newsCardBackgroundView.leadingAnchor,
                                      padding: UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 0))
         self.newsCategoryLabel.constraint(.heightAnchor, constant: Size.categoryLabelHeigth)
 
-        self.addSubview(self.newsTitleLabel)
+        self.contentView.addSubview(self.newsTitleLabel)
         self.newsTitleLabel.constraint(top: self.newsCategoryLabel.bottomAnchor,
                                   leading: self.newsCardBackgroundView.leadingAnchor,
                                   trailing: self.newsCardBackgroundView.trailingAnchor,

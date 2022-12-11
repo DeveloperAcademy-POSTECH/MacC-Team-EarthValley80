@@ -23,6 +23,7 @@ enum ImageLiteral {
     static var icoFun: UIImage { .load(name: "ico_fun")}
     static var icoSad: UIImage { .load(name: "ico_sad")}
     static var icoScary: UIImage { .load(name: "ico_scary")}
+    static var icoCheck: UIImage { .load(systemName: "checkmark.seal.fill")}
 
     // MARK: - category
 
@@ -61,6 +62,9 @@ enum ImageLiteral {
     static var imgSci2: UIImage { .load(name: "img_sci2")}
     static var imgSisa1: UIImage { .load(name: "img_sisa1")}
     static var imgSisa2: UIImage { .load(name: "img_sisa2")}
+    static var imgBackground: UIImage { .load(name: "imgBackground")}
+    static var imgPaperBackground: UIImage { .load(name: "imgPaperBackground")}
+    static var characterYomo: UIImage { .load(name: "character_yomo")}
 }
 
 extension ImageLiteral {
