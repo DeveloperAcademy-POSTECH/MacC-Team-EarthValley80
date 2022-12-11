@@ -34,34 +34,11 @@ final class SummaryPopupViewController: UIViewController {
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.text = StringLiteral.popUpNewsTitle
-        label.font = .font(.bold, ofSize: Size.newstitleCaptionFontSize)
-        label.textColor = .evyGray1
-        return label
-    }()
-    private let newsTitleContentLabel: UILabel = {
-        let label = UILabel()
-        // TODO: - 더미데이터입니다. 나중에 지우겠습니다.
-        label.text = "인류보다 로봇 진화 속도가 더 빠르대요, 청소로봇은 '루시'…생각하는 로봇 등장"
-        label.textColor = .evyBlack2
-        label.font = .font(.bold, ofSize: Size.newsTitleFontSize)
-        label.numberOfLines = 0
-        label.lineBreakStrategy = .hangulWordPriority
-        return label
-    }()
-    private let myPredictionStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.spacing = Size.stackViewSpacing
-        return stackView
-    }()
-    private let myPredictionTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = StringLiteral.popUpMyPredictionTitle
         label.font = .font(.bold, ofSize: Size.captionFontSize)
         label.textColor = .evyGray1
         return label
     }()
-    private let myPredictionContentLabel: UILabel = {
+    private let newsTitleContentLabel: UILabel = {
         let label = UILabel()
         // TODO: - 더미데이터입니다. 나중에 지우겠습니다.
         label.text = "새로운 로봇"
@@ -115,19 +92,19 @@ final class SummaryPopupViewController: UIViewController {
                                                              right: Size.sheetStackViewPadding))
 
         self.sheetStackView.addArrangedSubview(self.newsTitleStackView)
-        self.sheetStackView.addArrangedSubview(self.myPredictionStackView)
+        self.sheetStackView.addArrangedSubview(self.newsTitleStackView)
         self.sheetStackView.addArrangedSubview(self.mySummaryStackView)
 
         self.newsTitleStackView.addArrangedSubview(self.newsTitleLabel)
         self.newsTitleStackView.addArrangedSubview(self.newsTitleContentLabel)
 
-        self.myPredictionStackView.addArrangedSubview(self.myPredictionTitleLabel)
-        self.myPredictionStackView.addArrangedSubview(self.myPredictionContentLabel)
+        self.newsTitleStackView.addArrangedSubview(self.newsTitleLabel)
+        self.newsTitleStackView.addArrangedSubview(self.newsTitleContentLabel)
 
         self.mySummaryStackView.addArrangedSubview(self.mySummaryTitleLabel)
         self.mySummaryStackView.addArrangedSubview(self.mySummaryContentLabel)
 
         self.sheetStackView.setCustomSpacing(53, after: self.newsTitleStackView)
-        self.sheetStackView.setCustomSpacing(75, after: self.myPredictionStackView)
+        self.sheetStackView.setCustomSpacing(75, after: self.newsTitleStackView)
     }
 }

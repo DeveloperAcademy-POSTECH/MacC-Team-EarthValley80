@@ -26,7 +26,6 @@ enum StringLiteral {
     static let thisWeekNewsTitle = "이번주 뉴스"
     static let myNewsDrawerTitle = "뉴스서랍"
     static let popUpNewsTitle = "기사제목"
-    static let popUpMyPredictionTitle = "나의 유추"
     static let popUpMySummaryTitle = "나의 요약"
     static let yomoProfileTitle = "어서와, 나는 요모야!"
     static let reactionTitle = "짝짝짝 다 읽었군요! 이 기사, 어땠나요?"
