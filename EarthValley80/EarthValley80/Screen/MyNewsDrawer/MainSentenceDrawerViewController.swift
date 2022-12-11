@@ -62,8 +62,6 @@ final class MainSentenceDrawerViewController: UIViewController {
         label.constraint(top: view.topAnchor,
                          centerX: view.centerXAnchor,
                          padding: UIEdgeInsets.zero)
-
-        view.isHidden = true
         return view
     }()
 
@@ -76,11 +74,6 @@ final class MainSentenceDrawerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupLayout()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.setupHiddenStatus()
     }
 
     // MARK: - func
@@ -104,16 +97,12 @@ final class MainSentenceDrawerViewController: UIViewController {
                                   centerX: self.view.centerXAnchor,
                                   padding: UIEdgeInsets(top: 294.0.adjustedHeight, left: 0, bottom: 0, right: 0))
     }
-
-    private func setupHiddenStatus() {
-        self.emptyView.isHidden = !self.newsData.isEmpty
-    }
 }
 
 // MARK: - UICollectionViewDataSource
 extension MainSentenceDrawerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.newsData.count
+        return 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
