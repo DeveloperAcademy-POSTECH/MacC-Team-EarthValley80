@@ -31,6 +31,8 @@ final class SummaryPopupViewController: UIViewController {
 
     private func setupLayout() {
         self.view.addSubview(self.popupView)
-        self.popupView.constraint(centerX: self.view.centerXAnchor, centerY: self.view.centerYAnchor, padding: UIEdgeInsets.zero)
+        self.popupView.constraint(centerX: self.view.centerXAnchor,
+                                  centerY: self.view.centerYAnchor,
+                                  padding: UIEdgeInsets.zero)
     }
 }

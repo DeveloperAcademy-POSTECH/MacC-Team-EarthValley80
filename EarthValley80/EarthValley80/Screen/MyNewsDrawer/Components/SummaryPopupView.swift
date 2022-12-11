@@ -11,8 +11,6 @@ final class SummaryPopupView: UIView {
 
     private enum Size {
         static let stackViewSpacing: CGFloat = 10.0
-        static let newstitleCaptionFontSize: CGFloat = 12.0
-        static let newsTitleFontSize: CGFloat = 20.0
         static let captionFontSize: CGFloat = 20.0
         static let contentsFontSize: CGFloat = 40.0
         static let sheetStackViewPadding: CGFloat = 40.0

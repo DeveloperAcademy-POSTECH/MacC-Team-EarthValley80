@@ -57,16 +57,16 @@ final class MyNewsDrawerViewController: UIViewController {
     private func setupLayout() {
         self.view.addSubview(self.myNewsDrawerTitle)
         self.myNewsDrawerTitle.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
-                                     leading: self.view.leadingAnchor,
-                                     trailing: self.view.trailingAnchor,
-                                     padding: UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0))
+                                          leading: self.view.leadingAnchor,
+                                          trailing: self.view.trailingAnchor,
+                                          padding: UIEdgeInsets(top: 60, left: 0, bottom: 0, right: 0))
 
         self.view.addSubview(self.collectionView)
         self.collectionView.constraint(top: self.myNewsDrawerTitle.bottomAnchor,
-                                  leading: self.myNewsDrawerTitle.leadingAnchor,
-                                  bottom: self.view.bottomAnchor,
-                                  trailing: self.view.trailingAnchor,
-                                  padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
+                                       leading: self.myNewsDrawerTitle.leadingAnchor,
+                                       bottom: self.view.bottomAnchor,
+                                       trailing: self.view.trailingAnchor,
+                                       padding: UIEdgeInsets(top: 37, left: 0, bottom: 0, right: 0))
     }
 }
 
