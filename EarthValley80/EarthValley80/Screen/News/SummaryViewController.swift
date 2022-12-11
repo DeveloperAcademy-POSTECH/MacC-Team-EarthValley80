@@ -17,8 +17,7 @@ final class SummaryViewController: UIViewController {
 
     private let backgroundView: UIImageView = {
         let imageView = UIImageView()
-        // TODO: - 나중에 에셋으로 변경할 예정
-        imageView.image = UIImage(named: "bg")
+        imageView.image = ImageLiteral.imgBackground
         return imageView
     }()
     private let captionLabel: UILabel = {

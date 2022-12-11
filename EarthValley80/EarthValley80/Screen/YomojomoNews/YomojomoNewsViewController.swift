@@ -67,7 +67,7 @@ final class YomojomoNewsViewController: UIViewController {
     }()
     private let thisWeekNewsContentView: UIImageView = {
         let contentview = UIImageView()
-        contentview.image = UIImage(named: "paper_bg")
+        contentview.image = ImageLiteral.imgPaperBackground
         return contentview
     }()
     private let thisWeekTitleView: MainTitleView = {

@@ -27,7 +27,7 @@ final class MyNewsDrawerViewController: UIViewController {
                                   description: StringLiteral.myNewsDrawerTitleDescription)
         return titleView
     }()
-    private let background = UIImageView(image: UIImage(named: "paper_bg"))
+    private let backgroundView = UIImageView(image: ImageLiteral.imgPaperBackground)
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -57,8 +57,8 @@ final class MyNewsDrawerViewController: UIViewController {
     // MARK: - func
 
     private func setupLayout() {
-        view.addSubview(background)
-        background.constraint(to: view)
+        self.view.addSubview(self.backgroundView)
+        self.backgroundView.constraint(to: self.view)
 
         self.view.addSubview(self.myNewsDrawerTitle)
         self.myNewsDrawerTitle.constraint(top: self.view.safeAreaLayoutGuide.topAnchor,
