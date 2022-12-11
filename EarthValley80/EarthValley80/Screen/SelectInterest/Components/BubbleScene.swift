@@ -8,7 +8,12 @@
 import SpriteKit
 
 final class BubblesScene: SIFloatingCollectionScene {
+
+    // MARK: - property
+
     var topOffset: CGFloat = 0
+
+    // MARK: - func
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
