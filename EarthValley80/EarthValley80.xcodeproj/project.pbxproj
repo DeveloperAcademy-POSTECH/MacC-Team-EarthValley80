@@ -24,7 +24,7 @@
 		384DF06029461589005C31D8 /* SIFloatingCollectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF05F29461589005C31D8 /* SIFloatingCollectionScene.swift */; };
 		384DF062294615ED005C31D8 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF061294615ED005C31D8 /* CGPoint+Extension.swift */; };
 		384DF06529462D28005C31D8 /* BubbleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF06429462D28005C31D8 /* BubbleNode.swift */; };
-		384DF06729462E93005C31D8 /* BubbleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF06629462E93005C31D8 /* BubbleScene.swift */; };
+		384DF06729462E93005C31D8 /* BubblesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF06629462E93005C31D8 /* BubblesScene.swift */; };
 		384DF069294630C1005C31D8 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF068294630C1005C31D8 /* CGFloat+Extension.swift */; };
 		38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */; };
 		38EF7C652939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */; };
@@ -139,7 +139,7 @@
 		384DF05F29461589005C31D8 /* SIFloatingCollectionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFloatingCollectionScene.swift; sourceTree = "<group>"; };
 		384DF061294615ED005C31D8 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		384DF06429462D28005C31D8 /* BubbleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleNode.swift; sourceTree = "<group>"; };
-		384DF06629462E93005C31D8 /* BubbleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleScene.swift; sourceTree = "<group>"; };
+		384DF06629462E93005C31D8 /* BubblesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesScene.swift; sourceTree = "<group>"; };
 		384DF068294630C1005C31D8 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestViewController.swift; sourceTree = "<group>"; };
 		38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -319,7 +319,7 @@
 				384DF05D2946146F005C31D8 /* SIFloatingNode.swift */,
 				384DF05F29461589005C31D8 /* SIFloatingCollectionScene.swift */,
 				384DF06429462D28005C31D8 /* BubbleNode.swift */,
-				384DF06629462E93005C31D8 /* BubbleScene.swift */,
+				384DF06629462E93005C31D8 /* BubblesScene.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -823,7 +823,7 @@
 				CD3A48DB290A66EF002D7C15 /* SideTabbarViewController.swift in Sources */,
 				B589F370292718BC008468A8 /* SummaryViewController.swift in Sources */,
 				384DF06529462D28005C31D8 /* BubbleNode.swift in Sources */,
-				384DF06729462E93005C31D8 /* BubbleScene.swift in Sources */,
+				384DF06729462E93005C31D8 /* BubblesScene.swift in Sources */,
 				B5BE347428FD9CD200D09BEE /* UIView+Extension.swift in Sources */,
 				CD6CBB84293FAA3F00342771 /* YomoCostume.swift in Sources */,
 				B589F37C292A6BDE008468A8 /* SummaryCompletionViewController.swift in Sources */,

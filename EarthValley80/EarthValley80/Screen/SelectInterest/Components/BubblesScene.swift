@@ -1,5 +1,5 @@
 //
-//  BubbleScene.swift
+//  BubblesScene.swift
 //  EarthValley80
 //
 //  Created by LeeJiSoo on 2022/12/12.
