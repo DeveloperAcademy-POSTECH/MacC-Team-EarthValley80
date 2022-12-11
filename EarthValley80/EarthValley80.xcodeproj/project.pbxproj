@@ -21,6 +21,7 @@
 		381AB44A2911726B00620635 /* mp4TempFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 381AB4492911726B00620635 /* mp4TempFile.json */; };
 		3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */; };
 		384DF05E2946146F005C31D8 /* SIFloatingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF05D2946146F005C31D8 /* SIFloatingNode.swift */; };
+		384DF062294615ED005C31D8 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF061294615ED005C31D8 /* CGPoint+Extension.swift */; };
 		38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */; };
 		38EF7C5E292D463200347DE4 /* CategoryShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */; };
 		38EF7C652939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */; };
@@ -132,6 +133,7 @@
 		381AB4492911726B00620635 /* mp4TempFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mp4TempFile.json; sourceTree = "<group>"; };
 		3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPopupViewController.swift; sourceTree = "<group>"; };
 		384DF05D2946146F005C31D8 /* SIFloatingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFloatingNode.swift; sourceTree = "<group>"; };
+		384DF061294615ED005C31D8 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
 		38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestViewController.swift; sourceTree = "<group>"; };
 		38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShapeView.swift; sourceTree = "<group>"; };
 		38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 				B5FAC8E4290786B800537F58 /* UILabel+Extension.swift */,
 				B5FAC8F22908E11900537F58 /* UITextView+Extension.swift */,
 				381AB418290A9AE500620635 /* Date+Extension.swift */,
+				384DF061294615ED005C31D8 /* CGPoint+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -884,6 +887,7 @@
 				CD6CBB82293FAA3400342771 /* RewardTitle.swift in Sources */,
 				B5BE347B28FD9E5500D09BEE /* UIViewController+Alert.swift in Sources */,
 				3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */,
+				384DF062294615ED005C31D8 /* CGPoint+Extension.swift in Sources */,
 				CDE23AA2290ABC5000EEB824 /* InsideTabbarItemsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
