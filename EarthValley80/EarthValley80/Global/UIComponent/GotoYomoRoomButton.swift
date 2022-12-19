@@ -28,8 +28,7 @@ struct GotoYomoRoomButton: View {
         }
         
         if isTapped {
-            YomoRoomView()
-                .transition(.move(edge: .leading))
+            
         }
     }
 }

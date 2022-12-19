@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct EconomyArticleProgress: View {
+    @State var pushedStamp: Int = 2
+
     private var count = 30
     private let pebbleOn = "economyStamp"
     private let pebbleOff = "grayStamp"
@@ -50,6 +52,12 @@ struct EconomyArticleProgress: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 41.5, height: 47.5)
+                            .scaleEffect(self.pushedStamp == 1 ? 1.25 : 1.0, anchor: .center)
+                            .animation(.default)
+                            .onTapGesture {
+                                self.pushedStamp = 1
+                            }
+                            .offset(x: 0, y: self.pushedStamp == 1 ? -15 : 0)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 12.5, trailing: 0))
                     }
                     .offset(x: 25, y: 0)
@@ -81,6 +89,12 @@ struct EconomyArticleProgress: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 41.5, height: 47.5)
+                            .scaleEffect(self.pushedStamp == 2 ? 1.25 : 1.0, anchor: .top)
+                            .animation(.default)
+                            .onTapGesture {
+                                self.pushedStamp = 2
+                            }
+                            .offset(x: 0, y: self.pushedStamp == 2 ? -20 : 0)
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 12.5, trailing: 0))
                     }
                     .offset(x: -50, y: 0)
