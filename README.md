@@ -7,8 +7,12 @@
 <img width="800" alt="스크린샷 2021-11-19 오후 3 52 02" src="https://user-images.githubusercontent.com/55099365/207530247-f08184fc-4690-4401-9622-03d2f4fd7d98.gif">
 
  _**어린이들의 글 읽기 여정을 돕는 든든한 친구, 요모조모**_
+ 
+Apple Developer Academy @POSTECH 1기 우수앱 선정(Highlighted App) <br>
+Apple Developer Academy @POSTECH 2년차 Program 선정 <br>
 
-[♻️ Highlight Presentation PDF ♻️](https://github.com/DeveloperAcademy-POSTECH/MacC-Team-EarthValley80/files/10225287/Hightlight_Yomojomo_presentation_compressed.pdf)
+[💡 Highlight Presentation PDF 💡](https://github.com/DeveloperAcademy-POSTECH/MacC-Team-EarthValley80/files/10225287/Hightlight_Yomojomo_presentation_compressed.pdf) <br>
+[🫶🏻 요모조모와 한 걸음 가까워지기 🫶🏻](https://github.com/DeveloperAcademy-POSTECH/MacC-Team-EarthValley80/wiki/Yomojomo(%EC%9A%94%EB%AA%A8%EC%A1%B0%EB%AA%A8))
 
 </div>
 
