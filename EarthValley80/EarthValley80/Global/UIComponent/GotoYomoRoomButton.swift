@@ -9,27 +9,24 @@ import SwiftUI
 
 struct GotoYomoRoomButton: View {
     @State private var isTapped = false
+
+    let font = UIFont.font(.regular, ofSize: 12)
     
     var body: some View {
         Button {
             withAnimation {
                 isTapped.toggle()
+                NotificationCenter.default.post(name: .presentYomoRoom, object: nil)
             }
         } label: {
-            HStack(spacing: 8) {
+            HStack(spacing: 4) {
                 Text(StringLiteral.goToYomoRoomText)
-                    .font(.system(size: 12))
+                    .font(Font(font))
                     .foregroundColor(.black)
                 ImageLiteral.imgGoToYomoRoomArrow
                     .font(.system(size: 12))
                     .foregroundColor(.black)
             }
-            .frame(width: 90, height: 14)
-        }
-        
-        if isTapped {
-            YomoRoomView()
-                .transition(.move(edge: .leading))
         }
     }
 }

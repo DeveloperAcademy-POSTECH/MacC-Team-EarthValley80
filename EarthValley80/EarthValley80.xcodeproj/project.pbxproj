@@ -277,14 +277,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		381AB42D290FB5CB00620635 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				381AB42E290FB5EE00620635 /* NewsSortingManager.swift */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
 		3846FBFB2918101E003784F3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,20 +311,20 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		38EF7C632939CC3300347DE4 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		38EF7C5F2938570600347DE4 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				381AB42E290FB5EE00620635 /* NewsSortingManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		38EF7C632939CC3300347DE4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		B50E7A482925D15E009D8410 /* Font */ = {
@@ -859,7 +851,6 @@
 				CD938A8F2926FDEE0026641B /* SideTabbarEventManager.swift in Sources */,
 				B5FAC8EB2907BA6000537F58 /* UIFont+Extension.swift in Sources */,
 				B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */,
-				3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */,
 				CD6CBB7E293FAA1F00342771 /* BadgeIGotView.swift in Sources */,
 				CD938AC0292C8FB10026641B /* ContainerViewController.swift in Sources */,
 				CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */,
@@ -1057,7 +1048,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EarthValley80/Global/Supports/Info.plist;
@@ -1091,7 +1082,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EarthValley80/Global/Supports/Info.plist;

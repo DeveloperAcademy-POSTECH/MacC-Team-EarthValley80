@@ -51,12 +51,7 @@ final class ReadingNewsViewController: UIViewController {
         button.setupButtonContents(buttonImage: ImageLiteral.icArrowRight, buttonTitle: StringLiteral.finishReadButtonText)
         return button
     }()
-    private let backgroundView: UIImageView = {
-        let imageView = UIImageView()
-        // TODO: - 나중에 에셋으로 변경할 예정
-        imageView.backgroundColor = .evyBlack2
-        return imageView
-    }()
+    private let backgroundView = UIImageView(image: ImageLiteral.imgBackground)
     private let backButton = BackButton()
     private let titleHeaderView: NewsTitleView = {
         let view = NewsTitleView()

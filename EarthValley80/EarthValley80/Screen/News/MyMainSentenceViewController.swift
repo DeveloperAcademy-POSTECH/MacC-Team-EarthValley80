@@ -59,7 +59,7 @@ final class MyMainSentenceViewController: UIViewController {
 
     private func configureUI() {
         // TODO: - 컬러셋 정해지면 변경
-        self.view.backgroundColor = .black.withAlphaComponent(0.94)
+        self.view.backgroundColor = .black.withAlphaComponent(0.8)
     }
 
     private func setupButtonAction() {
