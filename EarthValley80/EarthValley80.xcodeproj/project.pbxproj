@@ -20,8 +20,13 @@
 		381AB44829116D0D00620635 /* GotoSomewhereButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 381AB44729116D0D00620635 /* GotoSomewhereButton.swift */; };
 		381AB44A2911726B00620635 /* mp4TempFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 381AB4492911726B00620635 /* mp4TempFile.json */; };
 		3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */; };
+		384DF05E2946146F005C31D8 /* SIFloatingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF05D2946146F005C31D8 /* SIFloatingNode.swift */; };
+		384DF06029461589005C31D8 /* SIFloatingCollectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF05F29461589005C31D8 /* SIFloatingCollectionScene.swift */; };
+		384DF062294615ED005C31D8 /* CGPoint+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF061294615ED005C31D8 /* CGPoint+Extension.swift */; };
+		384DF06529462D28005C31D8 /* BubbleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF06429462D28005C31D8 /* BubbleNode.swift */; };
+		384DF06729462E93005C31D8 /* BubblesScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF06629462E93005C31D8 /* BubblesScene.swift */; };
+		384DF069294630C1005C31D8 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384DF068294630C1005C31D8 /* CGFloat+Extension.swift */; };
 		38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */; };
-		38EF7C5E292D463200347DE4 /* CategoryShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */; };
 		38EF7C652939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */; };
 		B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A462925C072009D8410 /* ReactionViewController.swift */; };
 		B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */; };
@@ -130,8 +135,13 @@
 		381AB44729116D0D00620635 /* GotoSomewhereButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GotoSomewhereButton.swift; sourceTree = "<group>"; };
 		381AB4492911726B00620635 /* mp4TempFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mp4TempFile.json; sourceTree = "<group>"; };
 		3846FBFC291821ED003784F3 /* SummaryPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryPopupViewController.swift; sourceTree = "<group>"; };
+		384DF05D2946146F005C31D8 /* SIFloatingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFloatingNode.swift; sourceTree = "<group>"; };
+		384DF05F29461589005C31D8 /* SIFloatingCollectionScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFloatingCollectionScene.swift; sourceTree = "<group>"; };
+		384DF061294615ED005C31D8 /* CGPoint+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extension.swift"; sourceTree = "<group>"; };
+		384DF06429462D28005C31D8 /* BubbleNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleNode.swift; sourceTree = "<group>"; };
+		384DF06629462E93005C31D8 /* BubblesScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesScene.swift; sourceTree = "<group>"; };
+		384DF068294630C1005C31D8 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestViewController.swift; sourceTree = "<group>"; };
-		38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShapeView.swift; sourceTree = "<group>"; };
 		38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
 		B50E7A462925C072009D8410 /* ReactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionViewController.swift; sourceTree = "<group>"; };
 		B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleFormTitleView.swift; sourceTree = "<group>"; };
@@ -277,14 +287,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		381AB42D290FB5CB00620635 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				381AB42E290FB5EE00620635 /* NewsSortingManager.swift */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
 		3846FBFB2918101E003784F3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,17 +316,12 @@
 		38EF7C5C292D41C300347DE4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */,
+				384DF05D2946146F005C31D8 /* SIFloatingNode.swift */,
+				384DF05F29461589005C31D8 /* SIFloatingCollectionScene.swift */,
+				384DF06429462D28005C31D8 /* BubbleNode.swift */,
+				384DF06629462E93005C31D8 /* BubblesScene.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		38EF7C632939CC3300347DE4 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		38EF7C5F2938570600347DE4 /* Manager */ = {
@@ -333,6 +330,14 @@
 				381AB42E290FB5EE00620635 /* NewsSortingManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		38EF7C632939CC3300347DE4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		B50E7A482925D15E009D8410 /* Font */ = {
@@ -503,6 +508,8 @@
 				B5FAC8E4290786B800537F58 /* UILabel+Extension.swift */,
 				B5FAC8F22908E11900537F58 /* UITextView+Extension.swift */,
 				381AB418290A9AE500620635 /* Date+Extension.swift */,
+				384DF061294615ED005C31D8 /* CGPoint+Extension.swift */,
+				384DF068294630C1005C31D8 /* CGFloat+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -815,6 +822,8 @@
 				CD3A48D9290A6687002D7C15 /* SideTabbarView.swift in Sources */,
 				CD3A48DB290A66EF002D7C15 /* SideTabbarViewController.swift in Sources */,
 				B589F370292718BC008468A8 /* SummaryViewController.swift in Sources */,
+				384DF06529462D28005C31D8 /* BubbleNode.swift in Sources */,
+				384DF06729462E93005C31D8 /* BubblesScene.swift in Sources */,
 				B5BE347428FD9CD200D09BEE /* UIView+Extension.swift in Sources */,
 				CD6CBB84293FAA3F00342771 /* YomoCostume.swift in Sources */,
 				B589F37C292A6BDE008468A8 /* SummaryCompletionViewController.swift in Sources */,
@@ -859,14 +868,15 @@
 				CD938A8F2926FDEE0026641B /* SideTabbarEventManager.swift in Sources */,
 				B5FAC8EB2907BA6000537F58 /* UIFont+Extension.swift in Sources */,
 				B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */,
-				3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */,
 				CD6CBB7E293FAA1F00342771 /* BadgeIGotView.swift in Sources */,
 				CD938AC0292C8FB10026641B /* ContainerViewController.swift in Sources */,
 				CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */,
 				381AB422290AB6AD00620635 /* News.swift in Sources */,
 				B5FAC8DC2907652800537F58 /* ReadingNewsViewController.swift in Sources */,
 				B5FAC8E5290786B800537F58 /* UILabel+Extension.swift in Sources */,
+				384DF05E2946146F005C31D8 /* SIFloatingNode.swift in Sources */,
 				B50E7A5629264E59009D8410 /* ReactionEmojiView.swift in Sources */,
+				384DF069294630C1005C31D8 /* CGFloat+Extension.swift in Sources */,
 				B5BE346428FD986600D09BEE /* YomojomoNewsViewController.swift in Sources */,
 				CD6CBB80293FAA2B00342771 /* FlameStreak.swift in Sources */,
 				CD6CBB78293FA9EF00342771 /* CultureArticleProgress.swift in Sources */,
@@ -879,16 +889,17 @@
 				B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */,
 				CDE23AA4290ABCAE00EEB824 /* TabbarButtonView.swift in Sources */,
 				B5FAC8EF2907D2A300537F58 /* BackButton.swift in Sources */,
-				38EF7C5E292D463200347DE4 /* CategoryShapeView.swift in Sources */,
 				B5BE346C28FD9B7900D09BEE /* NSObject+Extension.swift in Sources */,
 				381AB425290AB99900620635 /* ThisWeekNewsCollectionViewCell.swift in Sources */,
 				B5FAC8F529093CB500537F58 /* NewsGuideViewController.swift in Sources */,
 				381AB429290AE18D00620635 /* EmptySpaceCollectionViewCell.swift in Sources */,
 				B5BE347228FD9C9A00D09BEE /* UIViewController+Extension.swift in Sources */,
+				384DF06029461589005C31D8 /* SIFloatingCollectionScene.swift in Sources */,
 				B5BE346E28FD9BB100D09BEE /* UITableView+Extension.swift in Sources */,
 				CD6CBB82293FAA3400342771 /* RewardTitle.swift in Sources */,
 				B5BE347B28FD9E5500D09BEE /* UIViewController+Alert.swift in Sources */,
 				3846FBFD291821ED003784F3 /* SummaryPopupViewController.swift in Sources */,
+				384DF062294615ED005C31D8 /* CGPoint+Extension.swift in Sources */,
 				CDE23AA2290ABC5000EEB824 /* InsideTabbarItemsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
