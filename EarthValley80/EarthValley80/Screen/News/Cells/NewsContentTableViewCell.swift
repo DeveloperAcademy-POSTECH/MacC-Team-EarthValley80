@@ -79,23 +79,15 @@ final class NewsContentTableViewCell: UITableViewCell {
     
     private func appendSentences() {
         guard let content = self.contentLabel.text else { return }
-        
-        self.sentences = content.components(separatedBy: [".", "!", "?"]).map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }.filter { !$0.isEmpty }
+
+        self.sentences = content.stringTokens(separatedBy: [".", "!", "?"])
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
     }
     
     private func applyHighlight(to index: Int) {
         guard index < self.sentences.count && index >= 0 else { return }
-        let separatorCharacters: [String] = [".", "?", "!"]
-        let sentencesWithCharacter = separatorCharacters.map({ "\(self.sentences[index])\($0)" })
-        
-        for sentence in sentencesWithCharacter {
-            if let hasSentence = self.contentLabel.text?.contains(sentence),
-               hasSentence {
-                self.contentLabel.applyColor(to: sentence, with: .evyWhite)
-                break
-            }
-        }
-        
+        self.contentLabel.applyColor(to: self.sentences[index], with: .evyWhite)
         self.contentLabel.setLineSpacing(kernValue: -2.0,
                                          lineHeightMultiple: Size.originalLineHeightMultiple)
     }

@@ -23,6 +23,7 @@
 		38EDAA48292D221C007EFFA4 /* SelectInterestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */; };
 		38EF7C5E292D463200347DE4 /* CategoryShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */; };
 		38EF7C652939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */; };
+		91408DE6296D39AA006A52E1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91408DE5296D39AA006A52E1 /* String+Extension.swift */; };
 		B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A462925C072009D8410 /* ReactionViewController.swift */; };
 		B50E7A4A292604DD009D8410 /* CapsuleFormTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */; };
 		B50E7A4C29260899009D8410 /* Constant+Adjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50E7A4B29260899009D8410 /* Constant+Adjusted.swift */; };
@@ -133,6 +134,7 @@
 		38EDAA47292D221C007EFFA4 /* SelectInterestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestViewController.swift; sourceTree = "<group>"; };
 		38EF7C5D292D463200347DE4 /* CategoryShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryShapeView.swift; sourceTree = "<group>"; };
 		38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNewsDrawerCollectionViewCell.swift; sourceTree = "<group>"; };
+		91408DE5296D39AA006A52E1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B50E7A462925C072009D8410 /* ReactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionViewController.swift; sourceTree = "<group>"; };
 		B50E7A49292604DD009D8410 /* CapsuleFormTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleFormTitleView.swift; sourceTree = "<group>"; };
 		B50E7A4B29260899009D8410 /* Constant+Adjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+Adjusted.swift"; sourceTree = "<group>"; };
@@ -277,14 +279,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		381AB42D290FB5CB00620635 /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				381AB42E290FB5EE00620635 /* NewsSortingManager.swift */,
-			);
-			path = Manager;
-			sourceTree = "<group>";
-		};
 		3846FBFB2918101E003784F3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,20 +313,20 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		38EF7C632939CC3300347DE4 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		38EF7C5F2938570600347DE4 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				381AB42E290FB5EE00620635 /* NewsSortingManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		38EF7C632939CC3300347DE4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				38EF7C642939CC5200347DE4 /* MyNewsDrawerCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		B50E7A482925D15E009D8410 /* Font */ = {
@@ -503,6 +497,7 @@
 				B5FAC8E4290786B800537F58 /* UILabel+Extension.swift */,
 				B5FAC8F22908E11900537F58 /* UITextView+Extension.swift */,
 				381AB418290A9AE500620635 /* Date+Extension.swift */,
+				91408DE5296D39AA006A52E1 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -859,7 +854,6 @@
 				CD938A8F2926FDEE0026641B /* SideTabbarEventManager.swift in Sources */,
 				B5FAC8EB2907BA6000537F58 /* UIFont+Extension.swift in Sources */,
 				B50E7A472925C072009D8410 /* ReactionViewController.swift in Sources */,
-				3851FC062912E5B400CF3E89 /* LeftAlignCollectionViewFlowLayout.swift in Sources */,
 				CD6CBB7E293FAA1F00342771 /* BadgeIGotView.swift in Sources */,
 				CD938AC0292C8FB10026641B /* ContainerViewController.swift in Sources */,
 				CD4AC941291DEF1A003D02E4 /* SideTabbarLottieView.swift in Sources */,
@@ -871,6 +865,7 @@
 				CD6CBB80293FAA2B00342771 /* FlameStreak.swift in Sources */,
 				CD6CBB78293FA9EF00342771 /* CultureArticleProgress.swift in Sources */,
 				B5FAC8E2290781C200537F58 /* NewsContentTableViewCell.swift in Sources */,
+				91408DE6296D39AA006A52E1 /* String+Extension.swift in Sources */,
 				CD6CBB70293FA99F00342771 /* ArticleCategory.swift in Sources */,
 				B589F37E292AF1E7008468A8 /* MainContentParagraphTableViewCell.swift in Sources */,
 				B5E8FB2029385ABB004A187E /* DeeplinkCoordinator.swift in Sources */,
