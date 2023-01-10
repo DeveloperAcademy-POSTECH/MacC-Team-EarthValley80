@@ -155,28 +155,14 @@ final class MainContentParagraphTableViewCell: UITableViewCell {
     private func appendSentences() {
         guard let content = self.contentLabel.text else { return }
 
-        let _ = content.components(separatedBy: [".", "!", "?"])
+       let _ = content.stringTokens(separatedBy: [".", "!", "?"])
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
             .filter { !$0.isEmpty }
             .compactMap { sentence in
-                guard let completionSentence = self.applyPunctuationMark(in: sentence) else { return }
-                let closedRange = self.findRangeOfSentence(completionSentence)
-                self.sentences[closedRange] = completionSentence
+                let closedRange = self.findRangeOfSentence(sentence)
+                self.sentences[closedRange] = sentence
             }
-    }
-
-    private func applyPunctuationMark(in sentence: String) -> String? {
-        let separatorCharacters: [String] = [".", "?", "!"]
-        let sentencesWithCharacter = separatorCharacters.map({ "\(sentence)\($0)" })
-
-        for sentence in sentencesWithCharacter {
-            if let hasSentence = self.contentLabel.text?.contains(sentence),
-               hasSentence {
-                return sentence
-            }
-        }
-
-        return nil
+        
     }
 
     private func findRangeOfSentence(_ sentence: String) -> ClosedRange<Int> {
