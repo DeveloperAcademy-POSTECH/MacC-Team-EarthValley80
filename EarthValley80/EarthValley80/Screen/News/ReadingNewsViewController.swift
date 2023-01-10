@@ -10,7 +10,7 @@ import UIKit
 final class ReadingNewsViewController: UIViewController {
     
     private enum Size {
-        static let halfOfScreenWidth: CGFloat = UIScreen.main.bounds.size.width / 2
+        static let halfOfScreenHeight: CGFloat = UIScreen.main.bounds.size.height / 2
         static let disabledButtonWidth: CGFloat = 60.0
         static let enabledButtonWidth: CGFloat = 104.0
     }
@@ -149,7 +149,7 @@ final class ReadingNewsViewController: UIViewController {
         
             let location = gestureRecognizer.location(in: gestureRecognizer.view)
             switch location.y {
-            case 0...Size.halfOfScreenWidth:
+            case 0...Size.halfOfScreenHeight:
                 contentCell.shiftHighlight(to: .upper)
             default:
                 contentCell.shiftHighlight(to: .lower)
